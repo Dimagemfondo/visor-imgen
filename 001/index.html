@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title></title>
     <style>
         /* --- ESTILOS GENERALES --- */
@@ -14,7 +14,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            user-select: none; /* Evita selección de texto accidental al tocar */
         }
 
         .view { display: none; }
@@ -23,7 +22,7 @@
 
         /* --- HOME --- */
         header { 
-            padding: max(20px, env(safe-area-inset-top)) 15px 10px 15px;
+            padding: 22px 15px 8px 15px; 
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
             position: fixed; width: 100%; z-index: 50; top:0; 
             pointer-events: auto;
@@ -34,13 +33,11 @@
             display: flex; 
             justify-content: flex-start; 
             align-items: center; 
-            gap: 15px;
         }
         
         .search-btn { 
             background: none; border: none; color: white; cursor: pointer; padding: 0; 
             display: flex; align-items: center; justify-content: center;
-            width: 44px; height: 44px; /* Área táctil más grande para el dedo */
         }
         .search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 5px black); }
         
@@ -73,14 +70,15 @@
         .horizontal-list {
             display: flex; overflow-x: auto; gap: 10px; padding: 0 15px;
             scrollbar-width: none; margin-bottom: 25px;
-            scroll-snap-type: x mandatory; /* Efecto magnético al deslizar */
+            scroll-snap-type: x mandatory;
         }
         .horizontal-list::-webkit-scrollbar { display: none; }
         
         .horizontal-item { flex: 0 0 110px; cursor: pointer; scroll-snap-align: start; }
 
         .view-all-btn {
-            display: block; width: calc(100% - 30px); margin: 0 auto 30px;
+            display: none; /* Se oculta por defecto, se activa con JS si > 10 */
+            width: calc(100% - 30px); margin: 0 auto 30px;
             padding: 12px; background: #1e1e24; border: 1px solid #333;
             color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
             text-align: center; font-size: 14px;
@@ -105,8 +103,8 @@
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
         .full-list-grid {
-            padding: calc(80px + env(safe-area-inset-top)) 15px calc(20px + env(safe-area-inset-bottom));
-            display: grid; grid-template-columns: 1fr 1fr; /* Fila de 2 */
+            padding: 80px 15px 20px;
+            display: grid; grid-template-columns: 1fr 1fr; 
             gap: 15px;
         }
         .poster-wrapper { cursor: pointer; }
@@ -194,7 +192,7 @@
         /* Botón volver genérico */
         .back-btn {
             background: none; border: none; color: white; font-size: 16px; font-weight: 600; cursor: pointer;
-            padding: 10px 10px 10px 0; /* Área táctil más cómoda */
+            display: flex; align-items: center; gap: 5px;
         }
 
     </style>
@@ -225,8 +223,6 @@
             <div class="section-title">Recién añadidos</div>
             <div class="horizontal-list" id="recent-list"></div>
             
-            <button id="view-all-btn" class="view-all-btn" onclick="openFullList()">Ver lista completa</button>
-
             <!-- CONTINUAR VIENDO -->
             <div id="continue-watching-container" style="display:none;">
                 <div class="section-title">Continuar viendo</div>
@@ -246,7 +242,10 @@
     <div id="full-list-view" class="view">
         <header>
             <div class="header-content">
-                <button class="back-btn" onclick="closeFullList()">← Volver</button>
+                <button class="back-btn" onclick="closeFullList()">
+                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Lista completa
+                </button>
             </div>
         </header>
         <div class="full-list-grid" id="full-grid"></div>
@@ -290,23 +289,23 @@
 const library = [
     {
         id: "hell",
-        titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        titulo: "Hell Mode: Yarikomizuki no Gamer wa Hai Settei no Isekai de Musou suru",
         poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
-        banner: "https://images3.alphacoders.com/112/1124976.jpg",
+        banner: "",
         rating: "16+",
         temporada: "1 Temporada",
         ano: "2024",
         calidad: "HD",
-        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
-            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/7fny6ghs08w9d9015g7cz/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=b3pguga4gx7uemxv60pub69w4&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/w19uigzymyigbnx3ip5nc/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=tttvwwlnwdvza81h9thwct0nj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/ieneivr9soyt7wci8747l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=h04iis1nid3etone6ruagt03g&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4me92yis6xb4blury52kw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=z1d7une3hop4vkakri7fsry52&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/t5aw53haphid360n0pw4u/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=qhk4jle84d846xk5y5pmlhse1&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/ixsf0pdbinb3u5dkwfwya/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=1803aa8u9tbwz6ibqd9tsveae&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/hddcbloiphenv4d1jak3v/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=iex8003454pfse0xdbeh1jpfv&st=2287ui7a&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5gfx8y1c9iavzrei5cnhx/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=1uwa9cnqyoxmypt1ofogb555h&st=8z3oz7r1&raw=1" },
             { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
@@ -315,25 +314,184 @@ const library = [
     },
     {
         id: "Dokyuu",
-        titulo: "Dokyuu Hentai HxEros",
+        titulo: "one punch",
         poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
-        banner: "https://images8.alphacoders.com/110/1102347.jpg",
+        banner: "",
         rating: "TV-MA",
-        temporada: "1 Temporada",
+        temporada: "2 Temporadas",
         ano: "2015",
         calidad: "HD",
-        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+   {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "one punch",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "2 Temporadas",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Kenichi Yamada, un hombre de negocios soltero de 35 años, ha pasado la mayor parte de su vida adulta jugando a todos los MMORPG que han salido al mercado. Cansado del ciclo constante de juego repetitivo y centrado en los novatos, se siente inmediatamente atraído por la promesa de un nuevo juego que, además de ser interminable, ofrece un Modo Infierno un nivel de dificultad que hace que sea casi imposible subir de nivel, pero que también promete un potencial de crecimiento ilimitado. Al seleccionar la recién lanzada clase Invocador, Kenichi se encuentra renaciendo como Allen, un bebé en una familia de siervos, con nada más que su ingenio y viejos recuerdos para guiarlo. Allen trabaja diligentemente para subir de nivel a pesar de que el Modo Infierno requiere una gran cantidad de experiencia entre niveles. Al hacerlo, espera descubrir los secretos que esconde la clase Invocador. Al mismo tiempo, se dedica a liberar a su nueva familia de la servidumbre.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
         ]
     }
 ];
@@ -411,7 +569,6 @@ const library = [
         // 1. Recién añadidos (Horizontal, max 10)
         const recentContainer = document.getElementById('recent-list');
         recentContainer.innerHTML = "";
-        // Tomamos los primeros 10 (asumiendo que el orden del array es el orden de llegada)
         const recentItems = library.slice(0, 10);
         
         recentItems.forEach(anime => {
@@ -425,10 +582,19 @@ const library = [
             recentContainer.appendChild(div);
         });
 
-        // 2. Botón Ver Lista Completa
-        const btn = document.getElementById('view-all-btn');
-        // Si hay más de 0, mostramos el botón (o podrías poner library.length > 10)
-        btn.style.display = library.length > 0 ? 'block' : 'none';
+        // 2. Botón Ver Lista Completa (SOLO SI HAY MÁS DE 10) - AHORA AL FINAL DE LA LISTA
+        if (library.length > 10) {
+            const moreBtn = document.createElement('div');
+            moreBtn.className = 'horizontal-item';
+            moreBtn.onclick = openFullList;
+            moreBtn.innerHTML = `
+                <div class="poster" style="display:flex; align-items:center; justify-content:center; background: #1e1e24; border: 1px solid #333;">
+                    <svg viewBox="0 0 24 24" style="width:32px; height:32px; fill:white;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </div>
+                <div class="anime-title" style="margin-top:5px; text-align:center; color: var(--accent);">Ver todo</div>
+            `;
+            recentContainer.appendChild(moreBtn);
+        }
 
         // 3. Continuar Viendo
         loadContinueWatching();
@@ -599,11 +765,11 @@ const library = [
     let startX = 0;
     let startVideoTime = 0;
     // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
-    const swipeSeekFactor = 3.0; 
+    const swipeSeekFactor = 1.0; 
 
     function setupTouchControls() {
         heroArea.addEventListener('touchstart', handleTouchStart);
-        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
+        heroArea.addEventListener('touchmove', handleTouchMove);
         heroArea.addEventListener('touchend', handleTouchEnd);
     }
     
