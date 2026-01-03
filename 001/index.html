@@ -84,21 +84,23 @@
             text-align: center; font-size: 14px;
         }
 
-        /* --- CONTINUAR VIENDO --- */
-        .continue-card {
-            margin: 0 15px 40px; position: relative; border-radius: 8px; overflow: hidden;
-            aspect-ratio: 16/9; cursor: pointer; border: 1px solid #333; background: #000;
+        /* --- CONTINUAR VIENDO (LISTA) --- */
+        .continue-item {
+            flex: 0 0 200px; /* Tamaño más pequeño y compacto */
+            aspect-ratio: 16/9; position: relative; cursor: pointer; scroll-snap-align: start;
+            border: 1px solid #333; background: #000;
+            /* Sin border-radius para que sea con puntas */
         }
-        .continue-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .continue-info {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px;
+        .continue-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .continue-info-mini {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px;
             background: linear-gradient(to top, black, transparent); box-sizing: border-box;
         }
-        .continue-title { font-size: 16px; font-weight: bold; margin-bottom: 4px; color: white; text-shadow: 0 2px 4px black; }
-        .continue-ep { font-size: 13px; color: var(--accent); font-weight: 600; text-shadow: 0 1px 2px black; }
-        .play-icon-overlay {
+        .continue-title-mini { font-size: 12px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+        .continue-ep-mini { font-size: 11px; color: var(--accent); font-weight: 600; }
+        .play-icon-mini {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 40px; color: white; opacity: 0.9; filter: drop-shadow(0 2px 5px black);
+            font-size: 24px; color: white; opacity: 0.9; filter: drop-shadow(0 2px 5px black);
         }
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
@@ -226,14 +228,7 @@
             <!-- CONTINUAR VIENDO -->
             <div id="continue-watching-container" style="display:none;">
                 <div class="section-title">Continuar viendo</div>
-                <div id="continue-card" class="continue-card">
-                    <img id="continue-banner" src="" alt="">
-                    <div class="continue-info">
-                        <div id="continue-title" class="continue-title"></div>
-                        <div id="continue-ep" class="continue-ep"></div>
-                    </div>
-                    <div class="play-icon-overlay">▶</div>
-                </div>
+                <div class="horizontal-list" id="continue-list"></div>
             </div>
         </div>
     </div>
@@ -617,39 +612,45 @@ const library = [
     // --- LÓGICA CONTINUAR VIENDO ---
     function loadContinueWatching() {
         const container = document.getElementById('continue-watching-container');
-        const savedData = localStorage.getItem('myApp_lastWatched');
+        const list = document.getElementById('continue-list');
+        // Usamos una nueva clave para guardar el array de historial
+        const history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
         
-        if (!savedData) {
+        if (history.length === 0) {
             container.style.display = 'none';
             return;
         }
 
-        try {
-            const { animeId, epIndex } = JSON.parse(savedData);
-            const anime = library.find(a => a.id === animeId);
-            
-            if (!anime) {
-                container.style.display = 'none';
-                return;
-            }
+        container.style.display = 'block';
+        list.innerHTML = "";
 
-            container.style.display = 'block';
-            // Usar banner si existe, sino poster
-            document.getElementById('continue-banner').src = anime.banner || anime.poster;
-            document.getElementById('continue-title').innerText = anime.titulo;
-            
-            const epName = anime.episodios[epIndex] ? anime.episodios[epIndex].nombre : `Capítulo ${epIndex + 1}`;
-            document.getElementById('continue-ep').innerText = "Continuar: " + epName;
+        history.forEach(item => {
+            const anime = library.find(a => a.id === item.animeId);
+            if (!anime) return;
 
-            document.getElementById('continue-card').onclick = () => {
+            const epIndex = item.epIndex;
+            const epName = anime.episodios[epIndex] ? `Ep. ${anime.episodios[epIndex].num}` : `Ep. ${epIndex + 1}`;
+            
+            const div = document.createElement('div');
+            div.className = 'continue-item';
+            div.onclick = () => {
                 openAnimeDetail(anime);
                 playEpisode(epIndex);
             };
-
-        } catch (e) {
-            console.error("Error cargando progreso", e);
-            container.style.display = 'none';
-        }
+            
+            // Preferir banner, si no poster
+            const img = anime.banner || anime.poster;
+            
+            div.innerHTML = `
+                <img src="${img}" alt="${anime.titulo}">
+                <div class="play-icon-mini">▶</div>
+                <div class="continue-info-mini">
+                    <div class="continue-title-mini">${anime.titulo}</div>
+                    <div class="continue-ep-mini">Continuar: ${epName}</div>
+                </div>
+            `;
+            list.appendChild(div);
+        });
     }
 
     // --- DETALLE ---
@@ -720,10 +721,7 @@ const library = [
         }
 
         // [NUEVO] Guardar progreso
-        localStorage.setItem('myApp_lastWatched', JSON.stringify({
-            animeId: currentAnime.id,
-            epIndex: index
-        }));
+        saveWatchProgress(currentAnime.id, index);
 
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
@@ -737,6 +735,24 @@ const library = [
         if (!isAutoChained) {
             document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
         }
+    }
+
+    function saveWatchProgress(animeId, epIndex) {
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        } catch(e) { history = []; }
+
+        // Eliminar si ya existe para ponerlo al principio (actualizar)
+        history = history.filter(item => item.animeId !== animeId);
+        
+        // Agregar al inicio
+        history.unshift({ animeId, epIndex });
+        
+        // Limitar a 10 items
+        if (history.length > 10) history.pop();
+        
+        localStorage.setItem('myApp_watchHistory', JSON.stringify(history));
     }
 
     function renderRecommendations(currentId) {
