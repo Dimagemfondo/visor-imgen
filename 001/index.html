@@ -1022,7 +1022,7 @@ let library = publicLibrary;
     function toggleMangaMode() {
         if (mangaToggleBtn.classList.contains('is-visible')) {
             // Está abierto (Manga), cerrar -> ir a Video
-            mangaToggleBtn.classList.remove('is-visible');s
+            mangaToggleBtn.classList.remove('is-visible');
             window.history.back(); // Volver a detail
         } else {
             // Está cerrado (Video), abrir -> ir a Manga
@@ -1054,7 +1054,7 @@ let library = publicLibrary;
 
     function loadMangaImages() {
         const chapter = mangaChapters[currentChapterIdx];
-        document.getElementById('chapter-display').innerText = `ch ${chapter.id}`;
+        document.getElementById('chapter-display').innerText = `C ${chapter.id}`;
 
         const contenedor = document.getElementById('contenedor-imagenes');
         const loading = document.getElementById('loading-manga');
