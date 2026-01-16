@@ -1,1266 +1,141 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title></title>
-    <style>
-        /* --- ESTILOS GENERALES --- */
-        :root { --bg: #0b0c0f; --text: #ffffff; --text-gray: #a8a8a8; --accent: #3b82f6; }
+package com.example.todesvipplayer;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.videolan.libvlc.LibVLC;
+import org.videolan.libvlc.Media;
+import org.videolan.libvlc.MediaPlayer;
+import org.videolan.libvlc.interfaces.IVLCVout;
+
+import java.util.ArrayList;
+
+public class PlayerActivity extends AppCompatActivity {
+
+    private SurfaceView surfaceView;
+    private ProgressBar loading;
+    private String videoUrl;
+
+    // MOTOR VLC
+    private LibVLC libVlc;
+    private MediaPlayer mediaPlayer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         
-        /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
-        video::-webkit-media-controls-panel {
-            background-image: none !important;
-        }
-        /* --------------------------------------------- */
+        // Fullscreen total
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
-        body { 
-            margin: 0; padding: 0; 
-            background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
-        }
+        setContentView(R.layout.activity_player);
 
-        /* Evitar arrastrar imágenes al deslizar en móvil */
-        img {
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
-            user-select: none;
-            pointer-events: none;
-        }
+        videoUrl = getIntent().getStringExtra("VIDEO_URL");
+        surfaceView = findViewById(R.id.vlc_surface);
+        loading = findViewById(R.id.loading);
+    }
 
-        .view { display: none; }
-        .view.active { display: block; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* --- HOME --- */
-        header { 
-            padding: 22px 15px 8px 15px; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
-            position: fixed; width: 100%; z-index: 50; top:0; 
-            pointer-events: auto;
-            box-sizing: border-box;
-        }
-
-        .header-content { 
-            display: flex; 
-            justify-content: flex-start; 
-            align-items: center; 
-        }
-
-        .search-btn { 
-            background: none; border: none; color: white; cursor: pointer; padding: 0; 
-            display: flex; align-items: center; justify-content: center;
-        }
-        .search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 5px black); }
+    private void startVlc() {
+        // 1. CONFIGURAR OPCIONES AVANZADAS DE VLC
+        ArrayList<String> options = new ArrayList<>();
+        // Hardware Acceleration (para que no se trabe)
+        options.add("--avcodec-hw=any"); 
+        // Subtítulos: Color blanco, tamaño relativo, codificación UTF-8
+        options.add("--freetype-rel-fontsize=20"); 
+        options.add("--freetype-color=16777215"); 
+        // Buffer para redes lentas (importante para Koyeb)
+        options.add("--network-caching=5000"); // 5 segundos de buffer
         
-        /* --- EXPLORE / BUSCADOR --- */
-        .explore-header { padding: 20px 15px 10px; position: sticky; top: 0; background: var(--bg); z-index: 10; }
-        .search-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .search-input {
-            flex: 1; background: #1e1e24; border: 1px solid #333; color: white;
-            padding: 12px; border-radius: 8px; font-size: 16px; outline: none;
-            -webkit-user-select: text;
-            user-select: text;
-        }
-        .search-results { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
-            gap: 12px; padding: 0 15px 20px;
-        }
+        // CREAR EL MOTOR
+        libVlc = new LibVLC(this, options);
+        mediaPlayer = new MediaPlayer(libVlc);
 
-        /* --- NUEVO HOME (HORIZONTAL) --- */
-        .section-title {
-            font-size: 20px; font-weight: 600; margin: 20px 0 12px 0; padding-left: 15px; color: #ffffff;
-            letter-spacing: 0px;
-        }
+        // 2. CONECTAR LA PANTALLA (SurfaceView) CON EL MOTOR
+        final IVLCVout vout = mediaPlayer.getVLCVout();
+        vout.setVideoView(surfaceView);
+        vout.attachViews();
 
-        .horizontal-list {
-            display: flex; overflow-x: auto; gap: 10px; padding: 0 15px; /* <--- Aumenta este 15px para mover los posters a la derecha */
-            scrollbar-width: none; margin-bottom: 25px;
-            scroll-snap-type: x mandatory;
-        }
-        /* Control específico para mover la lista de Recién añadidos a la derecha */
-        #recent-list { padding-left: 15px; /* <--- CAMBIA ESTE NÚMERO para mover toda la fila a la derecha */ }
-
-        .horizontal-list::-webkit-scrollbar { display: none; }
-        
-        .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
-
-        @media (max-width: 600px) {
-            .horizontal-item { flex: 0 0 140px; }
-        }
-
-        .view-all-btn {
-            display: none; /* Se oculta por defecto, se activa con JS si > 10 */
-            width: calc(100% - 30px); margin: 0 auto 30px;
-            padding: 12px; background: #1e1e24; border: 1px solid #333;
-            color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
-            text-align: center; font-size: 14px;
-        }
-
-        /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
-        .full-list-grid {
-            padding: 80px 15px 20px;
-            display: grid; grid-template-columns: 1fr 1fr; 
-            gap: 15px;
-        }
-        .poster-wrapper { cursor: pointer; }
-        .poster {
-            width: 100%; aspect-ratio: 2/3; border-radius: 0; overflow: hidden; background: #1a1a1a;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 8px;
-        }
-        .poster img { width: 100%; height: 100%; object-fit: cover; }
-        .anime-title { font-size: 13px; font-weight: 500; color: #ddd; }
-
-        /* --- DETALLE --- */
-        .hero-container {
-            position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
-        }
-        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
-        
-        .video-player {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: black; border: none; z-index: 20; display: block;
-        }
-
-        .content-body { padding: 20px; position: relative; z-index: 10; }
-        
-        .show-title { 
-            font-size: 18px; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 8px; 
-            cursor: pointer; 
-            color: #eee; letter-spacing: 0.5px;
-        }
-        .show-title:active { opacity: 0.7; }
-
-        .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
-        .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
-
-        /* --- SELECTOR DE EPISODIOS (CUADROS) --- */
-        .ep-count-header {
-            text-align: right; color: var(--text-gray); font-size: 12px; margin-bottom: 8px; font-weight: 500;
-        }
-
-        .ep-selector-row {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;
-            scrollbar-width: none; 
-        }
-        .ep-selector-row::-webkit-scrollbar { display: none; }
-
-        .ep-box {
-            width: 50px; height: 50px; background: #1e1e24; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 15px; color: #e0e0e0; flex-shrink: 0;
-            cursor: pointer; transition: background 0.2s;
-        }
-        .ep-box.active {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-        }
-        .ep-box:active { transform: scale(0.95); }
-
-        /* --- SINOPSIS --- */
-        .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
-        .synopsis.collapsed {
-             display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-        }
-        .read-more-btn {
-            color: var(--accent); font-weight: 600; cursor: pointer; font-size: 13px; 
-            margin-bottom: 30px; display: inline-block;
-        }
-
-        /* --- TAMBIÉN PODRÍA GUSTARTE --- */
-        .section-header { font-size: 15px; font-weight: 700; margin-bottom: 15px; margin-top: 10px; color: #eee; }
-        
-        .rec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
-        }
-        .rec-item { cursor: pointer; }
-        .rec-poster {
-            width: 100%; aspect-ratio: 2/3; border-radius: 4px; overflow: hidden; background: #222;
-        }
-        .rec-poster img { width: 100%; height: 100%; object-fit: cover; }
-        .rec-title { font-size: 11px; margin-top: 5px; color: #ccc; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-
-        /* Botón volver genérico */
-        .back-btn {
-            background: none; border: none; color: white; font-size: 16px; font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; gap: 5px;
-        }
-
-        /* --- BOTTOM NAV --- */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
-            background: #0b0c0f; border-top: 1px solid #222;
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 90; padding-bottom: env(safe-area-inset-bottom);
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: var(--text-gray); text-decoration: none; font-size: 10px; gap: 4px;
-            background: none; border: none; cursor: pointer; flex: 1; height: 100%;
-        }
-        .nav-item.active { color: var(--accent); }
-        .nav-item svg { width: 22px; height: 22px; fill: currentColor; }
-        
-        /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 70px; }
-        
-        /* AJUSTES */
-        .settings-content { padding: 40px 20px; text-align: center; color: #777; }
-        
-        /* --- SWITCH TOGGLE (Ajustes) --- */
-        .switch-container {
-            display: flex; align-items: center; justify-content: space-between;
-            background: #1e1e24; padding: 15px; border-radius: 8px; margin: 20px auto;
-            text-align: left; max-width: 400px;
-        }
-        .switch-label { font-size: 15px; color: white; font-weight: 500; }
-        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--accent); }
-        input:checked + .slider:before { transform: translateX(22px); }
-
-        /* --- SPLASH SCREEN --- */
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.5s ease-out;
-        }
-        .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .loading-spinner {
-            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-bottom: 15px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #splash-status { color: #888; font-size: 14px; font-weight: 500; }
-        #retry-btn {
-            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: white;
-            border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
-        }
-
-        /* --- MANGA READER & TOGGLE (Merged) --- */
-        /* Toggle Button */
-        .visibility-toggle-btn {
-            position: fixed; bottom: 20px; right: 20px; z-index: 2000;
-            width: 24px; height: 24px;
-            background: transparent;
-            border: none;
-            display: none; /* Hidden by default */
-            align-items: center; justify-content: center;
-            cursor: pointer;
-        }
-        .visibility-toggle-btn svg {
-            width: 100%; height: 100%;
-            fill: none; stroke: #ccc; stroke-width: 2px;
-            stroke-linecap: round; stroke-linejoin: round;
-            transition: stroke 0.25s ease;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.9));
-        }
-        .visibility-toggle-btn:hover svg { stroke: white; }
-        
-        #eye-open-path, #pupil { transition: opacity 0.25s ease-in-out; opacity: 0; }
-        #eye-closed-path { transition: opacity 0.25s ease-in-out; opacity: 1; }
-        
-        /* Estado Abierto (Manga Mode) */
-        .visibility-toggle-btn.is-visible #eye-open-path,
-        .visibility-toggle-btn.is-visible #pupil { opacity: 1; }
-        .visibility-toggle-btn.is-visible #eye-closed-path { opacity: 0; }
-
-        /* Manga View Styles */
-        #manga-view {
-            background-color: #000;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .visor {
-            max-width: 100%; margin: 0 auto; padding-bottom: 100px; min-height: 100vh;
-            touch-action: pan-x pan-y pinch-zoom;
-        }
-        .pag {
-            display: block; width: 100%; max-width: 500px; height: auto; margin: 0 auto;
-            opacity: 0; transition: opacity 0.5s ease; background-color: #0a0a0a; min-height: 400px;
-        }
-        .pag.loaded { opacity: 1; }
-
-        /* Dynamic Island Dock */
-        .dynamic-dock-container {
-            position: fixed; bottom: 20px; left: 0; width: 100%;
-            display: flex; justify-content: center; z-index: 1000;
-            pointer-events: none; transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-        .dynamic-dock-container.hidden { transform: translateY(300%); }
-        .dynamic-island {
-            pointer-events: auto; position: relative; width: auto; min-width: 70px; height: 30px;
-            background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(15px); /* Estilo humo */
-            border-radius: 8px; border: none; /* Rectangular suave */
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-            transition: transform 0.2s; overflow: hidden;
-        }
-        .dynamic-island:active { transform: scale(0.95); }
-        .island-progress {
-            position: absolute; top: 0; left: 0; height: 100%; width: 0%;
-            background: rgba(255, 255, 255, 0.15); z-index: 1; transition: width 0.1s linear;
-        }
-        .island-content {
-            position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;
-            width: 100%; font-size: 0.85rem; font-weight: 600; color: #eee;
-        }
-
-        /* Bottom Sheet */
-        .bottom-sheet-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); z-index: 3000; animation: fadeIn 0.3s forwards;
-        }
-        .bottom-sheet {
-            position: fixed; bottom: 80px; /* Se eleva para salir desde el dock */
-            left: 0; width: 100%; 
-            background: transparent; 
-            padding: 0 10px; box-sizing: border-box;
-            display: flex; flex-direction: column; justify-content: flex-end; 
-            max-height: 65vh;
-            pointer-events: none; 
-        }
-        .sheet-handle {
-            display: none; 
-        }
-        /* Estilos para la lista VERTICAL de capítulos (Chimenea) */
-        .chapter-row {
-            display: flex; flex-direction: column-reverse; /* Crece hacia arriba como humo */
-            gap: 8px; overflow-y: auto; padding: 10px;
-            scrollbar-width: none;
-            pointer-events: auto; align-items: center;
-        }
-        .chapter-row::-webkit-scrollbar { display: none; }
-        .chapter-btn {
-            width: 80px; height: 40px; /* Rectangular suave */
-            background: rgba(15, 15, 15, 0.75); /* Humo denso oscuro */
-            backdrop-filter: blur(12px);
-            border-radius: 8px; /* NO círculo */
-            display: flex; align-items: center; justify-content: center;
-            color: #ccc; font-weight: 600; font-size: 15px; cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: transform 0.2s, background 0.2s;
-            animation: smokeRise 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-        }
-        @keyframes smokeRise { from { opacity: 0; transform: translateY(30px) scale(0.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        
-        .chapter-btn:active { transform: scale(0.95); }
-        .chapter-btn.active { 
-            background: rgba(255, 255, 255, 0.15); color: white; 
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-        }
-        
-        .grid-container {
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
-            overflow-y: auto; padding: 15px;
-            pointer-events: auto;
-            background: transparent; /* Sin fondo para efecto humo */
-            margin-bottom: 0;
-        }
-        .grid-btn {
-            aspect-ratio: 1; 
-            background: rgba(15, 15, 15, 0.75); /* Estilo humo denso */
-            backdrop-filter: blur(12px);
-            border: none;
-            border-radius: 8px; 
-            color: #ccc; font-size: 1rem; font-weight: 600;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: transform 0.2s, background 0.2s;
-            animation: smokeRise 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-        }
-        .grid-btn:active { transform: scale(0.95); }
-        .grid-btn.active { 
-            background: rgba(255, 255, 255, 0.15); color: white; 
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-        }
-        
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        /* Ajuste para que el botón del ojo no tape el contenido del manga */
-        #manga-view { padding-bottom: 80px; }
-        
-        /* Ocultar botón de ojo en otras vistas por defecto */
-        .visibility-toggle-btn { display: none; }
-        /* Mostrar solo cuando se active via JS */
-        .visibility-toggle-btn.show { display: flex; }
-        }
-
-    </style>
-</head>
-<body>
-
-    <!-- SPLASH SCREEN -->
-    <div id="splash-screen">
-        <div class="splash-content">
-            <div class="loading-spinner" id="splash-spinner"></div>
-            <div id="splash-status">Iniciando...</div>
-            <button id="retry-btn" onclick="location.reload()">Reintentar</button>
-        </div>
-    </div>
-
-    <!-- HOME -->
-    <div id="home-view" class="view active">
-        <header>
-            <div class="header-content">
-            </div>
-        </header>
-        
-        <div style="padding-top: 10px;">
-            <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
-            <div class="full-list-grid" id="recent-list" style="padding: 0 15px 20px;"></div>
-        </div>
-    </div>
-
-    <!-- EXPLORE (BUSCADOR) -->
-    <div id="explore-view" class="view">
-        <div class="explore-header">
-            <div class="search-bar-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Buscar animes..." oninput="handleSearch()">
-            </div>
-        </div>
-        <div class="search-results" id="search-results"></div>
-    </div>
-
-    <!-- AJUSTES -->
-    <div id="settings-view" class="view">
-        <div class="settings-content">
-            <h2>Ajustes</h2>
-            <p>Versión 1.0.0</p>
+        if (videoUrl != null) {
+            // 3. PREPARAR EL VIDEO Y EL "DISFRAZ"
+            Media media = new Media(libVlc, Uri.parse(videoUrl));
             
-            <div class="switch-container">
-                <span class="switch-label">Restricciones de contenido</span>
-                <label class="switch">
-                    <input type="checkbox" id="restriction-toggle" onchange="toggleRestrictions()">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <!-- VISTA LISTA COMPLETA -->
-    <div id="full-list-view" class="view">
-        <header>
-            <div class="header-content">
-                <button class="back-btn" onclick="closeFullList()">
-                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                    Lista completa
-                </button>
-            </div>
-        </header>
-        <div class="full-list-grid" id="full-grid"></div>
-    </div>
-
-    <!-- DETALLE -->
-    <div id="detail-view" class="view">
-        <div class="hero-container" id="hero-area">
-            <img id="hero-img" class="hero-bg" src="" alt="">
-            <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
-        </div>
-
-        <div class="content-body">
-            <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
-            
-            <div class="meta-row">
-                <span id="detail-rating" class="badge"></span>
-                <span id="detail-season"></span>
-                <span id="detail-year"></span>
-                <span id="detail-quality"></span>
-            </div>
-
-            <!-- Contador de capítulos -->
-            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
-
-            <!-- Fila de botones cuadrados -->
-            <div class="ep-selector-row" id="ep-selector"></div>
-            
-            <!-- SINOPSIS -->
-            <p id="detail-synopsis" class="synopsis"></p>
-            <div id="read-more-btn" class="read-more-btn" onclick="toggleSynopsis()">vea más</div>
-
-            <!-- Recomendaciones -->
-            <div class="section-header">Más como esto</div>
-            <div class="rec-grid" id="recommendations-container"></div>
-        </div>
-    </div>
-
-    <!-- MANGA VIEW -->
-    <div id="manga-view" class="view">
-        <main class="visor" id="contenedor-imagenes" onclick="toggleCinemaMode()">
-            <div id="loading-manga" style="text-align:center; padding:50px; color:#555;">Cargando manga...</div>
-        </main>
-        
-        <!-- UI FLOTANTE MANGA -->
-        <div class="dynamic-dock-container" id="dock-container">
-            <!-- Botón Páginas -->
-            <div class="dynamic-island" onclick="event.stopPropagation(); abrirMenuPaginas()" style="margin-right: 10px;">
-                <div class="island-progress" id="dock-progress"></div>
-                <div class="island-content"><span id="page-display">1</span></div>
-            </div>
-            <!-- Botón Capítulos -->
-            <div class="dynamic-island" onclick="event.stopPropagation(); abrirMenuCapitulos()">
-                <div class="island-content"><span id="chapter-display">T 01</span></div>
-            </div>
-        </div>
-
-        <!-- MENÚ MANGA -->
-        <div class="bottom-sheet-overlay" id="sheet-overlay" onclick="cerrarSheet(event)">
-            <div class="bottom-sheet">
-                <div id="sheet-content"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTÓN FLOTANTE OJO (Toggle) -->
-    <div class="visibility-toggle-btn" id="manga-toggle-btn" onclick="toggleMangaMode()">
-        <svg viewBox="0 0 24 24">
-            <path id="eye-open-path" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle id="pupil" cx="12" cy="12" r="3"></circle>
-            <path id="eye-closed-path" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07l-4.24-4.24M1 1l22 22"></path>
-        </svg>
-    </div>
-
-    <!-- BARRA DE NAVEGACIÓN INFERIOR -->
-    <nav class="bottom-nav">
-        <button class="nav-item active" onclick="switchTab('home')" id="nav-home">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
-        </button>
-        <button class="nav-item" onclick="switchTab('explore')" id="nav-explore">
-            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Explore
-        </button>
-        <button class="nav-item" onclick="switchTab('settings')" id="nav-settings">
-            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.08-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Ajustes
-        </button>
-    </nav>
-
-<script>
-const publicLibrary = [
-    {
-        id: "Kaifuku",
-        titulo: "Kaifuku Jutsushi no Yarinaoshi",
-        poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
-        banner: "",
-        rating: "16+",
-        temporada: "1 Temporada",
-        ano: "2024",
-        calidad: "HD",
-        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
-            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
-            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
-            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
-        ]
-    },
-    {
-        id: "Dokyuu",
-        titulo: "Dokyuu Hentai HxEros",
-        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
-        banner: "",
-        rating: "TV-MA",
-        temporada: "1 Temporada",
-        ano: "2020",
-        calidad: "HD",
-        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" }
-        ]
-    }
-];
-
-const privateLibrary = [
-    {
-        id: "sakusei",
-        titulo: "sakusei",
-        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
-        banner: "",
-        rating: "+18",
-        temporada: "1 Temporada",
-        ano: "2020",
-        calidad: "HD",
-        sinopsis: "ddd.",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" }
-        ]
-    }
-];
-
-let library = publicLibrary;
-</script>
-
-<script>
-    // --- VARIABLES DE ESTADO ---
-    let currentAnime = null;
-    let currentEpIndex = 0;
-    let needsSynopsisCheck = false; 
-    let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
-    let isRestrictedMode = false;
-
-    // --- ELEMENTOS DOM ---
-    const homeView = document.getElementById('home-view');
-    const exploreView = document.getElementById('explore-view');
-    const settingsView = document.getElementById('settings-view');
-    const fullListView = document.getElementById('full-list-view');
-    const detailView = document.getElementById('detail-view');
-    const mangaView = document.getElementById('manga-view');
-    const fullGrid = document.getElementById('full-grid');
-    const mainVideo = document.getElementById('main-video');
-    const heroImg = document.getElementById('hero-img');
-    const heroArea = document.getElementById('hero-area');
-    
-    const detailTitle = document.getElementById('detail-title');
-    const epCountText = document.getElementById('ep-count-text');
-    const epSelector = document.getElementById('ep-selector');
-    const detailSynopsis = document.getElementById('detail-synopsis');
-    const readMoreBtn = document.getElementById('read-more-btn');
-    const recContainer = document.getElementById('recommendations-container');
-
-    const detailRating = document.getElementById('detail-rating');
-    const detailSeason = document.getElementById('detail-season');
-    const detailYear = document.getElementById('detail-year');
-    const detailQuality = document.getElementById('detail-quality');
-
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
-    
-    const mangaToggleBtn = document.getElementById('manga-toggle-btn');
-    let mangaLoaded = false;
-
-    // --- INICIO ---
-    function initApp() {
-        if(!window.location.hash) window.location.hash = "home";
-        
-        if (typeof library !== 'undefined') {
-            renderHome();
-        } else {
-            console.error("Falta data.js");
-            document.body.innerHTML = "<p style='text-align:center; margin-top:50px;'>Error: data.js no encontrado.</p>";
-        }
-
-        // Cargar estado del switch
-        const savedState = localStorage.getItem('myApp_restrictedMode');
-        if (savedState === 'true') {
-            isRestrictedMode = true;
-            library = privateLibrary;
-        } else {
-            library = publicLibrary;
-        }
-        
-        const toggleBtn = document.getElementById('restriction-toggle');
-        if(toggleBtn) toggleBtn.checked = isRestrictedMode;
-
-        window.addEventListener('hashchange', handleRouting);
-        handleRouting();
-        
-        setupTouchControls();
-
-        // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
-        mainVideo.addEventListener('play', () => {
-            if (!hasPlayedAnyVideo) {
-                hasPlayedAnyVideo = true;
-            }
-        });
-    }
-
-    function handleRouting() {
-        const hash = window.location.hash;
-        const bottomNav = document.querySelector('.bottom-nav');
-        
-        // Reset nav active state
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-
-        if (hash.startsWith('#detail') && currentAnime) {
-            showDetailView();
-            if (bottomNav) bottomNav.style.display = 'none';
-        } else if (hash === '#manga') {
-            showMangaView();
-            if (bottomNav) bottomNav.style.display = 'none';
-        } else if (hash === '#fulllist') {
-            showFullListView();
-            if (bottomNav) bottomNav.style.display = 'none';
-        } else if (hash === '#explore') {
-            showExploreView();
-            document.getElementById('nav-explore').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
-        } else if (hash === '#settings') {
-            showSettingsView();
-            document.getElementById('nav-settings').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
-        } else {
-            showHomeView();
-            document.getElementById('nav-home').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
-        }
-
-        // Actualizar estado del botón manga
-        updateMangaButtonState();
-    }
-
-    function switchTab(tab) {
-        const hash = '#' + tab;
-        if (window.location.hash !== hash) {
-            history.replaceState(null, null, hash);
-            handleRouting();
-        }
-    }
-
-    function updateMangaButtonState() {
-        const hash = window.location.hash;
-        // 1. Mostrar/Ocultar botón (Solo Kaifuku y en vistas permitidas)
-        if (currentAnime && currentAnime.id === 'Kaifuku' && (hash.startsWith('#detail') || hash === '#manga')) {
-            mangaToggleBtn.classList.add('show');
-        } else {
-            mangaToggleBtn.classList.remove('show');
-        }
-
-        // 2. Sincronizar icono del ojo con la vista actual
-        if (hash === '#manga') {
-            mangaToggleBtn.classList.add('is-visible');
-        } else {
-            mangaToggleBtn.classList.remove('is-visible');
-        }
-    }
-
-    function toggleRestrictions() {
-        const toggle = document.getElementById('restriction-toggle');
-        isRestrictedMode = toggle.checked;
-        
-        // Guardar estado
-        localStorage.setItem('myApp_restrictedMode', isRestrictedMode);
-        
-        // Cambiar librería
-        library = isRestrictedMode ? privateLibrary : publicLibrary;
-        
-        // Refrescar vistas
-        renderHome();
-        if (document.getElementById('explore-view').classList.contains('active')) {
-            showExploreView();
-        }
-        if (document.getElementById('full-list-view').classList.contains('active')) {
-            openFullList();
-        }
-    }
-
-    // --- RENDERIZADO ---
-    function renderHome() {
-        // 1. Recién añadidos (Grid 2 columnas, max 20)
-        const recentContainer = document.getElementById('recent-list');
-        recentContainer.innerHTML = "";
-        const recentItems = library.slice(0, 20);
-        
-        recentItems.forEach(anime => {
-            const card = document.createElement('div');
-            card.className = "poster-wrapper"; 
-            card.onclick = () => { openAnimeDetail(anime); };
-            card.innerHTML = `
-                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                <div class="anime-title">${anime.titulo}</div>
-            `;
-            recentContainer.appendChild(card);
-        });
-    }
-
-    function renderGrid(data, container) {
-        container.innerHTML = "";
-        data.forEach(anime => {
-            const card = document.createElement('div');
-            card.className = "poster-wrapper"; 
-            card.onclick = () => { openAnimeDetail(anime); };
-            card.innerHTML = `
-                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                <div class="anime-title">${anime.titulo}</div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    // --- DETALLE ---
-    function openAnimeDetail(anime) {
-        hasPlayedAnyVideo = false; // [NUEVO] Resetea el flag para cada anime nuevo que se abre.
-        currentAnime = anime;
-        currentEpIndex = 0;
-        prepareDetailView(anime); 
-
-        if (window.location.hash.startsWith('#detail')) {
-            showDetailView(); 
-            updateMangaButtonState();
-        } else {
-            window.location.hash = "detail"; 
-        }
-    }
-    
-    function prepareDetailView(anime) {
-        detailTitle.innerText = anime.titulo;
-
-        detailRating.innerText = anime.rating || "";
-        detailSeason.innerText = anime.temporada || "";
-        detailYear.innerText = anime.ano || "";
-        detailQuality.innerText = anime.calidad || "";
-        
-        detailSynopsis.innerText = anime.sinopsis || "";
-        detailSynopsis.classList.add('collapsed');
-        readMoreBtn.innerText = "vea más";
-        readMoreBtn.style.display = 'none'; 
-        needsSynopsisCheck = true; 
-
-        epSelector.innerHTML = "";
-        const totalEps = anime.episodios.length;
-        epCountText.innerText = `${totalEps} ${totalEps === 1 ? 'Capítulo' : 'Capítulos'}`;
-
-        anime.episodios.forEach((ep, index) => {
-            const btn = document.createElement('div');
-            btn.className = 'ep-box';
-            btn.innerText = ep.num;
-            btn.onclick = () => playEpisode(index);
-            epSelector.appendChild(btn);
-        });
-
-        renderRecommendations(anime.id);
-
-        if (totalEps > 0) {
-            playEpisode(0);
-        } else {
-            mainVideo.style.display = 'none';
-            heroImg.style.display = 'block';
-            heroImg.src = anime.banner || anime.poster;
-        }
-    }
-
-    // [CORREGIDO] Lógica de autoplay actualizada.
-    function playEpisode(index, isAutoChained = false) {
-        if (!currentAnime || !currentAnime.episodios[index]) return;
-        currentEpIndex = index;
-        const episode = currentAnime.episodios[index];
-
-        heroImg.style.display = "none";
-        mainVideo.style.display = "block";
-        mainVideo.src = episode.link;
-
-        // Reproduce automáticamente si es el siguiente video en la cadena
-        // O si el usuario ya ha iniciado la reproducción manualmente antes.
-        if (isAutoChained || hasPlayedAnyVideo) {
-            mainVideo.play();
-        }
-
-        const buttons = epSelector.querySelectorAll('.ep-box');
-        buttons.forEach((btn, i) => {
-            btn.classList.toggle('active', i === index);
-        });
-        
-        if(buttons[index]) {
-            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
-
-        if (!isAutoChained) {
-            document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    function renderRecommendations(currentId) {
-        recContainer.innerHTML = "";
-        const recs = library.filter(a => a.id !== currentId);
-        
-        if (recs.length === 0) {
-            recContainer.innerHTML = "<div style='color:#555; font-size:12px;'>No hay más sugerencias.</div>";
-            return;
-        }
-
-        recs.forEach(anime => {
-            const item = document.createElement('div');
-            item.className = 'rec-item';
-            item.onclick = () => openAnimeDetail(anime);
-            item.innerHTML = `
-                <div class="rec-poster"><img src="${anime.poster}" alt=""></div>
-                <div class="rec-title">${anime.titulo}</div>
-            `;
-            recContainer.appendChild(item);
-        });
-    }
-
-    // --- Control por gestos ---
-    let isDragging = false;
-    let startX = 0;
-    let startVideoTime = 0;
-    // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
-    const swipeSeekFactor = 2.5; 
-
-    function setupTouchControls() {
-        heroArea.addEventListener('touchstart', handleTouchStart);
-        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
-        heroArea.addEventListener('touchend', handleTouchEnd);
-    }
-    
-    function handleTouchStart(e) {
-        if (mainVideo.paused || !mainVideo.duration) return;
-        isDragging = true;
-        startX = e.touches[0].clientX;
-        startVideoTime = mainVideo.currentTime;
-    }
-
-    function handleTouchMove(e) {
-        if (!isDragging) return;
-        e.preventDefault(); 
-        const currentX = e.touches[0].clientX;
-        const deltaX = currentX - startX;
-        
-        const timeOffset = deltaX * swipeSeekFactor;
-        let newTime = startVideoTime + timeOffset;
-
-        newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
-        
-        mainVideo.currentTime = newTime;
-    }
-
-    function handleTouchEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-    }
-
-
-    // --- UTILIDADES ---
-    function toggleSynopsis() {
-        detailSynopsis.classList.toggle('collapsed');
-        readMoreBtn.innerText = detailSynopsis.classList.contains('collapsed') ? "vea más" : "vea menos";
-    }
-
-    function showDetailView() {
-        switchView(detailView);
-        window.scrollTo(0, 0);
-
-        if (needsSynopsisCheck) {
-            setTimeout(() => {
-                const isOverflowing = detailSynopsis.scrollHeight > detailSynopsis.clientHeight;
-                readMoreBtn.style.display = isOverflowing ? 'inline-block' : 'none';
-                if (!isOverflowing) {
-                    detailSynopsis.classList.remove('collapsed');
-                }
-            }, 50); 
-            needsSynopsisCheck = false;
-        }
-    }
-
-    function showHomeView() {
-        mainVideo.pause();
-        mainVideo.src = "";
-        currentAnime = null; 
-        mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
-        switchView(homeView);
-        renderHome(); // Recargar para actualizar "Continuar viendo"
-        if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
-    }
-
-    function showExploreView() {
-        switchView(exploreView);
-        // Si está vacío, mostrar sugerencias iniciales (toda la librería o random)
-        if(!searchInput.value) renderGrid(library, searchResults);
-        else handleSearch();
-    }
-
-    function showSettingsView() {
-        switchView(settingsView);
-    }
-
-    function switchView(view) {
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-        view.classList.add('active');
-    }
-
-    // --- LISTA COMPLETA ---
-    function openFullList() {
-        renderGrid(library, fullGrid);
-        window.location.hash = "fulllist";
-    }
-    function showFullListView() {
-        renderGrid(library, fullGrid);
-        switchView(fullListView);
-    }
-    function closeFullList() {
-        window.history.back();
-    }
-
-    function handleSearch() {
-        const query = searchInput.value.toLowerCase();
-        const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
-        renderGrid(filtered, searchResults);
-    }
-
-    // --- LÓGICA MANGA ---
-    function toggleMangaMode() {
-        if (mangaToggleBtn.classList.contains('is-visible')) {
-            // Está abierto (Manga), cerrar -> ir a Video
-            mangaToggleBtn.classList.remove('is-visible');
-            window.history.back(); // Volver a detail
-        } else {
-            // Está cerrado (Video), abrir -> ir a Manga
-            mangaToggleBtn.classList.add('is-visible');
-            window.location.hash = "manga";
-        }
-    }
-
-    function showMangaView() {
-        mainVideo.pause();
-        switchView(mangaView);
-        mangaToggleBtn.classList.add('is-visible'); // Asegurar estado visual
-        
-        if (!mangaLoaded) {
-            loadMangaImages();
-            mangaLoaded = true;
-        }
-    }
-
-    // Variables Manga
-    // Configuración de Capítulos
-    const mangaChapters = [
-        { id: "01", folder: "dato1", pages: 10 },
-        { id: "02", folder: "dato2", pages: 20 }, // Ejemplo
-        { id: "03", folder: "dato3", pages: 20 },
-        { id: "04", folder: "dato4", pages: 20 }
-    ];
-    let currentChapterIdx = 0;
-
-    function loadMangaImages() {
-        const chapter = mangaChapters[currentChapterIdx];
-        document.getElementById('chapter-display').innerText = `C ${chapter.id}`;
-
-        const contenedor = document.getElementById('contenedor-imagenes');
-        const loading = document.getElementById('loading-manga');
-        
-        contenedor.innerHTML = "";
-        loading.style.display = 'none';
-        
-        // Lista de extensiones a probar (prioridad: webp -> jpg -> png)
-        const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
-
-        for (let i = 1; i <= chapter.pages; i++) {
-            const img = document.createElement('img');
-            img.className = 'pag';
-            img.id = `img-${i}`;
-            if (i > 3) img.loading = "lazy";
-            
-            // Generar todas las combinaciones posibles (1.jpg, 01.jpg, 001.jpg, etc.)
-            const candidatos = [];
-            const variantesNum = [String(i), String(i).padStart(2, '0'), String(i).padStart(3, '0')];
-            // Eliminar duplicados (ej: "100" vs "100")
-            const unicosNum = [...new Set(variantesNum)];
-            
-            unicosNum.forEach(num => {
-                extensiones.forEach(ext => candidatos.push(`${chapter.folder}/${num}${ext}`));
-            });
-
-            // Lógica de "prueba y error" automática
-            let intento = 0;
-            const cargarSiguiente = () => {
-                if (intento < candidatos.length) {
-                    img.src = candidatos[intento];
-                    intento++;
-                } else {
-                    img.style.display = 'none'; // Fallaron todas
-                }
-            };
-            
-            img.onerror = cargarSiguiente;
-            img.onload = () => img.classList.add('loaded');
-            
-            // Iniciar carga
-            cargarSiguiente();
-            
-            contenedor.appendChild(img);
-        }
-        iniciarObserver();
-    }
-
-    function abrirMenuPaginas() {
-        const sheetContent = document.getElementById('sheet-content');
-        sheetContent.innerHTML = '';
-        sheetContent.className = 'grid-container';
-        
-        const chapter = mangaChapters[currentChapterIdx];
-        
-        for (let i = 1; i <= chapter.pages; i++) {
-            const btn = document.createElement('button');
-            btn.className = 'grid-btn';
-            btn.id = `btn-${i}`;
-            btn.innerText = i;
-            
-            // Marcar activo
-            const currentPage = parseInt(document.getElementById('page-display').innerText);
-            if (i === currentPage) btn.classList.add('active');
-
-            btn.onclick = () => irAPagina(i);
-            // Efecto humo escalonado
-            btn.style.animationDelay = `${(i % 20) * 0.03}s`;
-            sheetContent.appendChild(btn);
-        }
-        document.getElementById('sheet-overlay').style.display = 'block';
-    }
-
-    function abrirMenuCapitulos() {
-        const sheetContent = document.getElementById('sheet-content');
-        sheetContent.innerHTML = '';
-        sheetContent.className = 'chapter-row';
-        
-        mangaChapters.forEach((chap, idx) => {
-            const btn = document.createElement('div');
-            btn.className = 'chapter-btn';
-            btn.innerText = chap.id;
-            if (idx === currentChapterIdx) btn.classList.add('active');
-            btn.onclick = () => cambiarCapitulo(idx);
-            btn.style.animationDelay = `${idx * 0.05}s`; /* Efecto cascada humo */
-            sheetContent.appendChild(btn);
-        });
-        document.getElementById('sheet-overlay').style.display = 'block';
-    }
-
-    function cambiarCapitulo(idx) {
-        if (currentChapterIdx === idx) return;
-        currentChapterIdx = idx;
-        loadMangaImages();
-        document.getElementById('sheet-overlay').style.display = 'none';
-    }
-
-    function iniciarObserver() {
-        const pageDisplay = document.getElementById('page-display');
-        const dockProgress = document.getElementById('dock-progress');
-        
-        const totalPages = mangaChapters[currentChapterIdx].pages;
-
-        const imagenes = document.querySelectorAll('.pag');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const num = parseInt(entry.target.id.split('-')[1]);
-                    pageDisplay.innerText = num;
-                    const porcentaje = (num / totalPages) * 100;
-                    dockProgress.style.width = `${porcentaje}%`;
-                    
-                    document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
-                    const btn = document.getElementById(`btn-${num}`);
-                    if(btn) btn.classList.add('active');
+            // Truco: Decirle al servidor que somos Chrome (User-Agent)
+            // Esto se hace a nivel de opciones de red en VLC
+            media.addOption(":http-user-agent=Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/100.0");
+            media.addOption(":http-reconnect=true"); // Reintentar si falla
+
+            mediaPlayer.setMedia(media);
+            media.release(); // Ya no necesitamos el objeto media
+
+            // 4. INICIAR REPRODUCCIÓN
+            mediaPlayer.play();
+
+            // ESCUCHAR EVENTOS (Carga, Errores, Fin)
+            mediaPlayer.setEventListener(new MediaPlayer.EventListener() {
+                @Override
+                public void onEvent(MediaPlayer.Event event) {
+                    switch (event.type) {
+                        case MediaPlayer.Event.Buffering:
+                            if (event.getBuffering() < 100) {
+                                loading.setVisibility(View.VISIBLE);
+                            } else {
+                                loading.setVisibility(View.GONE);
+                            }
+                            break;
+                        case MediaPlayer.Event.Playing:
+                            loading.setVisibility(View.GONE);
+                            
+                            // 5. TRUCO FINAL: ACTIVAR SUBTÍTULOS AUTOMÁTICAMENTE
+                            // SpuTrack = Pista de subtítulos. -1 es desactivado.
+                            // Buscamos pistas y si hay alguna, la activamos.
+                            int spuCount = mediaPlayer.getSpuTracksCount();
+                            if (spuCount > 0) {
+                                // Activar la primera pista que encuentre (usualmente Español)
+                                // Las pistas suelen tener IDs como 1, 2, 3...
+                                MediaPlayer.TrackDescription[] tracks = mediaPlayer.getSpuTracks();
+                                if (tracks != null && tracks.length > 0) {
+                                    // tracks[0] suele ser "Desactivado", probamos tracks[1]
+                                    if (tracks.length > 1) {
+                                        mediaPlayer.setSpuTrack(tracks[1].id);
+                                    }
+                                }
+                            }
+                            break;
+                        case MediaPlayer.Event.EncounteredError:
+                            loading.setVisibility(View.GONE);
+                            Toast.makeText(PlayerActivity.this, "Error de VLC: Link inaccesible", Toast.LENGTH_LONG).show();
+                            break;
+                    }
                 }
             });
-        }, { threshold: 0.1, rootMargin: "-40% 0px -40% 0px" });
-        imagenes.forEach(img => observer.observe(img));
-    }
-
-    let isDockHidden = false;
-    function toggleCinemaMode() {
-        const dock = document.getElementById('dock-container');
-        isDockHidden ? dock.classList.remove('hidden') : dock.classList.add('hidden');
-        isDockHidden = !isDockHidden;
-    }
-    function cerrarSheet(e) { if(e.target.id === 'sheet-overlay') document.getElementById('sheet-overlay').style.display = 'none'; }
-    function irAPagina(num) {
-        document.getElementById('sheet-overlay').style.display = 'none';
-        const dest = document.getElementById(`img-${num}`);
-        if(dest) dest.scrollIntoView({behavior: 'smooth', block: 'start'});
-    }
-
-    // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
-    mainVideo.addEventListener('ended', () => {
-        if (currentAnime && currentEpIndex < currentAnime.episodios.length - 1) {
-            playEpisode(currentEpIndex + 1, true);
-        }
-    });
-
-    initApp();
-    
-    // --- LOGICA DE INICIO (SPLASH SCREEN) ---
-    async function launchApp() {
-        const splash = document.getElementById('splash-screen');
-        const status = document.getElementById('splash-status');
-        const spinner = document.getElementById('splash-spinner');
-        const retryBtn = document.getElementById('retry-btn');
-
-        // 1. Verificar conexión básica
-        if (!navigator.onLine) {
-            showError("Sin conexión a internet");
-            return;
-        }
-
-        // 2. Precargar imágenes
-        try {
-            status.innerText = "Cargando contenido...";
-            
-            // Recolectar imágenes
-            const imagesToLoad = [];
-            library.forEach(anime => {
-                if(anime.poster) imagesToLoad.push(anime.poster);
-                if(anime.banner) imagesToLoad.push(anime.banner);
-            });
-
-            // Crear promesas de carga
-            const loadPromises = imagesToLoad.map(src => {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = src;
-                    img.onload = resolve;
-                    img.onerror = resolve; // Continuar aunque falle una imagen específica
-                });
-            });
-
-            // Esperar a que carguen (o timeout de 8s)
-            await Promise.race([
-                Promise.all(loadPromises),
-                new Promise(resolve => setTimeout(resolve, 8000))
-            ]);
-
-            // 3. Transición al Home
-            splash.style.opacity = '0';
-            setTimeout(() => {
-                splash.style.display = 'none';
-            }, 500);
-
-        } catch (e) {
-            console.error("Error en carga:", e);
-            // En caso de error inesperado, dejar entrar
-            splash.style.display = 'none';
-        }
-
-        function showError(msg) {
-            spinner.style.display = 'none';
-            status.innerText = msg;
-            status.style.color = '#ff4444';
-            retryBtn.style.display = 'block';
         }
     }
 
-    // Ejecutar carga
-    launchApp();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startVlc();
+    }
 
-</script>
-</body>
-</html>
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.getVLCVout().detachViews();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        if (libVlc != null) {
+            libVlc.release();
+            libVlc = null;
+        }
+    }
+}
