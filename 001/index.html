@@ -1355,7 +1355,6 @@ let library = publicLibrary;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
 
-        // --- ¡AQUÍ ESTÁ LA LÓGICA CLAVE! ---
         // Primero, revisamos si la app de Android nos está "escuchando".
         if (typeof Android !== 'undefined' && Android.playVideo) {
             // Si es así, le pasamos las URLs al código nativo de Java.
@@ -1369,7 +1368,7 @@ let library = publicLibrary;
             }
             
         } else {
-            // Si no estamos en la app (por ejemplo, en un navegador), usamos la lógica que ya tenías.
+            // Si no estamos en la app, usamos la lógica que ya tenías.
             console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
             heroImg.style.display = "none";
             mainVideo.style.display = "block";
@@ -1379,9 +1378,8 @@ let library = publicLibrary;
                 mainVideo.play();
             }
         }
-        // --- FIN DE LA LÓGICA CLAVE ---
 
-        // El resto de tu función original se mantiene intacto porque está perfecto.
+        // El resto de tu función original se mantiene intacto.
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
