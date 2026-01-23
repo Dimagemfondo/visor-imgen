@@ -1350,31 +1350,27 @@ let library = publicLibrary;
         }
     }
 
-    // [CORREGIDO] Lógica de autoplay actualizada.
     function playEpisode(index, isAutoChained = false) {
         if (!currentAnime || !currentAnime.episodios[index]) return;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
 
-        // Primero, verifica si la interfaz "Android" (tu WebAppInterface) existe.
+        // --- ¡AQUÍ ESTÁ LA LÓGICA CLAVE! ---
+        // Primero, revisamos si la app de Android nos está "escuchando".
         if (typeof Android !== 'undefined' && Android.playVideo) {
-            // --- LÓGICA PARA EL REPRODUCTOR NATIVO VLC ---
-            // La interfaz existe, así que llamamos al código nativo de Java.
-            
+            // Si es así, le pasamos las URLs al código nativo de Java.
             const videoLink = episode.link;
-            const subtitleLink = episode.subtitulo || null; // Pasa el link del subtítulo o null si no existe.
+            const subtitleLink = episode.subtitulo || null; // Si no hay subtitulo, pasamos null
 
-            // Llama a la función Java correcta dependiendo de si hay subtítulo o no.
             if (subtitleLink) {
-                 Android.playVideo(videoLink, subtitleLink);
+                Android.playVideo(videoLink, subtitleLink);
             } else {
-                 Android.playVideo(videoLink);
+                Android.playVideo(videoLink);
             }
-
+            
         } else {
-            // --- LÓGICA ALTERNATIVA (si se abre en un navegador normal) ---
-            // Esto usará el reproductor de video HTML5 estándar.
-            console.log("WebAppInterface 'Android' no encontrada. Usando reproductor HTML5.");
+            // Si no estamos en la app (por ejemplo, en un navegador), usamos la lógica que ya tenías.
+            console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
             heroImg.style.display = "none";
             mainVideo.style.display = "block";
             mainVideo.src = episode.link;
@@ -1383,7 +1379,9 @@ let library = publicLibrary;
                 mainVideo.play();
             }
         }
+        // --- FIN DE LA LÓGICA CLAVE ---
 
+        // El resto de tu función original se mantiene intacto porque está perfecto.
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
