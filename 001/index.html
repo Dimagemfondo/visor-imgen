@@ -7,16 +7,16 @@
     <style>
         /* --- ESTILOS GENERALES --- */
         :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00A4DC; }
-
+        
         /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
         video::-webkit-media-controls-panel {
             background-image: none !important;
         }
         /* --------------------------------------------- */
-
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--bg); color: var(--text);
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg); color: var(--text); 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
@@ -38,20 +38,20 @@
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 
         /* --- HOME --- */
-        header {
-            padding: 15px 20px;
+        header { 
+            padding: 15px 20px; 
             background-color: #101010; /* Color Jellyfin (Gris muy oscuro) */
-            position: fixed; width: 100%; z-index: 50; top:0;
+            position: fixed; width: 100%; z-index: 50; top:0; 
             pointer-events: auto;
             box-sizing: border-box;
             box-shadow: 0 4px 8px rgba(0,0,0,0.5);
             transition: transform 0.3s ease;
         }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
 
         .header-right { display: flex; gap: 20px; align-items: center; }
@@ -80,7 +80,7 @@
         /* Ocultar flechas en input de número */
         .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         .code-input[type=number] { -moz-appearance: textfield; }
-
+        
         /* --- BUSCADOR EN HEADER --- */
         .header-search-container {
             flex: 1; margin: 0 15px; display: flex; justify-content: flex-end; }
@@ -131,7 +131,7 @@
         }
         .search-result-card:hover { background: #1a1a1a; }
         .search-poster-img {
-            width: 100px; aspect-ratio: 2/3; object-fit: cover;
+            width: 100px; aspect-ratio: 2/3; object-fit: cover; 
             border-radius: 0; flex-shrink: 0;
         }
         .search-info {
@@ -159,7 +159,7 @@
             scrollbar-width: none; margin-bottom: 25px;
             scroll-snap-type: x mandatory;
         }
-
+        
         /* Espaciadores para alinear (5px ancho + 10px gap = 15px total, igual que el título) */
         .horizontal-list::before, .horizontal-list::after {
             content: ''; display: block; flex: 0 0 5px;
@@ -168,7 +168,7 @@
         #recent-list { padding-left: 0; }
 
         .horizontal-list::-webkit-scrollbar { display: none; }
-
+        
         .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
 
         @media (max-width: 600px) {
@@ -195,7 +195,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s, background 0.2s;
         }
         .dir-card:active { transform: scale(0.96); background-color: #25252b; }
-
+        
         .dir-icon {
             width: 28px; height: 28px; margin-bottom: 8px;
             fill: var(--accent);
@@ -210,7 +210,7 @@
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
         .full-list-grid {
             padding: 80px 15px 20px;
-            display: grid; grid-template-columns: 1fr 1fr;
+            display: grid; grid-template-columns: 1fr 1fr; 
             gap: 15px;
         }
         .poster-wrapper { cursor: pointer; }
@@ -225,21 +225,21 @@
         .hero-container {
             position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
         }
-        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; }
-
+        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
+        
         .video-player {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: black; border: none; z-index: 20; display: block;
         }
 
         .content-body { padding: 20px; position: relative; z-index: 10; }
-
-        .show-title {
-            font-size: 18px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 8px;
-            cursor: pointer;
+        
+        .show-title { 
+            font-size: 18px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 8px; 
+            cursor: pointer; 
             color: #eee; letter-spacing: 0.5px;
             width: fit-content;
         }
@@ -262,12 +262,12 @@
 
         .ep-selector-row {
             display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;
-            scrollbar-width: none;
+            scrollbar-width: none; 
         }
         .ep-selector-row::-webkit-scrollbar { display: none; }
 
         .ep-box {
-            width: 50px; height: 50px;
+            width: 50px; height: 50px; 
             background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(12px);
             border-radius: 8px; border: none;
             display: flex; align-items: center; justify-content: center;
@@ -276,7 +276,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .ep-box.active {
-            background: rgba(255, 255, 255, 0.15); color: white;
+            background: rgba(255, 255, 255, 0.15); color: white; 
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
@@ -296,10 +296,10 @@
 
         /* Ajuste para que el contenido no quede tapado por el nav */
         .view { padding-bottom: 20px; }
-
+        
         /* AJUSTES */
         .settings-content { padding: 40px 20px; text-align: center; color: #777; }
-
+        
         /* --- SWITCH TOGGLE (Ajustes) --- */
         .switch-container {
             display: flex; align-items: center; justify-content: space-between;
@@ -355,10 +355,10 @@
             filter: drop-shadow(0 2px 3px rgba(0,0,0,0.9));
         }
         .visibility-toggle-btn:hover svg { stroke: white; }
-
+        
         #eye-open-path, #pupil { transition: opacity 0.25s ease-in-out; opacity: 0; }
         #eye-closed-path { transition: opacity 0.25s ease-in-out; opacity: 1; }
-
+        
         /* Estado Abierto (Manga Mode) */
         .visibility-toggle-btn.is-visible #eye-open-path,
         .visibility-toggle-btn.is-visible #pupil { opacity: 1; }
@@ -412,15 +412,15 @@
         }
         .bottom-sheet {
             position: fixed; bottom: 80px; /* Se eleva para salir desde el dock */
-            left: 0; width: 100%;
-            background: transparent;
+            left: 0; width: 100%; 
+            background: transparent; 
             padding: 0 10px; box-sizing: border-box;
-            display: flex; flex-direction: column; justify-content: flex-end;
+            display: flex; flex-direction: column; justify-content: flex-end; 
             max-height: 65vh;
-            pointer-events: none;
+            pointer-events: none; 
         }
         .sheet-handle {
-            display: none;
+            display: none; 
         }
         .grid-container {
             display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
@@ -430,11 +430,11 @@
             margin-bottom: 0;
         }
         .grid-btn {
-            aspect-ratio: 1;
+            aspect-ratio: 1; 
             background: rgba(15, 15, 15, 0.75); /* Estilo humo denso */
             backdrop-filter: blur(12px);
             border: none;
-            border-radius: 8px;
+            border-radius: 8px; 
             color: #ccc; font-size: 1rem; font-weight: 600;
             display: flex; align-items: center; justify-content: center; cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
@@ -442,19 +442,19 @@
             animation: smokeRise 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
         }
         .grid-btn:active { transform: scale(0.95); }
-        .grid-btn.active {
-            background: rgba(255, 255, 255, 0.15); color: white;
+        .grid-btn.active { 
+            background: rgba(255, 255, 255, 0.15); color: white; 
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
-
+        
         @keyframes smokeRise { from { opacity: 0; transform: translateY(30px) scale(0.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
+        
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
         /* Ajuste para que el botón del ojo no tape el contenido del manga */
         #manga-view { padding-bottom: 80px; }
-
+        
         /* Ocultar botón de ojo en otras vistas por defecto */
         .visibility-toggle-btn { display: none; }
         /* Mostrar solo cuando se active via JS */
@@ -484,10 +484,10 @@
         .cover-img { width: 50%; aspect-ratio: 2/3; object-fit: cover; border-radius: 0; cursor: pointer; }
         .description { font-size: 14px; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
         .chapter-box { border: 1px solid #333; margin-bottom: 40px; border-radius: 0; overflow: hidden; }
-        .chapter-item {
+        .chapter-item { 
             display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 15px; border-bottom: 1px solid #333;
-            color: #eee; text-decoration: none; font-size: 14px;
+            padding: 12px 15px; border-bottom: 1px solid #333; 
+            color: #eee; text-decoration: none; font-size: 14px; 
             background: #1e1e24; transition: background 0.2s; cursor: pointer;
         }
         .chapter-item:last-child { border-bottom: none; }
@@ -538,399 +538,399 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
-<div id="splash-screen">
-    <div class="splash-content">
-        <div class="loading-spinner" id="splash-spinner"></div>
-        <div id="splash-status">Iniciando...</div>
-        <button id="retry-btn" onclick="location.reload()">Reintentar</button>
-    </div>
-</div>
-
-<!-- HEADER GLOBAL (Movido fuera de home-view) -->
-<header id="main-header">
-    <div class="header-content">
-        <div class="code-input-container">
-            <input type="tel" id="code-input" class="code-input" placeholder="Clave" pattern="[0-9]*" inputmode="numeric">
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="loading-spinner" id="splash-spinner"></div>
+            <div id="splash-status">Iniciando...</div>
+            <button id="retry-btn" onclick="location.reload()">Reintentar</button>
         </div>
+    </div>
 
-        <div class="header-search-container">
+    <!-- HEADER GLOBAL (Movido fuera de home-view) -->
+    <header id="main-header">
+        <div class="header-content">
+            <div class="code-input-container">
+                <input type="tel" id="code-input" class="code-input" placeholder="Clave" pattern="[0-9]*" inputmode="numeric">
+            </div>
+            
+            <div class="header-search-container">
+                <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
+            </div>
+
+            <div class="header-right">
+                <div class="nav-btn" id="search-action-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <div class="nav-btn" onclick="toggleAppMode()">
+                    <svg viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-.11 0-.21-.04-.3-.12-.21-.2-.21-.53 0-.74 1.22-1.22 1.88-2.53 1.88-3.71 0-.28.22-.5.5s.5.22.5.5c0 1.53-.86 3.16-2.28 4.57-.08.08-.19.12-.3.12zM12.5 22c-1.31 0-2.42-.56-3.25-1.55-.18-.21-.15-.52.06-.7.21-.18.52-.15.7.06.61.73 1.45 1.13 2.49 1.13.28 0 .5.22.5.5s-.22.56-.5.56z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="header-search-active-view">
+            <div class="nav-btn" id="search-back-btn">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </div>
             <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
         </div>
-
-        <div class="header-right">
-            <div class="nav-btn" id="search-action-btn">
-                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </div>
-            <div class="nav-btn" onclick="toggleAppMode()">
-                <svg viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-.11 0-.21-.04-.3-.12-.21-.2-.21-.53 0-.74 1.22-1.22 1.88-2.53 1.88-3.71 0-.28.22-.5.5s.5.22.5.5c0 1.53-.86 3.16-2.28 4.57-.08.08-.19.12-.3.12zM12.5 22c-1.31 0-2.42-.56-3.25-1.55-.18-.21-.15-.52.06-.7.21-.18.52-.15.7.06.61.73 1.45 1.13 2.49 1.13.28 0 .5.22.5.5s-.22.56-.5.56z"/></svg>
-            </div>
-        </div>
-    </div>
-    <div class="header-search-active-view">
-        <div class="nav-btn" id="search-back-btn">
-            <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-        </div>
-        <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
-    </div>
-</header>
-
-<!-- RESULTADOS DE BÚSQUEDA GLOBAL (TEXTO) -->
-<div id="global-search-results"></div>
-
-<!-- HOME -->
-<div id="home-view" class="view active">
-    <div class="home-content">
-        <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
-        <div class="section-title">Recientes</div>
-        <div class="horizontal-list" id="recent-list"></div>
-
-        <!-- MÁS POPULARES (HORIZONTAL) -->
-        <div class="section-title">Más populares</div>
-        <div class="horizontal-list" id="popular-list"></div>
-
-        <!-- ANIME LATINO (HORIZONTAL) -->
-        <div class="section-title">Anime Latino</div>
-        <div class="horizontal-list" id="latino-list"></div>
-    </div>
-</div>
-
-<!-- AJUSTES -->
-<div id="settings-view" class="view">
-    <div class="settings-content">
-    </div>
-</div>
-
-<!-- VISTA LISTA COMPLETA -->
-<div id="full-list-view" class="view">
-    <header>
-        <div class="header-content">
-            <button class="back-btn" onclick="closeFullList()">
-                <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                Lista completa
-            </button>
-        </div>
     </header>
-    <div class="full-list-grid" id="full-grid"></div>
-</div>
 
-<!-- DETALLE -->
-<div id="detail-view" class="view">
-    <div class="hero-container" id="hero-area">
-        <img id="hero-img" class="hero-bg" src="" alt="">
-        <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
-    </div>
+    <!-- RESULTADOS DE BÚSQUEDA GLOBAL (TEXTO) -->
+    <div id="global-search-results"></div>
 
-    <div class="content-body">
-        <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
-        <div id="detail-subtitle" class="show-subtitle"></div>
+    <!-- HOME -->
+    <div id="home-view" class="view active">
+        <div class="home-content">
+            <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
+            <div class="section-title">Recientes</div>
+            <div class="horizontal-list" id="recent-list"></div>
 
-        <!-- Fila de botones cuadrados -->
-        <div class="ep-selector-row" id="ep-selector"></div>
+            <!-- MÁS POPULARES (HORIZONTAL) -->
+            <div class="section-title">Más populares</div>
+            <div class="horizontal-list" id="popular-list"></div>
 
-        <!-- Contador de capítulos (Movido abajo) -->
-        <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
-
-        <!-- SINOPSIS -->
-        <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
-        <p id="detail-synopsis" class="synopsis"></p>
-
-        <div class="meta-row" style="margin-top: 20px;">
-            <span id="detail-rating" class="badge"></span>
-            <span id="detail-season"></span>
-            <span id="detail-year"></span>
-            <span id="detail-quality"></span>
-            <span id="detail-seasons-toggle" class="badge" style="display:none; cursor:pointer; margin-left:10px;">Ocultar</span>
-        </div>
-
-        <!-- SECCIÓN TEMPORADAS (Solo Overlord) -->
-        <div id="detail-seasons-view" style="display: none; margin-top: 30px;">
-            <div class="horizontal-list" id="detail-seasons-list" style="margin-left: -20px; width: calc(100% + 40px); padding-left: 5px;"></div>
-        </div>
-    </div>
-</div>
-
-<!-- MANGA VIEW -->
-<div id="manga-view" class="view">
-    <main class="visor" id="contenedor-imagenes" onclick="toggleCinemaMode()">
-        <div id="loading-manga" style="text-align:center; padding:50px; color:#555;">Cargando manga...</div>
-    </main>
-
-    <!-- UI FLOTANTE MANGA -->
-    <div class="dynamic-dock-container" id="dock-container">
-        <div class="dynamic-island" onclick="event.stopPropagation(); abrirSheet()">
-            <div class="island-progress" id="dock-progress"></div>
-            <div class="island-content"><span id="page-display">1</span></div>
+            <!-- ANIME LATINO (HORIZONTAL) -->
+            <div class="section-title">Anime Latino</div>
+            <div class="horizontal-list" id="latino-list"></div>
         </div>
     </div>
 
-    <!-- MENÚ MANGA -->
-    <div class="bottom-sheet-overlay" id="sheet-overlay" onclick="cerrarSheet(event)">
-        <div class="bottom-sheet">
-            <div class="sheet-handle"></div>
-            <div class="grid-container" id="grid-container"></div>
+    <!-- AJUSTES -->
+    <div id="settings-view" class="view">
+        <div class="settings-content">
         </div>
     </div>
-</div>
 
-<!-- BOTÓN FLOTANTE OJO (Toggle) -->
-<div class="visibility-toggle-btn" id="manga-toggle-btn" onclick="toggleMangaMode()">
-    <svg viewBox="0 0 24 24">
-        <path id="eye-open-path" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-        <circle id="pupil" cx="12" cy="12" r="3"></circle>
-        <path id="eye-closed-path" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07l-4.24-4.24M1 1l22 22"></path>
-    </svg>
-</div>
+    <!-- VISTA LISTA COMPLETA -->
+    <div id="full-list-view" class="view">
+        <header>
+            <div class="header-content">
+                <button class="back-btn" onclick="closeFullList()">
+                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Lista completa
+                </button>
+            </div>
+        </header>
+        <div class="full-list-grid" id="full-grid"></div>
+    </div>
+
+    <!-- DETALLE -->
+    <div id="detail-view" class="view">
+        <div class="hero-container" id="hero-area">
+            <img id="hero-img" class="hero-bg" src="" alt="">
+            <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
+        </div>
+
+        <div class="content-body">
+            <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
+            <div id="detail-subtitle" class="show-subtitle"></div>
+            
+            <!-- Fila de botones cuadrados -->
+            <div class="ep-selector-row" id="ep-selector"></div>
+            
+            <!-- Contador de capítulos (Movido abajo) -->
+            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
+            
+            <!-- SINOPSIS -->
+            <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
+            <p id="detail-synopsis" class="synopsis"></p>
+
+            <div class="meta-row" style="margin-top: 20px;">
+                <span id="detail-rating" class="badge"></span>
+                <span id="detail-season"></span>
+                <span id="detail-year"></span>
+                <span id="detail-quality"></span>
+                <span id="detail-seasons-toggle" class="badge" style="display:none; cursor:pointer; margin-left:10px;">Ocultar</span>
+            </div>
+
+            <!-- SECCIÓN TEMPORADAS (Solo Overlord) -->
+            <div id="detail-seasons-view" style="display: none; margin-top: 30px;">
+                <div class="horizontal-list" id="detail-seasons-list" style="margin-left: -20px; width: calc(100% + 40px); padding-left: 5px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANGA VIEW -->
+    <div id="manga-view" class="view">
+        <main class="visor" id="contenedor-imagenes" onclick="toggleCinemaMode()">
+            <div id="loading-manga" style="text-align:center; padding:50px; color:#555;">Cargando manga...</div>
+        </main>
+        
+        <!-- UI FLOTANTE MANGA -->
+        <div class="dynamic-dock-container" id="dock-container">
+            <div class="dynamic-island" onclick="event.stopPropagation(); abrirSheet()">
+                <div class="island-progress" id="dock-progress"></div>
+                <div class="island-content"><span id="page-display">1</span></div>
+            </div>
+        </div>
+
+        <!-- MENÚ MANGA -->
+        <div class="bottom-sheet-overlay" id="sheet-overlay" onclick="cerrarSheet(event)">
+            <div class="bottom-sheet">
+                <div class="sheet-handle"></div>
+                <div class="grid-container" id="grid-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE OJO (Toggle) -->
+    <div class="visibility-toggle-btn" id="manga-toggle-btn" onclick="toggleMangaMode()">
+        <svg viewBox="0 0 24 24">
+            <path id="eye-open-path" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle id="pupil" cx="12" cy="12" r="3"></circle>
+            <path id="eye-closed-path" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07l-4.24-4.24M1 1l22 22"></path>
+        </svg>
+    </div>
 
 <script>
-    const publicLibrary = [
-        {
-            id: "Kaifuku",
-            titulo: "Kaifuku Jutsushi no Yarinaoshi",
-            titulo_jp: "回復術士のやり直し",
-            poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
-            banner: "",
-            rating: "16+",
-            temporada: "1 Temporada",
-            ano: "2024",
-            calidad: "HD",
-            sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
-                { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
-                { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
-            ]
-        },
-        {
-            id: "Yuusha",
-            titulo: "Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita",
-            titulo_jp: "",
-            poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/04.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "1 Temporada",
-            ano: "2026",
-            calidad: "HD",
-            sinopsis: "¡Youki murió en un accidente de tráfico y renació en un mundo fantástico! Sin embargo, en lugar de convertirse en el héroe de las leyendas, acabó reencarnándose en un demonio todopoderoso. Como no tenía ningún deseo de convertirse en el Señor de los Demonios, se quedó en el castillo del Señor de los Demonios como un guardián de bajo rango cualquiera. Un día, el grupo del héroe viene a atacar y, por capricho, él derrota a todo el grupo. Después de curar al grupo del héroe y prepararse para enviarlos de vuelta a la ciudad, se fija en la sacerdotisa y se enamora a primera vista.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/171?hash=25a504" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/170?hash=8de539" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4?cnt=0", subtitulo: "https://raw.githubusercontent.com/Dimagemfondo/visor-imgen/main/001/subtitulos/Seihou%20Shouka%20Saint%20Lime%20-%201.eng.ass" }
-            ]
-        },
-        {
-            id: "Rick",
-            titulo: "Rick and Morty",
-            titulo_jp: "",
-            poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/03.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "Temporada 1",
-            ano: "2013",
-            calidad: "HD",
-            sinopsis: "Después de haber estado desaparecido durante casi 20 años, Rick Sánchez llega de imprevisto a la puerta de la casa de su hija Beth y se va a vivir con ella y su familia utilizando el garaje como su laboratorio personal.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/173?hash=2adf2b" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/172?hash=779143" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/176?hash=cedf9c" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/174?hash=53fe6b" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/175?hash=dc8bda" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/179?hash=004280" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/181?hash=a53cde" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/178?hash=6ed9b8" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/180?hash=cc174e" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/182?hash=4cc8b5" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/177?hash=6cf23a" }
-            ]
-        },
-        {
-            id: "Osananajimi",
-            titulo: "Osananajimi to wa Love Comedy ni Naranai",
-            titulo_jp: "幼馴染とはラブコメにならない",
-            poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/06.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "1 Temporada",
-            ano: "2026",
-            calidad: "HD",
-            sinopsis: "El estudiante de secundaria Eiyuu tiene un dilema: ¡sus dos amigas de la infancia, Shio y Akari, se han convertido en dos chicas casi demasiado guapas! Aunque ellas no parecen darle mucha importancia, él no puede evitar verlas con otros ojos. Si alguna vez se dieran cuenta de cómo han cambiado sus sentimientos, ¡la vergüenza sería insoportable! Sin embargo, lo que Eiyuu no sabe es que Shio y Akari podrían sentir lo mismo por él. Un triángulo amoroso que se desarrolla lentamente, en el que todas las heroínas son amigas de la infancia, ¡tan frustrante como irresistible!",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/162?hash=230825" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/163?hash=5f3ee8" }
-            ]
-        },
-        {
-            id: "Dokyuu",
-            titulo: "Dokyuu Hentai HxEros",
-            titulo_jp: "ド級編隊エグゼロス",
-            poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
-            banner: "",
-            rating: "TV-MA",
-            temporada: "1 Temporada",
-            ano: "2020",
-            calidad: "HD",
-            sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/zsuo32y9c1ogth8fthpkq/Dokyuu-Hentai-HxEros-11_burn-in_1920x1080_x264.mp4?rlkey=fk5skpsgd7n85mg7wcmnoc4fp&raw=1" },
-                { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/r231e7kuu01g299f838vu/Dokyuu-Hentai-HxEros-12_burn-in_1920x1080_x264.mp4?rlkey=0yys298yqh7jodubn33yy6629&raw=1" },
-                { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/v5oo6hxbfjufox1de74r9/Dokyuu-Hentai-HxEros-13_burn-in_1920x1080_x264.mp4?rlkey=51yewk18u54wugbv41nbb5mz8&raw=1" },
-                { num: 14, nombre: "Episodio 14", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/wl85jyrgv08xqzoiz9m50/Dokyuu-Hentai-HxEros-14_burn-in_1920x1080_x264.mp4?rlkey=s5tn7jdul4906g3kxejql7bwn&raw=1" }
-            ]
-        },
-        {
-            id: "Gushing",
-            titulo: "Gushing over Magical Girls",
-            titulo_jp: "魔法少女にあこがれて",
-            poster: "https://cdn.myanimelist.net/images/anime/1525/139345.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "1 Temporada",
-            ano: "2020",
-            calidad: "HD",
-            sinopsis: "Desde su niñez, Utena Hiiragi siempre ha sido una ferviente admiradora de las chicas mágicas e incluso sueña con ser una de ellas. Un día, se encuentra con una mascota parlante que le ofrece el poder de hacer realidad su mayor deseo. Sin dudarlo, acepta y es envuelta por una misteriosa magia. Sin embargo, al completar su transformación, ¡se da cuenta de que ahora forma parte de una terrible organización malvada! Así comienza la historia de una chica dulce y tímida, amante de las chicas mágicas, que se ve arrastrada hacia el mal por error, convirtiéndose en una sádica villana. ¿Podrán las Tres Magias soportar su intenso juego de sadomasoquismo entre el bien y el mal?",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/144?hash=9cd8c8" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/143?hash=a21135" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/145?hash=c90c4a" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/142?hash=bbfa4b" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/146?hash=32175c" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/147?hash=92a153" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/148?hash=8b15b0" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/150?hash=5fb899" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/149?hash=7947f6" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/151?hash=b5b5e5" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/153?hash=ee4ba7" },
-                { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/152?hash=27fb3b" },
-                { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/154?hash=56fbee" }
-            ]
-        },
-        {
-            id: "Overlord",
-            titulo: "Overlord",
-            titulo_jp: "オーバーロード",
-            poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/01.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "1 Temporada",
-            ano: "2015",
-            calidad: "HD",
-            sinopsis: "Yggdrasil es un popular juego en línea que cierra sus servidores. Sin embargo, Momonga, un poderoso mago, decide no salir del juego. Como resultado, se transforma en un esqueleto y se convierte en el mago más poderoso del mundo. Ahora, sin padres, amigos o lugar en la sociedad, este joven ordinario se esfuerza por dominar el nuevo mundo en el que se ha convertido el juego.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/202?hash=f4a481" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/200?hash=dd80d0" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/209?hash=cccdf9" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/208?hash=6e3264" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/206?hash=67122d" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/212?hash=f2af93" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/210?hash=6621db" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/213?hash=5b67cc" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/215?hash=dfa6e1" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/221?hash=711c59" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/219?hash=cfeb64" },
-                { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/222?hash=0ccccd" }
-            ]
-        },
-        {
-            id: "Overlord II",
-            titulo: "Overlord II",
-            titulo_jp: "ーバーロード II",
-            poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/05.jpg",
-            banner: "",
-            rating: "16+",
-            temporada: "Temporada 2",
-            ano: "2018",
-            calidad: "HD",
-            sinopsis: "Lord Ainz Ooal Gown da el primer paso en su plan para expandir su fama por todo el nuevo mundo. En compañía de la pléyade Narberal y bajo la falsa identidad del guerrero Momon, se instalará en la ciudad de E-Rantel y se registrará en el gremio de aventureros.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/224?hash=5b85bb" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/223?hash=31377c" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/225?hash=5c7532" },
-                { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/231?hash=194f30" },
-                { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/230?hash=2ed76a" },
-                { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/233?hash=c83b40" },
-                { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/235?hash=7e8429" },
-                { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/234?hash=dd47f0" },
-                { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/238?hash=74cbbe" },
-                { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/242?hash=166063" },
-                { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/240?hash=ecec8c" },
-                { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/243?hash=b96cf3" }
-            ]
-        }
+const publicLibrary = [
+    {
+        id: "Kaifuku",
+        titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        titulo_jp: "回復術士のやり直し",
+        poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Yuusha",
+        titulo: "Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita",
+        titulo_jp: "",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/04.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "¡Youki murió en un accidente de tráfico y renació en un mundo fantástico! Sin embargo, en lugar de convertirse en el héroe de las leyendas, acabó reencarnándose en un demonio todopoderoso. Como no tenía ningún deseo de convertirse en el Señor de los Demonios, se quedó en el castillo del Señor de los Demonios como un guardián de bajo rango cualquiera. Un día, el grupo del héroe viene a atacar y, por capricho, él derrota a todo el grupo. Después de curar al grupo del héroe y prepararse para enviarlos de vuelta a la ciudad, se fija en la sacerdotisa y se enamora a primera vista.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/171?hash=25a504" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/170?hash=8de539" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4?cnt=0", subtitulo: "https://raw.githubusercontent.com/Dimagemfondo/visor-imgen/main/001/subtitulos/Seihou%20Shouka%20Saint%20Lime%20-%201.eng.ass" }
+        ]
+    },
+    {
+        id: "Rick",
+        titulo: "Rick and Morty",
+        titulo_jp: "",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/03.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 1",
+        ano: "2013",
+        calidad: "HD",
+        sinopsis: "Después de haber estado desaparecido durante casi 20 años, Rick Sánchez llega de imprevisto a la puerta de la casa de su hija Beth y se va a vivir con ella y su familia utilizando el garaje como su laboratorio personal.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/173?hash=2adf2b" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/172?hash=779143" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/176?hash=cedf9c" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/174?hash=53fe6b" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/175?hash=dc8bda" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/179?hash=004280" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/181?hash=a53cde" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/178?hash=6ed9b8" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/180?hash=cc174e" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/182?hash=4cc8b5" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/177?hash=6cf23a" }
+        ]
+    },
+    {
+        id: "Osananajimi",
+        titulo: "Osananajimi to wa Love Comedy ni Naranai",
+        titulo_jp: "幼馴染とはラブコメにならない",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/06.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "El estudiante de secundaria Eiyuu tiene un dilema: ¡sus dos amigas de la infancia, Shio y Akari, se han convertido en dos chicas casi demasiado guapas! Aunque ellas no parecen darle mucha importancia, él no puede evitar verlas con otros ojos. Si alguna vez se dieran cuenta de cómo han cambiado sus sentimientos, ¡la vergüenza sería insoportable! Sin embargo, lo que Eiyuu no sabe es que Shio y Akari podrían sentir lo mismo por él. Un triángulo amoroso que se desarrolla lentamente, en el que todas las heroínas son amigas de la infancia, ¡tan frustrante como irresistible!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/162?hash=230825" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/163?hash=5f3ee8" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "Dokyuu Hentai HxEros",
+        titulo_jp: "ド級編隊エグゼロス",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/zsuo32y9c1ogth8fthpkq/Dokyuu-Hentai-HxEros-11_burn-in_1920x1080_x264.mp4?rlkey=fk5skpsgd7n85mg7wcmnoc4fp&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/r231e7kuu01g299f838vu/Dokyuu-Hentai-HxEros-12_burn-in_1920x1080_x264.mp4?rlkey=0yys298yqh7jodubn33yy6629&raw=1" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/v5oo6hxbfjufox1de74r9/Dokyuu-Hentai-HxEros-13_burn-in_1920x1080_x264.mp4?rlkey=51yewk18u54wugbv41nbb5mz8&raw=1" },
+            { num: 14, nombre: "Episodio 14", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/wl85jyrgv08xqzoiz9m50/Dokyuu-Hentai-HxEros-14_burn-in_1920x1080_x264.mp4?rlkey=s5tn7jdul4906g3kxejql7bwn&raw=1" }
+        ]
+    },
+    {
+        id: "Gushing",
+        titulo: "Gushing over Magical Girls",
+        titulo_jp: "魔法少女にあこがれて",
+        poster: "https://cdn.myanimelist.net/images/anime/1525/139345.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Desde su niñez, Utena Hiiragi siempre ha sido una ferviente admiradora de las chicas mágicas e incluso sueña con ser una de ellas. Un día, se encuentra con una mascota parlante que le ofrece el poder de hacer realidad su mayor deseo. Sin dudarlo, acepta y es envuelta por una misteriosa magia. Sin embargo, al completar su transformación, ¡se da cuenta de que ahora forma parte de una terrible organización malvada! Así comienza la historia de una chica dulce y tímida, amante de las chicas mágicas, que se ve arrastrada hacia el mal por error, convirtiéndose en una sádica villana. ¿Podrán las Tres Magias soportar su intenso juego de sadomasoquismo entre el bien y el mal?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/144?hash=9cd8c8" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/143?hash=a21135" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/145?hash=c90c4a" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/142?hash=bbfa4b" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/146?hash=32175c" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/147?hash=92a153" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/148?hash=8b15b0" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/150?hash=5fb899" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/149?hash=7947f6" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/151?hash=b5b5e5" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/153?hash=ee4ba7" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/152?hash=27fb3b" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/154?hash=56fbee" }
+        ]
+    },
+    {
+        id: "Overlord",
+        titulo: "Overlord",
+        titulo_jp: "オーバーロード",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/01.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Yggdrasil es un popular juego en línea que cierra sus servidores. Sin embargo, Momonga, un poderoso mago, decide no salir del juego. Como resultado, se transforma en un esqueleto y se convierte en el mago más poderoso del mundo. Ahora, sin padres, amigos o lugar en la sociedad, este joven ordinario se esfuerza por dominar el nuevo mundo en el que se ha convertido el juego.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/202?hash=f4a481" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/200?hash=dd80d0" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/209?hash=cccdf9" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/208?hash=6e3264" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/206?hash=67122d" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/212?hash=f2af93" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/210?hash=6621db" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/213?hash=5b67cc" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/215?hash=dfa6e1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/221?hash=711c59" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/219?hash=cfeb64" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/222?hash=0ccccd" }
+        ]
+    },
+    {
+        id: "Overlord II",
+        titulo: "Overlord II",
+        titulo_jp: "ーバーロード II",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/05.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 2",
+        ano: "2018",
+        calidad: "HD",
+        sinopsis: "Lord Ainz Ooal Gown da el primer paso en su plan para expandir su fama por todo el nuevo mundo. En compañía de la pléyade Narberal y bajo la falsa identidad del guerrero Momon, se instalará en la ciudad de E-Rantel y se registrará en el gremio de aventureros.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/224?hash=5b85bb" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/223?hash=31377c" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/225?hash=5c7532" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/231?hash=194f30" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/230?hash=2ed76a" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/233?hash=c83b40" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/235?hash=7e8429" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/234?hash=dd47f0" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/238?hash=74cbbe" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/242?hash=166063" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/240?hash=ecec8c" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/243?hash=b96cf3" }
+        ]
+    }
+    
+];
 
-    ];
+const privateLibrary = [
+    {
+        id: "Sukebe",
+        titulo: "Sukebe Elf Tanbouki",
+        titulo_jp: "スケベエルフ探訪記",
+        poster: "https://veohentai.com/wp-content/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg",
+        banner: "",
+        rating: "+18",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Sukebe Elf Tanbouki, que retrata la vida sexual de una elfa tetona y lasciva, ignorante e ingenua en el ámbito sexual, ¡ha sido adaptada al anime! ―Los elfos Sukebe son una raza legendaria que viste trajes folclóricos obscenos sobre sus cuerpos regordetes y lascivos. -Kazu, una bióloga que continúa investigando a la legendaria elfa lasciva, basándose en las palabras dejadas por su abuelo, finalmente conoció a Maana, una elfa tetona, pura e inocente, lasciva y con un disfraz obsceno, sin conocimientos sexuales. ¡Arrozal! Kazu, quien finalmente no puede soportar las muchas tentaciones inconscientes de la pura Maana, y una elfa Muchiskebe ignorante que se está volviendo lasciva en un abrir y cerrar de ojos.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/155?hash=fafaaa" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/156?hash=6162e0" }
+        ]
+    },
+    {
+        id: "Gaki",
+        titulo: "Gaki ni Modotte Yarinaoshi!!!",
+        titulo_jp: "スケベエルフ探訪記",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/gaki-ni-modotte-yarinaoshi-1-cv3.png",
+        banner: "",
+        rating: "+18",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Desde niño, las mujeres han acosado a Boku, lo que lo marca, anclado en el pasado e incapaz de seguir adelante con su vida. Un día, Kasumi, su amor de la infancia, lo invita a su boda. Mientras observa a todos a su alrededor llevar una vida adulta feliz, Boku se da cuenta de que lo han dejado atrás, lo que le hace desear poder empezar de cero. De alguna manera, este deseo se hace realidad y termina viajando en el tiempo a su preadolescencia. Pronto conoce a Sera Narumiya, su antigua vecina, quien lo acosó con frecuencia durante sus años escolares. Ante la oportunidad de rehacer su vida, Boku decide afrontar sus problemas del pasado, pero ahora con la mentalidad de un adulto; esto incluye, por supuesto, un enfoque más sexual al tratar con mujeres problemáticas.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/157?hash=cccf05" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/158?hash=2b6743" }
+        ]
+    },
+    {
+        id: "Hachishaku",
+        titulo: "Hachishaku Hachiwa Keraku Meguri: Igyou Kaikitan The Animation",
+        titulo_jp: "",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/hachishaku-hachiwa-keraku-meguri-igyou-kaikitan-GAPGn.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Basado en el manga erótico de Jyoka.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/160?hash=86ff4a" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/159?hash=a3b142" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/161?hash=21990b" }
+        ]
+    }
+];
 
-    const privateLibrary = [
-        {
-            id: "Sukebe",
-            titulo: "Sukebe Elf Tanbouki",
-            titulo_jp: "スケベエルフ探訪記",
-            poster: "https://veohentai.com/wp-content/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg",
-            banner: "",
-            rating: "+18",
-            temporada: "1 Temporada",
-            ano: "2020",
-            calidad: "HD",
-            sinopsis: "Sukebe Elf Tanbouki, que retrata la vida sexual de una elfa tetona y lasciva, ignorante e ingenua en el ámbito sexual, ¡ha sido adaptada al anime! ―Los elfos Sukebe son una raza legendaria que viste trajes folclóricos obscenos sobre sus cuerpos regordetes y lascivos. -Kazu, una bióloga que continúa investigando a la legendaria elfa lasciva, basándose en las palabras dejadas por su abuelo, finalmente conoció a Maana, una elfa tetona, pura e inocente, lasciva y con un disfraz obsceno, sin conocimientos sexuales. ¡Arrozal! Kazu, quien finalmente no puede soportar las muchas tentaciones inconscientes de la pura Maana, y una elfa Muchiskebe ignorante que se está volviendo lasciva en un abrir y cerrar de ojos.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/155?hash=fafaaa" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/156?hash=6162e0" }
-            ]
-        },
-        {
-            id: "Gaki",
-            titulo: "Gaki ni Modotte Yarinaoshi!!!",
-            titulo_jp: "スケベエルフ探訪記",
-            poster: "https://veohentai.com/wp-content/uploads/2022/08/gaki-ni-modotte-yarinaoshi-1-cv3.png",
-            banner: "",
-            rating: "+18",
-            temporada: "1 Temporada",
-            ano: "2020",
-            calidad: "HD",
-            sinopsis: "Desde niño, las mujeres han acosado a Boku, lo que lo marca, anclado en el pasado e incapaz de seguir adelante con su vida. Un día, Kasumi, su amor de la infancia, lo invita a su boda. Mientras observa a todos a su alrededor llevar una vida adulta feliz, Boku se da cuenta de que lo han dejado atrás, lo que le hace desear poder empezar de cero. De alguna manera, este deseo se hace realidad y termina viajando en el tiempo a su preadolescencia. Pronto conoce a Sera Narumiya, su antigua vecina, quien lo acosó con frecuencia durante sus años escolares. Ante la oportunidad de rehacer su vida, Boku decide afrontar sus problemas del pasado, pero ahora con la mentalidad de un adulto; esto incluye, por supuesto, un enfoque más sexual al tratar con mujeres problemáticas.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/157?hash=cccf05" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/158?hash=2b6743" }
-            ]
-        },
-        {
-            id: "Hachishaku",
-            titulo: "Hachishaku Hachiwa Keraku Meguri: Igyou Kaikitan The Animation",
-            titulo_jp: "",
-            poster: "https://veohentai.com/wp-content/uploads/2022/08/hachishaku-hachiwa-keraku-meguri-igyou-kaikitan-GAPGn.jpg",
-            banner: "",
-            rating: "18+",
-            temporada: "1 Temporada",
-            ano: "2020",
-            calidad: "HD",
-            sinopsis: "Basado en el manga erótico de Jyoka.",
-            episodios: [
-                { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/160?hash=86ff4a" },
-                { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/159?hash=a3b142" },
-                { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/161?hash=21990b" }
-            ]
-        }
-    ];
-
-    let library = publicLibrary;
+let library = publicLibrary;
 </script>
 
 <script>
@@ -954,7 +954,7 @@
     const mainVideo = document.getElementById('main-video');
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
-
+    
     const detailTitle = document.getElementById('detail-title');
     const detailSubtitle = document.getElementById('detail-subtitle');
     const epCountText = document.getElementById('ep-count-text');
@@ -971,7 +971,7 @@
     const headerSearchInput = document.getElementById('header-search-input');
     const globalSearchResults = document.getElementById('global-search-results');
     const codeInput = document.getElementById('code-input');
-
+    
     const mainHeader = document.getElementById('main-header');
     const searchActionBtn = document.getElementById('search-action-btn');
     const searchBackBtn = document.getElementById('search-back-btn');
@@ -982,7 +982,7 @@
     // --- INICIO ---
     function initApp() {
         if(!window.location.hash) window.location.hash = "home";
-
+        
         if (typeof library !== 'undefined') {
             renderHome();
         } else {
@@ -998,13 +998,13 @@
         } else {
             library = publicLibrary;
         }
-
+        
         const toggleBtn = document.getElementById('restriction-toggle');
         if(toggleBtn) toggleBtn.checked = isRestrictedMode;
 
         window.addEventListener('hashchange', handleRouting);
         handleRouting();
-
+        
         setupTouchControls();
 
         searchActionBtn.addEventListener('click', shakeSearch);
@@ -1054,7 +1054,7 @@
 
     function handleRouting() {
         const hash = window.location.hash;
-
+        
         // Reset nav active state
         // document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
@@ -1126,7 +1126,7 @@
     // --- RENDERIZADO ---
     function renderHome() {
         const homeContent = document.querySelector('.home-content');
-
+        
         if (isRestrictedMode) {
             // --- MODO PRIVADO (GRID PAGINADO) ---
             // "Donde está el icono de huella... videos de 2 hasta abajo... hasta 10 lineas"
@@ -1154,10 +1154,10 @@
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
             let recentItems = library.filter(a => a.id !== 'Dokyuu' && a.id !== 'Overlord' && a.id !== 'Overlord II' && a.id !== 'Rick').slice(-10).reverse();
-
+            
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
-                card.className = "horizontal-item";
+                card.className = "horizontal-item"; 
                 card.onclick = () => { openAnimeDetail(anime); };
                 card.innerHTML = `
                     <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1170,10 +1170,10 @@
             const popularContainer = document.getElementById('popular-list');
             let popularItems = library.filter(a => a.id === 'Dokyuu');
             if (popularItems.length === 0) popularItems = library.slice(0, 10);
-
+            
             popularItems.forEach(anime => {
                 const card = document.createElement('div');
-                card.className = "horizontal-item";
+                card.className = "horizontal-item"; 
                 card.onclick = () => { openAnimeDetail(anime); };
                 card.innerHTML = `
                     <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1186,10 +1186,10 @@
             const latinoContainer = document.getElementById('latino-list');
             let latinoItems = library.filter(a => a.id === 'Overlord');
             if (latinoItems.length === 0) latinoItems = library.slice(0, 10);
-
+            
             latinoItems.forEach(anime => {
                 const card = document.createElement('div');
-                card.className = "horizontal-item";
+                card.className = "horizontal-item"; 
                 card.onclick = () => { openAnimeDetail(anime); };
                 card.innerHTML = `
                     <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1201,10 +1201,10 @@
             // 4. Reciente en Series
             const seriesContainer = document.getElementById('series-list');
             let seriesItems = library.filter(a => a.id === 'Rick');
-
+            
             seriesItems.forEach(anime => {
                 const card = document.createElement('div');
-                card.className = "horizontal-item";
+                card.className = "horizontal-item"; 
                 card.onclick = () => { openAnimeDetail(anime); };
                 card.innerHTML = `
                     <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1228,7 +1228,7 @@
         grid.innerHTML = "";
         items.forEach(anime => {
             const card = document.createElement('div');
-            card.className = "poster-wrapper";
+            card.className = "poster-wrapper"; 
             card.onclick = () => { openAnimeDetail(anime); };
             card.innerHTML = `
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1240,7 +1240,7 @@
         // Renderizar controles de paginación (1, 2, 3...)
         pagination.innerHTML = "";
         const totalPages = Math.ceil(library.length / itemsPerPage);
-
+        
         if(totalPages > 1) {
             for(let i=1; i<=totalPages; i++) {
                 const btn = document.createElement('button');
@@ -1260,7 +1260,7 @@
         container.innerHTML = "";
         data.forEach(anime => {
             const card = document.createElement('div');
-            card.className = "poster-wrapper";
+            card.className = "poster-wrapper"; 
             card.onclick = () => { openAnimeDetail(anime); };
             card.innerHTML = `
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
@@ -1278,7 +1278,7 @@
         prepareDetailView(anime);
         window.location.hash = "detail";
     }
-
+    
     function prepareDetailView(anime) {
         detailTitle.innerText = anime.titulo;
         detailSubtitle.innerText = anime.titulo_jp || "";
@@ -1287,7 +1287,7 @@
         detailSeason.innerText = anime.temporada || "";
         detailYear.innerText = anime.ano || "";
         detailQuality.innerText = anime.calidad || "";
-
+        
         detailSynopsis.innerText = anime.sinopsis || "";
 
         epSelector.innerHTML = "";
@@ -1327,7 +1327,7 @@
                     `;
                     detailSeasonsList.appendChild(card);
                 });
-
+                
                 // Configurar botón de ocultar/mostrar
                 toggleBtn.style.display = 'inline-block';
                 toggleBtn.innerText = "Ocultar";
@@ -1360,7 +1360,7 @@
         if (typeof Android !== 'undefined' && Android.playVideo) {
             // --- LÓGICA PARA EL REPRODUCTOR NATIVO VLC ---
             // La interfaz existe, así que llamamos al código nativo de Java.
-
+            
             const videoLink = episode.link;
             const subtitleLink = episode.subtitulo || null; // Pasa el link del subtítulo o null si no existe.
 
@@ -1388,7 +1388,7 @@
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
         });
-
+        
         if(buttons[index]) {
             buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
@@ -1403,7 +1403,7 @@
     let startX = 0;
     let startVideoTime = 0;
     // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
-    const swipeSeekFactor = 2.5;
+    const swipeSeekFactor = 2.5; 
     let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
 
     function setupTouchControls() {
@@ -1411,7 +1411,7 @@
         heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
         heroArea.addEventListener('touchend', handleTouchEnd);
     }
-
+    
     function handleTouchStart(e) {
         if (mainVideo.paused || !mainVideo.duration) return;
         isDragging = true;
@@ -1422,21 +1422,21 @@
 
     function handleTouchMove(e) {
         if (!isDragging) return;
-        e.preventDefault();
+        e.preventDefault(); 
 
         // Evitar que se actualice demasiadas veces por segundo (evita el bug de congelamiento)
         const now = Date.now();
-        if (now - lastSeekTimestamp < 50) return;
+        if (now - lastSeekTimestamp < 50) return; 
         lastSeekTimestamp = now;
 
         const currentX = e.touches[0].clientX;
         const deltaX = currentX - startX;
-
+        
         const timeOffset = deltaX * swipeSeekFactor;
         let newTime = startVideoTime + timeOffset;
 
         newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
-
+        
         mainVideo.currentTime = newTime;
     }
 
@@ -1456,7 +1456,7 @@
     function showHomeView() {
         mainVideo.pause();
         mainVideo.src = "";
-        currentAnime = null;
+        currentAnime = null; 
         mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
         switchView(homeView);
         document.getElementById('main-header').style.transform = 'translateY(0)'; // Mostrar header
@@ -1490,7 +1490,7 @@
 
     function handleGlobalSearch() {
         const query = headerSearchInput.value.toLowerCase().trim();
-
+        
         if (!query) {
             globalSearchResults.style.display = 'none';
             return;
@@ -1544,7 +1544,7 @@
 
         // Asegurar que siempre inicie el scroll arriba (Imagen 1)
         mangaView.scrollTop = 0;
-
+        
         if (!mangaLoaded) {
             loadMangaImages();
             mangaLoaded = true;
@@ -1552,24 +1552,24 @@
     }
 
     // Variables Manga
-    const TOTAL_PAGINAS = 10;
-    let currentMangaFolder = 'dato1';
+    const TOTAL_PAGINAS = 10;      
+    let currentMangaFolder = 'dato1'; 
 
     function loadMangaImages(folderName = 'dato1') {
         currentMangaFolder = folderName;
         const contenedor = document.getElementById('contenedor-imagenes');
         const gridContainer = document.getElementById('grid-container');
-
+        
         // Limpiar contenedor
         contenedor.innerHTML = '';
         gridContainer.innerHTML = '';
-
+        
         // Crear indicador de carga
         const loading = document.createElement('div');
         loading.innerText = 'Cargando...';
         loading.style.cssText = 'text-align:center; padding:50px; color:#555;';
         contenedor.appendChild(loading);
-
+        
         // Lista de extensiones a probar (prioridad: webp -> jpg -> png)
         const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
 
@@ -1578,13 +1578,13 @@
             img.className = 'pag';
             img.id = `img-${i}`;
             if (i > 3) img.loading = "lazy";
-
+            
             // Generar todas las combinaciones posibles (1.jpg, 01.jpg, 001.jpg, etc.)
             const candidatos = [];
             const variantesNum = [String(i), String(i).padStart(2, '0'), String(i).padStart(3, '0')];
             // Eliminar duplicados (ej: "100" vs "100")
             const unicosNum = [...new Set(variantesNum)];
-
+            
             unicosNum.forEach(num => {
                 extensiones.forEach(ext => candidatos.push(`${currentMangaFolder}/${num}${ext}`));
             });
@@ -1599,13 +1599,13 @@
                     img.style.display = 'none'; // Fallaron todas
                 }
             };
-
+            
             img.onerror = cargarSiguiente;
             img.onload = () => img.classList.add('loaded');
-
+            
             // Iniciar carga
             cargarSiguiente();
-
+            
             contenedor.appendChild(img);
 
             // Botón menú
@@ -1616,7 +1616,7 @@
             btn.onclick = () => irAPagina(i);
             gridContainer.appendChild(btn);
         }
-
+        
         // Quitar loading
         setTimeout(() => loading.remove(), 500);
 
@@ -1652,8 +1652,8 @@
         return new Promise((resolve, reject) => {
             const folder = 'dato' + num;
             const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
-            const variantesNum = ['1', '01', '001'];
-
+            const variantesNum = ['1', '01', '001']; 
+            
             let candidatos = [];
             variantesNum.forEach(n => extensiones.forEach(ext => candidatos.push(`${folder}/${n}${ext}`)));
 
@@ -1687,7 +1687,7 @@
     function iniciarObserver() {
         const pageDisplay = document.getElementById('page-display');
         const dockProgress = document.getElementById('dock-progress');
-
+        
         const imagenes = document.querySelectorAll('.pag');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1696,7 +1696,7 @@
                     pageDisplay.innerText = num;
                     const porcentaje = (num / TOTAL_PAGINAS) * 100;
                     dockProgress.style.width = `${porcentaje}%`;
-
+                    
                     document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
                     const btn = document.getElementById(`btn-${num}`);
                     if(btn) btn.classList.add('active');
@@ -1728,7 +1728,7 @@
     });
 
     initApp();
-
+    
     // --- LOGICA DE INICIO (SPLASH SCREEN) ---
     async function launchApp() {
         const splash = document.getElementById('splash-screen');
@@ -1745,7 +1745,7 @@
         // 2. Precargar imágenes
         try {
             status.innerText = "Cargando contenido...";
-
+            
             // Recolectar imágenes
             const imagesToLoad = [];
             library.forEach(anime => {
