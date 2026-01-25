@@ -39,9 +39,9 @@
         <h1>MediaElement.js Player Test with Multi-track</h1>
         
         <video width="800" height="480" controls="controls" preload="none">
-            <source type="video/webm" src="https://animethemes.moe/video/ToaruKagakuNoRailgunS-OP1.webm" />
-            <track src="/JavascriptSubtitlesOctopus/subtitles/railgun_op.ass" srclang="en" label="English" kind="subtitles" type="application/x-ass">
-            <track src="/JavascriptSubtitlesOctopus/subtitles/test.ass" srclang="jp" label="Test Lang" kind="subtitles" type="application/x-ass">
+            <source type="video/mp4" src="https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4?cnt=0" />
+            <track src="/visor-imgen/subtitles/Seihou Shouka Saint Lime - 1.eng.ass" srclang="en" label="English" kind="subtitles" type="application/x-ass">
+            <track src="/visor-imgen/subtitles/test.ass" srclang="jp" label="Test Lang" kind="subtitles" type="application/x-ass">
         </video>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
@@ -60,10 +60,10 @@
                                 var options = {
                                     video: video,
                                     subUrl: e.detail.caption.src,
-                                    fonts: ['/JavascriptSubtitlesOctopus/fonts/CabinCondensed-Regular.ttf', '/JavascriptSubtitlesOctopus/fonts/SourceSansPro-SemiBold.ttf'],
+                                    fonts: ['/visor-imgen/fonts/CabinCondensed-Regular.ttf', '/visor-imgen/fonts/SourceSansPro-SemiBold.ttf', '/visor-imgen/fonts/Figtree-ExtraBold.ttf'],
                                     //onReady: onReadyFunction,
                                     debug: true,
-                                    workerUrl: '/JavascriptSubtitlesOctopus/assets/js/subtitles-octopus-worker.js'
+                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
                                 };
                                 window.octopusInstance = new SubtitlesOctopus(options);
                             }
@@ -83,97 +83,4 @@
       </div>
     </div>
   </body>
-</html>                    lazyFileLoading: true,
-                    lazyFontsLoading: true,
-                    debug: true
-                });
-
-                player.media.addEventListener('captionschange', function(e) {
-                    console.log('Cambio pista:', e.detail);
-                    if (e.detail.caption) {
-                        octopusInstance.freeTrack();
-                        octopusInstance.setTrackByUrl(e.detail.caption.src);
-                    } else {
-                        octopusInstance.freeTrack();
-                    }
-                });
-
-                // Activar default
-                setTimeout(() => {
-                    if (player.captionsButton) player.captionsButton.click();
-                }, 1000);  // Reduce delay
-            }
-        });
-    </script>
-</body>
-</html>    <div class="container mt-4">
-        <h1>Reproductor con Subtítulos ASS</h1>
-
-        <video id="player" width="800" height="480" controls preload="metadata" crossorigin="anonymous">
-            <source type="video/mp4" src="https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4?cnt=0" />
-            <track kind="subtitles" src="/visor-imgen/subtitles/Seihou Shouka Saint Lime - 1.eng.ass" srclang="en" label="English" default>
-            <track kind="subtitles" src="/visor-imgen/subtitles/test.ass" srclang="jp" label="Test Lang">
-        </video>
-    </div>
-
-    <script>
-        mejs.i18n.language('en');
-
-        let octopusInstance = null;
-
-        new MediaElement('player', {
-            success: function (media, node, player) {
-                const video = media;
-
-                // Pre-crear Octopus una sola vez al cargar la página
-                octopusInstance = new SubtitlesOctopus({
-                    video: video,
-                    subUrl: '/visor-imgen/subtitles/Seihou Shouka Saint Lime - 1.eng.ass', // pista por default (o pon null si no quieres subs al inicio)
-                    fonts: [
-                        '/visor-imgen/fonts/Figtree-ExtraBold.ttf',           // la principal de tu ASS
-                        '/visor-imgen/fonts/Arial.ttf',
-                        '/visor-imgen/fonts/CabinCondensed-Regular.ttf',
-                        '/visor-imgen/fonts/SourceSansPro-SemiBold.ttf'
-                    ],
-                    fallbackFont: '/visor-imgen/fonts/Arial.ttf',
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js', // tu local (o usa modern si lo tienes)
-                    // Alternativa CDN moderna más rápida:
-                    // workerUrl: 'https://cdn.jsdelivr.net/gh/libass/JavascriptSubtitlesOctopus@latest/dist/js/subtitles-octopus-worker-modern.js',
-                    lazyFileLoading: true,
-                    lazyFontsLoading: true,
-                    renderMode: 'wasm-blend',
-                    debug: true  // quítalo en producción
-                });
-
-                // Escuchar cambios de pista
-                player.media.addEventListener('captionschange', function(e) {
-                    console.log('Cambio de pista:', e.detail);
-
-                    if (e.detail.caption !== null) {
-                        const subUrl = e.detail.caption.src;
-                        if (octopusInstance) {
-                            octopusInstance.freeTrack();          // Limpia antes de cambiar
-                            octopusInstance.setTrackByUrl(subUrl); // Cambia rápido
-                        }
-                    } else {
-                        if (octopusInstance) {
-                            octopusInstance.freeTrack();  // Apaga subs
-                        }
-                    }
-                });
-
-                // Activar subtítulos por default automáticamente
-                if (player.captions && player.captions.length > 0) {
-                    player.captions[0].mode = 'showing';
-                }
-            }
-        });
-    </script>
-
-    <!-- Bootstrap JS (solo si usas navbar) -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-</body>
-</html>
+</html>                 
