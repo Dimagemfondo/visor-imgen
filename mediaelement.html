@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer" />
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>Seihou Shouka Saint Lime - Episodio 1 con SubtitlesOctopus</title>
+
+    <!-- Bootstrap (ya lo tenías) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- MediaElement.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css">
+
+    <!-- SubtitlesOctopus -->
+    <script src="./assets/js/subtitles-octopus.js"></script> <!-- Asegúrate que esta ruta exista o cámbiala por CDN si usas la versión oficial -->
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Seihou Shouka Saint Lime Player</a>
+</nav>
+
+<div id="content" style="padding: 25px;">
+    <div class="container">
+        <h1>Seihou Shouka Saint Lime - Episodio 1</h1>
+
+        <video id="player" width="854" height="480" controls preload="metadata">
+            <!-- Reemplaza esta URL con la que funcione -->
+            <source type="video/mp4" src="https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4" />
+            
+            <!-- Subtítulos en inglés (ASS) -->
+            <track kind="subtitles" src="https://raw.githubusercontent.com/Dimagemfondo/visor-imgen/main/001/subtitulos/Seihou%20Shouka%20Saint%20Lime%20-%201.eng.ass" 
+                   srclang="en" label="English (ASS - SubtitlesOctopus)" default>
+            
+            <!-- Puedes agregar más tracks ASS si tienes (por ejemplo japonés/original) -->
+            <!-- <track kind="subtitles" src="URL_OTRO_ASS.ass" srclang="ja" label="Japanese"> -->
+        </video>
+
+        <!-- MediaElement.js JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js"></script>
+
+        <script>
+            // Configuración de idioma (opcional)
+            mejs.i18n.language('en');
+
+            // Inicializar MediaElement con callback de éxito
+            new MediaElement('player', {
+                success: function (media, node, player) {
+                    var video = media; // el elemento <video> real
+
+                    // Escuchar cambio de pista de subtítulos
+                    player.media.addEventListener('captionschange', function(e) {
+                        console.log('Cambio de pista:', e.detail);
+
+                        if (e.detail.caption !== null) {
+                            // Hay subtítulo seleccionado → activar Octopus
+                            var subUrl = e.detail.caption.src;
+
+                            if (window.octopusInstance) {
+                                window.octopusInstance.setTrackByUrl(subUrl);
+                            } else {
+                                var options = {
+                                    video: video,
+                                    subUrl: subUrl,
+                                    fonts: [
+                                        // Agrega fuentes si las necesitas (opcional pero recomendado para ASS)
+                                        'https://cdn.jsdelivr.net/gh/libass/JavascriptSubtitlesOctopus/fonts/CabinCondensed-Regular.ttf',
+                                        'https://cdn.jsdelivr.net/gh/libass/JavascriptSubtitlesOctopus/fonts/SourceSansPro-SemiBold.ttf'
+                                    ],
+                                    workerUrl: 'https://cdn.jsdelivr.net/gh/libass/JavascriptSubtitlesOctopus@master/dist/js/subtitles-octopus-worker.js', // usa CDN oficial si no tienes local
+                                    debug: true
+                                };
+                                window.octopusInstance = new SubtitlesOctopus(options);
+                            }
+                        } else {
+                            // Desactivar subtítulos
+                            if (window.octopusInstance) {
+                                window.octopusInstance.freeTrack();
+                            }
+                        }
+                    });
+
+                    // Opcional: activar subtítulos por defecto al cargar
+                    setTimeout(function() {
+                        if (player.captionsButton) {
+                            player.captionsButton.click(); // simula click para activar la primera pista
+                        }
+                    }, 1500);
+                }
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>
