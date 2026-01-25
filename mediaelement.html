@@ -67,6 +67,39 @@
         });
     </script>
 </body>
+</html>                    video: video,
+                    subUrl: null,  // Empieza sin sub para no cargar innecesario
+                    fonts: [
+                        '/visor-imgen/fonts/Figtree-ExtraBold.ttf',
+                        '/visor-imgen/fonts/Arial.ttf',
+                        '/visor-imgen/fonts/CabinCondensed-Regular.ttf',
+                        '/visor-imgen/fonts/SourceSansPro-SemiBold.ttf'
+                    ],
+                    fallbackFont: '/visor-imgen/fonts/Arial.ttf',
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
+                    lazyFileLoading: true,
+                    lazyFontsLoading: true,
+                    debug: true
+                });
+
+                player.media.addEventListener('captionschange', function(e) {
+                    console.log('Cambio pista:', e.detail);
+                    if (e.detail.caption) {
+                        octopusInstance.freeTrack();
+                        octopusInstance.setTrackByUrl(e.detail.caption.src);
+                    } else {
+                        octopusInstance.freeTrack();
+                    }
+                });
+
+                // Activar default
+                setTimeout(() => {
+                    if (player.captionsButton) player.captionsButton.click();
+                }, 1000);  // Reduce delay
+            }
+        });
+    </script>
+</body>
 </html>    <div class="container mt-4">
         <h1>Reproductor con Subtítulos ASS</h1>
 
