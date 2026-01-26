@@ -3,80 +3,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor Optimizado Profesional</title>
-
-    <!-- =============================================================== -->
-    <!-- PASO 1: OPTIMIZACIÓN DE FUENTES                                 -->
-    <!-- Pre-cargamos las fuentes para que estén listas y no bloqueen.   -->
-    <!-- 'as="font"' y 'crossorigin' son importantes.                    -->
-    <!-- =============================================================== -->
-    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/visor-imgen/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/visor-imgen/fonts/BTTTRIAL.ttf" as="font" type="font/ttf" crossorigin>
-
-    <!-- MediaElement.js -->
+    <title>Reproductor de Video Fluido</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
-    
-    <!-- SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
 </head>
 <body>
-
     <video id="video" width="800" height="480" controls preload="none">
         <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
-        
-        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" 
-               srclang="es" 
-               label="Español" 
-               kind="subtitles" 
-               type="application/x-ass">
-        
-        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" 
-               srclang="eng" 
-               label="English" 
-               kind="subtitles" 
-               type="application/x-ass">
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" srclang="es" label="Español" kind="subtitles" type="application/x-ass">
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" srclang="eng" label="English" kind="subtitles" type="application/x-ass">
     </video>
-
     <script>
-        // Este código ya es correcto y no debe cambiarse.
-        // Usa setTimeout para darle al navegador la oportunidad de procesar la UI
-        // antes de iniciar la tarea pesada.
         new MediaElementPlayer('video', {
             success: function (player, node) {
-                var video = node;
-
                 player.addEventListener('captionschange', function(e) {
                     setTimeout(function() {
                         if (e.detail.caption !== null) {
                             if (!window.octopusInstance) {
-                                var options = {
-                                    video: video,
+                                window.octopusInstance = new SubtitlesOctopus({
+                                    video: node,
                                     subUrl: e.detail.caption.src,
                                     fonts: [
                                         '/visor-imgen/fonts/Lato-Italic.ttf',
                                         '/visor-imgen/fonts/Lato-Regular.ttf',
                                         '/visor-imgen/fonts/BTTTRIAL.ttf'
                                     ],
-                                    // PASO 2: ASEGÚRATE DE QUE ESTA RUTA SEA 100% CORRECTA
-                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
-                                    debug: false
-                                };
-                                window.octopusInstance = new SubtitlesOctopus(options);
+                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                                });
                             } else {
                                 window.octopusInstance.setTrackByUrl(e.detail.caption.src);
                             }
                         } else {
-                            if (window.octopusInstance) {
-                                window.octopusInstance.freeTrack();
-                            }
+                            if (window.octopusInstance) window.octopusInstance.freeTrack();
                         }
-                    }, 0); 
+                    }, 0);
                 });
             }
         });
     </script>
-
 </body>
 </html>
