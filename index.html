@@ -3,10 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Subtítulos ASS (Solución Ultra Fluida)</title>
+    <title>Reproductor Optimizado Profesional</title>
+
+    <!-- =============================================================== -->
+    <!-- PASO 1: OPTIMIZACIÓN DE FUENTES                                 -->
+    <!-- Pre-cargamos las fuentes para que estén listas y no bloqueen.   -->
+    <!-- 'as="font"' y 'crossorigin' son importantes.                    -->
+    <!-- =============================================================== -->
+    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/visor-imgen/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/visor-imgen/fonts/BTTTRIAL.ttf" as="font" type="font/ttf" crossorigin>
+
     <!-- MediaElement.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+    
     <!-- SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
 </head>
@@ -29,21 +40,17 @@
     </video>
 
     <script>
+        // Este código ya es correcto y no debe cambiarse.
+        // Usa setTimeout para darle al navegador la oportunidad de procesar la UI
+        // antes de iniciar la tarea pesada.
         new MediaElementPlayer('video', {
             success: function (player, node) {
                 var video = node;
 
-                function handleCaptionChange(e) {
-                    console.log('CLIC DETECTADO. La interfaz debe responder ahora.');
-                    
-                    // Separamos la lógica pesada en su propia función.
-                    function performHeavyLifting() {
-                        console.log('INICIANDO TAREA PESADA. La interfaz se puede congelar a partir de AHORA.');
-                        
+                player.addEventListener('captionschange', function(e) {
+                    setTimeout(function() {
                         if (e.detail.caption !== null) {
-                            if (window.octopusInstance) {
-                                window.octopusInstance.setTrackByUrl(e.detail.caption.src);
-                            } else {
+                            if (!window.octopusInstance) {
                                 var options = {
                                     video: video,
                                     subUrl: e.detail.caption.src,
@@ -52,26 +59,21 @@
                                         '/visor-imgen/fonts/Lato-Regular.ttf',
                                         '/visor-imgen/fonts/BTTTRIAL.ttf'
                                     ],
+                                    // PASO 2: ASEGÚRATE DE QUE ESTA RUTA SEA 100% CORRECTA
                                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
                                     debug: false
                                 };
                                 window.octopusInstance = new SubtitlesOctopus(options);
+                            } else {
+                                window.octopusInstance.setTrackByUrl(e.detail.caption.src);
                             }
                         } else {
                             if (window.octopusInstance) {
                                 window.octopusInstance.freeTrack();
                             }
                         }
-                        
-                        console.log('TAREA PESADA TERMINADA.');
-                    }
-
-                    // Le damos al navegador un respiro para que procese el clic en la UI
-                    // antes de ejecutar la función que congela la pantalla.
-                    setTimeout(performHeavyLifting, 0);
-                }
-
-                player.addEventListener('captionschange', handleCaptionChange);
+                    }, 0); 
+                });
             }
         });
     </script>
