@@ -3,27 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Botón CC Personalizado</title>
+    <title>Reproductor con Botón CC Personalizado (Corregido)</title>
     
-    <!-- Librerías que ya conocemos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
     <script src="./assets/js/subtitles-octopus.js"></script>
 
-    <!-- =============================================================== -->
-    <!-- PASO 3: ESTILOS PARA NUESTRO NUEVO BOTÓN Y MENÚ                 -->
-    <!-- =============================================================== -->
     <style>
-        /* Contenedor para que nuestro botón se alinee con los otros controles */
         .mejs-container {
             position: relative;
         }
-        /* Nuestro nuevo botón CC */
         #custom-cc-button {
             position: absolute;
-            right: 45px; /* Ajusta esto para que quede bien al lado del botón de volumen */
+            right: 45px; 
             bottom: 10px;
-            z-index: 1001; /* Encima de todo */
+            z-index: 1001; 
             width: 36px;
             height: 32px;
             background: transparent;
@@ -33,15 +27,14 @@
             font-weight: bold;
             cursor: pointer;
         }
-        /* Nuestro menú de subtítulos, oculto por defecto */
         #custom-captions-menu {
             position: absolute;
             right: 10px;
-            bottom: 45px; /* Justo encima de los controles */
+            bottom: 45px; 
             z-index: 1002;
             background-color: rgba(40, 40, 40, 0.9);
             border-radius: 4px;
-            display: none; /* Empieza oculto */
+            display: none; 
         }
         #custom-captions-menu ul {
             list-style: none;
@@ -67,67 +60,57 @@
         <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" srclang="eng" label="English" kind="subtitles" type="application/x-ass">
     </video>
 
-    <!-- =============================================================== -->
-    <!-- PASO 2: HTML PARA NUESTRO NUEVO BOTÓN Y MENÚ                    -->
-    <!-- =============================================================== -->
     <button id="custom-cc-button">CC</button>
     <div id="custom-captions-menu">
-        <ul id="captions-list">
-            <!-- JavaScript llenará esta lista -->
-        </ul>
+        <ul id="captions-list"></ul>
     </div>
 
 
     <script>
-        // ===============================================================
-        // PASO 1: DESACTIVAR EL BOTÓN CC POR DEFECTO                      
-        // ===============================================================
         new MediaElementPlayer('video', {
-            // Le decimos qué botones queremos. Notarás que 'captions' no está en la lista.
             features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
             success: function (player, node) {
                 
-                // Mover nuestros elementos personalizados dentro del contenedor del reproductor
-                const container = player.closest('.mejs-container');
+                // ===============================================================
+                // AQUÍ ESTÁ LA CORRECCIÓN
+                // Usamos 'node' (el elemento de video) para encontrar el contenedor, no 'player'.
+                // ===============================================================
+                const container = node.closest('.mejs-container');
                 const customButton = document.getElementById('custom-cc-button');
                 const customMenu = document.getElementById('custom-captions-menu');
-                container.appendChild(customButton);
-                container.appendChild(customMenu);
 
-                // ===============================================================
-                // PASO 4: LA LÓGICA DE NUESTRO BOTÓN                           
-                // ===============================================================
+                // Si encontramos el contenedor, movemos los elementos dentro.
+                if (container) {
+                    container.appendChild(customButton);
+                    container.appendChild(customMenu);
+                }
+
 
                 const captionsList = document.getElementById('captions-list');
                 const videoTracks = node.querySelectorAll('track');
 
-                // Llenar nuestro menú con los idiomas disponibles
                 videoTracks.forEach(track => {
                     const li = document.createElement('li');
                     li.textContent = track.label;
-                    li.dataset.src = track.src; // Guardamos la URL del subtítulo
+                    li.dataset.src = track.src; 
                     captionsList.appendChild(li);
                 });
 
-                // Añadir la opción para desactivar
                 const offOption = document.createElement('li');
                 offOption.textContent = 'None';
                 captionsList.appendChild(offOption);
 
-                // --- Comportamiento del botón CC ---
                 customButton.addEventListener('click', function() {
                     const menu = document.getElementById('custom-captions-menu');
                     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
                 });
 
-                // --- Comportamiento del menú ---
                 captionsList.addEventListener('click', function(e) {
                     if (e.target.tagName === 'LI') {
                         const selectedSrc = e.target.dataset.src;
 
-                        // Usamos setTimeout para que la UI responda al instante
                         setTimeout(function() {
-                            if (selectedSrc) { // Si se eligió un idioma
+                            if (selectedSrc) { 
                                 if (!window.octopusInstance) {
                                     window.octopusInstance = new SubtitlesOctopus({
                                         video: node,
@@ -137,12 +120,11 @@
                                 } else {
                                     window.octopusInstance.setTrackByUrl(selectedSrc);
                                 }
-                            } else { // Si se eligió "None"
+                            } else {
                                 if (window.octopusInstance) window.octopusInstance.freeTrack();
                             }
                         }, 0);
                         
-                        // Ocultamos el menú después de la selección
                         document.getElementById('custom-captions-menu').style.display = 'none';
                     }
                 });
