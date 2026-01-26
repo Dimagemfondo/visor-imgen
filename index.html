@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Subtítulos ASS (Solución Fluida)</title>
-    <!-- MediaElement.js (reproductor mejorado + manejo de tracks) -->
+    <title>Reproductor con Subtítulos ASS (Solución Definitiva)</title>
+    <!-- MediaElement.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
-    <!-- SubtitlesOctopus (renderiza ASS con calidad) -->
+    <!-- SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
 </head>
 <body>
@@ -16,12 +16,12 @@
         <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
         
         <!-- Subtítulos en formato ASS -->
+        <!-- Se ha quitado la propiedad 'default' para evitar la carga inicial y el bloqueo de la UI -->
         <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" 
                srclang="es" 
                label="Español" 
                kind="subtitles" 
-               type="application/x-ass" 
-               default>
+               type="application/x-ass">
         
         <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" 
                srclang="eng" 
@@ -39,17 +39,14 @@
                 // Escuchamos cuando el usuario cambia de pista de subtítulos
                 player.addEventListener('captionschange', function(e) {
                     
-                    // ¡LA SOLUCIÓN!
-                    // Le decimos al navegador que ejecute el código pesado después de un instante (0ms).
-                    // Esto libera el hilo principal y permite que la interfaz siga respondiendo inmediatamente.
+                    // Usamos setTimeout para que la tarea pesada (cargar subtítulos) no congele la interfaz
                     setTimeout(function() {
                         if (e.detail.caption !== null) {
                             // Hay subtítulo seleccionado
                             if (window.octopusInstance) {
-                                // Si ya existe, solo cambia la pista
                                 window.octopusInstance.setTrackByUrl(e.detail.caption.src);
                             } else {
-                                // Si es la primera vez, crea una nueva instancia de SubtitlesOctopus
+                                // Primera vez: creamos SubtitlesOctopus
                                 var options = {
                                     video: video,
                                     subUrl: e.detail.caption.src,
@@ -69,7 +66,7 @@
                                 window.octopusInstance.freeTrack();
                             }
                         }
-                    }, 0); // Un timeout de 0 es suficiente para posponer la tarea y no congelar la UI.
+                    }, 0); 
                 });
             }
         });
