@@ -2,21 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor con CC Personalizado</title>
-    <!-- Solo necesitamos la librería SubtitlesOctopus -->
+    <title>Reproductor con CC y Fullscreen Funcional</title>
     <script src="./assets/js/subtitles-octopus.js"></script>
     <style>
-        /* Contenedor para posicionar el botón sobre el video */
         #video-container {
             position: relative;
-            width: 800px; /* Ancho del video */
+            width: 800px;
         }
-        /* Nuestro botón CC personalizado */
         #custom-cc-button {
             position: absolute;
             bottom: 15px;
             right: 15px;
-            z-index: 100; /* Para que esté por encima del video */
+            z-index: 100;
             padding: 5px 10px;
             font-size: 14px;
             font-weight: bold;
@@ -33,54 +30,55 @@
 </head>
 <body>
 
-    <!-- 1. Un contenedor para el video y nuestro botón -->
     <div id="video-container">
-        <!-- El reproductor de video estándar -->
         <video id="video" width="800" height="480" controls autoplay></video>
-        
-        <!-- 2. Nuestro botón interruptor CC -->
         <button id="custom-cc-button">Activar Subtítulos</button>
     </div>
 
     <script>
-        // --- Referencias a nuestros elementos ---
         const videoElement = document.getElementById('video');
         const ccButton = document.getElementById('custom-cc-button');
         
-        // Le ponemos la fuente del video
         videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // --- La "Memoria" de nuestro botón ---
-        // Guardará la instancia de los subtítulos cuando estén activos. Si es 'null', están apagados.
         let octopusInstance = null;
 
-        // 3. --- La Lógica de Nuestro Botón (La Magia) ---
+        // ===============================================================
+        //           ¡AQUÍ ESTÁ LA NUEVA MAGIA PARA LA PANTALLA COMPLETA!
+        // ===============================================================
+        // Escuchamos si el video entra o sale de pantalla completa
+        videoElement.addEventListener('fullscreenchange', function() {
+            // Solo hacemos algo si los subtítulos están activos
+            if (octopusInstance) {
+                console.log('Pantalla completa cambió. Redimensionando subtítulos...');
+                // Añadimos un pequeño retraso. A veces el navegador tarda un instante
+                // en ajustarse, y esto asegura que redimensionamos sobre el tamaño final.
+                setTimeout(function() {
+                    octopusInstance.resize();
+                }, 100);
+            }
+        });
+
+
+        // La lógica de nuestro botón (que ya funcionaba)
         ccButton.addEventListener('click', function() {
-            
-            // Si la memoria NO está vacía (los subtítulos están encendidos)
             if (octopusInstance) {
                 console.log('Apagando subtítulos...');
-                octopusInstance.dispose(); // "Despedimos" al especialista y limpiamos todo
-                octopusInstance = null;   // Vaciamos la memoria
-                ccButton.textContent = 'Activar Subtítulos'; // Actualizamos el texto del botón
-            
-            // Si la memoria está vacía (los subtítulos están apagados)
+                octopusInstance.dispose();
+                octopusInstance = null;
+                ccButton.textContent = 'Activar Subtítulos';
             } else {
                 console.log('Encendiendo subtítulos...');
-                // Preparamos las instrucciones
                 const options = {
                     video: videoElement,
                     subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
                     fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
                 };
-
-                // "Contratamos" al especialista y guardamos su instancia en nuestra memoria
                 octopusInstance = new SubtitlesOctopus(options);
-                ccButton.textContent = 'Desactivar Subtítulos'; // Actualizamos el texto del botón
+                ccButton.textContent = 'Desactivar Subtítulos';
             }
         });
-
     </script>
 </body>
 </html>
