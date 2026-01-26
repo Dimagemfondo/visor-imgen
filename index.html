@@ -3,73 +3,75 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor ASS Rápido</title>
+    <title>Reproductor con Subtítulos ASS</title>
 
-    <script src="/visor-imgen/assets/js/subtitles-octopus.js"></script>
+    <!-- MediaElement.js (reproductor mejorado + manejo de tracks) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
 
-    <style>
-        body { margin: 0; background: black; color: white; font-family: Arial; }
-        #player { max-width: 100%; margin: auto; position: relative; }
-        #controls { text-align: center; padding: 10px; }
-        button { padding: 10px 20px; margin: 5px; font-size: 16px; cursor: pointer; }
-    </style>
+    <!-- SubtitlesOctopus (renderiza ASS con calidad) -->
+    <script src="./assets/js/subtitles-octopus.js"></script>
 </head>
 <body>
 
-    <div id="player">
-        <video id="video" controls width="100%" preload="metadata" crossorigin="anonymous">
-            <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
-        </video>
-    </div>
-
-    <div id="controls">
-        <button onclick="changeSubs('/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass')">Español</button>
-        <button onclick="changeSubs('/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass')">English</button>
-        <button onclick="changeSubs(null)">Off</button>
-    </div>
+    <video id="video" width="800" height="480" controls preload="none">
+        <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
+        
+        <!-- Subtítulos en formato ASS -->
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" 
+               srclang="es" 
+               label="Español" 
+               kind="subtitles" 
+               type="application/x-ass" 
+               default>
+        
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" 
+               srclang="eng" 
+               label="English" 
+               kind="subtitles" 
+               type="application/x-ass">
+    </video>
 
     <script>
-        let octopusInstance = null;
-        let currentSubUrl = null;
+        // Inicializamos MediaElement.js
+        new MediaElementPlayer('video', {
+            success: function (player, node) {
+                var video = node;
 
-        // Pre-inicializar al cargar
-        window.addEventListener('load', () => {
-            const video = document.getElementById('video');
-
-            const options = {
-                video: video,
-                subUrl: '',  // vacío al inicio
-                fonts: [
-                    '/visor-imgen/fonts/Lato-Italic.ttf',
-                    '/visor-imgen/fonts/Lato-Regular.ttf',
-                    '/visor-imgen/fonts/BTTTRIAL.ttf'
-                ],
-                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
-                debug: true,  // Cambia a false cuando funcione
-                onReady: () => console.log('Octopus READY!'),
-                onError: (err) => console.error('Octopus ERROR:', err)
-            };
-
-            octopusInstance = new SubtitlesOctopus(options);
-
-            // Carga default (Español) inmediatamente
-            changeSubs('/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass');
-        });
-
-        function changeSubs(newUrl) {
-            if (!octopusInstance) return;
-
-            if (newUrl === null) {
-                octopusInstance.freeTrack();
-                currentSubUrl = null;
-                console.log('Subs OFF');
-            } else if (newUrl !== currentSubUrl) {
-                octopusInstance.setTrackByUrl(newUrl);
-                currentSubUrl = newUrl;
-                console.log('Cambiado a:', newUrl);
+                // Escuchamos cuando el usuario cambia de pista de subtítulos
+                player.addEventListener('captionschange', function(e) {
+                    if (e.detail.caption !== null) {
+                        // Hay subtítulo seleccionado
+                        if (window.octopusInstance) {
+                            window.octopusInstance.setTrackByUrl(e.detail.caption.src);
+                        } else {
+                            // Primera vez: creamos SubtitlesOctopus
+                            var options = {
+                                video: video,
+                                subUrl: e.detail.caption.src,
+                                fonts: [
+                                    '/visor-imgen/fonts/Lato-Italic.ttf',
+                                    '/visor-imgen/fonts/Lato-Regular.ttf',
+                                    '/visor-imgen/fonts/BTTTRIAL.ttf'
+                                ],
+                                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
+                                debug: false   // cambia a true si quieres ver logs
+                            };
+                            window.octopusInstance = new SubtitlesOctopus(options);
+                        }
+                    } else {
+                        // Desactivaron subtítulos
+                        if (window.octopusInstance) {
+                            window.octopusInstance.freeTrack();
+                        }
+                    }
+                });
             }
-        }
+        });
     </script>
+
+</body>
+</html>    </script>
 
 </body>
 </html>
