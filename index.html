@@ -1023,8 +1023,6 @@ let library = publicLibrary;
 
         window.addEventListener('hashchange', handleRouting);
         handleRouting();
-        
-        setupTouchControls();
 
         searchActionBtn.addEventListener('click', shakeSearch);
         searchBackBtn.addEventListener('click', closeSearch);
@@ -1471,65 +1469,12 @@ let library = publicLibrary;
         }
     }
 
-    // --- Control por gestos ---
     let isDragging = false;
     let startX = 0;
     let startVideoTime = 0;
     // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
     const swipeSeekFactor = 2.5; 
     let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
-
-    function setupTouchControls() {
-        heroArea.addEventListener('touchstart', handleTouchStart);
-        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
-        heroArea.addEventListener('touchend', handleTouchEnd);
-    }
-    
-    function handleTouchStart(e) {
-        if (mainVideo.paused || !mainVideo.duration) return;
-        const player = window.playerInstance || mainVideo;
-        if (player.paused || !player.duration) return;
-        isDragging = true;
-        startX = e.touches[0].clientX;
-        startVideoTime = mainVideo.currentTime;
-        startVideoTime = player.currentTime;
-        lastSeekTimestamp = 0;
-    }
-
-    function handleTouchMove(e) {
-        if (!isDragging) return;
-        e.preventDefault(); 
-
-        // Evitar que se actualice demasiadas veces por segundo (evita el bug de congelamiento)
-        const now = Date.now();
-        if (now - lastSeekTimestamp < 50) return; 
-        lastSeekTimestamp = now;
-
-        const currentX = e.touches[0].clientX;
-        const deltaX = currentX - startX;
-        
-        const timeOffset = deltaX * swipeSeekFactor;
-        let newTime = startVideoTime + timeOffset;
-        
-        const player = window.playerInstance || mainVideo;
-        const duration = player.duration;
-
-        newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
-        newTime = Math.max(0, Math.min(duration, newTime));
-        
-        mainVideo.currentTime = newTime;
-        if (window.playerInstance) {
-            window.playerInstance.setCurrentTime(newTime);
-        } else {
-            mainVideo.currentTime = newTime;
-        }
-    }
-
-    function handleTouchEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-    }
-
 
     // --- UTILIDADES ---
     function showDetailView() {
