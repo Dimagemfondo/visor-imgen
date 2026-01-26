@@ -33,51 +33,36 @@
     </video>
 
     <script>
-        let octopusInstance = null;
-        let currentSubUrl = null;
-
-        // Pre-cargamos SubtitlesOctopus al iniciar la página (worker + fuentes listos)
-        window.addEventListener('load', function() {
-            const video = document.getElementById('video');
-
-            octopusInstance = new SubtitlesOctopus({
-                video: video,
-                subUrl: '',                    // vacío = sin subtítulos al inicio
-                fonts: [
-                    '/visor-imgen/fonts/Lato-Italic.ttf',
-                    '/visor-imgen/fonts/Lato-Regular.ttf',
-                    '/visor-imgen/fonts/BTTTRIAL.ttf'
-                ],
-                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
-                debug: false                   // pon true temporalmente si quieres ver logs en consola
-            });
-
-            // Si quieres forzar que cargue el subtítulo default (Español) inmediatamente:
-            // octopusInstance.setTrackByUrl('/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass');
-            // currentSubUrl = '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass';
-        });
-
         // Inicializamos MediaElement.js
         new MediaElementPlayer('video', {
             success: function (player, node) {
-                const video = node;
+                var video = node;
 
+                // Escuchamos cuando el usuario cambia de pista de subtítulos
                 player.addEventListener('captionschange', function(e) {
-                    const newTrack = e.detail.caption;
-
-                    if (newTrack !== null) {
-                        const newUrl = newTrack.src;
-
-                        // Solo cambiamos si es diferente al actual
-                        if (newUrl !== currentSubUrl && octopusInstance) {
-                            octopusInstance.setTrackByUrl(newUrl);
-                            currentSubUrl = newUrl;
+                    if (e.detail.caption !== null) {
+                        // Hay subtítulo seleccionado
+                        if (window.octopusInstance) {
+                            window.octopusInstance.setTrackByUrl(e.detail.caption.src);
+                        } else {
+                            // Primera vez: creamos SubtitlesOctopus
+                            var options = {
+                                video: video,
+                                subUrl: e.detail.caption.src,
+                                fonts: [
+                                    '/visor-imgen/fonts/Lato-Italic.ttf',
+                                    '/visor-imgen/fonts/Lato-Regular.ttf',
+                                    '/visor-imgen/fonts/BTTTRIAL.ttf'
+                                ],
+                                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
+                                debug: false   // cambia a true si quieres ver logs
+                            };
+                            window.octopusInstance = new SubtitlesOctopus(options);
                         }
                     } else {
                         // Desactivaron subtítulos
-                        if (octopusInstance) {
-                            octopusInstance.freeTrack();
-                            currentSubUrl = null;
+                        if (window.octopusInstance) {
+                            window.octopusInstance.freeTrack();
                         }
                     }
                 });
