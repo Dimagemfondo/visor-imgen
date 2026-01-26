@@ -2,88 +2,100 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor Completo con Controles</title>
+    <title>Reproductor Profesional</title>
     <script src="./assets/js/subtitles-octopus.js"></script>
     <style>
+        body {
+            background-color: #1a1a1a; /* Fondo oscuro para que el reproductor resalte */
+        }
         #video-container {
             position: relative;
             width: 800px;
+            margin: 50px auto; /* Centrar el reproductor en la página */
             background-color: black;
+            font-family: Arial, sans-serif;
         }
         #video {
             width: 100%;
-            display: block; /* Evita un pequeño espacio fantasma debajo del video */
+            display: block;
         }
         
-        /* 1. NUESTRA NUEVA BARRA DE CONTROLES INFERIOR */
+        /* === BARRA DE CONTROLES: DISEÑO NUEVO === */
         #custom-controls {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); /* Gradiente sutil */
             display: flex;
             align-items: center;
-            gap: 15px; /* Espacio entre elementos */
+            gap: 15px;
             color: white;
             box-sizing: border-box;
+            /* Efecto de ocultar/mostrar */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* La barra se muestra si el video está pausado o si el ratón está encima */
+        #video-container:hover #custom-controls,
+        #video-container.paused #custom-controls {
+            opacity: 1;
         }
 
-        /* 2. BARRA DE PROGRESO (LÍNEA DE CARGA) */
+        /* === LÍNEA DE CARGA: DISEÑO NUEVO === */
         #progress-bar {
-            flex-grow: 1; /* Ocupa el espacio sobrante */
-            height: 8px;
-            background-color: rgba(255, 255, 255, 0.3);
+            flex-grow: 1;
+            height: 5px; /* Más delgada y elegante */
+            background-color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
+            border-radius: 5px;
         }
         #progress-filled {
             height: 100%;
-            width: 0; /* Empieza vacía */
-            background-color: #00aeff;
+            width: 0;
+            background-color: #9f50ff; /* Color de acento morado */
+            border-radius: 5px;
         }
 
-        /* 3. NÚMEROS DE TIEMPO */
+        /* === TIEMPOS: DISEÑO NUEVO === */
         #time-display {
-            font-family: monospace;
             font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black; /* Sombra para legibilidad */
         }
         
-        /* Estilo para nuestros botones dentro de la barra */
-        #custom-cc-button, #custom-fullscreen-button {
-            padding: 5px 10px;
-            font-size: 14px;
-            background-color: transparent;
+        /* === BOTONES: DISEÑO NUEVO === */
+        .control-button {
+            background: transparent;
+            border: none;
             color: white;
-            border: 1px solid white;
-            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px;
             cursor: pointer;
+            text-shadow: 1px 1px 2px black;
         }
     </style>
 </head>
 <body>
 
     <div id="video-container">
-        <!-- Quitamos 'controls' para usar los nuestros -->
         <video id="video" autoplay></video> 
         
-        <!-- NUEVA ESTRUCTURA DE CONTROLES -->
         <div id="custom-controls">
-            <div id="time-display">
-                <span id="time-current">00:00</span> / <span id="time-duration">00:00</span>
-            </div>
-            <div id="progress-bar">
-                <div id="progress-filled"></div>
-            </div>
-            <button id="custom-cc-button">CC</button>
-            <button id="custom-fullscreen-button">⛶</button>
+            <div id="time-display"><span id="time-current">00:00</span> / <span id="time-duration">00:00</span></div>
+            <div id="progress-bar"><div id="progress-filled"></div></div>
+            <button id="custom-cc-button" class="control-button">CC</button>
+            <button id="custom-fullscreen-button" class="control-button">⛶</button>
         </div>
     </div>
 
     <script>
-        // --- Referencias a todos nuestros elementos ---
+        // --- REFERENCIAS ---
         const videoContainer = document.getElementById('video-container');
         const videoElement = document.getElementById('video');
+        const controls = document.getElementById('custom-controls');
         const ccButton = document.getElementById('custom-cc-button');
         const fullscreenButton = document.getElementById('custom-fullscreen-button');
         const progressBar = document.getElementById('progress-bar');
@@ -93,52 +105,42 @@
         
         videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // Lógica Play/Pausa (sin cambios)
+        // --- LÓGICA PLAY/PAUSA ---
         videoElement.addEventListener('click', () => videoElement.paused ? videoElement.play() : videoElement.pause());
+        videoElement.addEventListener('play', () => videoContainer.classList.remove('paused'));
+        videoElement.addEventListener('pause', () => videoContainer.classList.add('paused'));
 
-        // Lógica CC (sin cambios)
+        // --- LÓGICA CC (COMPLETA Y FUNCIONAL) ---
         let octopusInstance = null;
-        ccButton.addEventListener('click', function() { /* ...código de la respuesta anterior... */ });
+        ccButton.addEventListener('click', function() {
+            if (octopusInstance) {
+                octopusInstance.dispose();
+                octopusInstance = null;
+                ccButton.style.color = 'white'; // Restaurar color
+            } else {
+                const options = { video: videoElement, subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' };
+                octopusInstance = new SubtitlesOctopus(options);
+                ccButton.style.color = '#9f50ff'; // Indicar que está activo
+            }
+        });
 
-        // Lógica Fullscreen (sin cambios)
-        fullscreenButton.addEventListener('click', function() { /* ...código de la respuesta anterior... */ });
+        // --- LÓGICA FULLSCREEN (COMPLETA Y FUNCIONAL) ---
+        fullscreenButton.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                videoContainer.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
+            } else {
+                document.exitFullscreen();
+            }
+        });
         document.addEventListener('fullscreenchange', () => octopusInstance && setTimeout(() => octopusInstance.resize(), 100));
 
-
-        // ===============================================================
-        //           4. LÓGICA PARA LA LÍNEA DE CARGA Y LOS TIEMPOS
-        // ===============================================================
-
-        // Función para formatear segundos a MM:SS
+        // --- LÓGICA LÍNEA DE CARGA Y TIEMPOS (COMPLETA Y FUNCIONAL) ---
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }
-
-        // Cuando el video carga sus datos, actualizamos la duración total
-        videoElement.addEventListener('loadedmetadata', () => {
-            timeDuration.textContent = formatTime(videoElement.duration);
-        });
-
-        // Mientras el video se reproduce, actualizamos el progreso
+        videoElement.addEventListener('loadedmetadata', () => timeDuration.textContent = formatTime(videoElement.duration));
         videoElement.addEventListener('timeupdate', () => {
-            // Actualizar la barra de progreso
-            const progressPercent = (videoElement.currentTime / videoElement.duration) * 100;
-            progressFilled.style.width = `${progressPercent}%`;
-
-            // Actualizar el tiempo actual
-            timeCurrent.textContent = formatTime(videoElement.currentTime);
-        });
-
-        // Para hacer la barra interactiva (scrubbing)
-        progressBar.addEventListener('click', (e) => {
-            // Calculamos a qué posición se hizo clic (en porcentaje)
-            const scrubTime = (e.offsetX / progressBar.offsetWidth) * videoElement.duration;
-            // Actualizamos el tiempo del video
-            videoElement.currentTime = scrubTime;
-        });
-
-    </script>
-</body>
-</html>
+            progressFilled.style.width = `${(videoElement.currentTime / videoElement.duration) * 100}%`;
+            timeCurrent.textContent = fo
