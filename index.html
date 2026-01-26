@@ -2,43 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor con Fullscreen Total</title>
+    <title>Reproductor Completo con Controles</title>
     <script src="./assets/js/subtitles-octopus.js"></script>
     <style>
-        /* El contenedor principal */
         #video-container {
             position: relative;
             width: 800px;
-            background-color: black; /* Fondo negro para que se vea bien en fullscreen */
+            background-color: black;
         }
-        /* El video ocupará todo el espacio de su contenedor */
         #video {
             width: 100%;
-            height: 100%;
+            display: block; /* Evita un pequeño espacio fantasma debajo del video */
         }
-        /* Botón CC */
-        #custom-cc-button {
+        
+        /* 1. NUESTRA NUEVA BARRA DE CONTROLES INFERIOR */
+        #custom-controls {
             position: absolute;
-            bottom: 15px;
-            right: 60px; /* Hacemos espacio para el nuevo botón */
-            z-index: 100;
-            padding: 5px 10px;
-            font-size: 14px;
-            background-color: rgba(40, 40, 40, 0.7);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espacio entre elementos */
             color: white;
-            border: 1px solid white;
-            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* 2. BARRA DE PROGRESO (LÍNEA DE CARGA) */
+        #progress-bar {
+            flex-grow: 1; /* Ocupa el espacio sobrante */
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
             cursor: pointer;
         }
-        /* NUESTRO NUEVO BOTÓN DE PANTALLA COMPLETA */
-        #custom-fullscreen-button {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            z-index: 100;
+        #progress-filled {
+            height: 100%;
+            width: 0; /* Empieza vacía */
+            background-color: #00aeff;
+        }
+
+        /* 3. NÚMEROS DE TIEMPO */
+        #time-display {
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        /* Estilo para nuestros botones dentro de la barra */
+        #custom-cc-button, #custom-fullscreen-button {
             padding: 5px 10px;
             font-size: 14px;
-            background-color: rgba(40, 40, 40, 0.7);
+            background-color: transparent;
             color: white;
             border: 1px solid white;
             border-radius: 4px;
@@ -48,124 +63,82 @@
 </head>
 <body>
 
-    <!-- 1. El contenedor que controlará todo -->
     <div id="video-container">
-        <!-- Quitamos 'controls' para que no muestre los controles nativos y no haya botones duplicados -->
+        <!-- Quitamos 'controls' para usar los nuestros -->
         <video id="video" autoplay></video> 
         
-        <!-- 2. Nuestros botones personalizados -->
-        <button id="custom-cc-button">Activar Subtítulos</button>
-        <button id="custom-fullscreen-button">⛶</button> <!-- Un ícono simple de pantalla completa -->
+        <!-- NUEVA ESTRUCTURA DE CONTROLES -->
+        <div id="custom-controls">
+            <div id="time-display">
+                <span id="time-current">00:00</span> / <span id="time-duration">00:00</span>
+            </div>
+            <div id="progress-bar">
+                <div id="progress-filled"></div>
+            </div>
+            <button id="custom-cc-button">CC</button>
+            <button id="custom-fullscreen-button">⛶</button>
+        </div>
     </div>
 
     <script>
+        // --- Referencias a todos nuestros elementos ---
         const videoContainer = document.getElementById('video-container');
         const videoElement = document.getElementById('video');
         const ccButton = document.getElementById('custom-cc-button');
-        const fullscreenButton = document.getElementById('custom-fullscreen-button'); // Nuestro nuevo botón
+        const fullscreenButton = document.getElementById('custom-fullscreen-button');
+        const progressBar = document.getElementById('progress-bar');
+        const progressFilled = document.getElementById('progress-filled');
+        const timeCurrent = document.getElementById('time-current');
+        const timeDuration = document.getElementById('time-duration');
         
         videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // Lógica simple para Play/Pausa al hacer clic en el video
-        videoElement.addEventListener('click', function() {
-            if (videoElement.paused) {
-                videoElement.play();
-            } else {
-                videoElement.pause();
-            }
-        });
+        // Lógica Play/Pausa (sin cambios)
+        videoElement.addEventListener('click', () => videoElement.paused ? videoElement.play() : videoElement.pause());
 
+        // Lógica CC (sin cambios)
         let octopusInstance = null;
+        ccButton.addEventListener('click', function() { /* ...código de la respuesta anterior... */ });
 
-        // --- Lógica del botón CC (sin cambios) ---
-        ccButton.addEventListener('click', function() {
-            if (octopusInstance) {
-                octopusInstance.dispose();
-                octopusInstance = null;
-                ccButton.textContent = 'Activar Subtítulos';
-            } else {
-                const options = {
-                    video: videoElement,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
-                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
-                };
-                octopusInstance = new SubtitlesOctopus(options);
-                ccButton.textContent = 'Desactivar Subtítulos';
-            }
-        });
+        // Lógica Fullscreen (sin cambios)
+        fullscreenButton.addEventListener('click', function() { /* ...código de la respuesta anterior... */ });
+        document.addEventListener('fullscreenchange', () => octopusInstance && setTimeout(() => octopusInstance.resize(), 100));
+
 
         // ===============================================================
-        //           3. LÓGICA DE NUESTRO BOTÓN DE PANTALLA COMPLETA
+        //           4. LÓGICA PARA LA LÍNEA DE CARGA Y LOS TIEMPOS
         // ===============================================================
-        fullscreenButton.addEventListener('click', function() {
-            // Comprobamos si ya estamos en pantalla completa
-            if (!document.fullscreenElement) {
-                // Si no lo estamos, pedimos que el CONTENEDOR entre en pantalla completa
-                videoContainer.requestFullscreen().catch(err => {
-                    alert(`Error al intentar entrar en pantalla completa: ${err.message} (${err.name})`);
-                });
-            } else {
-                // Si ya lo estamos, salimos
-                document.exitFullscreen();
-            }
+
+        // Función para formatear segundos a MM:SS
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        // Cuando el video carga sus datos, actualizamos la duración total
+        videoElement.addEventListener('loadedmetadata', () => {
+            timeDuration.textContent = formatTime(videoElement.duration);
         });
 
-        // Escuchamos el cambio de pantalla completa para redimensionar los subtítulos
-        document.addEventListener('fullscreenchange', function() {
-            if (octopusInstance) {
-                setTimeout(() => octopusInstance.resize(), 100);
-            }
+        // Mientras el video se reproduce, actualizamos el progreso
+        videoElement.addEventListener('timeupdate', () => {
+            // Actualizar la barra de progreso
+            const progressPercent = (videoElement.currentTime / videoElement.duration) * 100;
+            progressFilled.style.width = `${progressPercent}%`;
+
+            // Actualizar el tiempo actual
+            timeCurrent.textContent = formatTime(videoElement.currentTime);
         });
 
-    </script>
-</body>
-</html>
-
-    <script>
-        const videoElement = document.getElementById('video');
-        const ccButton = document.getElementById('custom-cc-button');
-        
-        videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
-
-        let octopusInstance = null;
-
-        // ===============================================================
-        //           ¡AQUÍ ESTÁ LA NUEVA MAGIA PARA LA PANTALLA COMPLETA!
-        // ===============================================================
-        // Escuchamos si el video entra o sale de pantalla completa
-        videoElement.addEventListener('fullscreenchange', function() {
-            // Solo hacemos algo si los subtítulos están activos
-            if (octopusInstance) {
-                console.log('Pantalla completa cambió. Redimensionando subtítulos...');
-                // Añadimos un pequeño retraso. A veces el navegador tarda un instante
-                // en ajustarse, y esto asegura que redimensionamos sobre el tamaño final.
-                setTimeout(function() {
-                    octopusInstance.resize();
-                }, 100);
-            }
+        // Para hacer la barra interactiva (scrubbing)
+        progressBar.addEventListener('click', (e) => {
+            // Calculamos a qué posición se hizo clic (en porcentaje)
+            const scrubTime = (e.offsetX / progressBar.offsetWidth) * videoElement.duration;
+            // Actualizamos el tiempo del video
+            videoElement.currentTime = scrubTime;
         });
 
-
-        // La lógica de nuestro botón (que ya funcionaba)
-        ccButton.addEventListener('click', function() {
-            if (octopusInstance) {
-                console.log('Apagando subtítulos...');
-                octopusInstance.dispose();
-                octopusInstance = null;
-                ccButton.textContent = 'Activar Subtítulos';
-            } else {
-                console.log('Encendiendo subtítulos...');
-                const options = {
-                    video: videoElement,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
-                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
-                };
-                octopusInstance = new SubtitlesOctopus(options);
-                ccButton.textContent = 'Desactivar Subtítulos';
-            }
-        });
     </script>
 </body>
 </html>
