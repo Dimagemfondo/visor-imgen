@@ -3,37 +3,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Botón CC Personalizado (Corregido)</title>
-    
+    <title>Reproductor con Botón CC Funcional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
     <script src="./assets/js/subtitles-octopus.js"></script>
-
-    <style>
-        .mejs-container {
-            position: relative;
-        }
-        #custom-cc-button {
-            position: absolute;
-            right: 45px; 
-            bottom: 10px;
-            z-index: 1001; 
-            width: 36px;
-            height: 32px;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        #custom-captions-menu {
-            position: absolute;
-            right: 10px;
-            bottom: 45px; 
-            z-index: 1002;
-            background-color: rgba(40, 40, 40, 0.9);
-            border-radius: 4px;
+</head>
+<body>
+    <video id="video" width="800" height="480" controls preload="none">
+        <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" srclang="es" label="Español" kind="subtitles" type="application/x-ass">
+        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" srclang="eng" label="English" kind="subtitles" type="application/x-ass">
+    </video>
+    <script>
+        new MediaElementPlayer('video', {
+            success: function (player, node) {
+                player.addEventListener('captionschange', function(e) {
+                    // Esta es la técnica correcta para no congelar la interfaz.
+                    setTimeout(function() {
+                        if (e.detail.caption !== null) {
+                            if (!window.octopusInstance) {
+                                window.octopusInstance = new SubtitlesOctopus({
+                                    video: node,
+                                    subUrl: e.detail.caption.src,
+                                    fonts: [
+                                        '/visor-imgen/fonts/Lato-Italic.ttf',
+                                        '/visor-imgen/fonts/Lato-Regular.ttf',
+                                        '/visor-imgen/fonts/BTTTRIAL.ttf'
+                                    ],
+                                    // La causa más probable de error está en esta línea:
+                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                                });
+                            } else {
+                                window.octopusInstance.setTrackByUrl(e.detail.caption.src);
+                            }
+                        } else {
+                            if (window.octopusInstance) window.octopusInstance.freeTrack();
+                        }
+                    }, 0);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
             display: none; 
         }
         #custom-captions-menu ul {
