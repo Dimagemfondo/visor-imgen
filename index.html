@@ -73,30 +73,3 @@
 
 </body>
 </html>
-                    const newTrack = e.detail.caption;
-
-                    if (newTrack !== null) {
-                        const newUrl = newTrack.src;
-                        console.log('Intentando cambiar a:', newUrl);
-
-                        if (newUrl !== currentSubUrl && octopusInstance) {
-                            octopusInstance.setTrackByUrl(newUrl);
-                            currentSubUrl = newUrl;
-                            console.log('Cambio de subtítulo ejecutado.');
-                        } else {
-                            console.log('Misma URL, no se cambia.');
-                        }
-                    } else {
-                        if (octopusInstance) {
-                            octopusInstance.freeTrack();
-                            currentSubUrl = null;
-                            console.log('Subtítulos desactivados.');
-                        }
-                    }
-                });
-            }
-        });
-    </script>
-
-</body>
-</html>
