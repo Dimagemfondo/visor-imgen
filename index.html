@@ -143,4 +143,12 @@
         videoElement.addEventListener('loadedmetadata', () => timeDuration.textContent = formatTime(videoElement.duration));
         videoElement.addEventListener('timeupdate', () => {
             progressFilled.style.width = `${(videoElement.currentTime / videoElement.duration) * 100}%`;
-            timeCurrent.textContent = fo
+            timeCurrent.textContent = formatTime(videoElement.currentTime);
+        });
+        progressBar.addEventListener('click', (e) => {
+            videoElement.currentTime = (e.offsetX / progressBar.offsetWidth) * videoElement.duration;
+        });
+
+    </script>
+</body>
+</html>
