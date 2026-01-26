@@ -1402,6 +1402,7 @@ let library = publicLibrary;
                 track.label = sub.label;
                 track.srclang = sub.srclang;
                 track.src = sub.src;
+                track.setAttribute("type", "application/x-ass");
                 if (sub.default) {
                     track.default = true;
                 }
@@ -1415,6 +1416,7 @@ let library = publicLibrary;
             track.label = "Español";
             track.srclang = "es";
             track.src = episode.subtitulo;
+            track.setAttribute("type", "application/x-ass");
             track.default = true;
             videoEl.appendChild(track);
         }
