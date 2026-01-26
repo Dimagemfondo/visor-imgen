@@ -2,76 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor de Video Completo</title>
-
-    <!-- 1. Estilos del reproductor MediaElement.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
-
-    <!-- 2. Carga de las librerías JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
-    
-    <!-- Asegúrate de que esta ruta sea correcta para tu proyecto -->
+    <title>Reproductor Súper Simple con SubtitlesOctopus</title>
+    <!-- Solo necesitamos la librería SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
-
 </head>
 <body>
 
-    <!-- 3. Tu video con los subtítulos definidos -->
-    <video id="video" width="800" height="480" controls preload="none">
-        <!-- La URL del video que me diste -->
-        <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
-        
-        <!-- La pista de subtítulos con la ruta que me diste.
-             Quitamos 'default' para que el reproductor cargue más rápido. -->
-        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" 
-               srclang="es" 
-               label="Español" 
-               kind="subtitles" 
-               type="application/x-ass">
-    </video>
+    <!-- Un reproductor de video HTML5 estándar y corriente -->
+    <video id="video" width="800" height="480" controls autoplay></video>
 
     <script>
-        // 4. Inicializamos el reproductor y el motor de subtítulos
-        new MediaElementPlayer('video', {
-            // Se ejecuta cuando el reproductor está listo
-            success: function (player, node) {
+        // Apuntamos a nuestro video
+        var videoElement = document.getElementById('video');
+        
+        // Le ponemos la fuente del video que nos diste
+        videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-                // Cuando el usuario elige un subtítulo...
-                player.addEventListener('captionschange', function(e) {
-                    
-                    // Usamos setTimeout para que la interfaz NUNCA se congele
-                    setTimeout(function() {
-                        if (e.detail.caption !== null) {
-                            
-                            if (window.octopusInstance) {
-                                // Si ya existe, solo cambia la pista
-                                window.octopusInstance.setTrackByUrl(e.detail.caption.src);
-                            } else {
-                                // Si es la primera vez, creamos la instancia
-                                var options = {
-                                    video: node,
-                                    subUrl: e.detail.caption.src,
-                                    // Las rutas a las fuentes (puedes añadir más)
-                                    fonts: [
-                                        '/visor-imgen/fonts/Lato-Italic.ttf'
-                                    ],
-                                    // La ruta al "ayudante" para que no se congele
-                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
-                                };
-                                window.octopusInstance = new SubtitlesOctopus(options);
-                            }
-                        } else {
-                            // Si el usuario selecciona "None"
-                            if (window.octopusInstance) {
-                                window.octopusInstance.freeTrack();
-                            }
-                        }
-                    }, 0); 
-                });
-            }
-        });
+        // --- ¡ESTE ES EXACTAMENTE EL BLOQUE DE CÓDIGO QUE QUERÍAS! ---
+        // Le damos las instrucciones al especialista
+        var options = {
+            video: videoElement,                                    // 1. El video donde se mostrará
+            subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // 2. El archivo de subtítulos
+            fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // 3. Las fuentes que usará
+            workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // 4. El "ayudante" para que no se congele
+        };
+
+        // Y aquí simplemente "contratamos" al especialista. Él hace el resto.
+        var instance = new SubtitlesOctopus(options);
+
     </script>
-
 </body>
 </html>
