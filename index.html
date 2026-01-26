@@ -73,45 +73,6 @@
 
 </body>
 </html>
-        // Pre-inicializamos SubtitlesOctopus al cargar la página
-        window.addEventListener('load', function() {
-            const video = document.getElementById('video');
-
-            const options = {
-                video: video,
-                subUrl: '',  // vacío = sin subtítulos al inicio
-                fonts: [
-                    '/visor-imgen/fonts/Lato-Italic.ttf',
-                    '/visor-imgen/fonts/Lato-Regular.ttf',
-                    '/visor-imgen/fonts/BTTTRIAL.ttf'
-                ],
-                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
-                debug: true,  // Pon false cuando funcione perfecto
-                onReady: function() {
-                    console.log('SubtitlesOctopus READY! Worker y fuentes cargados.');
-                },
-                onError: function(err) {
-                    console.error('SubtitlesOctopus ERROR:', err);
-                }
-            };
-
-            octopusInstance = new SubtitlesOctopus(options);
-
-            // Forzamos carga del subtítulo default (Español) inmediatamente
-            const defaultUrl = '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass';
-            octopusInstance.setTrackByUrl(defaultUrl);
-            currentSubUrl = defaultUrl;
-            console.log('Cargado subtítulo default (Español) al inicio.');
-        });
-
-        // Inicializamos MediaElement.js
-        new MediaElementPlayer('video', {
-            success: function (player, node) {
-                const video = node;
-
-                player.addEventListener('captionschange', function(e) {
-                    console.log('Evento captionschange disparado:', e.detail);
-
                     const newTrack = e.detail.caption;
 
                     if (newTrack !== null) {
