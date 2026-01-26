@@ -1426,10 +1426,6 @@ let library = publicLibrary;
             success: function (player, node) {
                 var video = node;
 
-                if (isAutoChained || hasPlayedAnyVideo) {
-                    player.play();
-                }
-
                 player.addEventListener('captionschange', function(e) {
                     if (e.detail.caption !== null) {
                         // Hay subtítulo seleccionado
