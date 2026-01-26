@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Botón CC Funcional</title>
+    <title>Reproductor con Cierre de Menú Forzado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
     <script src="./assets/js/subtitles-octopus.js"></script>
@@ -16,9 +16,26 @@
     </video>
     <script>
         new MediaElementPlayer('video', {
+            // Le damos un nombre a la variable del reproductor
             success: function (player, node) {
+
+                // Cuando el usuario elija un subtítulo...
                 player.addEventListener('captionschange', function(e) {
-                    // Esta es la técnica correcta para no congelar la interfaz.
+                    
+                    // ===============================================================
+                    // ¡AQUÍ ESTÁ LA MAGIA QUE PEDISTE!
+                    // Buscamos cualquier menú de control que esté abierto y lo cerramos.
+                    // El "find('button').click()" simula un clic para cerrarlo.
+                    // ===============================================================
+                    const controls = player.closest('.mejs-container').querySelector('.mejs-controls');
+                    if (controls) {
+                        const openButton = controls.querySelector('.mejs-button-toggle');
+                        if (openButton) {
+                            openButton.click();
+                        }
+                    }
+
+                    // Después de cerrar el menú, hacemos el trabajo pesado sin congelar la página.
                     setTimeout(function() {
                         if (e.detail.caption !== null) {
                             if (!window.octopusInstance) {
@@ -30,7 +47,6 @@
                                         '/visor-imgen/fonts/Lato-Regular.ttf',
                                         '/visor-imgen/fonts/BTTTRIAL.ttf'
                                     ],
-                                    // La causa más probable de error está en esta línea:
                                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
                                 });
                             } else {
@@ -39,7 +55,7 @@
                         } else {
                             if (window.octopusInstance) window.octopusInstance.freeTrack();
                         }
-                    }, 0);
+                    }, 50); // Damos un respiro mínimo de 50ms para asegurar que el menú se cierre bien.
                 });
             }
         });
