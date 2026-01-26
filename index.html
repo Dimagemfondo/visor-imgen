@@ -3,68 +3,71 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reproductor con Subtítulos ASS</title>
+    <title>Reproductor de Video Completo</title>
 
-    <!-- MediaElement.js (reproductor mejorado + manejo de tracks) -->
+    <!-- 1. Estilos del reproductor MediaElement.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
 
-    <!-- SubtitlesOctopus (renderiza ASS con calidad) -->
+    <!-- 2. Carga de las librerías JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+    
+    <!-- Asegúrate de que esta ruta sea correcta para tu proyecto -->
     <script src="./assets/js/subtitles-octopus.js"></script>
+
 </head>
 <body>
 
+    <!-- 3. Tu video con los subtítulos definidos -->
     <video id="video" width="800" height="480" controls preload="none">
+        <!-- La URL del video que me diste -->
         <source type="video/mp4" src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" />
         
-        <!-- Subtítulos en formato ASS -->
+        <!-- La pista de subtítulos con la ruta que me diste.
+             Quitamos 'default' para que el reproductor cargue más rápido. -->
         <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass" 
                srclang="es" 
                label="Español" 
-               kind="subtitles" 
-               type="application/x-ass" 
-               default>
-        
-        <track src="/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass" 
-               srclang="eng" 
-               label="English" 
                kind="subtitles" 
                type="application/x-ass">
     </video>
 
     <script>
-        // Inicializamos MediaElement.js
+        // 4. Inicializamos el reproductor y el motor de subtítulos
         new MediaElementPlayer('video', {
+            // Se ejecuta cuando el reproductor está listo
             success: function (player, node) {
-                var video = node;
 
-                // Escuchamos cuando el usuario cambia de pista de subtítulos
+                // Cuando el usuario elige un subtítulo...
                 player.addEventListener('captionschange', function(e) {
-                    if (e.detail.caption !== null) {
-                        // Hay subtítulo seleccionado
-                        if (window.octopusInstance) {
-                            window.octopusInstance.setTrackByUrl(e.detail.caption.src);
+                    
+                    // Usamos setTimeout para que la interfaz NUNCA se congele
+                    setTimeout(function() {
+                        if (e.detail.caption !== null) {
+                            
+                            if (window.octopusInstance) {
+                                // Si ya existe, solo cambia la pista
+                                window.octopusInstance.setTrackByUrl(e.detail.caption.src);
+                            } else {
+                                // Si es la primera vez, creamos la instancia
+                                var options = {
+                                    video: node,
+                                    subUrl: e.detail.caption.src,
+                                    // Las rutas a las fuentes (puedes añadir más)
+                                    fonts: [
+                                        '/visor-imgen/fonts/Lato-Italic.ttf'
+                                    ],
+                                    // La ruta al "ayudante" para que no se congele
+                                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                                };
+                                window.octopusInstance = new SubtitlesOctopus(options);
+                            }
                         } else {
-                            // Primera vez: creamos SubtitlesOctopus
-                            var options = {
-                                video: video,
-                                subUrl: e.detail.caption.src,
-                                fonts: [
-                                    '/visor-imgen/fonts/Lato-Italic.ttf',
-                                    '/visor-imgen/fonts/Lato-Regular.ttf',
-                                    '/visor-imgen/fonts/BTTTRIAL.ttf'
-                                ],
-                                workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js',
-                                debug: false   // cambia a true si quieres ver logs
-                            };
-                            window.octopusInstance = new SubtitlesOctopus(options);
+                            // Si el usuario selecciona "None"
+                            if (window.octopusInstance) {
+                                window.octopusInstance.freeTrack();
+                            }
                         }
-                    } else {
-                        // Desactivaron subtítulos
-                        if (window.octopusInstance) {
-                            window.octopusInstance.freeTrack();
-                        }
-                    }
+                    }, 0); 
                 });
             }
         });
