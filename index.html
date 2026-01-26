@@ -2,80 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor Profesional</title>
+    <title>Reproductor con Fullscreen Funcional</title>
     <script src="./assets/js/subtitles-octopus.js"></script>
     <style>
-        body {
-            background-color: #1a1a1a; /* Fondo oscuro para que el reproductor resalte */
-        }
-        #video-container {
-            position: relative;
-            width: 800px;
-            margin: 50px auto; /* Centrar el reproductor en la página */
-            background-color: black;
-            font-family: Arial, sans-serif;
-        }
-        #video {
-            width: 100%;
-            display: block;
-        }
-        
-        /* === BARRA DE CONTROLES: DISEÑO NUEVO === */
-        #custom-controls {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 8px 12px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); /* Gradiente sutil */
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-            box-sizing: border-box;
-            /* Efecto de ocultar/mostrar */
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        /* La barra se muestra si el video está pausado o si el ratón está encima */
-        #video-container:hover #custom-controls,
-        #video-container.paused #custom-controls {
-            opacity: 1;
-        }
-
-        /* === LÍNEA DE CARGA: DISEÑO NUEVO === */
-        #progress-bar {
-            flex-grow: 1;
-            height: 5px; /* Más delgada y elegante */
-            background-color: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #progress-filled {
-            height: 100%;
-            width: 0;
-            background-color: #9f50ff; /* Color de acento morado */
-            border-radius: 5px;
-        }
-
-        /* === TIEMPOS: DISEÑO NUEVO === */
-        #time-display {
-            font-size: 14px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px black; /* Sombra para legibilidad */
-        }
-        
-        /* === BOTONES: DISEÑO NUEVO === */
-        .control-button {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 5px;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px black;
-        }
+        /* Usamos los estilos "Crunchyroll" de la versión anterior que te gustaron */
+        body { background-color: #1a1a1a; }
+        #video-container { position: relative; width: 800px; margin: 50px auto; background-color: black; font-family: Arial, sans-serif; }
+        #video { width: 100%; display: block; }
+        #custom-controls { position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: center; gap: 15px; color: white; box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        #video-container:hover #custom-controls, #video-container.paused #custom-controls { opacity: 1; }
+        #progress-bar { flex-grow: 1; height: 5px; background-color: rgba(255, 255, 255, 0.4); cursor: pointer; border-radius: 5px; }
+        #progress-filled { height: 100%; width: 0; background-color: #9f50ff; border-radius: 5px; }
+        #time-display { font-size: 14px; font-weight: bold; text-shadow: 1px 1px 2px black; }
+        .control-button { background: transparent; border: none; color: white; font-size: 16px; font-weight: bold; padding: 5px; cursor: pointer; text-shadow: 1px 1px 2px black; }
     </style>
 </head>
 <body>
@@ -92,10 +31,9 @@
     </div>
 
     <script>
-        // --- REFERENCIAS ---
+        // --- REFERENCIAS (Todas las que necesitamos) ---
         const videoContainer = document.getElementById('video-container');
         const videoElement = document.getElementById('video');
-        const controls = document.getElementById('custom-controls');
         const ccButton = document.getElementById('custom-cc-button');
         const fullscreenButton = document.getElementById('custom-fullscreen-button');
         const progressBar = document.getElementById('progress-bar');
@@ -110,21 +48,25 @@
         videoElement.addEventListener('play', () => videoContainer.classList.remove('paused'));
         videoElement.addEventListener('pause', () => videoContainer.classList.add('paused'));
 
-        // --- LÓGICA CC (COMPLETA Y FUNCIONAL) ---
+        // ===============================================================
+        //           LÓGICA DEL BOTÓN CC (COMPLETA Y RESTAURADA)
+        // ===============================================================
         let octopusInstance = null;
         ccButton.addEventListener('click', function() {
             if (octopusInstance) {
                 octopusInstance.dispose();
                 octopusInstance = null;
-                ccButton.style.color = 'white'; // Restaurar color
+                ccButton.style.color = 'white';
             } else {
                 const options = { video: videoElement, subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' };
                 octopusInstance = new SubtitlesOctopus(options);
-                ccButton.style.color = '#9f50ff'; // Indicar que está activo
+                ccButton.style.color = '#9f50ff';
             }
         });
 
-        // --- LÓGICA FULLSCREEN (COMPLETA Y FUNCIONAL) ---
+        // ===============================================================
+        //          LÓGICA DEL BOTÓN FULLSCREEN (COMPLETA Y RESTAURADA)
+        // ===============================================================
         fullscreenButton.addEventListener('click', function() {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
@@ -132,9 +74,13 @@
                 document.exitFullscreen();
             }
         });
-        document.addEventListener('fullscreenchange', () => octopusInstance && setTimeout(() => octopusInstance.resize(), 100));
+        document.addEventListener('fullscreenchange', () => {
+            if (octopusInstance) {
+                setTimeout(() => octopusInstance.resize(), 150); // Ligero aumento del delay por si acaso
+            }
+        });
 
-        // --- LÓGICA LÍNEA DE CARGA Y TIEMPOS (COMPLETA Y FUNCIONAL) ---
+        // --- LÓGICA LÍNEA DE CARGA Y TIEMPOS (Sin cambios, ya era correcta) ---
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
@@ -148,7 +94,6 @@
         progressBar.addEventListener('click', (e) => {
             videoElement.currentTime = (e.offsetX / progressBar.offsetWidth) * videoElement.duration;
         });
-
     </script>
 </body>
 </html>
