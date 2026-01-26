@@ -2,33 +2,84 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor Súper Simple con SubtitlesOctopus</title>
+    <title>Reproductor con CC Personalizado</title>
     <!-- Solo necesitamos la librería SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
+    <style>
+        /* Contenedor para posicionar el botón sobre el video */
+        #video-container {
+            position: relative;
+            width: 800px; /* Ancho del video */
+        }
+        /* Nuestro botón CC personalizado */
+        #custom-cc-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 100; /* Para que esté por encima del video */
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: rgba(40, 40, 40, 0.7);
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #custom-cc-button:hover {
+            background-color: rgba(80, 80, 80, 0.9);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Un reproductor de video HTML5 estándar y corriente -->
-    <video id="video" width="800" height="480" controls autoplay></video>
+    <!-- 1. Un contenedor para el video y nuestro botón -->
+    <div id="video-container">
+        <!-- El reproductor de video estándar -->
+        <video id="video" width="800" height="480" controls autoplay></video>
+        
+        <!-- 2. Nuestro botón interruptor CC -->
+        <button id="custom-cc-button">Activar Subtítulos</button>
+    </div>
 
     <script>
-        // Apuntamos a nuestro video
-        var videoElement = document.getElementById('video');
+        // --- Referencias a nuestros elementos ---
+        const videoElement = document.getElementById('video');
+        const ccButton = document.getElementById('custom-cc-button');
         
-        // Le ponemos la fuente del video que nos diste
+        // Le ponemos la fuente del video
         videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // --- ¡ESTE ES EXACTAMENTE EL BLOQUE DE CÓDIGO QUE QUERÍAS! ---
-        // Le damos las instrucciones al especialista
-        var options = {
-            video: videoElement,                                    // 1. El video donde se mostrará
-            subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // 2. El archivo de subtítulos
-            fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // 3. Las fuentes que usará
-            workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // 4. El "ayudante" para que no se congele
-        };
+        // --- La "Memoria" de nuestro botón ---
+        // Guardará la instancia de los subtítulos cuando estén activos. Si es 'null', están apagados.
+        let octopusInstance = null;
 
-        // Y aquí simplemente "contratamos" al especialista. Él hace el resto.
-        var instance = new SubtitlesOctopus(options);
+        // 3. --- La Lógica de Nuestro Botón (La Magia) ---
+        ccButton.addEventListener('click', function() {
+            
+            // Si la memoria NO está vacía (los subtítulos están encendidos)
+            if (octopusInstance) {
+                console.log('Apagando subtítulos...');
+                octopusInstance.dispose(); // "Despedimos" al especialista y limpiamos todo
+                octopusInstance = null;   // Vaciamos la memoria
+                ccButton.textContent = 'Activar Subtítulos'; // Actualizamos el texto del botón
+            
+            // Si la memoria está vacía (los subtítulos están apagados)
+            } else {
+                console.log('Encendiendo subtítulos...');
+                // Preparamos las instrucciones
+                const options = {
+                    video: videoElement,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                };
+
+                // "Contratamos" al especialista y guardamos su instancia en nuestra memoria
+                octopusInstance = new SubtitlesOctopus(options);
+                ccButton.textContent = 'Desactivar Subtítulos'; // Actualizamos el texto del botón
+            }
+        });
 
     </script>
 </body>
