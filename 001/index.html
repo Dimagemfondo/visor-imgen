@@ -644,7 +644,8 @@
             </div>
 
             <!-- SECCIÓN TEMPORADAS (Solo Overlord) -->
-            <div id="detail-seasons-view" style="display: none; margin-top: 30px;">
+            <div id="detail-seasons-view" style="display: none;">
+                <div class="section-title" style="padding-left: 0; margin-bottom: 15px;">Temporada</div>
                 <div class="horizontal-list" id="detail-seasons-list" style="margin-left: -20px; width: calc(100% + 40px); padding-left: 5px;"></div>
             </div>
         </div>
@@ -723,8 +724,7 @@ const publicLibrary = [
         sinopsis: "¡Youki murió en un accidente de tráfico y renació en un mundo fantástico! Sin embargo, en lugar de convertirse en el héroe de las leyendas, acabó reencarnándose en un demonio todopoderoso. Como no tenía ningún deseo de convertirse en el Señor de los Demonios, se quedó en el castillo del Señor de los Demonios como un guardián de bajo rango cualquiera. Un día, el grupo del héroe viene a atacar y, por capricho, él derrota a todo el grupo. Después de curar al grupo del héroe y prepararse para enviarlos de vuelta a la ciudad, se fija en la sacerdotisa y se enamora a primera vista.",
         episodios: [
             { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/171?hash=25a504" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/170?hash=8de539" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Seihou%20Shouka%20Saint%20Lime%20-%201%20in%204k%2C%201080p%2C%20UHD%2C%20HD%20for%20Free%20-%20hstream.moe.mp4?cnt=0", subtitulo: "https://raw.githubusercontent.com/Dimagemfondo/visor-imgen/main/001/subtitulos/Seihou%20Shouka%20Saint%20Lime%20-%201.eng.ass" }
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/170?hash=8de539" }
         ]
     },
     {
@@ -1350,36 +1350,22 @@ let library = publicLibrary;
         }
     }
 
+    // [CORREGIDO] Lógica de autoplay actualizada.
     function playEpisode(index, isAutoChained = false) {
         if (!currentAnime || !currentAnime.episodios[index]) return;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
 
-        // Primero, revisamos si la app de Android nos está "escuchando".
-        if (typeof Android !== 'undefined' && Android.playVideo) {
-            // Si es así, le pasamos las URLs al código nativo de Java.
-            const videoLink = episode.link;
-            const subtitleLink = episode.subtitulo || null; // Si no hay subtitulo, pasamos null
+        heroImg.style.display = "none";
+        mainVideo.style.display = "block";
+        mainVideo.src = episode.link;
 
-            if (subtitleLink) {
-                Android.playVideo(videoLink, subtitleLink);
-            } else {
-                Android.playVideo(videoLink);
-            }
-            
-        } else {
-            // Si no estamos en la app, usamos la lógica que ya tenías.
-            console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
-            heroImg.style.display = "none";
-            mainVideo.style.display = "block";
-            mainVideo.src = episode.link;
-
-            if (isAutoChained || hasPlayedAnyVideo) {
-                mainVideo.play();
-            }
+        // Reproduce automáticamente si es el siguiente video en la cadena
+        // O si el usuario ya ha iniciado la reproducción manualmente antes.
+        if (isAutoChained || hasPlayedAnyVideo) {
+            mainVideo.play();
         }
 
-        // El resto de tu función original se mantiene intacto.
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
