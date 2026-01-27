@@ -2,195 +2,298 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproductor Google Clone con Subtítulos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reproductor Estilo Google</title>
     
-    <!-- Tu librería de subtítulos -->
+    <!-- Librería de subtítulos -->
     <script src="./assets/js/subtitles-octopus.js"></script>
 
     <style>
-        /* ESTILOS (El diseño oscuro tipo Google) */
-        body { background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #video-container { position: relative; width: 800px; max-width: 100%; background-color: black; font-family: sans-serif; overflow: hidden; }
-        #video { width: 100%; display: block; }
+        /* RESET BÁSICO */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: Roboto, Arial, sans-serif; }
 
-        /* Capa transparente de controles */
-        .controls-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.25s ease-out; pointer-events: none; }
-        #video-container.paused .controls-overlay, #video-container.active .controls-overlay { opacity: 1; pointer-events: all; }
-        
-        /* Botón Play central */
-        #center-play-pause { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; border: none; cursor: pointer; display: none; justify-content: center; align-items: center; }
-        #video-container.paused #center-play-pause { display: flex; }
-        #center-play-pause svg { fill: white; width: 30px; height: 30px; }
+        /* CONTENEDOR DEL VIDEO */
+        #video-container {
+            position: relative;
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: 1000px; /* Pero no te pases en PC */
+            aspect-ratio: 16/9; /* Mantiene la forma rectangular de video */
+            background-color: #000;
+            overflow: hidden;
+        }
 
-        /* Barra inferior */
-        #bottom-controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; display: flex; align-items: center; gap: 10px; color: white; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-        
-        /* Progreso */
-        #progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0 10px; }
-        #progress-bar { width: 100%; height: 3px; background-color: rgba(255, 255, 255, 0.3); position: relative; }
-        #progress-filled { height: 100%; width: 0; background-color: #f00; /* Rojo tipo YouTube/Google */ }
-        #progress-handle { position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); width: 12px; height: 12px; background-color: #f00; border-radius: 50%; display: none; }
-        #progress-container:hover #progress-handle { display: block; } /* Solo aparece al pasar el ratón */
+        #video { width: 100%; height: 100%; display: block; object-fit: contain; }
 
-        /* Botones y Texto */
-        #time-display { font-size: 12px; min-width: 80px; }
-        .control-button { background: transparent; border: none; color: white; font-size: 14px; font-weight: bold; cursor: pointer; padding: 5px; display: flex; align-items: center; }
-        .control-button svg { width: 24px; height: 24px; fill: white; }
+        /* CAPA DE CONTROLES (OVERLAY) */
+        .controls-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); /* Un poco de oscuridad general */
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none; /* Dejar pasar clics al video si no tocas un botón */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Mostrar controles cuando esté activo o pausado */
+        #video-container.active .controls-overlay,
+        #video-container.paused .controls-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* BOTÓN PLAY GIGANTE CENTRAL */
+        .center-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px; height: 64px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: none; /* Se oculta si está reproduciendo */
+            justify-content: center; align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+        #video-container.paused .center-play { display: flex; }
+        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; /* Ajuste visual */ }
+
+        /* BARRA INFERIOR (GRADIENTE) */
+        .bottom-bar {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: auto; /* Empuja la barra al fondo */
+        }
+
+        /* PLAY PEQUEÑO (IZQUIERDA) */
+        .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
+        .mini-play svg { width: 24px; height: 24px; fill: white; }
+
+        /* TIEMPOS */
+        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
+
+        /* BARRA DE PROGRESO (SCRUBBER) */
+        .progress-container {
+            flex-grow: 1; /* Ocupa todo el espacio libre */
+            height: 20px; /* Área táctil más grande */
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .progress-bg {
+            width: 100%; height: 3px;
+            background: rgba(255,255,255,0.3);
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%; width: 0%;
+            background: #f00; /* Rojo YouTube/Google */
+            position: absolute; top: 0; left: 0;
+        }
+        .progress-handle {
+            width: 12px; height: 12px;
+            background: #f00;
+            border-radius: 50%;
+            position: absolute; top: 50%; left: 0%;
+            transform: translate(-50%, -50%);
+            display: none; /* Se oculta si no interactúas */
+        }
+        .progress-container:hover .progress-handle,
+        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+
+        /* BOTONES DERECHA (CC y FULLSCREEN) */
+        .right-buttons { display: flex; gap: 10px; align-items: center; }
+        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+        .icon-btn:hover { opacity: 1; }
+        .icon-btn svg { width: 24px; height: 24px; fill: white; }
+
+        /* ESTADO ACTIVO DEL CC */
+        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
         
-        /* Estilo para botón CC activo */
-        #custom-cc-button.active { color: #f00; border-bottom: 2px solid #f00; }
     </style>
 </head>
 <body>
 
-    <div id="video-container">
-        <!-- TU VIDEO AQUÍ -->
+    <div id="video-container" class="paused">
         <video id="video" playsinline poster="">
-             <!-- ¡AQUÍ ESTÁ TU LINK DE VIDEO! -->
-             <source src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" type="video/mp4">
+            <source src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" type="video/mp4">
         </video>
-        
-        <!-- Capa de controles (Botones) -->
+
+        <!-- CAPA DE CONTROLES -->
         <div class="controls-overlay">
-            <!-- Botón Play Central -->
-            <button id="center-play-pause"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
             
+            <!-- Botón Central -->
+            <button class="center-play" id="btn-center-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+
             <!-- Barra Inferior -->
-            <div id="bottom-controls">
-                <!-- Botón Play Pequeño -->
-                <button id="small-play-pause" class="control-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bottom-bar">
                 
+                <!-- Play Pequeño -->
+                <button class="mini-play" id="btn-mini-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+
                 <!-- Tiempos -->
-                <div id="time-display"><span id="time-current">0:00</span> / <span id="time-duration">0:00</span></div>
-                
-                <!-- Barra de Progreso -->
-                <div id="progress-container">
-                    <div id="progress-bar">
-                        <div id="progress-filled"></div>
-                        <div id="progress-handle"></div>
+                <div class="time-display">
+                    <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
+                </div>
+
+                <!-- Barra Progreso -->
+                <div class="progress-container" id="progress-area">
+                    <div class="progress-bg">
+                        <div class="progress-fill" id="progress-bar"></div>
+                        <div class="progress-handle" id="progress-knob"></div>
                     </div>
                 </div>
-                
-                <!-- Botón CC -->
-                <button id="custom-cc-button" class="control-button">CC</button>
-                
-                <!-- Botón Fullscreen -->
-                <button id="custom-fullscreen-button" class="control-button">
-                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg>
-                </button>
+
+                <!-- Botones Derecha -->
+                <div class="right-buttons">
+                    <!-- BOTÓN CC (ICONO) -->
+                    <button class="icon-btn" id="btn-cc" title="Subtítulos">
+                        <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
+                    </button>
+
+                    <!-- BOTÓN FULLSCREEN -->
+                    <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
+                        <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- REFERENCIAS ---
+        // --- VARIABLES ---
         const container = document.getElementById('video-container');
         const video = document.getElementById('video');
-        const centerBtn = document.getElementById('center-play-pause');
-        const smallPlayBtn = document.getElementById('small-play-pause');
-        const ccBtn = document.getElementById('custom-cc-button');
-        const fsBtn = document.getElementById('custom-fullscreen-button');
-        const progressContainer = document.getElementById('progress-container');
-        const progressHandle = document.getElementById('progress-handle');
-        const progressFilled = document.getElementById('progress-filled');
-        const timeCurrent = document.getElementById('time-current');
-        const timeDuration = document.getElementById('time-duration');
+        const btnCenter = document.getElementById('btn-center-play');
+        const btnMini = document.getElementById('btn-mini-play');
+        const btnCC = document.getElementById('btn-cc');
+        const btnFS = document.getElementById('btn-fs');
+        const progressArea = document.getElementById('progress-area');
+        const progressBar = document.getElementById('progress-bar');
+        const progressKnob = document.getElementById('progress-knob');
+        const currTimeText = document.getElementById('curr-time');
+        const durTimeText = document.getElementById('dur-time');
 
-        // --- 1. LÓGICA DE VISIBILIDAD DE CONTROLES ---
-        let controlsTimeout;
-        const showControls = () => {
+        // --- 1. MOSTRAR/OCULTAR CONTROLES (UX MÓVIL) ---
+        let timer;
+        const activateControls = () => {
             container.classList.add('active');
-            clearTimeout(controlsTimeout);
-            // Se ocultan solos después de 3 segundos
-            controlsTimeout = setTimeout(() => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
                 if (!video.paused) container.classList.remove('active');
             }, 3000);
-        };
-        container.addEventListener('mousemove', showControls);
-        container.addEventListener('click', showControls);
-        container.addEventListener('touchstart', showControls); // Para móvil
+        }
+        container.addEventListener('mousemove', activateControls);
+        container.addEventListener('touchstart', activateControls);
+        container.addEventListener('click', activateControls);
 
-        // --- 2. LÓGICA DE PLAY/PAUSA ---
-        const togglePlay = () => {
+        // --- 2. PLAY / PAUSA ---
+        const togglePlay = (e) => {
+            if (e) e.stopPropagation(); // Evitar que el clic cierre controles
             if (video.paused) {
                 video.play();
-                smallPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                // Icono Pausa
+                btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                container.classList.remove('paused');
             } else {
                 video.pause();
-                smallPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+                // Icono Play
+                btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+                container.classList.add('paused');
             }
-        };
-        centerBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
-        smallPlayBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
-        video.addEventListener('play', () => container.classList.remove('paused'));
-        video.addEventListener('pause', () => container.classList.add('paused'));
-
-        // --- 3. LÓGICA DE SUBTÍTULOS (TUS LINKS ESTÁN AQUÍ) ---
-        let octopusInstance = null;
-        ccBtn.addEventListener('click', (e) => {
+        }
+        btnCenter.addEventListener('click', togglePlay);
+        btnMini.addEventListener('click', togglePlay);
+        // Clic en el video para pausar (solo si no tocas controles)
+        video.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (octopusInstance) {
-                // Apagar
-                octopusInstance.dispose();
-                octopusInstance = null;
-                ccBtn.classList.remove('active');
-            } else {
-                // Encender (TUS LINKS)
-                var options = {
-                    video: video,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // TU ARCHIVO DE SUBTÍTULOS
-                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // TU FUENTE
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // TU WORKER
-                };
-                octopusInstance = new SubtitlesOctopus(options);
-                ccBtn.classList.add('active');
-            }
+            togglePlay();
         });
 
-        // --- 4. LÓGICA DE PANTALLA COMPLETA (TUS BOTONES NO DESAPARECERÁN) ---
-        fsBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (!document.fullscreenElement) {
-                container.requestFullscreen(); // Ponemos TODO el contenedor en fullscreen
-            } else {
-                document.exitFullscreen();
-            }
-        });
-        // Ajustar subtítulos al cambiar tamaño
-        document.addEventListener('fullscreenchange', () => {
-            if (octopusInstance) setTimeout(() => octopusInstance.resize(), 100);
-        });
-
-        // --- 5. LÓGICA DE TIEMPO Y BARRA ---
-        const formatTime = (s) => {
-            const m = Math.floor(s / 60);
-            const sec = Math.floor(s % 60);
-            return `${m}:${sec < 10 ? '0' : ''}${sec}`;
+        // --- 3. BARRA DE PROGRESO Y TIEMPO ---
+        const formatTime = s => {
+            const m = Math.floor(s/60);
+            const sc = Math.floor(s%60);
+            return `${m}:${sc<10?'0':''}${sc}`;
         };
-        video.addEventListener('loadedmetadata', () => timeDuration.textContent = formatTime(video.duration));
+        
+        video.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(video.duration));
+        
         video.addEventListener('timeupdate', () => {
             const pct = (video.currentTime / video.duration) * 100;
-            progressFilled.style.width = `${pct}%`;
-            progressHandle.style.left = `${pct}%`;
-            timeCurrent.textContent = formatTime(video.currentTime);
+            progressBar.style.width = `${pct}%`;
+            progressKnob.style.left = `${pct}%`;
+            currTimeText.textContent = formatTime(video.currentTime);
+        });
+
+        const scrub = (e) => {
+            const rect = progressArea.getBoundingClientRect();
+            // Soporte para Touch y Mouse
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
+            let pos = (clientX - rect.left) / rect.width;
+            pos = Math.max(0, Math.min(1, pos)); // Limitar entre 0 y 1
+            video.currentTime = pos * video.duration;
+        }
+        
+        let isDragging = false;
+        progressArea.addEventListener('mousedown', (e) => { isDragging = true; scrub(e); });
+        progressArea.addEventListener('touchstart', (e) => { isDragging = true; scrub(e); });
+        
+        document.addEventListener('mousemove', (e) => { if (isDragging) scrub(e); });
+        document.addEventListener('touchmove', (e) => { if (isDragging) scrub(e); });
+        
+        document.addEventListener('mouseup', () => isDragging = false);
+        document.addEventListener('touchend', () => isDragging = false);
+
+        // --- 4. SUBTÍTULOS (CC) ---
+        let octopus = null;
+        btnCC.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (octopus) {
+                // Apagar
+                octopus.dispose();
+                octopus = null;
+                btnCC.classList.remove('cc-active');
+            } else {
+                // Encender
+                const options = {
+                    video: video,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', 
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], 
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' 
+                };
+                octopus = new SubtitlesOctopus(options);
+                btnCC.classList.add('cc-active');
+            }
+        });
+
+        // --- 5. FULLSCREEN (ARREGLADO) ---
+        btnFS.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) container.requestFullscreen();
+                else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen(); // Safari
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+            }
         });
         
-        // Arrastrar barra (Scrubbing)
-        const scrub = (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            // Soporte para toque en móvil o clic de ratón
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
-            const pos = (clientX - rect.left) / rect.width;
-            video.currentTime = pos * video.duration;
-        };
-        let mousedown = false;
-        progressContainer.addEventListener('mousedown', (e) => { mousedown = true; scrub(e); });
-        progressContainer.addEventListener('touchstart', (e) => { mousedown = true; scrub(e); }); // Móvil
-        document.addEventListener('mousemove', (e) => { if (mousedown) scrub(e); });
-        document.addEventListener('touchmove', (e) => { if (mousedown) scrub(e); }); // Móvil
-        document.addEventListener('mouseup', () => mousedown = false);
-        document.addEventListener('touchend', () => mousedown = false); // Móvil
+        // Redimensionar subtítulos al rotar o cambiar tamaño
+        window.addEventListener('resize', () => {
+            if (octopus) octopus.resize();
+        });
 
     </script>
 </body>
