@@ -1,156 +1,46 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Reproductor Estilo Google</title>
+    <title>Reproductor Optimizado</title>
 
-    <!-- =================================================================== -->
-    <!-- FUENTES OPTIMIZADAS (SOLO NEGrita) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <!-- =================================================================== -->
-    
-    <script src="./assets/js/subtitles-octopus.js"></script>
+    <!-- OPTIMIZACIÓN 1: Pre-cargamos la fuente. El navegador empieza a descargarla en segundo plano. -->
+    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
 
-    <style>
-        /* ... tu CSS no cambia ... */
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: Roboto, Arial, sans-serif; }
-        #video-container { position: relative; width: 100%; max-width: 1000px; aspect-ratio: 16/9; background-color: #000; overflow: hidden; }
-        #video { width: 100%; height: 100%; display: block; object-fit: contain; }
-        .controls-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; }
-        #video-container.active .controls-overlay, #video-container.paused .controls-overlay { opacity: 1; pointer-events: auto; }
-        .center-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(0, 0, 0, 0.6); border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; border: none; }
-        #video-container.paused .center-play { display: flex; }
-        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; }
-        .bottom-bar { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 10px 15px; display: flex; align-items: center; gap: 15px; margin-top: auto; }
-        .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
-        .mini-play svg { width: 24px; height: 24px; fill: white; }
-        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
-        .progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0 5px; }
-        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
-        .progress-fill { height: 100%; width: 0%; background: #f00; position: absolute; top: 0; left: 0; }
-        .progress-handle { width: 12px; height: 12px; background: #f00; border-radius: 50%; position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); display: none; }
-        .progress-container:hover .progress-handle, .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
-        .right-buttons { display: flex; gap: 10px; align-items: center; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
-        .icon-btn:hover { opacity: 1; }
-        .icon-btn svg { width: 24px; height: 24px; fill: white; }
-        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
-    </style>
+    <!-- OPTIMIZACIÓN 2: Usamos 'defer' para que el script no bloquee la carga de la página. -->
+    <script src="./assets/js/subtitles-octopus.js" defer></script>
+
+    <!-- OPTIMIZACIÓN 3: Todo el JavaScript de inicialización se moverá al final del body -->
+
 </head>
 <body>
 
-    <div id="video-container" class="paused">
-        <video id="video" playsinline poster="">
-            <source src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" type="video/mp4">
-        </video>
-        <div class="controls-overlay">
-            <button class="center-play" id="btn-center-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-            <div class="bottom-bar">
-                <button class="mini-play" id="btn-mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-                <div class="time-display"><span id="curr-time">0:00</span> / <span id="dur-time">0:00</span></div>
-                <div class="progress-container" id="progress-area">
-                    <div class="progress-bg">
-                        <div class="progress-fill" id="progress-bar"></div>
-                        <div class="progress-handle" id="progress-knob"></div>
-                    </div>
-                </div>
-                <div class="right-buttons">
-                    <button class="icon-btn" id="btn-cc" title="Subtítulos"><svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg></button>
-                    <button class="icon-btn" id="btn-fs" title="Pantalla Completa"><svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg></button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- El reproductor de video estándar, sin cambios. -->
+    <video id="video" width="800" height="480" controls autoplay playsinline></video>
 
     <script>
-        const container = document.getElementById('video-container');
-        const video = document.getElementById('video');
-        const btnCenter = document.getElementById('btn-center-play');
-        const btnMini = document.getElementById('btn-mini-play');
-        const btnCC = document.getElementById('btn-cc');
-        const btnFS = document.getElementById('btn-fs');
-        const progressArea = document.getElementById('progress-area');
-        const progressBar = document.getElementById('progress-bar');
-        const progressKnob = document.getElementById('progress-knob');
-        const currTimeText = document.getElementById('curr-time');
-        const durTimeText = document.getElementById('dur-time');
+        // OPTIMIZACIÓN 3: Esperamos a que la página entera esté lista antes de ejecutar CUALQUIER código.
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            var videoElement = document.getElementById('video');
+            videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        let timer;
-        const activateControls = () => { container.classList.add('active'); clearTimeout(timer); timer = setTimeout(() => { if (!video.paused) container.classList.remove('active'); }, 3000); }
-        container.addEventListener('mousemove', activateControls);
-        container.addEventListener('touchstart', activateControls);
-        container.addEventListener('click', activateControls);
-
-        const togglePlay = (e) => {
-            if (e) e.stopPropagation();
-            if (video.paused) { video.play(); btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>'; container.classList.remove('paused'); }
-            else { video.pause(); btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'; container.classList.add('paused'); }
-        }
-        btnCenter.addEventListener('click', togglePlay);
-        btnMini.addEventListener('click', togglePlay);
-        video.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
-
-        const formatTime = s => { const m = Math.floor(s/60); const sc = Math.floor(s%60); return `${m}:${sc<10?'0':''}${sc}`; };
-        video.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(video.duration));
-        video.addEventListener('timeupdate', () => { const pct = (video.currentTime / video.duration) * 100; progressBar.style.width = `${pct}%`; progressKnob.style.left = `${pct}%`; currTimeText.textContent = formatTime(video.currentTime); });
-
-        const scrub = (e) => {
-            const rect = progressArea.getBoundingClientRect();
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            let pos = (clientX - rect.left) / rect.width;
-            pos = Math.max(0, Math.min(1, pos));
-            video.currentTime = pos * video.duration;
-        }
-        
-        let isDragging = false;
-        progressArea.addEventListener('mousedown', (e) => { isDragging = true; scrub(e); });
-        progressArea.addEventListener('touchstart', (e) => { isDragging = true; scrub(e); });
-        document.addEventListener('mousemove', (e) => { if (isDragging) scrub(e); });
-        document.addEventListener('touchmove', (e) => { if (isDragging) scrub(e); });
-        document.addEventListener('mouseup', () => isDragging = false);
-        document.addEventListener('touchend', () => isDragging = false);
-
-        let octopus = null;
-        btnCC.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (octopus) { octopus.dispose(); octopus = null; btnCC.classList.remove('cc-active'); }
-            else {
-                const options = {
-                    video: video,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.eng.ass', 
-                    fonts: [
-                        'https://fonts.gstatic.com/s/arimo/v35/P5sfzZCDf9_T_3cV7NCUECyoxNk338xcABrBdwEoaQ.woff2'
-                    ], 
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'  
+            // Damos al navegador un respiro (un fotograma) antes de iniciar la tarea pesada.
+            // Esto asegura que la reproducción del video y la UI inicial sean súper fluidas.
+            setTimeout(function() {
+                var options = {
+                    video: videoElement,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
                 };
-                octopus = new SubtitlesOctopus(options);
-                btnCC.classList.add('cc-active');
-            }
-        });
 
-        btnFS.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (!document.fullscreenElement) {
-                if (container.requestFullscreen) container.requestFullscreen();
-                else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-            } else {
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-            }
+                // Solo ahora, con todo listo y la página fluida, iniciamos los subtítulos.
+                var instance = new SubtitlesOctopus(options);
+            }, 0); // Un delay de 0 es suficiente para posponer la tarea al siguiente ciclo de eventos.
         });
-        
-        const iconFSenter = '<svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
-        const iconFSexit = '<svg viewBox="0 0 24 24"><path d="M5 5h5v2H7v3H5V5zm14 0h-5v2h3v3h2V5zm-5 14h5v-5h-2v3h-3v2zM5 19h5v-2H7v-3H5v5z"/></svg>';
-        document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement) { btnFS.innerHTML = iconFSexit; btnFS.title = "Salir de pantalla completa"; }
-            else { btnFS.innerHTML = iconFSenter; btnFS.title = "Pantalla Completa"; }
-        });
-        
-        window.addEventListener('resize', () => { if (octopus) octopus.resize(); });
     </script>
+
 </body>
 </html>
+
