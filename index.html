@@ -2,44 +2,91 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor Optimizado</title>
-
-    <!-- OPTIMIZACIÓN 1: Pre-cargamos la fuente. El navegador empieza a descargarla en segundo plano. -->
-    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
-
-    <!-- OPTIMIZACIÓN 2: Usamos 'defer' para que el script no bloquee la carga de la página. -->
-    <script src="./assets/js/subtitles-octopus.js" defer></script>
-
-    <!-- OPTIMIZACIÓN 3: Todo el JavaScript de inicialización se moverá al final del body -->
-
+    <title>Reproductor Nativo con Botón CC</title>
+    <!-- Solo necesitamos la librería de subtítulos -->
+    <script src="./assets/js/subtitles-octopus.js"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* El contenedor es clave para posicionar nuestro botón */
+        #video-container {
+            position: relative;
+        }
+        /* Nuestro botón CC, flotando encima */
+        #custom-cc-button {
+            position: absolute;
+            bottom: 55px; /* Lo subimos un poco para que no choque con los controles nativos */
+            right: 15px;
+            z-index: 100; /* Asegura que esté por encima de todo */
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: rgba(40, 40, 40, 0.7);
+            color: white; /* Color por defecto (apagado) */
+            border: 1px solid white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        #custom-cc-button:hover {
+            background-color: rgba(80, 80, 80, 0.9);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- El reproductor de video estándar, sin cambios. -->
-    <video id="video" width="800" height="480" controls autoplay playsinline></video>
+    <!-- 1. Contenedor para el video y nuestro botón -->
+    <div id="video-container">
+        
+        <!-- El reproductor del navegador, con todos sus controles por defecto -->
+        <video id="video" width="800" height="480" controls autoplay playsinline></video>
+
+        <!-- 2. Nuestro botón CC, el único elemento que añadimos -->
+        <button id="custom-cc-button">CC</button>
+
+    </div>
 
     <script>
-        // OPTIMIZACIÓN 3: Esperamos a que la página entera esté lista antes de ejecutar CUALQUIER código.
-        document.addEventListener('DOMContentLoaded', function() {
+        // --- Referencias ---
+        const videoElement = document.getElementById('video');
+        const ccButton = document.getElementById('custom-cc-button');
+        
+        videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
+
+        // "Memoria" para saber si los subtítulos están encendidos o apagados
+        let octopusInstance = null;
+
+        // 3. --- La Lógica de Nuestro Botón ---
+        ccButton.addEventListener('click', function() {
             
-            var videoElement = document.getElementById('video');
-            videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
-
-            // Damos al navegador un respiro (un fotograma) antes de iniciar la tarea pesada.
-            // Esto asegura que la reproducción del video y la UI inicial sean súper fluidas.
-            setTimeout(function() {
-                var options = {
-                    video: videoElement,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
-                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
-                };
-
-                // Solo ahora, con todo listo y la página fluida, iniciamos los subtítulos.
-                var instance = new SubtitlesOctopus(options);
-            }, 0); // Un delay de 0 es suficiente para posponer la tarea al siguiente ciclo de eventos.
+            // Si ya hay subtítulos funcionando (están encendidos)...
+            if (octopusInstance) {
+                // ...los destruimos.
+                octopusInstance.dispose();
+                octopusInstance = null;
+                ccButton.style.color = 'white'; // Volvemos al color de "apagado"
+            
+            // Si no hay subtítulos (están apagados)...
+            } else {
+                // Ponemos la tarea pesada en un setTimeout para no congelar la UI
+                setTimeout(function() {
+                    // ...los creamos.
+                    const options = {
+                        video: videoElement,
+                        subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
+                        fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
+                        workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                    };
+                    octopusInstance = new SubtitlesOctopus(options);
+                    ccButton.style.color = '#9f50ff'; // Cambiamos al color de "encendido" (morado)
+                }, 0);
+            }
         });
     </script>
-
 </body>
 </html>
