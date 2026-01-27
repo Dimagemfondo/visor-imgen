@@ -2,34 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Reproductor Súper Simple con SubtitlesOctopus</title>
-    <!-- Solo necesitamos la librería SubtitlesOctopus -->
-    <script src="./assets/js/subtitles-octopus.js"></script>
+    <title>Reproductor Optimizado</title>
+
+    <!-- OPTIMIZACIÓN 1: Pre-cargamos la fuente. El navegador empieza a descargarla en segundo plano. -->
+    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- OPTIMIZACIÓN 2: Usamos 'defer' para que el script no bloquee la carga de la página. -->
+    <script src="./assets/js/subtitles-octopus.js" defer></script>
+
+    <!-- OPTIMIZACIÓN 3: Todo el JavaScript de inicialización se moverá al final del body -->
+
 </head>
 <body>
 
-    <!-- Un reproductor de video HTML5 estándar y corriente -->
-    <video id="video" width="800" height="480" controls autoplay></video>
+    <!-- El reproductor de video estándar, sin cambios. -->
+    <video id="video" width="800" height="480" controls autoplay playsinline></video>
 
     <script>
-        // Apuntamos a nuestro video
-        var videoElement = document.getElementById('video');
-        
-        // Le ponemos la fuente del video que nos diste
-        videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
+        // OPTIMIZACIÓN 3: Esperamos a que la página entera esté lista antes de ejecutar CUALQUIER código.
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            var videoElement = document.getElementById('video');
+            videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // --- ¡ESTE ES EXACTAMENTE EL BLOQUE DE CÓDIGO QUE QUERÍAS! ---
-        // Le damos las instrucciones al especialista
-        var options = {
-            video: videoElement,                                    // 1. El video donde se mostrará
-            subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // 2. El archivo de subtítulos
-            fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // 3. Las fuentes que usará
-            workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // 4. El "ayudante" para que no se congele
-        };
+            // Damos al navegador un respiro (un fotograma) antes de iniciar la tarea pesada.
+            // Esto asegura que la reproducción del video y la UI inicial sean súper fluidas.
+            setTimeout(function() {
+                var options = {
+                    video: videoElement,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
+                };
 
-        // Y aquí simplemente "contratamos" al especialista. Él hace el resto.
-        var instance = new SubtitlesOctopus(options);
-
+                // Solo ahora, con todo listo y la página fluida, iniciamos los subtítulos.
+                var instance = new SubtitlesOctopus(options);
+            }, 0); // Un delay de 0 es suficiente para posponer la tarea al siguiente ciclo de eventos.
+        });
     </script>
+
 </body>
 </html>
