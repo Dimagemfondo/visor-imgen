@@ -5,7 +5,7 @@
     <title>Reproductor Optimizado</title>
 
     <!-- OPTIMIZACIÓN 1: Pre-cargamos la fuente. El navegador empieza a descargarla en segundo plano. -->
-    <link rel="preload" href="/visor-imgen/fonts/Lato-Italic.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/arimo/v35/P5sfzZCDf9_T_3cV7NCUECyoxNk37cxcABrBdwEoaQ.woff2" as="font" type="font/ttf" crossorigin>
 
     <!-- OPTIMIZACIÓN 2: Usamos 'defer' para que el script no bloquee la carga de la página. -->
     <script src="./assets/js/subtitles-octopus.js" defer></script>
@@ -30,7 +30,7 @@
             setTimeout(function() {
                 var options = {
                     video: videoElement,
-                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass',
+                    subUrl: '/visor-imgen/subtitles/Seihou Shouka Saint Lime - 1.eng.ass',
                     fonts: ['https://fonts.gstatic.com/s/arimo/v35/P5sfzZCDf9_T_3cV7NCUECyoxNk37cxcABrBdwEoaQ.woff2'],
                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'
                 };
