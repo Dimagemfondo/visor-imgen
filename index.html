@@ -3,76 +3,151 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Reproductor Vertical</title>
+    <title>Reproductor Estilo Google</title>
+    
+    <!-- Librería de subtítulos -->
     <script src="./assets/js/subtitles-octopus.js"></script>
 
     <style>
-        /* ESTILOS (Mismo diseño Google que te gustó) */
+        /* RESET BÁSICO */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: Roboto, Arial, sans-serif; }
 
+        /* CONTENEDOR DEL VIDEO */
         #video-container {
             position: relative;
-            width: 100%;
-            max-width: 1000px;
-            aspect-ratio: 16/9;
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: 1000px; /* Pero no te pases en PC */
+            aspect-ratio: 16/9; /* Mantiene la forma rectangular de video */
             background-color: #000;
             overflow: hidden;
         }
 
         #video { width: 100%; height: 100%; display: block; object-fit: contain; }
 
+        /* CAPA DE CONTROLES (OVERLAY) */
         .controls-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s; pointer-events: none;
-            display: flex; flex-direction: column; justify-content: space-between;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); /* Un poco de oscuridad general */
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none; /* Dejar pasar clics al video si no tocas un botón */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        #video-container.active .controls-overlay, #video-container.paused .controls-overlay { opacity: 1; pointer-events: auto; }
 
+        /* Mostrar controles cuando esté activo o pausado */
+        #video-container.active .controls-overlay,
+        #video-container.paused .controls-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* BOTÓN PLAY GIGANTE CENTRAL */
         .center-play {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 60px; height: 60px; background: rgba(0, 0, 0, 0.6); border-radius: 50%; border: none; cursor: pointer;
-            display: none; justify-content: center; align-items: center;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px; height: 64px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: none; /* Se oculta si está reproduciendo */
+            justify-content: center; align-items: center;
+            cursor: pointer;
+            border: none;
         }
         #video-container.paused .center-play { display: flex; }
-        .center-play svg { width: 30px; height: 30px; fill: white; margin-left: 3px; }
+        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; /* Ajuste visual */ }
 
+        /* BARRA INFERIOR (GRADIENTE) */
         .bottom-bar {
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 0 15px 10px 15px; display: flex; align-items: center; gap: 10px; margin-top: auto; height: 50px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: auto; /* Empuja la barra al fondo */
         }
 
+        /* PLAY PEQUEÑO (IZQUIERDA) */
+        .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
         .mini-play svg { width: 24px; height: 24px; fill: white; }
-        .mini-play { background: none; border: none; padding: 0; cursor: pointer; }
-        .time-display { color: #ddd; font-size: 12px; font-weight: 500; min-width: 75px; text-align: center; }
 
-        .progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0 5px; }
-        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
-        .progress-fill { height: 100%; width: 0%; background: #f00; position: absolute; top: 0; left: 0; }
-        .progress-handle { width: 12px; height: 12px; background: #f00; border-radius: 50%; position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%) scale(0); transition: transform 0.1s; }
-        .progress-container:hover .progress-handle { transform: translate(-50%, -50%) scale(1); }
+        /* TIEMPOS */
+        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
 
-        .right-buttons { display: flex; align-items: center; gap: 10px; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; opacity: 0.9; display: flex; }
+        /* BARRA DE PROGRESO (SCRUBBER) */
+        .progress-container {
+            flex-grow: 1; /* Ocupa todo el espacio libre */
+            height: 20px; /* Área táctil más grande */
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .progress-bg {
+            width: 100%; height: 3px;
+            background: rgba(255,255,255,0.3);
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%; width: 0%;
+            background: #f00; /* Rojo YouTube/Google */
+            position: absolute; top: 0; left: 0;
+        }
+        .progress-handle {
+            width: 12px; height: 12px;
+            background: #f00;
+            border-radius: 50%;
+            position: absolute; top: 50%; left: 0%;
+            transform: translate(-50%, -50%);
+            display: none; /* Se oculta si no interactúas */
+        }
+        .progress-container:hover .progress-handle,
+        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+
+        /* BOTONES DERECHA (CC y FULLSCREEN) */
+        .right-buttons { display: flex; gap: 10px; align-items: center; }
+        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+        .icon-btn:hover { opacity: 1; }
         .icon-btn svg { width: 24px; height: 24px; fill: white; }
-        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
 
+        /* ESTADO ACTIVO DEL CC */
+        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
+        
     </style>
 </head>
 <body>
 
     <div id="video-container" class="paused">
-        <video id="video" playsinline>
+        <video id="video" playsinline poster="">
             <source src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" type="video/mp4">
         </video>
 
+        <!-- CAPA DE CONTROLES -->
         <div class="controls-overlay">
-            <button class="center-play" id="btn-center-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            
+            <!-- Botón Central -->
+            <button class="center-play" id="btn-center-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
 
+            <!-- Barra Inferior -->
             <div class="bottom-bar">
-                <button class="mini-play" id="btn-mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-                <div class="time-display"><span id="curr-time">0:00</span> / <span id="dur-time">0:00</span></div>
                 
+                <!-- Play Pequeño -->
+                <button class="mini-play" id="btn-mini-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+
+                <!-- Tiempos -->
+                <div class="time-display">
+                    <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
+                </div>
+
+                <!-- Barra Progreso -->
                 <div class="progress-container" id="progress-area">
                     <div class="progress-bg">
                         <div class="progress-fill" id="progress-bar"></div>
@@ -80,16 +155,24 @@
                     </div>
                 </div>
 
+                <!-- Botones Derecha -->
                 <div class="right-buttons">
-                    <button class="icon-btn" id="btn-cc"><svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg></button>
-                    <button class="icon-btn" id="btn-fs"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg></button>
+                    <!-- BOTÓN CC (ICONO) -->
+                    <button class="icon-btn" id="btn-cc" title="Subtítulos">
+                        <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
+                    </button>
+
+                    <!-- BOTÓN FULLSCREEN -->
+                    <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
+                        <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Referencias
+        // --- VARIABLES ---
         const container = document.getElementById('video-container');
         const video = document.getElementById('video');
         const btnCenter = document.getElementById('btn-center-play');
@@ -102,97 +185,115 @@
         const currTimeText = document.getElementById('curr-time');
         const durTimeText = document.getElementById('dur-time');
 
-        // UX Controles
+        // --- 1. MOSTRAR/OCULTAR CONTROLES (UX MÓVIL) ---
         let timer;
         const activateControls = () => {
             container.classList.add('active');
             clearTimeout(timer);
-            timer = setTimeout(() => { if (!video.paused) container.classList.remove('active'); }, 3000);
+            timer = setTimeout(() => {
+                if (!video.paused) container.classList.remove('active');
+            }, 3000);
         }
         container.addEventListener('mousemove', activateControls);
         container.addEventListener('touchstart', activateControls);
         container.addEventListener('click', activateControls);
 
-        // Play/Pausa
+        // --- 2. PLAY / PAUSA ---
         const togglePlay = (e) => {
-            if (e) e.stopPropagation();
+            if (e) e.stopPropagation(); // Evitar que el clic cierre controles
             if (video.paused) {
                 video.play();
+                // Icono Pausa
                 btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
                 container.classList.remove('paused');
             } else {
                 video.pause();
+                // Icono Play
                 btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
                 container.classList.add('paused');
             }
         }
         btnCenter.addEventListener('click', togglePlay);
         btnMini.addEventListener('click', togglePlay);
-        video.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+        // Clic en el video para pausar (solo si no tocas controles)
+        video.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlay();
+        });
 
-        // Progreso
-        const formatTime = s => `${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}`;
+        // --- 3. BARRA DE PROGRESO Y TIEMPO ---
+        const formatTime = s => {
+            const m = Math.floor(s/60);
+            const sc = Math.floor(s%60);
+            return `${m}:${sc<10?'0':''}${sc}`;
+        };
+        
         video.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(video.duration));
+        
         video.addEventListener('timeupdate', () => {
             const pct = (video.currentTime / video.duration) * 100;
             progressBar.style.width = `${pct}%`;
             progressKnob.style.left = `${pct}%`;
             currTimeText.textContent = formatTime(video.currentTime);
         });
+
         const scrub = (e) => {
             const rect = progressArea.getBoundingClientRect();
+            // Soporte para Touch y Mouse
             const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
             let pos = (clientX - rect.left) / rect.width;
-            video.currentTime = Math.max(0, Math.min(1, pos)) * video.duration;
+            pos = Math.max(0, Math.min(1, pos)); // Limitar entre 0 y 1
+            video.currentTime = pos * video.duration;
         }
+        
         let isDragging = false;
         progressArea.addEventListener('mousedown', (e) => { isDragging = true; scrub(e); });
         progressArea.addEventListener('touchstart', (e) => { isDragging = true; scrub(e); });
+        
         document.addEventListener('mousemove', (e) => { if (isDragging) scrub(e); });
         document.addEventListener('touchmove', (e) => { if (isDragging) scrub(e); });
+        
         document.addEventListener('mouseup', () => isDragging = false);
         document.addEventListener('touchend', () => isDragging = false);
 
-        // Subtítulos
+        // --- 4. SUBTÍTULOS (CC) ---
         let octopus = null;
         btnCC.addEventListener('click', (e) => {
             e.stopPropagation();
             if (octopus) {
-                octopus.dispose(); octopus = null; btnCC.classList.remove('cc-active');
+                // Apagar
+                octopus.dispose();
+                octopus = null;
+                btnCC.classList.remove('cc-active');
             } else {
-                octopus = new SubtitlesOctopus({ video: video, subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' });
+                // Encender
+                const options = {
+                    video: video,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', 
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], 
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' 
+                };
+                octopus = new SubtitlesOctopus(options);
                 btnCC.classList.add('cc-active');
             }
         });
 
-        // =========================================================
-        //  AQUÍ ESTÁ EL CAMBIO PARA QUE SEA VERTICAL (|)
-        // =========================================================
-        btnFS.addEventListener('click', async (e) => {
+        // --- 5. FULLSCREEN (ARREGLADO) ---
+        btnFS.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!document.fullscreenElement) {
-                // 1. Entrar en pantalla completa
-                try {
-                    await container.requestFullscreen();
-                    
-                    // 2. FORZAR VERTICAL (PORTRAIT)
-                    if (screen.orientation && screen.orientation.lock) {
-                        await screen.orientation.lock('portrait');
-                    }
-                } catch (err) {
-                    console.log("Error al entrar en fullscreen o bloquear rotación:", err);
-                }
+                if (container.requestFullscreen) container.requestFullscreen();
+                else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen(); // Safari
             } else {
-                // Salir
                 if (document.exitFullscreen) document.exitFullscreen();
-                // Desbloquear rotación
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
-                }
+                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
             }
         });
-
-        document.addEventListener('fullscreenchange', () => octopus && setTimeout(() => octopus.resize(), 100));
+        
+        // Redimensionar subtítulos al rotar o cambiar tamaño
+        window.addEventListener('resize', () => {
+            if (octopus) octopus.resize();
+        });
 
     </script>
 </body>
