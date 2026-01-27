@@ -2,175 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clon de Reproductor Google + ASS</title>
+    <title>Reproductor Súper Simple con SubtitlesOctopus</title>
+    <!-- Solo necesitamos la librería SubtitlesOctopus -->
     <script src="./assets/js/subtitles-octopus.js"></script>
-    <style>
-        body { background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #video-container { position: relative; width: 800px; max-width: 100%; background-color: black; font-family: 'Roboto', Arial, sans-serif; overflow: hidden; }
-        #video { width: 100%; display: block; }
-
-        /* === CAPA DE CONTROLES SUPERPUESTA === */
-        .controls-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.2);
-            opacity: 0;
-            transition: opacity 0.25s ease-out;
-            pointer-events: none; /* No intercepta clics por defecto */
-        }
-        /* Mostrar overlay cuando esté pausado o activo */
-        #video-container.paused .controls-overlay,
-        #video-container.active .controls-overlay {
-            opacity: 1;
-            pointer-events: all; /* Permite clics cuando está visible */
-        }
-        
-        /* === BOTÓN PLAY/PAUSA CENTRAL === */
-        #center-play-pause {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px; height: 70px;
-            background-color: rgba(40, 40, 40, 0.8);
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: none; /* Oculto por defecto */
-        }
-        #video-container.paused #center-play-pause {
-            display: flex; /* Visible solo en pausa */
-            justify-content: center;
-            align-items: center;
-        }
-        #center-play-pause svg { fill: white; width: 36px; height: 36px; }
-
-        /* === BARRA DE CONTROLES INFERIOR === */
-        #bottom-controls {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-        }
-        
-        /* === LÍNEA DE CARGA (PROGRESO) === */
-        #progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; }
-        #progress-bar { width: 100%; height: 3px; background-color: rgba(255, 255, 255, 0.5); position: relative; }
-        #progress-filled { height: 100%; width: 0; background-color: white; }
-        #progress-handle { position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); width: 13px; height: 13px; background-color: white; border-radius: 50%; }
-
-        /* === TIEMPO Y BOTONES === */
-        #time-display { font-size: 13px; font-weight: 500; }
-        .control-button { background: transparent; border: none; color: white; font-size: 14px; font-weight: bold; cursor: pointer; padding: 5px; }
-        .control-button svg { width: 20px; height: 20px; fill: white; }
-    </style>
 </head>
 <body>
 
-    <div id="video-container">
-        <video id="video" playsinline></video>
-        
-        <!-- Capa de controles (donde viven los botones) -->
-        <div class="controls-overlay">
-            <button id="center-play-pause">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <div id="bottom-controls">
-                <div id="time-display"><span id="time-current">00:00</span> / <span id="time-duration">00:00</span></div>
-                <div id="progress-container">
-                    <div id="progress-bar">
-                        <div id="progress-filled"></div>
-                        <div id="progress-handle"></div>
-                    </div>
-                </div>
-                <button id="custom-cc-button" class="control-button">CC</button>
-                <button id="custom-fullscreen-button" class="control-button">
-                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- Un reproductor de video HTML5 estándar y corriente -->
+    <video id="video" width="800" height="480" controls autoplay></video>
 
     <script>
-        // --- REFERENCIAS ---
-        const container = document.getElementById('video-container');
-        const video = document.getElementById('video');
-        const overlay = container.querySelector('.controls-overlay');
-        const centerBtn = document.getElementById('center-play-pause');
-        const ccBtn = document.getElementById('custom-cc-button');
-        const fsBtn = document.getElementById('custom-fullscreen-button');
-        const progressContainer = document.getElementById('progress-container');
-        const progressHandle = document.getElementById('progress-handle');
-        const progressFilled = document.getElementById('progress-filled');
-        const timeCurrent = document.getElementById('time-current');
-        const timeDuration = document.getElementById('time-duration');
+        // Apuntamos a nuestro video
+        var videoElement = document.getElementById('video');
         
-        video.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
+        // Le ponemos la fuente del video que nos diste
+        videoElement.src = 'https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv';
 
-        // --- LÓGICA DE VISIBILIDAD DE CONTROLES ---
-        let controlsTimeout;
-        const showControls = () => {
-            container.classList.add('active');
-            clearTimeout(controlsTimeout);
-            controlsTimeout = setTimeout(() => container.classList.remove('active'), 3000);
+        // --- ¡ESTE ES EXACTAMENTE EL BLOQUE DE CÓDIGO QUE QUERÍAS! ---
+        // Le damos las instrucciones al especialista
+        var options = {
+            video: videoElement,                                    // 1. El video donde se mostrará
+            subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // 2. El archivo de subtítulos
+            fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // 3. Las fuentes que usará
+            workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // 4. El "ayudante" para que no se congele
         };
-        container.addEventListener('mousemove', showControls);
-        container.addEventListener('click', showControls);
 
-        // --- LÓGICA DE PLAY/PAUSA ---
-        const togglePlay = () => video.paused ? video.play() : video.pause();
-        centerBtn.addEventListener('click', togglePlay);
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) togglePlay(); });
-        video.addEventListener('play', () => container.classList.remove('paused'));
-        video.addEventListener('pause', () => container.classList.add('paused'));
-
-        // --- LÓGICA DE SUBTÍTULOS (CC) ---
-        let octopusInstance = null;
-        ccBtn.addEventListener('click', () => {
-            if (octopusInstance) {
-                octopusInstance.dispose();
-                octopusInstance = null;
-                ccBtn.style.color = 'white';
-            } else {
-                octopusInstance = new SubtitlesOctopus({ video, subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'], workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' });
-                ccBtn.style.color = '#3ea6ff'; // Color azul para indicar activo
-            }
-        });
-
-        // --- LÓGICA DE PANTALLA COMPLETA ---
-        fsBtn.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                container.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        });
-        document.addEventListener('fullscreenchange', () => octopusInstance && setTimeout(() => octopusInstance.resize(), 150));
-
-        // --- LÓGICA DE LA BARRA DE PROGRESO Y TIEMPO ---
-        const formatTime = (s) => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
-        video.addEventListener('loadedmetadata', () => timeDuration.textContent = formatTime(video.duration));
-        video.addEventListener('timeupdate', () => {
-            const progress = video.currentTime / video.duration;
-            progressFilled.style.width = `${progress * 100}%`;
-            progressHandle.style.left = `${progress * 100}%`;
-            timeCurrent.textContent = formatTime(video.currentTime);
-        });
-
-        // Lógica de arrastre (scrubbing)
-        let isScrubbing = false;
-        const scrub = (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            const percent = Math.min(Math.max(0, e.clientX - rect.left), rect.width) / rect.width;
-            video.currentTime = percent * video.duration;
-        };
-        progressContainer.addEventListener('mousedown', (e) => { isScrubbing = true; scrub(e); });
-        document.addEventListener('mousemove', (e) => isScrubbing && scrub(e));
-        document.addEventListener('mouseup', () => isScrubbing = false);
+        // Y aquí simplemente "contratamos" al especialista. Él hace el resto.
+        var instance = new SubtitlesOctopus(options);
 
     </script>
 </body>
