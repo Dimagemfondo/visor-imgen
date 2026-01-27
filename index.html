@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Reproductor Estilo Google</title>
+
+    <!-- =================================================================== -->
+    <!-- OPTIMIZACIÓN DE FUENTES (AÑADIDO) -->
+    <!-- Le damos una pista al navegador para que cargue las fuentes rápido -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Pedimos a Google SÓLO los dos estilos que necesitamos: Regular e Italic -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- =================================================================== -->
     
     <!-- Librería de subtítulos -->
     <script src="./assets/js/subtitles-octopus.js"></script>
@@ -267,12 +276,19 @@
                 btnCC.classList.remove('cc-active');
             } else {
                 // Encender
+                // ===================================================================
+                // OPTIMIZACIÓN DE FUENTES (MODIFICADO)
+                // Apuntamos directamente a las URLs de los .woff2 de Google
                 const options = {
                     video: video,
                     subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', 
-                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf', '/visor-imgen/fonts/Lato-Regular.ttf', '/visor-imgen/fonts/BTTTRIAL.ttf'], 
-                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js' 
+                    fonts: [
+                        'https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2', // Lato Regular
+                        'https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxsAXC-q.woff2'  // Lato Italic
+                    ], 
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'  
                 };
+                // ===================================================================
                 octopus = new SubtitlesOctopus(options);
                 btnCC.classList.add('cc-active');
             }
