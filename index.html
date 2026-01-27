@@ -2,57 +2,196 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Clon de Reproductor Google + ASS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor Google Clone con Subtítulos</title>
+    
+    <!-- Tu librería de subtítulos -->
     <script src="./assets/js/subtitles-octopus.js"></script>
+
     <style>
+        /* ESTILOS (El diseño oscuro tipo Google) */
         body { background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #video-container { position: relative; width: 800px; max-width: 100%; background-color: black; font-family: 'Roboto', Arial, sans-serif; overflow: hidden; }
+        #video-container { position: relative; width: 800px; max-width: 100%; background-color: black; font-family: sans-serif; overflow: hidden; }
         #video { width: 100%; display: block; }
 
-        .controls-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.25s ease-out; pointer-events: none; }
+        /* Capa transparente de controles */
+        .controls-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.25s ease-out; pointer-events: none; }
         #video-container.paused .controls-overlay, #video-container.active .controls-overlay { opacity: 1; pointer-events: all; }
         
-        #center-play-pause { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background-color: rgba(40, 40, 40, 0.8); border-radius: 50%; border: none; cursor: pointer; display: none; }
-        #video-container.paused #center-play-pause { display: flex; justify-content: center; align-items: center; }
-        #center-play-pause svg { fill: white; width: 36px; height: 36px; }
+        /* Botón Play central */
+        #center-play-pause { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; border: none; cursor: pointer; display: none; justify-content: center; align-items: center; }
+        #video-container.paused #center-play-pause { display: flex; }
+        #center-play-pause svg { fill: white; width: 30px; height: 30px; }
 
-        #bottom-controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 15px; display: flex; align-items: center; gap: 15px; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); }
+        /* Barra inferior */
+        #bottom-controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; display: flex; align-items: center; gap: 10px; color: white; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
         
-        #progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; }
-        #progress-bar { width: 100%; height: 3px; background-color: rgba(255, 255, 255, 0.5); position: relative; }
-        #progress-filled { height: 100%; width: 0; background-color: white; }
-        #progress-handle { position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); width: 13px; height: 13px; background-color: white; border-radius: 50%; }
+        /* Progreso */
+        #progress-container { flex-grow: 1; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0 10px; }
+        #progress-bar { width: 100%; height: 3px; background-color: rgba(255, 255, 255, 0.3); position: relative; }
+        #progress-filled { height: 100%; width: 0; background-color: #f00; /* Rojo tipo YouTube/Google */ }
+        #progress-handle { position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); width: 12px; height: 12px; background-color: #f00; border-radius: 50%; display: none; }
+        #progress-container:hover #progress-handle { display: block; } /* Solo aparece al pasar el ratón */
 
-        #time-display { font-size: 13px; font-weight: 500; }
-        .control-button { background: transparent; border: none; color: white; font-size: 14px; font-weight: bold; cursor: pointer; padding: 5px; }
-        .control-button svg { width: 20px; height: 20px; fill: white; }
+        /* Botones y Texto */
+        #time-display { font-size: 12px; min-width: 80px; }
+        .control-button { background: transparent; border: none; color: white; font-size: 14px; font-weight: bold; cursor: pointer; padding: 5px; display: flex; align-items: center; }
+        .control-button svg { width: 24px; height: 24px; fill: white; }
+        
+        /* Estilo para botón CC activo */
+        #custom-cc-button.active { color: #f00; border-bottom: 2px solid #f00; }
     </style>
 </head>
 <body>
 
     <div id="video-container">
-        <video id="video" playsinline></video>
+        <!-- TU VIDEO AQUÍ -->
+        <video id="video" playsinline poster="">
+             <!-- ¡AQUÍ ESTÁ TU LINK DE VIDEO! -->
+             <source src="https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%201.mkv" type="video/mp4">
+        </video>
         
+        <!-- Capa de controles (Botones) -->
         <div class="controls-overlay">
+            <!-- Botón Play Central -->
             <button id="center-play-pause"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            
+            <!-- Barra Inferior -->
             <div id="bottom-controls">
-                <div id="time-display"><span id="time-current">00:00</span> / <span id="time-duration">00:00</span></div>
+                <!-- Botón Play Pequeño -->
+                <button id="small-play-pause" class="control-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+                
+                <!-- Tiempos -->
+                <div id="time-display"><span id="time-current">0:00</span> / <span id="time-duration">0:00</span></div>
+                
+                <!-- Barra de Progreso -->
                 <div id="progress-container">
                     <div id="progress-bar">
                         <div id="progress-filled"></div>
                         <div id="progress-handle"></div>
                     </div>
                 </div>
-                <!-- ¡Aquí nuestro botón CC está perfectamente integrado! -->
+                
+                <!-- Botón CC -->
                 <button id="custom-cc-button" class="control-button">CC</button>
-                <button id="custom-fullscreen-button" class="control-button"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg></button>
+                
+                <!-- Botón Fullscreen -->
+                <button id="custom-fullscreen-button" class="control-button">
+                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h2v3h-3v2h5v-5h-2zm-3-5V5h3v2h-3z"/></svg>
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Todo el script de la versión "Clon de Google" que ya funcionaba
-        // ... (el script completo de la respuesta anterior)
+        // --- REFERENCIAS ---
+        const container = document.getElementById('video-container');
+        const video = document.getElementById('video');
+        const centerBtn = document.getElementById('center-play-pause');
+        const smallPlayBtn = document.getElementById('small-play-pause');
+        const ccBtn = document.getElementById('custom-cc-button');
+        const fsBtn = document.getElementById('custom-fullscreen-button');
+        const progressContainer = document.getElementById('progress-container');
+        const progressHandle = document.getElementById('progress-handle');
+        const progressFilled = document.getElementById('progress-filled');
+        const timeCurrent = document.getElementById('time-current');
+        const timeDuration = document.getElementById('time-duration');
+
+        // --- 1. LÓGICA DE VISIBILIDAD DE CONTROLES ---
+        let controlsTimeout;
+        const showControls = () => {
+            container.classList.add('active');
+            clearTimeout(controlsTimeout);
+            // Se ocultan solos después de 3 segundos
+            controlsTimeout = setTimeout(() => {
+                if (!video.paused) container.classList.remove('active');
+            }, 3000);
+        };
+        container.addEventListener('mousemove', showControls);
+        container.addEventListener('click', showControls);
+        container.addEventListener('touchstart', showControls); // Para móvil
+
+        // --- 2. LÓGICA DE PLAY/PAUSA ---
+        const togglePlay = () => {
+            if (video.paused) {
+                video.play();
+                smallPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            } else {
+                video.pause();
+                smallPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            }
+        };
+        centerBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+        smallPlayBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+        video.addEventListener('play', () => container.classList.remove('paused'));
+        video.addEventListener('pause', () => container.classList.add('paused'));
+
+        // --- 3. LÓGICA DE SUBTÍTULOS (TUS LINKS ESTÁN AQUÍ) ---
+        let octopusInstance = null;
+        ccBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (octopusInstance) {
+                // Apagar
+                octopusInstance.dispose();
+                octopusInstance = null;
+                ccBtn.classList.remove('active');
+            } else {
+                // Encender (TUS LINKS)
+                var options = {
+                    video: video,
+                    subUrl: '/visor-imgen/subtitles/Sukebe Elf Tanbouki - 1.es.ass', // TU ARCHIVO DE SUBTÍTULOS
+                    fonts: ['/visor-imgen/fonts/Lato-Italic.ttf'],           // TU FUENTE
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'    // TU WORKER
+                };
+                octopusInstance = new SubtitlesOctopus(options);
+                ccBtn.classList.add('active');
+            }
+        });
+
+        // --- 4. LÓGICA DE PANTALLA COMPLETA (TUS BOTONES NO DESAPARECERÁN) ---
+        fsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!document.fullscreenElement) {
+                container.requestFullscreen(); // Ponemos TODO el contenedor en fullscreen
+            } else {
+                document.exitFullscreen();
+            }
+        });
+        // Ajustar subtítulos al cambiar tamaño
+        document.addEventListener('fullscreenchange', () => {
+            if (octopusInstance) setTimeout(() => octopusInstance.resize(), 100);
+        });
+
+        // --- 5. LÓGICA DE TIEMPO Y BARRA ---
+        const formatTime = (s) => {
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return `${m}:${sec < 10 ? '0' : ''}${sec}`;
+        };
+        video.addEventListener('loadedmetadata', () => timeDuration.textContent = formatTime(video.duration));
+        video.addEventListener('timeupdate', () => {
+            const pct = (video.currentTime / video.duration) * 100;
+            progressFilled.style.width = `${pct}%`;
+            progressHandle.style.left = `${pct}%`;
+            timeCurrent.textContent = formatTime(video.currentTime);
+        });
+        
+        // Arrastrar barra (Scrubbing)
+        const scrub = (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            // Soporte para toque en móvil o clic de ratón
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
+            const pos = (clientX - rect.left) / rect.width;
+            video.currentTime = pos * video.duration;
+        };
+        let mousedown = false;
+        progressContainer.addEventListener('mousedown', (e) => { mousedown = true; scrub(e); });
+        progressContainer.addEventListener('touchstart', (e) => { mousedown = true; scrub(e); }); // Móvil
+        document.addEventListener('mousemove', (e) => { if (mousedown) scrub(e); });
+        document.addEventListener('touchmove', (e) => { if (mousedown) scrub(e); }); // Móvil
+        document.addEventListener('mouseup', () => mousedown = false);
+        document.addEventListener('touchend', () => mousedown = false); // Móvil
+
     </script>
 </body>
 </html>
