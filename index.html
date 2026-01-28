@@ -6,11 +6,11 @@
     <title>Reproductor Estilo Google</title>
 
     <!-- Librería de subtítulos -->
-    <script src="https://dimagemfondo.github.io/assets/js/subtitles-octopus.js"></script>
+    <script src="./assets/js/subtitles-octopus.js"></script>
 
     <!-- PRECARGA: Esto hace que los archivos se bajen antes de dar clic al botón CC -->
-    <link rel="preload" href="https://dimagemfondo.github.io/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" as="fetch" crossorigin>
-    <link rel="preload" href="https://dimagemfondo.github.io/visor-imgen/fonts/Arial.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" as="fetch" crossorigin>
+    <link rel="preload" href="/visor-imgen/fonts/Arial.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         /* RESET BÁSICO */
@@ -300,11 +300,11 @@
             if (!octopus) {
                 const options = {
                     video: video,
-                    subUrl: 'https://dimagemfondo.github.io/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass', 
+                    subUrl: '/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass', 
                     fonts: [
-                        'https://dimagemfondo.github.io/visor-imgen/fonts/Arial.woff2'
+                        '/visor-imgen/fonts/Arial.woff2'
                     ], 
-                    workerUrl: 'https://dimagemfondo.github.io/visor-imgen/assets/js/subtitles-octopus-worker.js'  
+                    workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'  
                 };
                 octopus = new SubtitlesOctopus(options);
                 btnCC.classList.add('cc-active');
