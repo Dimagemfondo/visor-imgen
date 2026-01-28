@@ -18,115 +18,134 @@
     <script src="./assets/js/subtitles-octopus.js"></script>
 
     <style>
-        /* RESET BÁSICO */
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: Roboto, Arial, sans-serif; }
+    /* RESET BÁSICO */
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: Roboto, Arial, sans-serif; }
 
-        /* CONTENEDOR DEL VIDEO */
-        #video-container {
-            position: relative;
-            width: 100%; /* Ocupa todo el ancho disponible */
-            max-width: 1000px; /* Pero no te pases en PC */
-            aspect-ratio: 16/9; /* Mantiene la forma rectangular de video */
-            background-color: #000;
-            overflow: hidden;
-        }
+    /* CONTENEDOR DEL VIDEO */
+    #video-container {
+        position: relative;
+        width: 100%; /* Ocupa todo el ancho disponible */
+        max-width: 1000px; /* Pero no te pases en PC */
+        aspect-ratio: 16/9; /* Mantiene la forma rectangular de video */
+        background-color: #000;
+        overflow: hidden;
+    }
+    #video { width: 100%; height: 100%; display: block; object-fit: contain; }
 
-        #video { width: 100%; height: 100%; display: block; object-fit: contain; }
+    /* CAPA DE CONTROLES (OVERLAY) */
+    .controls-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: transparent; /* QUITAMOS EL FONDO OSCURO DE AQUÍ */
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none; /* Dejar pasar clics al video si no tocas un botón */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-        /* CAPA DE CONTROLES (OVERLAY) */
-        .controls-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); /* Un poco de oscuridad general */
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none; /* Dejar pasar clics al video si no tocas un botón */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    /* Mostrar controles cuando esté activo o pausado */
+    #video-container.active .controls-overlay,
+    #video-container.paused .controls-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-        /* Mostrar controles cuando esté activo o pausado */
-        #video-container.active .controls-overlay,
-        #video-container.paused .controls-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
+    /* BOTÓN PLAY GIGANTE CENTRAL */
+    .center-play {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px; height: 64px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: none; /* Se oculta si está reproduciendo */
+        justify-content: center; align-items: center;
+        cursor: pointer;
+        border: none;
+    }
+    #video-container.paused .center-play { display: flex; }
+    .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; /* Ajuste visual */ }
 
-        /* BOTÓN PLAY GIGANTE CENTRAL */
-        .center-play {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 64px; height: 64px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            display: none; /* Se oculta si está reproduciendo */
-            justify-content: center; align-items: center;
-            cursor: pointer;
-            border: none;
-        }
-        #video-container.paused .center-play { display: flex; }
-        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; /* Ajuste visual */ }
+    /* ================================================= */
+    /*           MODIFICACIÓN ESTILO CRUNCHYROLL         */
+    /* ================================================= */
 
-        /* BARRA INFERIOR (GRADIENTE) */
-        .bottom-bar {
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: auto; /* Empuja la barra al fondo */
-        }
-
-        /* PLAY PEQUEÑO (IZQUIERDA) */
-        .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
-        .mini-play svg { width: 24px; height: 24px; fill: white; }
-
-        /* TIEMPOS */
-        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
-
-        /* BARRA DE PROGRESO (SCRUBBER) */
-        .progress-container {
-            flex-grow: 1; /* Ocupa todo el espacio libre */
-            height: 20px; /* Área táctil más grande */
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-        .progress-bg {
-            width: 100%; height: 3px;
-            background: rgba(255,255,255,0.3);
-            position: relative;
-        }
-        .progress-fill {
-            height: 100%; width: 0%;
-            background: #f00; /* Rojo YouTube/Google */
-            position: absolute; top: 0; left: 0;
-        }
-        .progress-handle {
-            width: 12px; height: 12px;
-            background: #f00;
-            border-radius: 50%;
-            position: absolute; top: 50%; left: 0%;
-            transform: translate(-50%, -50%);
-            display: none; /* Se oculta si no interactúas */
-        }
-        .progress-container:hover .progress-handle,
-        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
-
-        /* BOTONES DERECHA (CC y FULLSCREEN) */
-        .right-buttons { display: flex; gap: 10px; align-items: center; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
-        .icon-btn:hover { opacity: 1; }
-        .icon-btn svg { width: 24px; height: 24px; fill: white; }
-
-        /* ESTADO ACTIVO DEL CC */
-        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
+    /* BARRA INFERIOR (GRADIENTE) */
+    .bottom-bar {
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        padding: 10px 15px 40px 15px; /* Aumentamos el padding inferior para dar espacio */
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: auto; /* Empuja la barra al fondo */
         
-    </style>
+        /* 1. La movemos hacia abajo por defecto */
+        transform: translateY(35px); 
+        
+        /* 2. Añadimos una transición suave para el deslizamiento */
+        transition: transform 0.3s ease-out;
+    }
+
+    /* 3. Cuando los controles estén activos, la deslizamos hacia arriba a su posición original */
+    #video-container.active .bottom-bar,
+    #video-container.paused .bottom-bar {
+        transform: translateY(0);
+    }
+    
+    /* ================================================= */
+    /*           FIN DE LA MODIFICACIÓN                  */
+    /* ================================================= */
+
+
+    /* PLAY PEQUEÑO (IZQUIERDA) */
+    .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
+    .mini-play svg { width: 24px; height: 24px; fill: white; }
+
+    /* TIEMPOS */
+    .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
+
+    /* BARRA DE PROGRESO (SCRUBBER) */
+    .progress-container {
+        flex-grow: 1; /* Ocupa todo el espacio libre */
+        height: 20px; /* Área táctil más grande */
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin: 0 5px;
+    }
+    .progress-bg {
+        width: 100%; height: 3px;
+        background: rgba(255,255,255,0.3);
+        position: relative;
+    }
+    .progress-fill {
+        height: 100%; width: 0%;
+        background: #f00; /* Rojo YouTube/Google */
+        position: absolute; top: 0; left: 0;
+    }
+    .progress-handle {
+        width: 12px; height: 12px;
+        background: #f00;
+        border-radius: 50%;
+        position: absolute; top: 50%; left: 0%;
+        transform: translate(-50%, -50%);
+        display: none; /* Se oculta si no interactúas */
+    }
+    .progress-container:hover .progress-handle,
+    .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+
+    /* BOTONES DERECHA (CC y FULLSCREEN) */
+    .right-buttons { display: flex; gap: 10px; align-items: center; }
+    .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+    .icon-btn:hover { opacity: 1; }
+    .icon-btn svg { width: 24px; height: 24px; fill: white; }
+
+    /* ESTADO ACTIVO DEL CC */
+    .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
+</style>
 </head>
 <body>
 
