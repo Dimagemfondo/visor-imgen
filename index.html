@@ -91,10 +91,6 @@
             gap: 15px;
         }
 
-        /* PLAY PEQUEÑO (IZQUIERDA) */
-        .mini-play { background: none; border: none; cursor: pointer; padding: 0; display: flex; }
-        .mini-play svg { width: 24px; height: 24px; fill: white; }
-
         /* TIEMPOS */
         .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
 
@@ -114,12 +110,12 @@
         }
         .progress-fill {
             height: 100%; width: 0%;
-            background: #f00; /* Rojo YouTube/Google */
+            background: #fff; /* Blanco como Google */
             position: absolute; top: 0; left: 0;
         }
         .progress-handle {
             width: 12px; height: 12px;
-            background: #f00;
+            background: #fff;
             border-radius: 50%;
             position: absolute; top: 50%; left: 0%;
             transform: translate(-50%, -50%);
@@ -135,7 +131,7 @@
         .icon-btn svg { width: 24px; height: 24px; fill: white; }
 
         /* ESTADO ACTIVO DEL CC */
-        .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
+        .icon-btn.cc-active svg { fill: #fff; border-bottom: 2px solid #fff; }
         
         /* --- MENÚ DE SUBTÍTULOS --- */
         .cc-menu-container {
@@ -161,8 +157,7 @@
             display: block;
         }
         .cc-menu button:hover { background: rgba(255, 255, 255, 0.1); }
-        .cc-menu button.active { font-weight: bold; color: #f44336; }
-        .cc-menu button.active::before { content: '✓ '; }
+        .cc-menu button.active { font-weight: bold; color: #fff; }
         
         /* REGLA NUEVA: Forzar posición del Canvas de Subtítulos */
         #video-container canvas {
@@ -196,11 +191,6 @@
                 <!-- Fila de Controles (Arriba) -->
                 <div class="controls-row">
                     <div class="controls-left">
-                        <!-- Play Pequeño -->
-                        <button class="mini-play" id="btn-mini-play">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-
                         <!-- Tiempos -->
                         <div class="time-display">
                             <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
@@ -243,7 +233,6 @@
         const container = document.getElementById('video-container');
         const video = document.getElementById('video');
         const btnCenter = document.getElementById('btn-center-play');
-        const btnMini = document.getElementById('btn-mini-play');
         const btnCC = document.getElementById('btn-cc');
         const ccMenu = document.getElementById('cc-menu');
         const btnFS = document.getElementById('btn-fs');
@@ -271,18 +260,13 @@
             if (e) e.stopPropagation(); // Evitar que el clic cierre controles
             if (video.paused) {
                 video.play();
-                // Icono Pausa
-                btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
                 container.classList.remove('paused');
             } else {
                 video.pause();
-                // Icono Play
-                btnMini.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
                 container.classList.add('paused');
             }
         }
         btnCenter.addEventListener('click', togglePlay);
-        btnMini.addEventListener('click', togglePlay);
         // Clic en el video para pausar (solo si no tocas controles)
         video.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -317,9 +301,6 @@
         let isDragging = false;
         progressArea.addEventListener('mousedown', (e) => { isDragging = true; scrub(e); });
         progressArea.addEventListener('touchstart', (e) => { isDragging = true; scrub(e); });
-        
-        document.addEventListener('mousemove', (e) => { if (isDragging) scrub(e); });
-        document.addEventListener('touchmove', (e) => { if (isDragging) scrub(e); });
         
         document.addEventListener('mouseup', () => isDragging = false);
         document.addEventListener('touchend', () => isDragging = false);
