@@ -283,16 +283,9 @@
         let octopus = null;
         btnCC.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (octopus) {
-                // Apagar
-                octopus.dispose();
-                octopus = null;
-                btnCC.classList.remove('cc-active');
-            } else {
-                // Encender
-                // ===================================================================
-                // OPTIMIZACIÓN DE FUENTES (MODIFICADO)
-                // Apuntamos directamente a las URLs de los .woff2 de Google
+            
+            // 1. Si NO existe la instancia, la creamos (Carga inicial única)
+            if (!octopus) {
                 const options = {
                     video: video,
                     subUrl: '/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass', 
@@ -301,9 +294,20 @@
                     ], 
                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'  
                 };
-                // ===================================================================
                 octopus = new SubtitlesOctopus(options);
                 btnCC.classList.add('cc-active');
+                return;
+            }
+
+            // 2. Si YA existe, solo alternamos la visibilidad (Sin recargar nada)
+            if (octopus.canvas) {
+                if (octopus.canvas.style.display === 'none') {
+                    octopus.canvas.style.display = 'block'; // Mostrar
+                    btnCC.classList.add('cc-active');
+                } else {
+                    octopus.canvas.style.display = 'none'; // Ocultar
+                    btnCC.classList.remove('cc-active');
+                }
             }
         });
 
