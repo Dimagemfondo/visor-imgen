@@ -60,12 +60,11 @@
             width: 64px; height: 64px;
             background: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
-            display: none; /* Se oculta si está reproduciendo */
+            display: flex;
             justify-content: center; align-items: center;
             cursor: pointer;
             border: none;
         }
-        #video-container.paused .center-play { display: flex; }
         .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; /* Ajuste visual */ }
 
         /* BARRA INFERIOR (GRADIENTE) */
@@ -256,13 +255,18 @@
         container.addEventListener('click', activateControls);
 
         // --- 2. PLAY / PAUSA ---
+        const iconPlay = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+        const iconPause = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
         const togglePlay = (e) => {
             if (e) e.stopPropagation(); // Evitar que el clic cierre controles
             if (video.paused) {
                 video.play();
+                btnCenter.innerHTML = iconPause;
                 container.classList.remove('paused');
             } else {
                 video.pause();
+                btnCenter.innerHTML = iconPlay;
                 container.classList.add('paused');
             }
         }
