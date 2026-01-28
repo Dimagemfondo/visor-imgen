@@ -347,21 +347,15 @@
                 btnFS.innerHTML = iconFSenter;
                 btnFS.title = "Pantalla Completa";
             }
-
-            // CORRECCIÓN: Forzar el ajuste de los subtítulos al cambiar de modo
-            // Usamos un pequeño retraso (setTimeout) para esperar a que la animación de pantalla termine
-            if (octopus) {
-                // Ejecutamos resize varias veces para asegurar que pille el tamaño final
-                octopus.resize(); 
-                setTimeout(() => octopus.resize(), 100);
-                setTimeout(() => octopus.resize(), 500); // Un refuerzo final
-            }
         });
         
-        // Redimensionar subtítulos al rotar o cambiar tamaño
-        window.addEventListener('resize', () => {
+        // --- 7. REDIMENSIONADO INTELIGENTE (RESIZE OBSERVER) ---
+        // Esto detecta EXACTAMENTE cuando el video cambia de tamaño (al entrar en Fullscreen)
+        // y ajusta los subtítulos al instante, eliminando el retraso o parpadeo.
+        const resizeObserver = new ResizeObserver(() => {
             if (octopus) octopus.resize();
         });
+        resizeObserver.observe(container);
 
     </script>
 </body>
