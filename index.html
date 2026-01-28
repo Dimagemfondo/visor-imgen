@@ -335,6 +335,12 @@
                 btnFS.innerHTML = iconFSenter;
                 btnFS.title = "Pantalla Completa";
             }
+
+            // CORRECCIÓN: Forzar el ajuste de los subtítulos al cambiar de modo
+            // Usamos un pequeño retraso (setTimeout) para esperar a que la animación de pantalla termine
+            if (octopus) {
+                setTimeout(() => octopus.resize(), 200);
+            }
         });
         
         // Redimensionar subtítulos al rotar o cambiar tamaño
