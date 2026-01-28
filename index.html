@@ -137,6 +137,33 @@
         /* ESTADO ACTIVO DEL CC */
         .icon-btn.cc-active svg { fill: #f00; border-bottom: 2px solid #f00; }
         
+        /* --- MENÚ DE SUBTÍTULOS --- */
+        .cc-menu-container {
+            position: relative; /* Para que el menú se posicione respecto a este */
+        }
+        .cc-menu {
+            display: none; /* Oculto por defecto */
+            position: absolute;
+            bottom: 100%; /* Arriba del botón CC */
+            right: 0;
+            background: rgba(28, 28, 28, 0.9);
+            border-radius: 4px;
+            padding: 5px 0;
+            margin-bottom: 10px; /* Espacio entre el menú y el botón */
+            min-width: 120px;
+            z-index: 21; /* Encima de los otros controles */
+        }
+        .cc-menu button {
+            background: none; border: none;
+            color: white; font-size: 14px;
+            padding: 8px 15px; width: 100%;
+            text-align: left; cursor: pointer;
+            display: block;
+        }
+        .cc-menu button:hover { background: rgba(255, 255, 255, 0.1); }
+        .cc-menu button.active { font-weight: bold; color: #f44336; }
+        .cc-menu button.active::before { content: '✓ '; }
+        
         /* REGLA NUEVA: Forzar posición del Canvas de Subtítulos */
         #video-container canvas {
             position: absolute !important;
@@ -182,10 +209,15 @@
 
                     <!-- Botones Derecha -->
                     <div class="right-buttons">
-                        <!-- BOTÓN CC (ICONO) -->
-                        <button class="icon-btn" id="btn-cc" title="Subtítulos">
-                            <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
-                        </button>
+                        <!-- Contenedor para el menú y el botón CC -->
+                        <div class="cc-menu-container">
+                            <!-- BOTÓN CC (ICONO) -->
+                            <button class="icon-btn" id="btn-cc" title="Subtítulos">
+                                <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
+                            </button>
+                            <!-- Menú de Subtítulos -->
+                            <div class="cc-menu" id="cc-menu"></div>
+                        </div>
 
                         <!-- BOTÓN FULLSCREEN -->
                         <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
@@ -213,6 +245,7 @@
         const btnCenter = document.getElementById('btn-center-play');
         const btnMini = document.getElementById('btn-mini-play');
         const btnCC = document.getElementById('btn-cc');
+        const ccMenu = document.getElementById('cc-menu');
         const btnFS = document.getElementById('btn-fs');
         const progressArea = document.getElementById('progress-area');
         const progressBar = document.getElementById('progress-bar');
@@ -291,37 +324,84 @@
         document.addEventListener('mouseup', () => isDragging = false);
         document.addEventListener('touchend', () => isDragging = false);
 
-        // --- 4. SUBTÍTULOS (CC) ---
+        // --- 4. SUBTÍTULOS (CC) CON MENÚ ---
         let octopus = null;
-        btnCC.addEventListener('click', (e) => {
-            e.stopPropagation();
+        let currentSub = 'none'; // 'none' o la URL del subtítulo activo
+
+        // Lista de subtítulos disponibles. ¡Puedes agregar más aquí!
+        const subtitles = [
+            {
+                lang: 'Español',
+                url: 'https://dimagemfondo.github.io/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass',
+            }
+            // Ejemplo: { lang: 'English', url: 'path/to/english.ass' }
+        ];
+
+        // Función para poblar el menú de subtítulos
+        const populateSubtitlesMenu = () => {
+            ccMenu.innerHTML = ''; // Limpiar menú
             
-            // 1. Si NO existe la instancia, la creamos (Carga inicial única)
-            if (!octopus) {
-                const options = {
+            // Opción para desactivar
+            const noneBtn = document.createElement('button');
+            noneBtn.textContent = 'None';
+            noneBtn.dataset.url = 'none';
+            if (currentSub === 'none') noneBtn.classList.add('active');
+            noneBtn.addEventListener('click', () => selectSubtitle('none'));
+            ccMenu.appendChild(noneBtn);
+
+            // Opciones para cada idioma
+            subtitles.forEach(sub => {
+                const subBtn = document.createElement('button');
+                subBtn.textContent = sub.lang;
+                subBtn.dataset.url = sub.url;
+                if (currentSub === sub.url) subBtn.classList.add('active');
+                subBtn.addEventListener('click', () => selectSubtitle(sub.url, sub.lang));
+                ccMenu.appendChild(subBtn);
+            });
+        };
+
+        const selectSubtitle = (url) => {
+            currentSub = url;
+            
+            // Si no hay instancia de Octopus, la creamos solo si se elige un sub
+            if (!octopus && url !== 'none') {
+                 const options = {
                     video: video,
-                    subUrl: 'https://dimagemfondo.github.io/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass', 
-                    fonts: [
-                        '/visor-imgen/fonts/Arial.woff2'
-                    ], 
+                    subUrl: url, 
+                    fonts: ['/visor-imgen/fonts/Arial.woff2'], 
                     workerUrl: '/visor-imgen/assets/js/subtitles-octopus-worker.js'  
                 };
                 octopus = new SubtitlesOctopus(options);
-                btnCC.classList.add('cc-active');
-                return;
-            }
-
-            // 2. Si YA existe, solo alternamos la visibilidad (Sin recargar nada)
-            if (octopus.canvas) {
-                if (octopus.canvas.style.display === 'none') {
-                    octopus.canvas.style.display = 'block'; // Mostrar
-                    btnCC.classList.add('cc-active');
+            } else if (octopus) {
+                if (url === 'none') {
+                    octopus.freeTrack(); // Libera los subtítulos actuales
                 } else {
-                    octopus.canvas.style.display = 'none'; // Ocultar
-                    btnCC.classList.remove('cc-active');
+                    octopus.setTrackByUrl(url); // Cambia a los nuevos subtítulos
                 }
             }
+
+            // Actualizar UI
+            btnCC.classList.toggle('cc-active', url !== 'none');
+            populateSubtitlesMenu(); // Repintar el menú para mostrar la selección activa
+            ccMenu.style.display = 'none'; // Ocultar menú después de seleccionar
+        };
+
+        // Abrir/cerrar el menú de CC
+        btnCC.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isVisible = ccMenu.style.display === 'block';
+            ccMenu.style.display = isVisible ? 'none' : 'block';
         });
+
+        // Cerrar menú si se hace clic fuera
+        document.addEventListener('click', (e) => {
+            if (!ccMenu.contains(e.target) && e.target !== btnCC) {
+                ccMenu.style.display = 'none';
+            }
+        });
+
+        // Inicializar el menú al cargar la página
+        populateSubtitlesMenu();
 
         // --- 5. FULLSCREEN (ARREGLADO) ---
         btnFS.addEventListener('click', (e) => {
