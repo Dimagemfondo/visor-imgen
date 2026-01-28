@@ -347,15 +347,21 @@
                 btnFS.innerHTML = iconFSenter;
                 btnFS.title = "Pantalla Completa";
             }
+
+            // SOLUCIÓN DEFINITIVA: Al terminar el cambio de pantalla,
+            // le pedimos al navegador que ajuste los subtítulos en el próximo frame.
+            // Esto es instantáneo y sincronizado con el renderizado del navegador.
+            if (octopus) {
+                requestAnimationFrame(() => octopus.resize());
+            }
         });
         
-        // --- 7. REDIMENSIONADO INTELIGENTE (RESIZE OBSERVER) ---
-        // Esto detecta EXACTAMENTE cuando el video cambia de tamaño (al entrar en Fullscreen)
-        // y ajusta los subtítulos al instante, eliminando el retraso o parpadeo.
-        const resizeObserver = new ResizeObserver(() => {
+        // --- 7. REDIMENSIONADO (VENTANA) ---
+        // Adicionalmente, si el usuario cambia el tamaño de la ventana del navegador,
+        // también ajustamos los subtítulos.
+        window.addEventListener('resize', () => {
             if (octopus) octopus.resize();
         });
-        resizeObserver.observe(container);
 
     </script>
 </body>
