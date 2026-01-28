@@ -141,22 +141,23 @@
             position: absolute;
             bottom: 100%; /* Arriba del botón CC */
             right: 0;
-            background: rgba(28, 28, 28, 0.9);
-            border-radius: 4px;
-            padding: 5px 0;
+            background: rgba(18, 18, 18, 0.95); /* Fondo más oscuro y opaco */
+            border-radius: 0; /* Bordes con puntas */
             margin-bottom: 10px; /* Espacio entre el menú y el botón */
-            min-width: 120px;
+            min-width: 150px; /* Un poco más ancho */
             z-index: 21; /* Encima de los otros controles */
         }
         .cc-menu button {
             background: none; border: none;
-            color: white; font-size: 14px;
-            padding: 8px 15px; width: 100%;
+            color: #ccc; /* Color de texto más suave */
+            font-size: 14px;
+            padding: 10px 20px; /* Más espaciado */
+            width: 100%;
             text-align: left; cursor: pointer;
             display: block;
         }
         .cc-menu button:hover { background: rgba(255, 255, 255, 0.1); }
-        .cc-menu button.active { font-weight: bold; color: #fff; }
+        .cc-menu button.active { font-weight: bold; color: #fff; background: rgba(255, 255, 255, 0.05); /* Ligero fondo para la opción activa */ }
         
         /* REGLA NUEVA: Forzar posición del Canvas de Subtítulos */
         #video-container canvas {
