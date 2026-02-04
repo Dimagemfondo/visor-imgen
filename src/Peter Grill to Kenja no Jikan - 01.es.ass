@@ -1,0 +1,182 @@
+[Script Info]
+Title: Español (América Latina)
+Original Script: crunchyroll_la  [http://www.crunchyroll.com/user/crunchyroll_la]
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 640
+PlayResY: 360
+Timer: 100.0000
+WrapStyle: 0
+ScaledBorderAndShadow: Yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,Strikeout,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,0010,0010,0018,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,0010,0010,0018,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,0010,0010,0018,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,0010,0010,0018,1
+Style: Cart_Next,Times New Roman,24,&H00FFFFFF,&H000000FF,&H00585858,&H00585858,-1,0,0,0,100,100,0,0,1,0,1,8,0020,0020,0120,1
+Style: Cart_Nota,Trebuchet MS,22,&H00FFFFFF,&H000000FF,&H00000000,&H374E4E4E,0,0,0,0,100,100,0,0,1,1,2,7,0050,0050,0018,1
+Style: Cart_A_Tre,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_B_Tre,Trebuchet MS,14,&H000CBDEA,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,1,1,8,0020,0020,0020,1
+Style: Cart_C_Tre,Trebuchet MS,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_A_Tim,Times New Roman,24,&H00FFFFFF,&H000000FF,&H00303030,&H00303030,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_B_Tim,Trebuchet MS,12,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0180,0120,1
+Style: Cart_C_Tim,Times New Roman,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_A_Ari,Arial,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_B_Ari,Arial,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_C_Ari,Arial,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_A_TreNoBord,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,1,8,0020,0020,0020,1
+Style: Cart_TitleSeries,Times New Roman,30,&H00000000,&H000000FF,&H00FFFFFF,&H00AC4F8A,-1,0,0,0,100,100,0,0,1,0,0,8,0010,0030,0030,1
+Style: Cart_TitleEp,Trebuchet MS,20,&H00FFFFFF,&H000000FF,&H008B8B8B,&H008B8B8B,-1,0,0,0,100,100,0,0,1,0,1,7,0055,0055,0030,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:07.15,0:00:10.63,Gen_Italics,,0000,0000,0000,,¡El Gran Torneo de Lucha\Nque se celebra cada 10 años
+Dialogue: 0,0:00:10.78,0:00:14.08,Gen_Italics,,0000,0000,0000,,ha llegado a su esperado combate final!
+Dialogue: 0,0:00:14.24,0:00:18.83,Gen_Italics,,0000,0000,0000,,¡¿Podrá un humano triunfar\Npor primera vez en 150 años?!
+Dialogue: 0,0:00:25.63,0:00:27.42,Gen_Italics,,0000,0000,0000,,Si gano este combate…
+Dialogue: 0,0:00:28.26,0:00:30.80,Gen_Italics,,0000,0000,0000,,Luvellia y yo…
+Dialogue: 0,0:00:38.85,0:00:41.59,Gen_Italics,,0000,0000,0000,,En un mundo muy distante,
+Dialogue: 0,0:00:41.96,0:00:46.98,Gen_Italics,,0000,0000,0000,,se celebra un torneo de artes marciales\Npara encontrar al más fuerte de todos.
+Dialogue: 0,0:00:51.49,0:00:55.05,Gen_Italics,,0000,0000,0000,,El vencedor de dicho torneo\Nse quedará con toda la gloria
+Dialogue: 0,0:00:55.45,0:00:59.75,Gen_Italics,,0000,0000,0000,,y llamará la atención\Na nivel internacional.
+Dialogue: 0,0:01:09.67,0:01:13.49,Gen_Main,,0000,0000,0000,,Nuestro nuevo campeón\Ny representante del gremio Yakeppachi:
+Dialogue: 0,0:01:13.68,0:01:15.17,Gen_Main,,0000,0000,0000,,¡Peter Grill!
+Dialogue: 0,0:01:15.32,0:01:19.13,Gen_Italics,,0000,0000,0000,,Para entonces,\NPeter Grill aún desconocía
+Dialogue: 0,0:01:21.44,0:01:23.92,Gen_Italics,,0000,0000,0000,,los terrores que enfrentaría.
+Dialogue: 0,0:01:35.07,0:01:44.33,Cart_TitleSeries,,0000,0000,0000,,{\fad(1000,0)\pos(320,54)}Peter Grill and the Philosopher's Time
+Dialogue: 0,0:02:54.74,0:02:59.03,Cart_TitleEp,,0000,0000,0000,,{\pos(57,276)\fad(800,800)\blur1}Episodio 1: Peter Grill y las hermanas ogro
+Dialogue: 0,0:02:57.91,0:02:59.31,Gen_Main,,0000,0000,0000,,¡Oye, Peter!
+Dialogue: 0,0:02:59.52,0:03:01.63,Gen_Main,,0000,0000,0000,,¿No íbamos a reunirnos en el bar?
+Dialogue: 0,0:03:04.33,0:03:07.37,Gen_Italics,,0000,0000,0000,,¡Quiero celebrar con ella cuanto antes…!
+Dialogue: 0,0:03:08.04,0:03:09.21,Gen_Main,,0000,0000,0000,,¡Peter!
+Dialogue: 0,0:03:09.60,0:03:10.67,Gen_Main,,0000,0000,0000,,¡Peter!
+Dialogue: 0,0:03:10.84,0:03:12.32,Gen_Main,,0000,0000,0000,,Pero si eres tú, Mimi.
+Dialogue: 0,0:03:12.46,0:03:14.13,Gen_Main,,0000,0000,0000,,¡Felicidades, campeón!
+Dialogue: 0,0:03:14.30,0:03:17.63,Gen_Main,,0000,0000,0000,,¡Me enorgullezco\Ncomo compañera de gremio!
+Dialogue: 0,0:03:17.80,0:03:21.13,Gen_Main,,0000,0000,0000,,Parece que soy la primera en llegar…
+Dialogue: 0,0:03:21.60,0:03:23.12,Gen_Main,,0000,0000,0000,,¿Pasa algo?
+Dialogue: 0,0:03:23.35,0:03:27.05,Gen_Main,,0000,0000,0000,,Verás, ahora que eres\Nel hombre más fuerte del mundo,
+Dialogue: 0,0:03:27.23,0:03:29.12,Gen_Main,,0000,0000,0000,,necesito pedirte un favor…
+Dialogue: 0,0:03:30.61,0:03:32.36,Gen_Main,,0000,0000,0000,,No sé adónde quieres llegar,
+Dialogue: 0,0:03:32.53,0:03:35.42,Gen_Main,,0000,0000,0000,,pero estoy de buen humor,\Nasí que pide lo que quieras.
+Dialogue: 0,0:03:35.72,0:03:38.07,Gen_Main,,0000,0000,0000,,¡Gracias! ¡Muchísimas gracias!
+Dialogue: 0,0:03:38.60,0:03:40.28,Gen_Main,,0000,0000,0000,,Bueno, en ese caso…
+Dialogue: 0,0:03:41.19,0:03:42.92,Gen_Main,,0000,0000,0000,,¡Dame un poco de tu semen!
+Dialogue: 0,0:03:45.53,0:03:47.91,Gen_Main,,0000,0000,0000,,¡¿Qué crees que dices?!
+Dialogue: 0,0:03:48.28,0:03:52.01,Gen_Main,,0000,0000,0000,,¿Eh? ¿Acaso dije algo malo?
+Dialogue: 0,0:03:52.28,0:03:56.96,Gen_Main,,0000,0000,0000,,Para los ogros, tener hijos fuertes\Nes un asunto muy importante…
+Dialogue: 0,0:03:57.13,0:03:59.46,Gen_Main,,0000,0000,0000,,Y la semilla de un campeón como tú…
+Dialogue: 0,0:03:59.64,0:04:02.46,Gen_Main,,0000,0000,0000,,¡La lógica de los ogros\Nno funciona aquí!
+Dialogue: 0,0:04:02.64,0:04:03.88,Gen_Main,,0000,0000,0000,,¡Lo siento!
+Dialogue: 0,0:04:04.06,0:04:06.55,Gen_Main,,0000,0000,0000,,¡Siempre olvido las normas\Ndel mundo humano!
+Dialogue: 0,0:04:06.77,0:04:07.42,Gen_Main,,0000,0000,0000,,Diablos…
+Dialogue: 0,0:04:07.76,0:04:10.37,Gen_Main,,0000,0000,0000,,Es que no llevo mucho tiempo aquí…
+Dialogue: 0,0:04:10.56,0:04:12.23,Gen_Italics,,0000,0000,0000,,Sé que no es mala chica,
+Dialogue: 0,0:04:12.61,0:04:14.96,Gen_Italics,,0000,0000,0000,,pero siempre dice disparates…
+Dialogue: 0,0:04:15.11,0:04:17.26,Gen_Main,,0000,0000,0000,,¡Bien! ¡Ya entendí!
+Dialogue: 0,0:04:18.24,0:04:19.49,Gen_Main,,0000,0000,0000,,¡En ese caso…
+Dialogue: 0,0:04:19.66,0:04:22.74,Gen_Main,,0000,0000,0000,,-¿tendrías sexo conmigo?!\N-¡No entendiste nada!
+Dialogue: 0,0:04:22.91,0:04:24.74,Gen_Main,,0000,0000,0000,,¡Deja de hacer el ridículo!
+Dialogue: 0,0:04:26.66,0:04:28.75,Gen_Main,,0000,0000,0000,,¡¿Hermana?!
+Dialogue: 0,0:04:28.92,0:04:30.49,Gen_Main,,0000,0000,0000,,¡Oh, Lisa!
+Dialogue: 0,0:04:30.67,0:04:32.55,Gen_Main,,0000,0000,0000,,Hazla entrar en razón, ¿sí?
+Dialogue: 0,0:04:32.88,0:04:35.76,Gen_Main,,0000,0000,0000,,Mimi, compórtate de una buena vez.
+Dialogue: 0,0:04:38.01,0:04:41.72,Gen_Main,,0000,0000,0000,,-¡Porque su semilla será solo mía!\N-¡¿Tú también?!
+Dialogue: 0,0:04:42.37,0:04:43.96,Gen_Main,,0000,0000,0000,,Eso estuvo cerca.
+Dialogue: 0,0:04:44.14,0:04:45.88,Gen_Main,,0000,0000,0000,,¡En este mismo instante,
+Dialogue: 0,0:04:46.06,0:04:49.23,Gen_Main,,0000,0000,0000,,varios países compiten\Npara conseguir tu esperma!
+Dialogue: 0,0:04:49.39,0:04:53.60,Gen_Main,,0000,0000,0000,,¡Como integrante de los ogros,\Nno me quedaré de brazos cruzados!
+Dialogue: 0,0:04:53.77,0:04:56.56,Gen_Main,,0000,0000,0000,,¡La historia ha demostrado\Nuna y otra vez
+Dialogue: 0,0:04:56.86,0:05:00.01,Gen_Main,,0000,0000,0000,,que la sangre de los ogros\Nes la más fuerte!
+Dialogue: 0,0:05:00.20,0:05:01.20,Gen_Italics,,0000,0000,0000,,¿De qué habla?
+Dialogue: 0,0:05:01.36,0:05:03.16,Gen_Main,,0000,0000,0000,,Vamos, Peter Grill…
+Dialogue: 0,0:05:03.44,0:05:06.32,Gen_Main,,0000,0000,0000,,Pórtate bien y coopera con nosotras.
+Dialogue: 0,0:05:06.49,0:05:07.61,Gen_Main,,0000,0000,0000,,¡¿Es en serio?!
+Dialogue: 0,0:05:07.79,0:05:09.58,Gen_Main,,0000,0000,0000,,¡No puede ser verdad!
+Dialogue: 0,0:05:15.63,0:05:17.63,Gen_Main,,0000,0000,0000,,¿Qué? ¿Qué pasa?
+Dialogue: 0,0:05:21.55,0:05:23.80,Gen_Main,,0000,0000,0000,,¡No pienso ser su semental!
+Dialogue: 0,0:05:23.99,0:05:25.51,Gen_Main,,0000,0000,0000,,¡Peter Grill!
+Dialogue: 0,0:05:25.68,0:05:29.55,Gen_Main,,0000,0000,0000,,¡Juro por mi orgullo de ogro\Nque no escaparás!
+Dialogue: 0,0:05:29.73,0:05:30.80,Gen_Main,,0000,0000,0000,,¡Eso!
+Dialogue: 0,0:05:31.60,0:05:34.76,Gen_Italics,,0000,0000,0000,,¡No puedes perder el tiempo\Ncon ellas, Peter!
+Dialogue: 0,0:05:35.02,0:05:36.92,Gen_Italics,,0000,0000,0000,,¡Rápido, rápido!
+Dialogue: 0,0:05:37.94,0:05:39.29,Gen_Italics,,0000,0000,0000,,¡Ve con ella…!
+Dialogue: 0,0:05:41.92,0:05:43.19,Gen_Main,,0000,0000,0000,,¡Luvellia!
+Dialogue: 0,0:05:43.99,0:05:45.63,Gen_Main,,0000,0000,0000,,Hola, Peter.
+Dialogue: 0,0:05:45.83,0:05:47.16,Gen_Main,,0000,0000,0000,,Te esperaba.
+Dialogue: 0,0:05:50.57,0:05:52.24,Gen_Main,,0000,0000,0000,,Por fin lo conseguí.
+Dialogue: 0,0:05:52.42,0:05:54.05,Gen_Main,,0000,0000,0000,,Y ahora podremos…
+Dialogue: 0,0:05:54.95,0:05:57.12,Gen_Main,,0000,0000,0000,,Sí. Aunque es algo terco,
+Dialogue: 0,0:05:57.29,0:06:01.17,Gen_Main,,0000,0000,0000,,ahora que eres el campeón,\Nmi padre tendrá que darte su bendición.
+Dialogue: 0,0:06:03.45,0:06:04.84,Gen_Main,,0000,0000,0000,,Y una vez casados,
+Dialogue: 0,0:06:05.16,0:06:08.14,Gen_Main,,0000,0000,0000,,podremos tener\Na nuestro hijo y heredero.
+Dialogue: 0,0:06:08.56,0:06:11.09,Gen_Main,,0000,0000,0000,,Oye, solo por preguntar…
+Dialogue: 0,0:06:11.27,0:06:14.30,Gen_Main,,0000,0000,0000,,¿Sabes cómo se hacen los bebés?
+Dialogue: 0,0:06:17.48,0:06:19.09,Gen_Main,,0000,0000,0000,,¿Otra vez con eso?
+Dialogue: 0,0:06:19.28,0:06:22.15,Gen_Main,,0000,0000,0000,,Comienzo a creer que me tomas el pelo.
+Dialogue: 0,0:06:22.32,0:06:25.16,Gen_Main,,0000,0000,0000,,Presta atención, te lo explicaré.
+Dialogue: 0,0:06:25.32,0:06:27.77,Gen_Main,,0000,0000,0000,,Si quienes se aman oran a los cielos,
+Dialogue: 0,0:06:27.95,0:06:30.84,Gen_Main,,0000,0000,0000,,la cigüeña les lleva un bebé\Na un huerto de coles.
+Dialogue: 0,0:06:31.00,0:06:32.96,Gen_Main,,0000,0000,0000,,¡Es el milagro de la vida!
+Dialogue: 0,0:06:33.96,0:06:35.52,Gen_Italics,,0000,0000,0000,,¡Cuánta inocencia!
+Dialogue: 0,0:06:36.05,0:06:38.55,Gen_Italics,,0000,0000,0000,,¡Eso sí que es un milagro!
+Dialogue: 0,0:06:40.87,0:06:43.26,Gen_Italics,,0000,0000,0000,,Comenzamos a salir hace dos años.
+Dialogue: 0,0:06:43.42,0:06:48.47,Gen_Italics,,0000,0000,0000,,Por culpa del sobreprotector\Nde su padre, el maestro del gremio,
+Dialogue: 0,0:06:48.64,0:06:50.56,Gen_Italics,,0000,0000,0000,,solo nos hemos tomado de la mano.
+Dialogue: 0,0:06:51.95,0:06:55.56,Gen_Italics,,0000,0000,0000,,Si nos casáramos así,\Ndudo que en mi vida…
+Dialogue: 0,0:06:55.97,0:06:57.04,Gen_Main,,0000,0000,0000,,¡Vamos!
+Dialogue: 0,0:06:57.23,0:07:00.56,Gen_Main,,0000,0000,0000,,¿Por qué no oramos juntos, Peter?
+Dialogue: 0,0:07:01.19,0:07:02.41,Gen_Main,,0000,0000,0000,,Claro…
+Dialogue: 0,0:07:08.32,0:07:09.84,Gen_Main,,0000,0000,0000,,Vaya día…
+Dialogue: 0,0:07:10.09,0:07:13.75,Gen_Main,,0000,0000,0000,,Me alegra haber ganado el torneo,\Npero cuántos problemas…
+Dialogue: 0,0:07:16.96,0:07:18.71,Gen_Main,,0000,0000,0000,,¡Tu semilla…!
+Dialogue: 0,0:07:21.17,0:07:22.67,Gen_Main,,0000,0000,0000,,Será mejor olvidarlo…
+Dialogue: 0,0:07:27.49,0:07:30.05,Gen_Main,,0000,0000,0000,,¡Tarán! ¡Soy yo!
+Dialogue: 0,0:07:30.83,0:07:33.71,Gen_Main,,0000,0000,0000,,¡Hazlo conmigo, Peter!
+Dialogue: 0,0:07:35.40,0:07:36.73,Gen_Main,,0000,0000,0000,,¡Lárgate!
+Dialogue: 0,0:07:36.89,0:07:39.32,Gen_Main,,0000,0000,0000,,¡Espera! ¡Abre la puerta, por favor!
+Dialogue: 0,0:07:39.52,0:07:42.73,Gen_Italics,,0000,0000,0000,,¿Es que los ogros\Nno conocen la decencia?
+Dialogue: 0,0:07:45.28,0:07:48.41,Gen_Main,,0000,0000,0000,,Parece que por fin estamos a solas…
+Dialogue: 0,0:07:50.13,0:07:52.01,Gen_Main,,0000,0000,0000,,¡Abre, Peter Grill!
+Dialogue: 0,0:07:52.20,0:07:54.01,Gen_Main,,0000,0000,0000,,¡¿Por qué te opones?!
+Dialogue: 0,0:07:54.20,0:07:56.87,Gen_Main,,0000,0000,0000,,¡¿Es por dinero?! ¡¿Cuánto pides?!
+Dialogue: 0,0:07:57.04,0:07:59.79,Gen_Main,,0000,0000,0000,,¡Ya lárguense de aquí!
+Dialogue: 0,0:07:59.99,0:08:01.59,Gen_Main,,0000,0000,0000,,¿Qué pasa?
+Dialogue: 0,0:08:01.99,0:08:04.73,Gen_Main,,0000,0000,0000,,Oigan, está echando\Na dos chicas desnudas…
+Dialogue: 0,0:08:04.92,0:08:05.96,Gen_Main,,0000,0000,0000,,¡¿En serio?!
+Dialogue: 0,0:08:06.28,0:08:08.08,Gen_Main,,0000,0000,0000,,Es un patán…
+Dialogue: 0,0:08:08.75,0:08:10.27,Gen_Main,,0000,0000,0000,,¡Maldita sea!
+Dialogue: 0,0:08:10.51,0:08:11.68,Gen_Main,,0000,0000,0000,,Tranquilo…
+Dialogue: 0,0:08:11.89,0:08:14.38,Gen_Main,,0000,0000,0000,,A este paso, caerás en su trampa…
+Dialogue: 0,0:08:14.56,0:08:17.48,Gen_Main,,0000,0000,0000,,Estoy comprometido con Luvellia…
+Dialogue: 0,0:08:19.25,0:08:24.07,Gen_Main,,0000,0000,0000,,Estamos al tanto de tu relación\Ncon Luvellia, Peter Grill…
+Dialogue: 0,0:08:24.89,0:08:28.28,Gen_Main,,0000,0000,0000,,Y con suerte se han tomado de la mano.
+Dialogue: 0,0:08:28.45,0:08:30.45,Gen_Main,,0000,0000,0000,,Pero nosotras…
+Dialogue: 0,0:08:33.08,0:08:34.54,Gen_Main,,0000,0000,0000,,Oigan…
+Dialogue: 0,0:08:34.70,0:08:39.00,Gen_Main,,0000,0000,0000,,Podemos entretenerte\Nmuchísimo más que ella…
+Dialogue: 0,0:08:40.25,0:08:41.21,Gen_Main,,0000,0000,0000,,¡Basta!
+Dialogue: 0,0:08:41.83,0:08:44.67,Gen_Main,,0000,0000,0000,,¡¿Por qué tipo de escoria me toman?!
+Dialogue: 0,0:08:45.63,0:08:48.61,Gen_Main,,0000,0000,0000,,¡Nos prometimos el uno al otro!
+Dialogue: 0,0:08:48.76,0:08:51.63,Gen_Main,,0000,0000,0000,,¡Engañarla sería algo imperdonable!
+Dialogue: 0,0:08:53.41,0:08:54.47,Gen_Main,,0000,0000,0000,,¡Así es!
+Dialogue: 0,0:08:54.64,0:08:59.39,Gen_Main,,0000,0000,0000,,¡Y no hay ogro ni nadie\Nque me haga cambiar de parecer!
+Dialogue: 0,0:09:03.48,0:09:06.34,Gen_Main,,0000,0000,0000,,¿Decías algo?
+Dialogue: 0,0:09:11.99,0:09:14.71,Gen_Italics,,0000,0000,0000,,Esta sensación…
+Dialogue: 0,0:09:14.87,0:09:17.83,Gen_Italics,,0000,0000,0000,,Mi corazón ya tiene dueña…
+Dialogue: 0,0:09:24.79,0:09:26.13,Gen_Italics,,0000,0000,0000,,Pero…
+Dialogue: 0,0:09:27.41,0:09:28.51,Gen_Italics,,0000,0000,0000,,Yo…
+Dialogue: 0,0:09:29.38,0:09:31.34,Gen_Italics,,0000,0000,0000,,¡Yo…!
+Dialogue: 0,0:10:30.48,0:10:33.17,Gen_Main,,0000,0000,0000,,¡¿Qué hice?!
+Dialogue: 0,0:10:33.32,0:10:36.45,Gen_Main,,0000,0000,0000,,¡¿Cómo pude ser tan débil?!
+Dialogue: 0,0:10:37.09,0:10:38.13,Gen_Main,,0000,0000,0000,,¿Por qué?
+Dialogue: 0,0:10:38.28,0:10:39.68,Gen_Main,,0000,0000,0000,,¡¿Por qué…?!
+Dialogue: 0,0:10:39.96,0:10:43.76,Gen_Main,,0000,0000,0000,,¡¿Por qué no pude aguantarme las ganas?!
+Dialogue: 0,0:10:46.35,0:10:48.59,Gen_Main,,0000,0000,0000,,Peter, ¿estás despierto?
+Dialogue: 0,0:10:51.92,0:10:53.67,Gen_Italics,,0000,0000,0000,,¡Esa voz…!
+Dialogue: 0,0:10:58.43,0:11:00.00,Gen_Italics,,0000,0000,0000,,Ay, no…
+Dialogue: 0,0:12:00.41,0:12:02.88,Gen_Main,,0000,0000,0000,,"Estimado Peter Grill,
+Dialogue: 0,0:12:03.08,0:12:06.80,Gen_Main,,0000,0000,0000,,todos hablan de tu victoria\Ny de tu compromiso con Luvellia.
+Dialogue: 0,0:12:05.79,0:12:10.26,Cart_Next,,0000,0000,0000,,{\fad(800,0)\blur1}Episodio 2: Peter Grill y su futuro suegro
+Dialogue: 0,0:12:06.96,0:12:09.89,Gen_Main,,0000,0000,0000,,De seguro que te sientes\Nmuy afortunado".
