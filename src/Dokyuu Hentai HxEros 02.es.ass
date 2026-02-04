@@ -1,0 +1,291 @@
+﻿[Script Info]
+Title: Español (América Latina)
+Original Script: crunchyroll_la  [http://www.crunchyroll.com/user/crunchyroll_la]
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 640
+PlayResY: 360
+Timer: 0.0000
+WrapStyle: 0
+ScaledBorderAndShadow: Yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,Strikeout,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,0010,0010,0018,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,0010,0010,0018,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,0010,0010,0018,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,0010,0010,0018,1
+Style: Gen_Nota,Trebuchet MS,20,&H00FFFFFF,&H000000FF,&H00262626,&H00505050,0,-1,0,0,100,100,0,0,1,2,1,8,0010,0010,0018,1
+Style: Cart_A_Tre,Trebuchet MS,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,2,0,8,0020,0020,0020,1
+Style: Cart_C_Tre,Trebuchet MS,20,&H00000000,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,0,8,0020,0020,0020,1
+Style: Cart_A_Ari,Arial,24,&H00FFFFFF,&H000000FF,&H00000000,&H00303030,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_TitleSeries,Trebuchet MS,30,&H00000000,&H000000FF,&H00FFFFFF,&H00AC4F8A,-1,0,0,0,100,100,0,0,1,2,0,2,0010,0030,0010,1
+Style: Cart_EpiTitle,Arial,22,&H00FFFFFF,&H000000FF,&H327D0CB6,&H002971C2,-1,0,0,0,100,100,0,0,1,3,0,5,0040,0060,0110,1
+Style: Cart_C_Ari,Arial,24,&H00000000,&H000000FF,&H00FFFFFF,&H00303030,-1,0,0,0,100,100,0,0,1,2,1,8,0020,0020,0020,1
+Style: Cart_A_Tim,Times New Roman,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,2,0,8,0020,0020,0020,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:03.63,0:00:04.61,Gen_Main,,0000,0000,0000,,{\i1}Ret…{\i0}
+Dialogue: 0,0:00:04.61,0:00:08.84,Gen_Main,,0000,0000,0000,,{\i1}¡Espera, Hoshino! ¿Aquí?{\i0}
+Dialogue: 0,0:00:10.64,0:00:17.39,Gen_Main,,0000,0000,0000,,{\i1}Dijiste que se necesita energía\Npara derrotar a la Kiseichuu, ¿cierto?{\i0}
+Dialogue: 0,0:00:17.39,0:00:20.44,Gen_Main,,0000,0000,0000,,{\i1}Así que no te hagas\Nuna idea equivocada.{\i0}
+Dialogue: 0,0:00:20.44,0:00:24.23,Gen_Main,,0000,0000,0000,,{\i1}Esto no es por ti.{\i0}
+Dialogue: 0,0:00:25.94,0:00:28.99,Gen_Main,,0000,0000,0000,,{\i1}Es por la paz mundial.{\i0}
+Dialogue: 0,0:02:08.25,0:02:11.09,Gen_Main,,0000,0000,0000,,¡Super HxEROS!: ¡Episodio dos!
+Dialogue: 0,0:02:11.09,0:02:13.30,Gen_Main,,0000,0000,0000,,"¡Formas de los HxEros!"
+Dialogue: 0,0:02:20.22,0:02:23.27,Gen_Main,,0000,0000,0000,,Creo que solo fue un sueño.
+Dialogue: 0,0:02:26.98,0:02:29.90,Gen_Main,,0000,0000,0000,,Oh, eres tú, Runba.
+Dialogue: 0,0:02:32.40,0:02:35.03,Gen_Main,,0000,0000,0000,,¿Qué tienes en el hocico?
+Dialogue: 0,0:02:35.03,0:02:36.78,Gen_Main,,0000,0000,0000,,Esto es…
+Dialogue: 0,0:02:37.37,0:02:39.95,Gen_Main,,0000,0000,0000,,{\i1}¡Runba! ¡Puedes correr,\Npero no te puedes esconder!{\i0}
+Dialogue: 0,0:02:39.95,0:02:41.75,Gen_Main,,0000,0000,0000,,¡Momozono!
+Dialogue: 0,0:02:42.25,0:02:45.42,Gen_Main,,0000,0000,0000,,¡Devuélveme mis calzones ahora mismo!
+Dialogue: 0,0:02:56.55,0:02:59.97,Gen_Main,,0000,0000,0000,,¿Qué crees que ibas\Na hacer con esto, Retto?
+Dialogue: 0,0:02:59.97,0:03:02.06,Gen_Main,,0000,0000,0000,,¡No fui yo! Fue Runba…
+Dialogue: 0,0:03:02.60,0:03:05.52,Gen_Main,,0000,0000,0000,,Si eres un hombre de verdad,\N¡consigue calzones por ti mismo!
+Dialogue: 0,0:03:05.52,0:03:07.08,Gen_Main,,0000,0000,0000,,¿Por eso te enojas?
+Dialogue: 0,0:03:08.11,0:03:12.05,Gen_Main,,0000,0000,0000,,{\i1}Cielos, los chicos de ahora\Nno tienen coraje.{\i0}
+Dialogue: 0,0:03:12.05,0:03:13.19,Gen_Main,,0000,0000,0000,,{\i1}Por Dios…{\i0}
+Dialogue: 0,0:03:14.03,0:03:16.20,Gen_Main,,0000,0000,0000,,{\i1}Ella es tan ruidosa.{\i0}
+Dialogue: 0,0:03:17.24,0:03:19.12,Gen_Main,,0000,0000,0000,,¿Tenkuji?
+Dialogue: 0,0:03:19.12,0:03:23.66,Gen_Main,,0000,0000,0000,,Retto, ¿por qué dormiste\Nen mi habitación?
+Dialogue: 0,0:03:23.66,0:03:25.48,Gen_Main,,0000,0000,0000,,Esta es mi habitación.
+Dialogue: 0,0:03:26.50,0:03:29.59,Gen_Main,,0000,0000,0000,,Debes haber estado medio\Ndormida y tropezaste aquí de nuevo.
+Dialogue: 0,0:03:29.59,0:03:33.01,Gen_Main,,0000,0000,0000,,Tu habitación está allá.\N¿Cuántas veces tengo que decírtelo?
+Dialogue: 0,0:03:43.93,0:03:47.33,Gen_Main,,0000,0000,0000,,Tuviste una mañana agitada,\N¿no, Enjo?
+Dialogue: 0,0:03:48.44,0:03:50.15,Gen_Main,,0000,0000,0000,,Gracias, Shirayuki.
+Dialogue: 0,0:03:50.15,0:03:53.90,Gen_Main,,0000,0000,0000,,Eres la única persona\Ndecente en esta casa.
+Dialogue: 0,0:03:53.90,0:03:58.11,Gen_Main,,0000,0000,0000,,Eso no es verdad.\NTodas son buenas chicas.
+Dialogue: 0,0:04:10.46,0:04:13.63,Gen_Main,,0000,0000,0000,,Aquí tienes, Runba.\N¡Tu desayuno!
+Dialogue: 0,0:04:16.17,0:04:18.63,Gen_Main,,0000,0000,0000,,Oh, no. Qué lugar\Npara que se caiga la comida.
+Dialogue: 0,0:04:20.64,0:04:24.39,Gen_Main,,0000,0000,0000,,¡Ya basta, Runba!\N¡Ese no es tu plato de comida!
+Dialogue: 0,0:04:32.94,0:04:37.34,Gen_Main,,0000,0000,0000,,Lamento que vieras algo tan vergonzoso.
+Dialogue: 0,0:04:37.34,0:04:41.51,Gen_Main,,0000,0000,0000,,Está bien. No vi nada.
+Dialogue: 0,0:04:50.67,0:04:54.77,Gen_Main,,0000,0000,0000,,{\i1}Esta casa sirve como base\Npara el equipo de Super HxEROS.{\i0}
+Dialogue: 0,0:04:55.42,0:04:58.26,Gen_Main,,0000,0000,0000,,{\i1}Mis compañeras y yo vivimos juntos…{\i0}
+Dialogue: 0,0:04:58.88,0:05:01.30,Gen_Main,,0000,0000,0000,,{\i1}Excepto por un miembro.{\i0}
+Dialogue: 0,0:05:02.64,0:05:07.10,Gen_Main,,0000,0000,0000,,{\i1}No saben lo contento que estoy\Npor haber encontrado a un nuevo miembro.{\i0}
+Dialogue: 0,0:05:07.73,0:05:11.73,Gen_Main,,0000,0000,0000,,Ahora, Super HxEROS\Nrealmente puede ponerse en marcha.
+Dialogue: 0,0:05:13.15,0:05:14.98,Gen_Main,,0000,0000,0000,,Eh, tengo una pregunta.
+Dialogue: 0,0:05:15.32,0:05:18.40,Gen_Main,,0000,0000,0000,,¿Es en verdad necesario vivir juntos\Nsolo porque somos un equipo?
+Dialogue: 0,0:05:18.40,0:05:21.86,Gen_Main,,0000,0000,0000,,Pues, el despliegue de emergencia\Nes parte integral de ser un superhéroe,
+Dialogue: 0,0:05:21.86,0:05:25.07,Gen_Main,,0000,0000,0000,,y el trabajo en equipo es\Nmuy importante para derrotar a los malos.
+Dialogue: 0,0:05:25.07,0:05:25.91,Gen_Main,,0000,0000,0000,,Pero aún…
+Dialogue: 0,0:05:28.12,0:05:29.91,Gen_Main,,0000,0000,0000,,¿Cuál es tu nombre,\NPirara Hoshino?
+Dialogue: 0,0:05:29.91,0:05:32.50,Gen_Main,,0000,0000,0000,,Es Kirara. Y no me toques.
+Dialogue: 0,0:05:33.96,0:05:37.30,Gen_Main,,0000,0000,0000,,Bueno, somos pájaros del mismo plumaje,\N¡así que llevémonos bien!
+Dialogue: 0,0:05:37.30,0:05:41.47,Gen_Main,,0000,0000,0000,,¿Pájaros del mismo plumaje?\NNo entiendo qué dices.
+Dialogue: 0,0:05:41.47,0:05:46.68,Gen_Main,,0000,0000,0000,,No, concuerdo con ella. Ustedes tienen\Nlo que se necesita para esto.
+Dialogue: 0,0:05:47.64,0:05:50.94,Gen_Main,,0000,0000,0000,,¿Tenemos lo que se necesita?\N¿Y qué es eso exactamente?
+Dialogue: 0,0:05:53.12,0:05:55.23,Gen_Main,,0000,0000,0000,,{\i1}¡La capacidad de sentir eros!{\i0}
+Dialogue: 0,0:06:05.07,0:06:06.26,Gen_Main,,0000,0000,0000,,¡Me voy a casa!
+Dialogue: 0,0:06:06.26,0:06:09.66,Gen_Main,,0000,0000,0000,,¡No tengo tiempo\Npara escuchar estas tonterías!
+Dialogue: 0,0:06:10.16,0:06:11.62,Gen_Main,,0000,0000,0000,,¡Espera!
+Dialogue: 0,0:06:14.67,0:06:17.11,Gen_Main,,0000,0000,0000,,{\i1}¿Por qué se enojó?{\i0}
+Dialogue: 0,0:06:17.11,0:06:22.47,Gen_Main,,0000,0000,0000,,Qué desperdicio.\NElla tiene tanto potencial.
+Dialogue: 0,0:06:25.30,0:06:28.51,Gen_Main,,0000,0000,0000,,Retto, ¿tú podrás convencerla?
+Dialogue: 0,0:06:29.14,0:06:33.31,Gen_Main,,0000,0000,0000,,¡No, no hay manera!\N¡Ya oíste la respuesta de Hoshino!
+Dialogue: 0,0:06:33.69,0:06:35.06,Gen_Main,,0000,0000,0000,,¡Yo también te lo pido!
+Dialogue: 0,0:06:35.06,0:06:38.37,Gen_Main,,0000,0000,0000,,¡Cueste lo que cueste,\Nnecesitamos a Pirara!
+Dialogue: 0,0:06:38.37,0:06:39.38,Gen_Main,,0000,0000,0000,,Momozono…
+Dialogue: 0,0:06:40.19,0:06:43.49,Gen_Main,,0000,0000,0000,,Los superhéroes necesitan\Na cinco personas en un equipo.
+Dialogue: 0,0:06:43.49,0:06:45.20,Gen_Main,,0000,0000,0000,,¿Qué? ¿Esa es la razón?
+Dialogue: 0,0:06:54.58,0:06:59.60,Gen_Main,,0000,0000,0000,,{\i1}Es cierto que reunir miembros\Nes importante, pero Hoshino…{\i0}
+Dialogue: 0,0:06:59.60,0:07:00.42,Gen_Main,,0000,0000,0000,,{\i1}¡Ta-rán!{\i0}
+Dialogue: 0,0:07:03.47,0:07:06.18,Gen_Main,,0000,0000,0000,,¡Ta-rán! ¡Ta-rán! ¡Ta-rán!
+Dialogue: 0,0:07:06.18,0:07:07.43,Gen_Main,,0000,0000,0000,,¿Qué?
+Dialogue: 0,0:07:08.51,0:07:09.85,Gen_Main,,0000,0000,0000,,¿Cosplay?
+Dialogue: 0,0:07:11.06,0:07:13.35,Gen_Main,,0000,0000,0000,,¿Por qué tu falda es tan corta?
+Dialogue: 0,0:07:13.35,0:07:14.85,Gen_Main,,0000,0000,0000,,¿Qué te importa?
+Dialogue: 0,0:07:14.85,0:07:16.23,Gen_Main,,0000,0000,0000,,¡Debo controlarte!
+Dialogue: 0,0:07:26.66,0:07:27.82,Gen_Main,,0000,0000,0000,,¡Así está mejor!
+Dialogue: 0,0:07:27.82,0:07:29.68,Gen_Main,,0000,0000,0000,,¡Odio las faldas largas!
+Dialogue: 0,0:07:30.41,0:07:32.66,Gen_Main,,0000,0000,0000,,¡Hasta ahí llegaste, Kiseichuu!
+Dialogue: 0,0:07:41.00,0:07:42.51,Gen_Main,,0000,0000,0000,,Gracias.
+Dialogue: 0,0:07:45.13,0:07:46.13,Gen_Main,,0000,0000,0000,,¿A dónde…?
+Dialogue: 0,0:07:50.10,0:07:54.18,Gen_Main,,0000,0000,0000,,{\i1}La simple idea de hacer que Hoshino\Nluche contra las Kiseichuu…{\i0}
+Dialogue: 0,0:08:01.23,0:08:03.03,Gen_Main,,0000,0000,0000,,¡Ella es tan mala!
+Dialogue: 0,0:08:08.03,0:08:08.86,Gen_Main,,0000,0000,0000,,Yo lo sé…
+Dialogue: 0,0:08:08.86,0:08:11.12,Gen_Main,,0000,0000,0000,,¿Qué fue eso?
+Dialogue: 0,0:08:11.12,0:08:12.12,Gen_Main,,0000,0000,0000,,Buenos días.
+Dialogue: 0,0:08:12.12,0:08:12.99,Gen_Main,,0000,0000,0000,,¡Ah!
+Dialogue: 0,0:08:12.99,0:08:15.29,Gen_Main,,0000,0000,0000,,La Doncella de Hierro volvió a hacerlo.
+Dialogue: 0,0:08:15.29,0:08:18.62,Gen_Main,,0000,0000,0000,,Ella acaba de derribar a un chico.
+Dialogue: 0,0:08:18.62,0:08:20.96,Gen_Main,,0000,0000,0000,,¿Qué?
+Dialogue: 0,0:08:25.51,0:08:27.06,Gen_Main,,0000,0000,0000,,¿Enjo?
+Dialogue: 0,0:08:27.06,0:08:28.13,Gen_Main,,0000,0000,0000,,Buenos días.
+Dialogue: 0,0:08:31.18,0:08:34.10,Gen_Main,,0000,0000,0000,,¡Bueno, tengo que irme!
+Dialogue: 0,0:08:34.43,0:08:37.44,Gen_Main,,0000,0000,0000,,¿Irte? Ese es tu casillero.
+Dialogue: 0,0:08:43.65,0:08:45.65,Gen_Main,,0000,0000,0000,,¿Pasó algo, Retto?
+Dialogue: 0,0:08:45.65,0:08:46.99,Gen_Main,,0000,0000,0000,,Nada, en realidad.
+Dialogue: 0,0:08:46.99,0:08:48.45,Gen_Main,,0000,0000,0000,,¡Oh, vamos!
+Dialogue: 0,0:08:48.45,0:08:50.16,Gen_Main,,0000,0000,0000,,Eso fue por algo.
+Dialogue: 0,0:08:50.16,0:08:51.41,Gen_Main,,0000,0000,0000,,¡Estás sospechoso!
+Dialogue: 0,0:08:51.41,0:08:53.05,Gen_Main,,0000,0000,0000,,{\i1}La promesa…{\i0}
+Dialogue: 0,0:08:54.41,0:08:57.91,Gen_Main,,0000,0000,0000,,{\i1}¿Qué tal si te ayudo\Ncon lo que haces, Ret?{\i0}
+Dialogue: 0,0:09:02.54,0:09:07.80,Gen_Main,,0000,0000,0000,,{\i1}Solo si prometes no decirle\Na nadie lo que pasó hoy.{\i0}
+Dialogue: 0,0:09:08.67,0:09:10.72,Gen_Main,,0000,0000,0000,,{\i1}…que le hice ayer.{\i0}
+Dialogue: 0,0:09:11.26,0:09:15.45,Gen_Main,,0000,0000,0000,,{\i1}No, eso no fue todo, ¿verdad?{\i0}
+Dialogue: 0,0:09:25.11,0:09:26.40,Gen_Main,,0000,0000,0000,,Tranquila.
+Dialogue: 0,0:09:28.86,0:09:29.95,Gen_Main,,0000,0000,0000,,Hoshino.
+Dialogue: 0,0:09:31.74,0:09:32.76,Gen_Main,,0000,0000,0000,,¿Tienes un segundo?
+Dialogue: 0,0:09:34.16,0:09:35.66,Gen_Main,,0000,0000,0000,,Enjo.
+Dialogue: 0,0:09:36.66,0:09:41.12,Gen_Main,,0000,0000,0000,,¿Qué quieres? No le dijiste a nadie\Nlo que pasó ayer, ¿verdad?
+Dialogue: 0,0:09:41.12,0:09:45.52,Gen_Main,,0000,0000,0000,,Claro que no. Por eso esperé\Nhasta saber que estarías sola.
+Dialogue: 0,0:09:45.75,0:09:47.76,Gen_Main,,0000,0000,0000,,¿Estás aquí para amenazarme?
+Dialogue: 0,0:09:47.76,0:09:49.38,Gen_Main,,0000,0000,0000,,¡Como si yo hiciera eso!
+Dialogue: 0,0:09:49.38,0:09:51.22,Gen_Main,,0000,0000,0000,,¿Entonces?
+Dialogue: 0,0:09:51.22,0:09:53.70,Gen_Main,,0000,0000,0000,,Me pidieron que te convenciera…
+Dialogue: 0,0:09:57.56,0:09:59.56,Gen_Main,,0000,0000,0000,,Pero pensándolo bien…
+Dialogue: 0,0:09:59.56,0:10:04.06,Gen_Main,,0000,0000,0000,,Hacerte luchar contra la causa\Nde tu trauma sería demasiado cruel.
+Dialogue: 0,0:10:09.65,0:10:11.13,Gen_Main,,0000,0000,0000,,Desde luego…
+Dialogue: 0,0:10:11.13,0:10:15.91,Gen_Main,,0000,0000,0000,,En primer lugar, ¿por qué te tomas\Nla molestia de luchar contra ellas?
+Dialogue: 0,0:10:16.62,0:10:18.43,Gen_Main,,0000,0000,0000,,A veces pienso que…
+Dialogue: 0,0:10:19.12,0:10:22.52,Gen_Main,,0000,0000,0000,,Si no nos hubiéramos topado\Ncon una Kiseichuu ese día…
+Dialogue: 0,0:10:25.00,0:10:28.11,Gen_Main,,0000,0000,0000,,quizás nuestra relación sería diferente.
+Dialogue: 0,0:10:28.80,0:10:33.84,Gen_Main,,0000,0000,0000,,Y más allá de nosotros, las Kiseichuu\Ntambién han arruinado otras relaciones.
+Dialogue: 0,0:10:34.34,0:10:39.29,Gen_Main,,0000,0000,0000,,A pesar de las razones que tengan, nunca\Nlas perdonaré por robar emociones humanas.
+Dialogue: 0,0:10:40.73,0:10:41.89,Gen_Main,,0000,0000,0000,,Enjo…
+Dialogue: 0,0:10:42.23,0:10:46.53,Gen_Main,,0000,0000,0000,,Mi tío puede estar decepcionado\Npor perderte como miembro…
+Dialogue: 0,0:10:46.53,0:10:49.61,Gen_Main,,0000,0000,0000,,Pero lo resolveré con él,\Nasí que no te preocupes.
+Dialogue: 0,0:10:50.99,0:10:54.07,Gen_Main,,0000,0000,0000,,Bueno, perdón por molestarte.
+Dialogue: 0,0:11:00.29,0:11:04.55,Gen_Main,,0000,0000,0000,,{\i1}¿Qué demonios? Todo el mundo piensa\Nque tengo la mente sucia.{\i0}
+Dialogue: 0,0:11:04.55,0:11:11.05,Gen_Main,,0000,0000,0000,,{\i1}Es cierto, no puedo negar que cuando era\Nmás chica, tenía ciertos deseos, pero…{\i0}
+Dialogue: 0,0:11:19.47,0:11:22.68,Gen_Main,,0000,0000,0000,,Hola. Soy Jikochuu.
+Dialogue: 0,0:11:29.57,0:11:31.61,Gen_Main,,0000,0000,0000,,{\i1}Oye, ¿tú sabías…?{\i0}
+Dialogue: 0,0:11:31.61,0:11:36.45,Gen_Main,,0000,0000,0000,,{\i1}El corazón late tres mil millones\Nde veces durante la vida de un humano.{\i0}
+Dialogue: 0,0:11:37.66,0:11:39.24,Gen_Main,,0000,0000,0000,,{\i1}¡Vamos a probarlo!{\i0}
+Dialogue: 0,0:11:42.54,0:11:45.96,Gen_Main,,0000,0000,0000,,{\i1}¿Quieres ver cuál de los dos\Nlate más rápido?{\i0}
+Dialogue: 0,0:11:47.54,0:11:48.89,Gen_Main,,0000,0000,0000,,{\i1}Suena interesante.{\i0}
+Dialogue: 0,0:11:48.89,0:11:50.75,Gen_Main,,0000,0000,0000,,{\i1}Pero te lo advierto, ¡no perderé!{\i0}
+Dialogue: 0,0:11:50.75,0:11:52.60,Gen_Main,,0000,0000,0000,,{\i1}¡Ya veremos!{\i0}
+Dialogue: 0,0:11:52.60,0:11:56.76,Gen_Main,,0000,0000,0000,,{\i1}Bien, que cada uno ponga\Nuna mano en el pecho del otro.{\i0}
+Dialogue: 0,0:11:57.84,0:11:58.76,Gen_Main,,0000,0000,0000,,{\i1}¡Espera!{\i0}
+Dialogue: 0,0:11:58.76,0:12:01.63,Gen_Main,,0000,0000,0000,,{\i1}¡No puedo!\NQuiero decir, ¡es una locura!{\i0}
+Dialogue: 0,0:12:01.63,0:12:04.35,Gen_Main,,0000,0000,0000,,{\i1}Bueno, está bien.{\i0}
+Dialogue: 0,0:12:05.02,0:12:10.27,Gen_Main,,0000,0000,0000,,{\i1}Entonces, ¿qué tal si\Nlo comprobamos escuchando?{\i0}
+Dialogue: 0,0:12:16.36,0:12:20.53,Gen_Main,,0000,0000,0000,,{\i1}Los latidos de tu corazón\Nson cada vez más rápidos, Ret.{\i0}
+Dialogue: 0,0:12:27.16,0:12:28.75,Gen_Main,,0000,0000,0000,,{\i1}¿Qué?{\i0}
+Dialogue: 0,0:12:28.75,0:12:32.92,Gen_Main,,0000,0000,0000,,{\i1}El sonido del mío es igual que el de Ret.{\i0}
+Dialogue: 0,0:12:37.05,0:12:39.26,Gen_Main,,0000,0000,0000,,{\i1}Supongo que hoy empatamos.{\i0}
+Dialogue: 0,0:12:39.26,0:12:41.43,Gen_Main,,0000,0000,0000,,{\i1}Eh… Sí.{\i0}
+Dialogue: 0,0:12:46.93,0:12:52.57,Gen_Main,,0000,0000,0000,,{\i1}Pero cambié. No soy la niña precoz\Nque era entonces.{\i0}
+Dialogue: 0,0:12:52.57,0:12:54.65,Gen_Main,,0000,0000,0000,,{\i1}¡Un monstruo!{\i0}
+Dialogue: 0,0:12:58.74,0:12:59.95,Gen_Main,,0000,0000,0000,,¿Un monstruo?
+Dialogue: 0,0:13:00.53,0:13:06.14,Gen_Main,,0000,0000,0000,,{\i1}No me digan que una de esas cosas\Nde ayer vino al colegio.{\i0}
+Dialogue: 0,0:13:06.91,0:13:12.31,Gen_Main,,0000,0000,0000,,{\i1}Y más allá de nosotros, las Kiseichuu\Ntambién han arruinado otras relaciones.{\i0}
+Dialogue: 0,0:13:25.64,0:13:29.73,Gen_Main,,0000,0000,0000,,Entonces, esto es lo que\Nellos llaman un colegio.
+Dialogue: 0,0:13:29.73,0:13:32.65,Gen_Main,,0000,0000,0000,,Perfecto.\NEstá repleto de humanos jóvenes.
+Dialogue: 0,0:13:32.65,0:13:35.55,Gen_Main,,0000,0000,0000,,Quizá juegue aquí hasta que aparezca…
+Dialogue: 0,0:13:35.55,0:13:38.99,Gen_Main,,0000,0000,0000,,el que molestó a mi\Nhermana pequeña esta mañana.
+Dialogue: 0,0:13:44.87,0:13:46.24,Gen_Main,,0000,0000,0000,,¡Oye!
+Dialogue: 0,0:13:46.24,0:13:48.66,Gen_Main,,0000,0000,0000,,Lo siento. No lograste escapar.
+Dialogue: 0,0:13:53.73,0:13:58.71,Gen_Main,,0000,0000,0000,,Parece que un corazón roto\Nte llenó de energía H negativa.
+Dialogue: 0,0:14:00.47,0:14:01.76,Gen_Main,,0000,0000,0000,,Puedo verlo…
+Dialogue: 0,0:14:01.76,0:14:06.64,Gen_Main,,0000,0000,0000,,Las cosas indecentes que\Nimaginaste hacer con esa chica…
+Dialogue: 0,0:14:07.77,0:14:10.56,Gen_Main,,0000,0000,0000,,La imaginas en traje de baño.
+Dialogue: 0,0:14:11.48,0:14:13.52,Gen_Main,,0000,0000,0000,,{\i1}Maestro.{\i0}
+Dialogue: 0,0:14:15.02,0:14:18.71,Gen_Main,,0000,0000,0000,,{\i1}¡Quiero que me lleve a dar un paseo!{\i0}
+Dialogue: 0,0:14:24.99,0:14:26.92,Gen_Main,,0000,0000,0000,,No tuve elección.
+Dialogue: 0,0:14:26.92,0:14:28.91,Cart_A_Tre,,0000,0000,0000,,Solicitud de amistad
+Dialogue: 0,0:14:30.20,0:14:32.87,Gen_Main,,0000,0000,0000,,{\i1}¡Por favor, sé mi amiga!{\i0}
+Dialogue: 0,0:14:35.54,0:14:37.23,Cart_A_Tre,,0000,0000,0000,,Descarga completa\NPasa una noche en un hotel
+Dialogue: 0,0:14:37.00,0:14:40.46,Gen_Main,,0000,0000,0000,,{\i1}Además, la próxima vez,\Nvamos a algún lado…{\i0}
+Dialogue: 0,0:14:40.46,0:14:43.88,Gen_Main,,0000,0000,0000,,{\i1}¿Qué derecho tienes para decirme eso?{\i0}
+Dialogue: 0,0:14:43.88,0:14:46.01,Gen_Main,,0000,0000,0000,,{\i1}En primer lugar, ¿quién eres?{\i0}
+Dialogue: 0,0:14:46.01,0:14:49.43,Gen_Main,,0000,0000,0000,,{\i1}Nunca le daría mi información de contacto\Na alguien que no conozco.{\i0}
+Dialogue: 0,0:14:52.60,0:14:54.40,Gen_Main,,0000,0000,0000,,La amo.
+Dialogue: 0,0:14:54.73,0:14:56.90,Gen_Main,,0000,0000,0000,,Bueno, ¡la amaba!
+Dialogue: 0,0:14:57.31,0:14:59.46,Gen_Main,,0000,0000,0000,,Pero después de que me dijo eso…
+Dialogue: 0,0:15:00.48,0:15:02.53,Gen_Main,,0000,0000,0000,,Siéntete en paz.
+Dialogue: 0,0:15:04.66,0:15:07.58,Gen_Main,,0000,0000,0000,,Una vez que absorba toda tu energía H…
+Dialogue: 0,0:15:08.62,0:15:13.48,Gen_Main,,0000,0000,0000,,Nunca más te sentirás\Nagobiado por el amor.
+Dialogue: 0,0:15:13.48,0:15:16.08,Gen_Main,,0000,0000,0000,,¡No, no lo hagas!
+Dialogue: 0,0:15:22.30,0:15:24.94,Gen_Main,,0000,0000,0000,,{\i1}¿Qué rayos estará haciendo Enjo?{\i0}
+Dialogue: 0,0:15:24.94,0:15:26.89,Gen_Main,,0000,0000,0000,,{\i1}Si no llega rápido…{\i0}
+Dialogue: 0,0:15:29.93,0:15:33.16,Gen_Main,,0000,0000,0000,,{\i1}Pero ese chico…{\i0}
+Dialogue: 0,0:15:35.48,0:15:38.44,Gen_Main,,0000,0000,0000,,Lo que sientas al respecto\Nno tiene importancia.
+Dialogue: 0,0:15:38.44,0:15:40.44,Gen_Main,,0000,0000,0000,,¡No lo hagas!
+Dialogue: 0,0:15:42.86,0:15:47.82,Gen_Main,,0000,0000,0000,,{\i1}A pesar de las razones que tengan, nunca\Nlas perdonaré por robar emociones humanas.{\i0}
+Dialogue: 0,0:15:49.24,0:15:50.81,Gen_Main,,0000,0000,0000,,{\i1}Es cierto.{\i0}
+Dialogue: 0,0:15:52.20,0:15:56.64,Gen_Main,,0000,0000,0000,,¡Debo ayudar a ese chico yo sola!
+Dialogue: 0,0:15:57.50,0:15:59.34,Gen_Main,,0000,0000,0000,,¡Detente!
+Dialogue: 0,0:15:59.84,0:16:04.09,Gen_Main,,0000,0000,0000,,Si quieres absorber la energía\Nde alguien, ¡empieza por la mía!
+Dialogue: 0,0:16:04.47,0:16:05.68,Gen_Main,,0000,0000,0000,,¿Qué es esto?
+Dialogue: 0,0:16:06.26,0:16:11.68,Gen_Main,,0000,0000,0000,,¿Un civil enfrentándome antes que\Nun Super HxEROS? Eso es una sorpresa.
+Dialogue: 0,0:16:17.44,0:16:21.82,Gen_Main,,0000,0000,0000,,Aun así, si estás tan asustada\Nque hasta tiemblas,
+Dialogue: 0,0:16:21.82,0:16:24.07,Gen_Main,,0000,0000,0000,,¿por qué te tomas\Nla molestia de desafiarme?
+Dialogue: 0,0:16:24.65,0:16:30.39,Gen_Main,,0000,0000,0000,,Pero creo que aceptaré\Ntu oferta de absorber tu energía.
+Dialogue: 0,0:16:44.26,0:16:46.63,Gen_Main,,0000,0000,0000,,Te lo dije, Kiseichuu.
+Dialogue: 0,0:16:47.13,0:16:50.78,Gen_Main,,0000,0000,0000,,¡Nunca dejaré que tu especie\Nvuelva a tocar a Hoshino!
+Dialogue: 0,0:16:55.47,0:16:58.19,Gen_Main,,0000,0000,0000,,¡Es la primera vez que escucho eso!
+Dialogue: 0,0:17:11.74,0:17:14.31,Gen_Main,,0000,0000,0000,,Eh… Enjo.
+Dialogue: 0,0:17:16.37,0:17:19.17,Gen_Main,,0000,0000,0000,,¡Hoshino! ¿Por qué tampoco traes ropa?
+Dialogue: 0,0:17:19.87,0:17:21.68,Gen_Main,,0000,0000,0000,,¡Lo hiciste otra vez!
+Dialogue: 0,0:17:21.68,0:17:25.21,Gen_Main,,0000,0000,0000,,¡Lo siento!\N¡Usé demasiada fuerza sin pensar!
+Dialogue: 0,0:17:25.21,0:17:26.80,Gen_Main,,0000,0000,0000,,¿Qué hacemos al respecto?
+Dialogue: 0,0:17:26.80,0:17:28.42,Gen_Main,,0000,0000,0000,,No importa, ¡ponte algo de esto!
+Dialogue: 0,0:17:28.42,0:17:30.97,Gen_Main,,0000,0000,0000,,¡Guardia, dese prisa!\N¡Hay un monstruo aquí!
+Dialogue: 0,0:17:31.72,0:17:33.51,Gen_Main,,0000,0000,0000,,¡Tenemos que escondernos, Hoshino!
+Dialogue: 0,0:17:36.47,0:17:38.29,Gen_Main,,0000,0000,0000,,¡Venga! ¡Está justo ahí!
+Dialogue: 0,0:17:39.98,0:17:41.31,Gen_Main,,0000,0000,0000,,{\i1}No veo nada.{\i0}
+Dialogue: 0,0:17:41.65,0:17:43.02,Gen_Main,,0000,0000,0000,,{\i1}¿Qué?{\i0}
+Dialogue: 0,0:17:43.02,0:17:45.57,Gen_Main,,0000,0000,0000,,{\i1}Fue aquí mismo.{\i0}
+Dialogue: 0,0:17:48.40,0:17:51.07,Gen_Main,,0000,0000,0000,,No hagas ningún ruido.
+Dialogue: 0,0:17:53.20,0:17:55.68,Gen_Main,,0000,0000,0000,,{\i1}Es fácil de decir para él.{\i0}
+Dialogue: 0,0:17:55.68,0:17:59.62,Gen_Main,,0000,0000,0000,,{\i1}Pero nuestros cuerpos desnudos\Nestán uno contra el otro…{\i0}
+Dialogue: 0,0:17:59.62,0:18:05.56,Gen_Main,,0000,0000,0000,,{\i1}¡No es bueno!\NMi corazón está latiendo rápidamente.{\i0}
+Dialogue: 0,0:18:05.56,0:18:08.65,Gen_Main,,0000,0000,0000,,{\i1}¡Estoy segura de que Enjo puede oírlo!{\i0}
+Dialogue: 0,0:18:08.65,0:18:13.76,Gen_Main,,0000,0000,0000,,{\i1}¡Y esta vez, mi corazón\Nes el que late más rápido!{\i0}
+Dialogue: 0,0:18:17.43,0:18:19.35,Gen_Main,,0000,0000,0000,,{\i1}Le juro que estaba justo aquí.{\i0}
+Dialogue: 0,0:18:19.35,0:18:21.73,Gen_Main,,0000,0000,0000,,{\i1}Bueno, echemos un vistazo allá.{\i0}
+Dialogue: 0,0:18:24.11,0:18:26.09,Gen_Main,,0000,0000,0000,,Finalmente se fueron.
+Dialogue: 0,0:18:29.80,0:18:32.66,Gen_Main,,0000,0000,0000,,{\i1}Mi corazón todavía late un poco rápido.{\i0}
+Dialogue: 0,0:18:33.16,0:18:36.10,Gen_Main,,0000,0000,0000,,{\i1}¿Qué diablos estaba pensando?{\i0}
+Dialogue: 0,0:18:36.70,0:18:41.00,Gen_Main,,0000,0000,0000,,{\i1}No quiero admitir que\N"tengo lo que se necesita".{\i0}
+Dialogue: 0,0:18:41.37,0:18:42.50,Gen_Main,,0000,0000,0000,,{\i1}Pero…{\i0}
+Dialogue: 0,0:18:47.59,0:18:52.11,Gen_Main,,0000,0000,0000,,{\i1}Si eso significa que puedo\Nestar con él como en los viejos tiempos…{\i0}
+Dialogue: 0,0:18:54.01,0:18:59.56,Gen_Main,,0000,0000,0000,,Bueno. Si me necesitas tanto,\Nme uniré…
+Dialogue: 0,0:19:00.35,0:19:04.90,Gen_Main,,0000,0000,0000,,A ese…\NAsunto de Super HxEROS.
+Dialogue: 0,0:19:04.90,0:19:06.73,Gen_Main,,0000,0000,0000,,¿Por qué tan de repente?
+Dialogue: 0,0:19:06.73,0:19:11.32,Gen_Main,,0000,0000,0000,,¿Por qué? ¡Porque yo tampoco\Nhe perdonado a las Kiseichuu!
+Dialogue: 0,0:19:11.32,0:19:12.65,Gen_Main,,0000,0000,0000,,Entiendo.
+Dialogue: 0,0:19:12.65,0:19:16.80,Gen_Main,,0000,0000,0000,,¡Pero no me usarás\Npara acumular tu energía!
+Dialogue: 0,0:19:16.80,0:19:19.24,Gen_Main,,0000,0000,0000,,¡Y claro que eso\Ntambién aplica con las demás!
+Dialogue: 0,0:19:19.24,0:19:21.58,Gen_Main,,0000,0000,0000,,Veré lo que puedo hacer.
+Dialogue: 0,0:19:23.00,0:19:30.88,Gen_Main,,0000,0000,0000,,Aunque, si nos encontramos en una\Nsituación muy grave que lo amerite…
+Dialogue: 0,0:19:43.02,0:19:45.31,Gen_Main,,0000,0000,0000,,¿Qué acabo de decir?
+Dialogue: 0,0:19:45.31,0:19:49.07,Gen_Main,,0000,0000,0000,,Intentaré cumplir, pero…
+Dialogue: 0,0:19:50.02,0:19:53.28,Gen_Main,,0000,0000,0000,,Termina lo que ibas a decir…
+Dialogue: 0,0:19:54.20,0:19:57.20,Gen_Main,,0000,0000,0000,,¡Me niego a repetirlo!
+Dialogue: 0,0:20:05.08,0:20:09.79,Gen_Main,,0000,0000,0000,,Oye, ¿de qué hablabas con ese chico?
+Dialogue: 0,0:20:09.79,0:20:11.05,Gen_Main,,0000,0000,0000,,¿Qué te importa?
+Dialogue: 0,0:20:11.80,0:20:15.19,Gen_Main,,0000,0000,0000,,Olvida eso. Vámonos.
+Dialogue: 0,0:20:15.19,0:20:16.38,Gen_Main,,0000,0000,0000,,¿A dónde?
+Dialogue: 0,0:20:17.68,0:20:20.87,Cart_A_Tre,,0000,0000,0000,,Alojamiento de la Fuerza de Defensa\Nde la Tierra de Saitama
+Dialogue: 0,0:20:18.84,0:20:20.89,Gen_Main,,0000,0000,0000,,{\i1}A casa.{\i0}
+Dialogue: 0,0:20:21.76,0:20:22.74,Gen_Main,,0000,0000,0000,,{\i1}Así que…{\i0}
+Dialogue: 0,0:20:22.74,0:20:25.14,Gen_Main,,0000,0000,0000,,Espero llevarme bien con todas.
+Dialogue: 0,0:20:25.48,0:20:29.52,Gen_Main,,0000,0000,0000,,¡Oh, esto es genial! Estaba preocupada.
+Dialogue: 0,0:20:29.52,0:20:32.32,Gen_Main,,0000,0000,0000,,Finalmente, juntos\Nlos pájaros del mismo plumaje.
+Dialogue: 0,0:20:32.32,0:20:35.22,Gen_Main,,0000,0000,0000,,No lo digas así, Sora.
+Dialogue: 0,0:20:35.22,0:20:37.68,Gen_Main,,0000,0000,0000,,¡Eso también te incluye a ti, Maihime!
+Dialogue: 0,0:20:38.28,0:20:41.69,Gen_Main,,0000,0000,0000,,Por ahora, nosotras\Nte daremos un recorrido.
+Dialogue: 0,0:20:41.69,0:20:44.57,Gen_Main,,0000,0000,0000,,El chico puede esperar\Ntranquilo en su habitación.
+Dialogue: 0,0:20:44.57,0:20:45.41,Gen_Main,,0000,0000,0000,,Eh… Espera.
+Dialogue: 0,0:20:45.41,0:20:46.62,Gen_Main,,0000,0000,0000,,Está bien…
+Dialogue: 0,0:20:49.54,0:20:51.31,Gen_Main,,0000,0000,0000,,{\i1}Qué día…{\i0}
+Dialogue: 0,0:20:53.05,0:20:57.38,Gen_Main,,0000,0000,0000,,{\i1}Aún así, no puedo creer que\NHoshino se uniera a Super HxEROS.{\i0}
+Dialogue: 0,0:20:58.26,0:21:00.59,Gen_Main,,0000,0000,0000,,{\i1}¿Eh? Entonces eso significa que…{\i0}
+Dialogue: 0,0:21:00.59,0:21:03.53,Gen_Main,,0000,0000,0000,,{\i1}¿A partir de hoy,\Nviviré con la chica que amo?{\i0}
+Dialogue: 0,0:21:03.72,0:21:07.20,Gen_Main,,0000,0000,0000,,¡Alerta de emergencia!\N¡Alerta de emergencia!
+Dialogue: 0,0:21:08.10,0:21:11.40,Gen_Main,,0000,0000,0000,,¡Apareció una Kiseichuu gigante\Nen el área metropolitana!
+Dialogue: 0,0:21:11.86,0:21:14.50,Gen_Main,,0000,0000,0000,,¡Todos los miembros,\Nmovilícense de inmediato!
+Dialogue: 0,0:21:35.71,0:21:39.38,Gen_Main,,0000,0000,0000,,¿Por qué están todas desnudas?
+Dialogue: 0,0:21:39.76,0:21:43.43,Gen_Main,,0000,0000,0000,,Bueno, ya que seremos compañeras\Nde equipo a partir de ahora,
+Dialogue: 0,0:21:43.43,0:21:46.72,Gen_Main,,0000,0000,0000,,pensé que tomar un baño juntas\Nnos ayudaría a unirnos.
+Dialogue: 0,0:21:48.14,0:21:49.56,Gen_Main,,0000,0000,0000,,¿Hoshino?
+Dialogue: 0,0:21:51.73,0:21:55.29,Gen_Main,,0000,0000,0000,,¡Después de todo, odio este lugar!
+Dialogue: 0,0:23:35.71,0:23:37.46,Gen_Main,,0000,0000,0000,,¡Super HxEROS!
+Dialogue: 0,0:23:37.46,0:23:40.02,Gen_Main,,0000,0000,0000,,El próximo episodio: ¡Efecto Mariposa!
