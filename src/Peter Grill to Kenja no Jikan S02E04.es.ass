@@ -1,0 +1,200 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Default2,Arial,20,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.98,0:00:03.47,Gen_Main,,0,0,0,,Para fortalecer nuestros lazos como familia,  
+Dialogue: 0,0:00:03.50,0:00:05.77,Gen_Main,,0,0,0,,¡debemos tener muchos bebés!  
+Dialogue: 0,0:00:07.08,0:00:08.29,Gen_Main,,0,0,0,,¡Espera, Gobuko!  
+Dialogue: 0,0:00:08.67,0:00:10.73,Gen_Main,,0,0,0,,Escucha, tengo algo muy importante...  
+Dialogue: 0,0:00:12.61,0:00:16.18,Gen_Main,,0,0,0,,Tu entrepierna sigue siendo tan honesta como siempre.  
+Dialogue: 0,0:00:17.57,0:00:20.01,Gen_Main,,0,0,0,,Y justo después de que nos desmayamos...  
+Dialogue: 0,0:00:20.04,0:00:21.98,Gen_Main,,0,0,0,,...te atreviste a agregar a una nueva chica.  
+Dialogue: 0,0:00:22.67,0:00:24.85,Gen_Main,,0,0,0,,E-Esto... hola...  
+Dialogue: 0,0:00:27.86,0:00:28.86,Gen_Main,,0,0,0,,¿Oh?  
+Dialogue: 0,0:00:29.24,0:00:30.57,Gen_Main,,0,0,0,,¿Qué es esto?  
+Dialogue: 0,0:00:31.10,0:00:34.57,Gen_Main,,0,0,0,,Por cierto, ¿qué relación tienes\Ncon estas mujeres, Peter?  
+Dialogue: 0,0:00:35.43,0:00:36.98,Gen_Main,,0,0,0,,B-Bueno...  
+Dialogue: 0,0:00:37.12,0:00:40.13,Gen_Main,,0,0,0,,Hay muchas mujeres reuniéndose en tu casa  
+Dialogue: 0,0:00:40.16,0:00:42.89,Gen_Main,,0,0,0,,y deseando tu "jugo mágico"...  
+Dialogue: 0,0:00:44.84,0:00:47.44,Gen_Main,,0,0,0,,Hmm, eso significa...  
+Dialogue: 0,0:00:48.10,0:00:50.60,Gen_Main,,0,0,0,,¡Todas deben ser familia de Peter!  
+Dialogue: 0,0:00:50.62,0:00:52.28,Gen_Main,,0,0,0,,¡NO, NO LO SON!  
+Dialogue: 0,0:00:52.31,0:00:55.30,Gen_Main,,0,0,0,,Maestro Peter, hablando de familia...  
+Dialogue: 0,0:00:55.32,0:00:57.15,Gen_Main,,0,0,0,,...¿podría ser esta carta de tu hermana?  
+Dialogue: 0,0:00:57.93,0:00:59.20,Gen_Main,,0,0,0,,¿Mi hermana?  
+Dialogue: 0,0:01:00.17,0:01:01.24,Gen_Main,,0,0,0,,Aquí.  
+Dialogue: 0,0:01:02.74,0:01:04.69,Gen_Main,,0,0,0,,Oh, ¿qué sucede?  
+Dialogue: 0,0:01:05.65,0:01:06.76,Gen_Main,,0,0,0,,¿Qué pasa?  
+Dialogue: 0,0:01:07.16,0:01:08.31,Gen_Main,,0,0,0,,Esto no es bueno...  
+Dialogue: 0,0:01:09.01,0:01:10.51,Gen_Main,,0,0,0,,¿Maestro Peter?  
+Dialogue: 0,0:01:10.88,0:01:12.10,Gen_Main,,0,0,0,,Ella...  
+Dialogue: 0,0:01:16.88,0:01:18.84,Gen_Main,,0,0,0,,¿VIENE?  
+Dialogue: 0,0:01:20.18,0:01:21.53,Gen_Main,,0,0,0,,¿Quién viene?
+Dialogue: 0,0:02:52.19,0:02:52.94,Gen_Main,,0,0,0,,Episodio 4: Peter Grill y la hermanita más fuerte
+Dialogue: 0,0:02:52.94,0:02:55.33,Gen_Main,,0,0,0,,¿Eh? ¿Lucy viene para acá?
+Dialogue: 0,0:02:55.33,0:02:57.47,Gen_Main,,0,0,0,,Así es. Por eso...
+Dialogue: 0,0:02:57.70,0:02:58.70,Gen_Main,,0,0,0,,¡Adiós!
+Dialogue: 0,0:02:59.73,0:03:02.31,Gen_Main,,0,0,0,,¡Espera! ¡Espera un momento, Peter!
+Dialogue: 0,0:03:02.34,0:03:04.81,Gen_Main,,0,0,0,,¿Por qué tienes que huir de ella?
+Dialogue: 0,0:03:05.61,0:03:07.01,Gen_Main,,0,0,0,,¡Suéltame!
+Dialogue: 0,0:03:07.57,0:03:09.51,Gen_Main,,0,0,0,,Umm, maestro Peter...
+Dialogue: 0,0:03:10.40,0:03:14.71,Gen_Main,,0,0,0,,¿Hay alguna razón por la que no quieres ver a tu hermana?
+Dialogue: 0,0:03:15.22,0:03:17.30,Gen_Main,,0,0,0,,¡E-Es porque...!
+Dialogue: 0,0:03:22.54,0:03:24.05,Gen_Main,,0,0,0,,¿N-No puede ser?
+Dialogue: 0,0:03:24.07,0:03:25.94,Gen_Main,,0,0,0,,¿Ya está aquí?
+Dialogue: 0,0:03:36.25,0:03:38.97,Gen_Main,,0,0,0,,¿Y-YA?
+Dialogue: 0,0:03:39.00,0:03:41.06,Gen_Main,,0,0,0,,¡Muy rápido! ¿Cómo es que ya está aquí?
+Dialogue: 0,0:03:41.09,0:03:42.50,Gen_Main,,0,0,0,,¡Dame un respiro!
+Dialogue: 0,0:03:42.70,0:03:44.06,Gen_Main,,0,0,0,,¡Hola!
+Dialogue: 0,0:03:44.08,0:03:46.39,Gen_Main,,0,0,0,,¡Vine a visitarte, Peter!
+Dialogue: 0,0:03:48.65,0:03:51.79,Gen_Main,,0,0,0,,¡Peter! ¡Soy yo, tu adorable hermanita!
+Dialogue: 0,0:03:51.83,0:03:53.18,Gen_Main,,0,0,0,,¿Por qué cerraste la puerta?
+Dialogue: 0,0:03:53.57,0:03:54.49,Gen_Main,,0,0,0,,- ¡Ábrela!
+Dialogue: 0,0:03:54.49,0:03:56.87,Gen_Main,,0,0,0,,- ¡Esto es malo! ¡Muy malo!\N- ¡Ábrela!
+Dialogue: 0,0:03:57.06,0:04:02.65,Gen_Main,,0,0,0,,Todo terminará para mí si\Nella los ve aquí en ropa interior.
+Dialogue: 0,0:04:03.04,0:04:04.51,Gen_Main,,0,0,0,,D-De todas formas...
+Dialogue: 0,0:04:04.65,0:04:07.04,Gen_Main,,0,0,0,,¡Sigan mi plan y escóndanse en algún lugar!
+Dialogue: 0,0:04:07.57,0:04:09.31,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:04:09.70,0:04:11.72,Gen_Main,,0,0,0,,¡Déjame entrar!
+Dialogue: 0,0:04:12.18,0:04:14.51,Gen_Main,,0,0,0,,¿Entonces dices que algo terrible sucederá?
+Dialogue: 0,0:04:15.30,0:04:17.24,Gen_Main,,0,0,0,,E-Ella es una bestia...
+Dialogue: 0,0:04:17.38,0:04:19.60,Gen_Main,,0,0,0,,Un mal movimiento y nuestras vidas estarán en peligro.
+Dialogue: 0,0:04:20.71,0:04:23.46,Gen_Main,,0,0,0,,¿Acaso ustedes dos pelearon o algo así?
+Dialogue: 0,0:04:23.51,0:04:26.50,Gen_Main,,0,0,0,,Bueno, no es que entienda lo que está pasando...
+Dialogue: 0,0:04:26.52,0:04:28.48,Gen_Main,,0,0,0,,Pero si insistes...
+Dialogue: 0,0:04:29.16,0:04:31.69,Gen_Main,,0,0,0,,Para que podamos salir de aquí con vida...
+Dialogue: 0,0:04:31.90,0:04:36.00,Gen_Main,,0,0,0,,Sé rápido y silencioso. Borra incluso\Nel más leve rastro de tu presencia en esta habitación...
+Dialogue: 0,0:04:36.95,0:04:39.56,Gen_Main,,0,0,0,,...¡y escóndete de la bestia!
+Dialogue: 0,0:04:39.59,0:04:40.84,Gen_Main,,0,0,0,,¡Rompan filas!
+Dialogue: 0,0:04:42.44,0:04:45.00,Gen_Main,,0,0,0,,¡Dios! ¿Qué estabas haciendo ahí?
+Dialogue: 0,0:04:45.39,0:04:49.62,Gen_Main,,0,0,0,,Bueno, viniste tan de repente\Nque me apresuré a limpiar mi habitación.
+Dialogue: 0,0:04:49.76,0:04:52.44,Gen_Main,,0,0,0,,Te envié una carta de antemano, ¿no?
+Dialogue: 0,0:04:52.79,0:04:54.33,Gen_Main,,0,0,0,,¡Aquí tienes, un recuerdo!
+Dialogue: 0,0:04:54.54,0:04:58.89,Gen_Main,,0,0,0,,Un cráneo de Dragón Ancestral de Fuerza Eterna\Nque conseguí en el trabajo.
+Dialogue: 0,0:04:59.48,0:05:01.88,Gen_Main,,0,0,0,,Puedes hacer té con su polvo.\NEs bueno para las hemorroides.
+Dialogue: 0,0:05:02.01,0:05:04.37,Gen_Main,,0,0,0,,¡Yay! ¡Me encanta!
+Dialogue: 0,0:05:04.46,0:05:05.62,Gen_Main,,0,0,0,,¡Gracias!
+Dialogue: 0,0:05:06.00,0:05:10.33,Gen_Main,,0,0,0,,Ah, sí. ¡Felicidades por tu compromiso con Luvellia!
+Dialogue: 0,0:05:10.78,0:05:12.79,Gen_Main,,0,0,0,,¡Por fin tengo una hermana!
+Dialogue: 0,0:05:13.08,0:05:17.13,Gen_Main,,0,0,0,,Nos enviamos cartas de vez en cuando,\Ny es súper amable y honesta.
+Dialogue: 0,0:05:17.15,0:05:19.37,Gen_Main,,0,0,0,,¡No puedo creer que lograste conseguir a una chica como ella!
+Dialogue: 0,0:05:20.51,0:05:22.02,Gen_Main,,0,0,0,,¡Oh, el cráneo está estorbando!
+Dialogue: 0,0:05:22.38,0:05:23.76,Gen_Main,,0,0,0,,¡Déjame ponerlo en algún lugar!
+Dialogue: 0,0:05:23.84,0:05:25.52,Gen_Main,,0,0,0,,¿Puedo poner esto en ese gabinete?
+Dialogue: 0,0:05:25.98,0:05:27.67,Gen_Main,,0,0,0,,¡No, ahí no!
+Dialogue: 0,0:05:32.55,0:05:33.67,Gen_Main,,0,0,0,,¿Peter?
+Dialogue: 0,0:05:34.82,0:05:35.92,Gen_Main,,0,0,0,,B-Bueno...
+Dialogue: 0,0:05:36.08,0:05:38.04,Gen_Main,,0,0,0,,Este gabinete está lleno, así que...
+Dialogue: 0,0:05:43.84,0:05:46.24,Gen_Main,,0,0,0,,¿Hmm...? Claro, si tú lo dices.
+Dialogue: 0,0:05:46.42,0:05:48.75,Gen_Main,,0,0,0,,Estás actuando muy sospechoso...
+Dialogue: 0,0:05:50.33,0:05:53.02,Gen_Main,,0,0,0,,Estoy segura de que solo me lo estoy imaginando, pero...
+Dialogue: 0,0:05:53.73,0:05:55.94,Gen_Main,,0,0,0,,¿Me estás ocultando algo?
+Dialogue: 0,0:05:56.38,0:05:57.79,Gen_Main,,0,0,0,,Como, no sé...
+Dialogue: 0,0:05:57.90,0:05:59.67,Gen_Main,,0,0,0,,¿Una aventura, quizás?
+Dialogue: 0,0:06:00.21,0:06:01.73,Gen_Main,,0,0,0,,¿Por qué piensas eso...?
+Dialogue: 0,0:06:02.46,0:06:03.96,Gen_Main,,0,0,0,,¡Es broma!
+Dialogue: 0,0:06:04.11,0:06:06.60,Gen_Main,,0,0,0,,¡Tú no eres como nuestro papá bueno para nada!
+Dialogue: 0,0:06:07.01,0:06:08.55,Gen_Main,,0,0,0,,Confío en ti, ¿sabes?
+Dialogue: 0,0:06:08.68,0:06:09.92,Gen_Main,,0,0,0,,S-Sí...
+Dialogue: 0,0:06:10.44,0:06:13.50,Gen_Main,,0,0,0,,Por cierto, ¿qué es eso que mencionaste en tu carta?
+Dialogue: 0,0:06:13.56,0:06:14.56,Gen_Main,,0,0,0,,¿Oh?
+Dialogue: 0,0:06:16.45,0:06:19.26,Gen_Main,,0,0,0,,Puedo sentirme liberada del pasado...
+Dialogue: 0,0:06:19.74,0:06:22.84,Gen_Main,,0,0,0,,¡Ahora finalmente puedo avanzar\Ny fijar mi mirada en el futuro!
+Dialogue: 0,0:06:22.96,0:06:23.74,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:06:23.76,0:06:26.44,Gen_Main,,0,0,0,,Nuestro papá bueno para nada engañó a nuestra mamá y la hizo sufrir
+Dialogue: 0,0:06:26.46,0:06:29.36,Gen_Main,,0,0,0,,y destruyó a toda nuestra familia.
+Dialogue: 0,0:06:29.68,0:06:34.30,Gen_Main,,0,0,0,,Así que lo rastreé viviendo en un pueblo\Ndesértico al este y le di lo que merecía.
+Dialogue: 0,0:06:34.67,0:06:39.71,Gen_Main,,0,0,0,,Ese bueno para nada incluso suplicó por su vida al final...
+Dialogue: 0,0:06:40.13,0:06:41.50,Gen_Main,,0,0,0,,¡Qué broma!
+Dialogue: 0,0:06:48.14,0:06:50.17,Gen_Main,,0,0,0,,Ah, sí, ¿quieres beber algo?
+Dialogue: 0,0:06:50.20,0:06:51.65,Gen_Main,,0,0,0,,¡Licor!
+Dialogue: 0,0:06:56.62,0:06:59.56,Gen_Main,,0,0,0,,¡Mi hermanita está tan loca como siempre!
+Dialogue: 0,0:06:59.58,0:07:01.50,Gen_Main,,0,0,0,,¡No quiero lidiar con ella!
+Dialogue: 0,0:07:02.71,0:07:05.91,Gen_Main,,0,0,0,,Después del incidente con Gobuko\Ny de que la infidelidad de papá saliera a la luz,
+Dialogue: 0,0:07:05.93,0:07:10.35,Gen_Main,,0,0,0,,Lucy creció hasta la adultez estando\Nmental y emocionalmente inestable.
+Dialogue: 0,0:07:11.61,0:07:16.94,Gen_Main,,0,0,0,,¡Antes era tan adorable, pero ahora\Nes un monstruo incontrolable y peligroso!
+Dialogue: 0,0:07:20.78,0:07:21.97,Gen_Main,,0,0,0,,¿Qué es esto?
+Dialogue: 0,0:07:22.17,0:07:25.10,Gen_Main,,0,0,0,,Peter... Lo sabía, ¡ese bastardo!
+Dialogue: 0,0:07:25.59,0:07:28.68,Gen_Main,,0,0,0,,Perdón, pensé que debía arreglarme, así que me tardé.
+Dialogue: 0,0:07:30.11,0:07:33.41,Gen_Main,,0,0,0,,Peter, ¿te importa si te pregunto algo?
+Dialogue: 0,0:07:33.82,0:07:34.70,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:07:34.72,0:07:37.84,Gen_Main,,0,0,0,,¿Invitaste a Luvellia a este cuarto recientemente?
+Dialogue: 0,0:07:38.23,0:07:41.98,Gen_Main,,0,0,0,,N-No... En realidad no he tenido la oportunidad de...
+Dialogue: 0,0:07:42.39,0:07:45.06,Gen_Main,,0,0,0,,Luvellia nunca ha estado en este cuarto...
+Dialogue: 0,0:07:45.10,0:07:47.98,Gen_Main,,0,0,0,,y, por supuesto, nunca invitarías a otra mujer...
+Dialogue: 0,0:07:48.04,0:07:50.06,Gen_Main,,0,0,0,,Eso es lo que estás diciendo, ¿verdad?
+Dialogue: 0,0:07:50.64,0:07:51.78,Gen_Main,,0,0,0,,Sí...
+Dialogue: 0,0:07:51.89,0:07:54.20,Gen_Main,,0,0,0,,Entonces explícame esto...
+Dialogue: 0,0:07:54.63,0:07:59.75,Gen_Main,,0,0,0,,¿De quién son estas prendas, accesorios,\Nmaquillaje y cabello largo?
+Dialogue: 0,0:07:59.77,0:08:01.52,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:08:01.96,0:08:04.24,Gen_Main,,0,0,0,,¡¿QUÉÉÉÉ?!
+Dialogue: 0,0:08:04.27,0:08:08.36,Gen_Main,,0,0,0,,Ya les dije que escondieran esas cosas,\N¡pero dejaron un montón de evidencias!
+Dialogue: 0,0:08:08.91,0:08:11.67,Gen_Main,,0,0,0,,Sabía que algo estaba mal desde el principio...
+Dialogue: 0,0:08:12.00,0:08:15.31,Gen_Main,,0,0,0,,¡Este lugar... apesta!
+Dialogue: 0,0:08:15.33,0:08:16.96,Gen_Main,,0,0,0,,¡A olor de chicas!
+Dialogue: 0,0:08:18.11,0:08:19.90,Gen_Main,,0,0,0,,¡Y a mentiras!
+Dialogue: 0,0:08:21.01,0:08:23.43,Gen_Main,,0,0,0,,¡Estás engañando a Luvellia,\N¿verdad, maldito?
+Dialogue: 0,0:08:23.46,0:08:26.10,Gen_Main,,0,0,0,,¡Me mentiste!
+Dialogue: 0,0:08:26.12,0:08:27.77,Gen_Main,,0,0,0,,¡Odio las mentiras!
+Dialogue: 0,0:08:27.80,0:08:31.17,Gen_Main,,0,0,0,,¿Y aún así, sabiendo eso, te atreviste a mentirme?
+Dialogue: 0,0:08:31.19,0:08:32.38,Gen_Main,,0,0,0,,¡Me va a matar!
+Dialogue: 0,0:08:32.77,0:08:34.03,Gen_Main,,0,0,0,,¡T-Tan rápido!
+Dialogue: 0,0:08:35.99,0:08:38.03,Gen_Main,,0,0,0,,¿Ibas a tomar tu espada, verdad?
+Dialogue: 0,0:08:38.14,0:08:40.94,Gen_Main,,0,0,0,,¡Eso significa que admites que me mentiste!
+Dialogue: 0,0:08:41.13,0:08:43.61,Gen_Main,,0,0,0,,¡Igual que nuestro maldito padre!
+Dialogue: 0,0:08:45.97,0:08:48.05,Gen_Main,,0,0,0,,¡Traicionaste mi confianza!
+Dialogue: 0,0:08:48.07,0:08:52.20,Gen_Main,,0,0,0,,¡La confianza es la base más importante\Nde un vínculo familiar!
+Dialogue: 0,0:08:52.45,0:08:55.20,Gen_Main,,0,0,0,,¡No hay forma de detenerla! ¡Tengo que huir!
+Dialogue: 0,0:08:55.95,0:08:57.77,Gen_Main,,0,0,0,,¡Asqueroso hermano!
+Dialogue: 0,0:09:03.76,0:09:07.06,Gen_Main,,0,0,0,,¡No escaparás, Peter!
+Dialogue: 0,0:09:09.89,0:09:10.95,Gen_Main,,0,0,0,,¡Es inútil!
+Dialogue: 0,0:09:11.05,0:09:13.16,Gen_Main,,0,0,0,,¡No puedo escapar de ella!
+Dialogue: 0,0:09:13.73,0:09:14.89,Gen_Main,,0,0,0,,¿Qué debo hacer?
+Dialogue: 0,0:09:15.86,0:09:17.07,Gen_Main,,0,0,0,,¡Este armario...!
+Dialogue: 0,0:09:18.37,0:09:21.78,Gen_Main,,0,0,0,,¡Más vale que estés preparado, Peter!
+Dialogue: 0,0:09:22.24,0:09:23.95,Gen_Main,,0,0,0,,¡E-Espera, Lucy!
+Dialogue: 0,0:09:24.13,0:09:25.03,Gen_Main,,0,0,0,,¡Cálmate!
+Dialogue: 0,0:09:25.32,0:09:27.83,Gen_Main,,0,0,0,,¡Esto es solo un malentendido!
+Dialogue: 0,0:09:27.85,0:09:29.79,Gen_Main,,0,0,0,,¿QUÉ DIJISTE?
+Dialogue: 0,0:09:29.81,0:09:33.20,Gen_Main,,0,0,0,,Ese maquillaje, accesorios y ropa interior...
+Dialogue: 0,0:09:33.47,0:09:34.94,Gen_Main,,0,0,0,,Cada uno de esos...
+Dialogue: 0,0:09:42.27,0:09:45.01,Gen_Main,,0,0,0,,¡Le pertenece a Gobuko!
+Dialogue: 0,0:09:46.63,0:09:48.64,Gen_Main,,0,0,0,,No puede ser... ¿Cómo?
+Dialogue: 0,0:09:49.08,0:09:51.02,Gen_Main,,0,0,0,,¿No murió Gobuko ese día?
+Dialogue: 0,0:09:51.68,0:09:53.13,Gen_Main,,0,0,0,,Sobrevivió.
+Dialogue: 0,0:09:53.27,0:09:57.37,Gen_Main,,0,0,0,,Pero pensé que si se encontraban tan de repente,\Nel impacto sería demasiado para ti...
+Dialogue: 0,0:09:57.40,0:09:58.56,Gen_Main,,0,0,0,,¡Lucy!
+Dialogue: 0,0:09:58.86,0:09:59.94,Gen_Main,,0,0,0,,¡Gobuko!
+Dialogue: 0,0:09:59.96,0:10:03.00,Gen_Main,,0,0,0,,Peter, ¿hiciste todo eso por mí?
+Dialogue: 0,0:10:03.43,0:10:06.02,Gen_Main,,0,0,0,,Sí. Ahora somos familia de nuevo.
+Dialogue: 0,0:10:07.35,0:10:08.35,Gen_Main,,0,0,0,,¡Lucy...!
+Dialogue: 0,0:10:08.38,0:10:09.38,Gen_Main,,0,0,0,,¡Gobuko...!
+Dialogue: 0,0:10:14.55,0:10:15.89,Gen_Main,,0,0,0,,¡Es Gobuko!
+Dialogue: 0,0:10:15.91,0:10:17.89,Gen_Main,,0,0,0,,¡De verdad eres Gobuko!
+Dialogue: 0,0:10:18.25,0:10:19.28,Gen_Main,,0,0,0,,¡Sí!
+Dialogue: 0,0:10:19.30,0:10:21.46,Gen_Main,,0,0,0,,¡Estoy en casa, Lucy!
+Dialogue: 0,0:10:23.47,0:10:24.89,Gen_Main,,0,0,0,,- Bienvenida. - Bienvenida.
+Dialogue: 0,0:10:25.23,0:10:26.43,Gen_Main,,0,0,0,,- Gobuko. - Gobuko.
+Dialogue: 0,0:10:28.04,0:10:29.16,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:10:29.19,0:10:30.37,Gen_Main,,0,0,0,,¡Lucy!
+Dialogue: 0,0:10:31.29,0:10:32.80,Gen_Main,,0,0,0,,¡Somos familia!
+Dialogue: 0,0:12:03.74,0:12:07.18,Gen_Main,,0,0,0,,Uf, parece que todo se calmó.
+Dialogue: 0,0:12:07.20,0:12:10.36,Gen_Main,,0,0,0,,Por cierto, Gobuko, ¿por qué estás desnuda?
+Dialogue: 0,0:12:10.54,0:12:12.00,Gen_Main,,0,0,0,,¡Rayos!
+Dialogue: 0,0:12:12.00,0:12:15.01,Gen_Main,,0,0,0,,LISA ALPACAS COSPLAYEADA POR: AKIRA ITSUKI\N¡POR FAVOR, ESPEREN LA PRÓXIMA VEZ!

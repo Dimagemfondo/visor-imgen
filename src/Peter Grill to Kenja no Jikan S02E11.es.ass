@@ -1,0 +1,147 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,75.0,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:03.01,0:00:07.25,Default,,0,0,0,,¡El grupo de la Guilda de Guerreros Desesperados ha llegado!
+Dialogue: 0,0:00:07.87,0:00:12.78,Default,,0,0,0,,Sir Albatross, gracias por venir hasta aquí para encontrarnos.
+Dialogue: 0,0:00:12.85,0:00:17.03,Default,,0,0,0,,Tal distancia no es nada para un viejo amigo, Sir Gordo.
+Dialogue: 0,0:00:17.26,0:00:20.68,Default,,0,0,0,,Puede que no sea mucho, pero hemos preparado un festín.
+Dialogue: 0,0:00:20.83,0:00:22.11,Default,,0,0,0,,Por aquí.
+Dialogue: 0,0:00:23.07,0:00:26.22,Default,,0,0,0,,Peter Grill no se ve por ningún lado...
+Dialogue: 0,0:00:26.50,0:00:32.94,Default,,0,0,0,,¿Escapó de la responsabilidad después de\Nnotar el truco que hice con la espada?
+Dialogue: 0,0:00:37.35,0:00:39.94,Default,,0,0,0,,Peter... ¿lo logrará?
+Dialogue: 0,0:00:40.32,0:00:42.36,Default,,0,0,0,,¿Dónde estás ahora?
+Dialogue: 0,0:01:10.73,0:01:18.51,Default,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Súper Extra
+Dialogue: 0,0:02:18.35,0:02:22.09,Default,,0,0,0,,Episodio 11: Peter Grill y la Sala Sin Escape
+Dialogue: 0,0:02:22.09,0:02:22.99,Default,,0,0,0,,No sirve de nada...
+Dialogue: 0,0:02:22.99,0:02:25.46,Default,,0,0,0,,Te dije que es inútil.
+Dialogue: 0,0:02:25.61,0:02:30.26,Default,,0,0,0,,Hice esta sala con tecnologías de los antiguos Meshitero.
+Dialogue: 0,0:02:30.44,0:02:34.83,Default,,0,0,0,,Esa puerta no se abrirá hasta que\Nun hombre y una mujer dentro tengan sexo.
+Dialogue: 0,0:02:34.86,0:02:36.44,Default,,0,0,0,,¡Eso es un problema!
+Dialogue: 0,0:02:36.46,0:02:41.69,Default,,0,0,0,,¡Mi vida se acabará si no puedo arreglar\Nesta espada antes de la ceremonia!
+Dialogue: 0,0:02:41.74,0:02:43.38,Default,,0,0,0,,No es mi problema.
+Dialogue: 0,0:02:43.41,0:02:45.70,Default,,0,0,0,,Vamos, te ayudaré con tu investigación.
+Dialogue: 0,0:02:45.84,0:02:50.22,Default,,0,0,0,,Pero me cortaron la mesada y no\Ntengo nada más para financiar mi investigación.
+Dialogue: 0,0:02:50.25,0:02:55.07,Default,,0,0,0,,Así que tendré que trabajar hasta morir\Npara reunir todo lo que necesito...
+Dialogue: 0,0:02:55.76,0:02:59.27,Default,,0,0,0,,Necesito un empujón más.\N¿Qué más puedo usar para convencerla?
+Dialogue: 0,0:03:00.06,0:03:01.22,Default,,0,0,0,,¡Está bien!
+Dialogue: 0,0:03:01.24,0:03:02.79,Default,,0,0,0,,¡Hagamos un trato!
+Dialogue: 0,0:03:02.89,0:03:06.29,Default,,0,0,0,,Si logramos salir de aquí y\Nterminamos la ceremonia sin problemas...
+Dialogue: 0,0:03:07.18,0:03:11.45,Default,,0,0,0,,¡Por el momento, te apoyaré financieramente!
+Dialogue: 0,0:03:12.72,0:03:14.42,Default,,0,0,0,,¿Quéééé?
+Dialogue: 0,0:03:14.44,0:03:17.16,Default,,0,0,0,,¿Me darás dinero?
+Dialogue: 0,0:03:17.28,0:03:18.95,Default,,0,0,0,,¿De verdad, de verdad?
+Dialogue: 0,0:03:19.16,0:03:21.39,Default,,0,0,0,,¡Lo juro por el nombre de esta espada!
+Dialogue: 0,0:03:26.25,0:03:28.06,Default,,0,0,0,,Este es un camino...
+Dialogue: 0,0:03:29.75,0:03:34.83,Default,,0,0,0,,Un precio que pagar... para que me apoyes.
+Dialogue: 0,0:03:35.00,0:03:38.14,Default,,0,0,0,,¿Eh? Espera, ¿qué estás haciendo?
+Dialogue: 0,0:03:48.68,0:03:50.92,Default,,0,0,0,,¡Ahora, hagámoslo, Peter Grill!
+Dialogue: 0,0:03:50.94,0:03:53.19,Default,,0,0,0,,Espera, ¿realmente no hay otra forma?
+Dialogue: 0,0:03:53.23,0:03:55.44,Default,,0,0,0,,Como dije, no hay ninguna otra forma.
+Dialogue: 0,0:03:56.15,0:03:58.28,Default,,0,0,0,,¡Tenemos que hacerlo aquí!
+Dialogue: 0,0:03:58.86,0:04:00.60,Default,,0,0,0,,¡Un acto sexual!
+Dialogue: 0,0:04:05.60,0:04:09.97,Default,,0,0,0,,Los enanos realmente pueden hacer una buena comida de ensalada, debo decirlo.
+Dialogue: 0,0:04:11.65,0:04:14.88,Default,,0,0,0,,¡Tráeme más verduras!
+Dialogue: 0,0:04:16.49,0:04:18.29,Default,,0,0,0,,¡Lo siento!
+Dialogue: 0,0:04:18.32,0:04:21.20,Default,,0,0,0,,¡No tengo nada que hacer, así que me uní!
+Dialogue: 0,0:04:21.22,0:04:22.55,Default,,0,0,0,,¡Más, por favor!
+Dialogue: 0,0:04:22.58,0:04:25.78,Default,,0,0,0,,A juzgar por su afilado y elegante diseño,
+Dialogue: 0,0:04:25.94,0:04:27.88,Default,,0,0,0,,es un hacha muy bien hecha, ¿no?
+Dialogue: 0,0:04:27.92,0:04:30.05,Default,,0,0,0,,Oh, seguro que sabes lo tuyo.
+Dialogue: 0,0:04:31.31,0:04:32.80,Default,,0,0,0,,¿Dónde está Peter?
+Dialogue: 0,0:04:33.09,0:04:37.10,Default,,0,0,0,,Escuché que llegó temprano\Npara preparar algo en la ciudad...
+Dialogue: 0,0:04:37.82,0:04:39.17,Default,,0,0,0,,Señorita Luvellia.
+Dialogue: 0,0:04:39.25,0:04:40.89,Default,,0,0,0,,Ha pasado un tiempo, ¿verdad?
+Dialogue: 0,0:04:41.37,0:04:42.96,Default,,0,0,0,,¡Tío Gordo!
+Dialogue: 0,0:04:43.03,0:04:46.06,Default,,0,0,0,,Has crecido para ser un excelente guerrero.
+Dialogue: 0,0:04:46.32,0:04:47.95,Default,,0,0,0,,Escuché que te has comprometido.
+Dialogue: 0,0:04:48.29,0:04:51.02,Default,,0,0,0,,Eres muy amable. Aún me queda mucho por recorrer.
+Dialogue: 0,0:04:51.20,0:04:55.15,Default,,0,0,0,,Si no te importa, tengo un regalo para celebrar.
+Dialogue: 0,0:04:55.54,0:04:56.66,Default,,0,0,0,,Toma esto.
+Dialogue: 0,0:04:57.83,0:05:00.24,Default,,0,0,0,,¿Un billete para un
+Dialogue: 0,0:05:00.27,0:05:05.54,Default,,0,0,0,,viaje de vacaciones?
+Dialogue: 0,0:05:05.57,0:05:11.10,Default,,0,0,0,,Un colega mío me dio esto\Ny me dijo que fuera con mi hija,
+Dialogue: 0,0:05:11.22,0:05:13.21,Default,,0,0,0,,pero esa chica se encierra en su\Nhabitación todo el día y se niega a trabajar.
+Dialogue: 0,0:05:13.48,0:05:17.99,Default,,0,0,0,,¿Es así...?
+Dialogue: 0,0:05:21.95,0:05:23.09,Default,,0,0,0,,Bueno, al menos tiene suficiente energía\Npara responderle a su viejo.
+Dialogue: 0,0:05:23.12,0:05:27.88,Default,,0,0,0,,¿Qué es este terremoto?
+Dialogue: 0,0:05:28.16,0:05:31.06,Default,,0,0,0,,Bueno, ha habido bastantes temblores últimamente.
+Dialogue: 0,0:05:31.31,0:05:33.35,Default,,0,0,0,,¿Crees que lo causa ese monstruo subterráneo?
+Dialogue: 0,0:05:34.74,0:05:36.18,Default,,0,0,0,,¿El cicada-mole?
+Dialogue: 0,0:05:36.70,0:05:39.28,Default,,0,0,0,,¡Imposible!
+Dialogue: 0,0:05:39.62,0:05:42.16,Default,,0,0,0,,No se les ha visto en cien años.
+Dialogue: 0,0:05:43.23,0:05:45.85,Default,,0,0,0,,Se dice que ya se han extinguido.
+Dialogue: 0,0:05:47.10,0:05:51.29,Default,,0,0,0,,Sí, cien años...
+Dialogue: 0,0:05:51.68,0:05:57.21,Default,,0,0,0,,Es tiempo suficiente para que las cosas finalmente comiencen a cambiar.
+Dialogue: 0,0:06:00.42,0:06:02.66,Default,,0,0,0,,Puede que sea hora de reconsiderar\Nnuestra relación con la guilda.
+Dialogue: 0,0:06:03.35,0:06:05.57,Default,,0,0,0,,Los informes dicen que se le vio en algún lugar de la ciudad.
+Dialogue: 0,0:06:06.16,0:06:09.57,Default,,0,0,0,,Pero ha estado desaparecido poco después de su llegada.
+Dialogue: 0,0:06:11.93,0:06:14.80,Default,,0,0,0,,Debe haber huido al saber que no puede oponerse a su destino.
+Dialogue: 0,0:06:18.04,0:06:19.10,Default,,0,0,0,,Al final, es solo un hombre de baja categoría.
+Dialogue: 0,0:06:19.65,0:06:22.98,Default,,0,0,0,,Padre.
+Dialogue: 0,0:06:23.17,0:06:26.16,Default,,0,0,0,,Oh, Luvellia. ¿Qué pasa?
+Dialogue: 0,0:06:27.15,0:06:30.78,Default,,0,0,0,,¿Podría tener un momento de tu tiempo?
+Dialogue: 0,0:06:31.22,0:06:32.22,Default,,0,0,0,,¿Quieres que reconsideremos nuestra relación con los enanos?
+Dialogue: 0,0:06:32.93,0:06:36.76,Default,,0,0,0,,Sí.
+Dialogue: 0,0:06:36.98,0:06:40.14,Default,,0,0,0,,Hace mucho que el enemigo natural de los enanos se extinguió.
+Dialogue: 0,0:06:40.92,0:06:43.89,Default,,0,0,0,,Creo que esta ciudad ya no requiere nuestra protección.
+Dialogue: 0,0:06:43.91,0:06:48.43,Default,,0,0,0,,Considerando la dinámica de poder entre nuestras dos partes,
+Dialogue: 0,0:06:49.62,0:06:52.68,Default,,0,0,0,,no puedo evitar pensar que\Nnuestro actual pacto con los enanos
+Dialogue: 0,0:06:53.91,0:06:56.97,Default,,0,0,0,,es una extorsión unidireccional de los débiles\Nusando la fuerza militar.
+Dialogue: 0,0:06:57.15,0:06:59.82,Default,,0,0,0,,¿Entonces ahora te das cuenta de eso...?
+Dialogue: 0,0:06:59.99,0:07:02.56,Default,,0,0,0,,¿Estás sugiriendo romper nuestro acuerdo?
+Dialogue: 0,0:07:02.89,0:07:08.45,Default,,0,0,0,,Somos guerreros con honor.
+Dialogue: 0,0:07:15.07,0:07:17.24,Default,,0,0,0,,Como aquellos con poder, debemos\Nabstenernos de actos tan moralmente dudosos.
+Dialogue: 0,0:07:18.19,0:07:20.93,Default,,0,0,0,,¡Ahora no podemos perder nuestro valioso árbol de dinero!
+Dialogue: 0,0:07:21.38,0:07:25.14,Default,,0,0,0,,Me agrada mucho verte madurar así, Luvellia.
+Dialogue: 0,0:07:25.16,0:07:26.64,Default,,0,0,0,,Entonces...
+Dialogue: 0,0:07:26.91,0:07:29.47,Default,,0,0,0,,Sin embargo, hay innumerables amenazas\Nademás de los cicada-moles,
+Dialogue: 0,0:07:29.49,0:07:35.56,Default,,0,0,0,,como bandidos, matones, monstruos,\Ny demonios que podrían dañar la ciudad.
+Dialogue: 0,0:07:36.37,0:07:40.46,Default,,0,0,0,,Solo has visto un poco de este mundo\Npara conocer el daño que puede causar.
+Dialogue: 0,0:07:45.28,0:07:49.80,Default,,0,0,0,,¿Aún no soy lo suficientemente fuerte como para desobedecer a mi padre?
+Dialogue: 0,0:07:50.24,0:07:52.75,Default,,0,0,0,,Quiero ser más fuerte.
+Dialogue: 0,0:07:54.11,0:07:56.05,Default,,0,0,0,,¡Como Peter!
+Dialogue: 0,0:08:00.73,0:08:03.02,Default,,0,0,0,,Sé suave, ¿de acuerdo?
+Dialogue: 0,0:08:03.19,0:08:07.52,Default,,0,0,0,,Es... uh... mi primera vez...
+Dialogue: 0,0:08:07.74,0:08:12.47,Default,,0,0,0,,¿Voy a traicionar a Luvellia de esta misma manera otra vez?
+Dialogue: 0,0:08:13.54,0:08:15.70,Default,,0,0,0,,Confío en ti, Peter.
+Dialogue: 0,0:08:15.72,0:08:17.77,Default,,0,0,0,,Los traidores merecen morir.
+Dialogue: 0,0:08:19.30,0:08:20.46,Default,,0,0,0,,¡Pero!
+Dialogue: 0,0:08:20.72,0:08:24.76,Default,,0,0,0,,De todos modos, ¡si no lo logro para\Nla ceremonia, mi vida se acabará!
+Dialogue: 0,0:08:25.58,0:08:27.29,Default,,0,0,0,,¡Tengo que hacerlo!
+Dialogue: 0,0:08:32.82,0:08:35.16,Default,,0,0,0,,¡No!
+Dialogue: 0,0:08:37.49,0:08:38.96,Default,,0,0,0,,Vamos a detener esto.
+Dialogue: 0,0:08:41.34,0:08:44.28,Default,,0,0,0,,No puedo forzarme en ti así.
+Dialogue: 0,0:08:44.91,0:08:46.43,Default,,0,0,0,,No así, sin respetar tu dignidad.
+Dialogue: 0,0:08:47.76,0:08:49.00,Default,,0,0,0,,¡Imbécil!
+Dialogue: 0,0:08:49.03,0:08:53.23,Default,,0,0,0,,Si te rindes aquí, entonces ¿quién\Nme dará mesada a partir de ahora?
+Dialogue: 0,0:08:53.25,0:08:55.05,Default,,0,0,0,,¡No me rendiré!
+Dialogue: 0,0:08:55.08,0:08:57.37,Default,,0,0,0,,¡No me rendiré por dinero fácil!
+Dialogue: 0,0:08:58.51,0:09:02.25,Default,,0,0,0,,Dicho eso, no está muy dispuesta.
+Dialogue: 0,0:09:02.47,0:09:05.91,Default,,0,0,0,,¡Todas las chicas anteriores solo piensan en sexo!
+Dialogue: 0,0:09:06.88,0:09:09.12,Default,,0,0,0,,¡Tu semen!
+Dialogue: 0,0:09:10.84,0:09:12.89,Default,,0,0,0,,Si es así...
+Dialogue: 0,0:09:13.48,0:09:14.91,Default,,0,0,0,,Por el resto de tu vida.
+Dialogue: 0,0:09:16.04,0:09:17.88,Default,,0,0,0,,Si logramos salir de aquí...
+Dialogue: 0,0:09:17.90,0:09:22.28,Default,,0,0,0,,¡Te apoyaré por el resto de tu vida!
+Dialogue: 0,0:09:32.74,0:09:35.69,Default,,0,0,0,,¡Te apoyaré para siempre!
+Dialogue: 0,0:09:50.34,0:09:55.90,Default,,0,0,0,,¡Vas a apoyarme por el resto de mi vida!
+Dialogue: 0,0:10:02.15,0:10:04.54,Default,,0,0,0,,Bueno entonces, Sir Peter Grill.
+Dialogue: 0,0:10:04.96,0:10:06.59,Default,,0,0,0,,El escenario es tuyo.
+Dialogue: 0,0:10:08.14,0:10:09.39,Default,,0,0,0,,¿Sir Peter?
+Dialogue: 0,0:10:09.52,0:10:11.41,Default,,0,0,0,,¿Sir Peter, estás ahí?
+Dialogue: 0,0:10:14.88,0:10:16.17,Default,,0,0,0,,¿Peter?
+Dialogue: 0,0:10:16.75,0:10:18.84,Default,,0,0,0,,¿Falló...?
+Dialogue: 0,0:12:11.92,0:12:14.96,Default,,0,0,0,,LISA & MIMI & VEGAN POR AKIRA ITSUKI\N& MOMO TAIGA & KURURU KURASAKA\NPRÓXIMO: EPISODIO FINAL, ¡DEBES VERLO!

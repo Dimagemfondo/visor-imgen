@@ -1,0 +1,176 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Default2,Arial,20,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.10,0:00:04.07,Gen_Main,,0,0,0,,La última vez en Peter Grill.
+Dialogue: 0,0:00:04.60,0:00:06.04,Gen_Main,,0,0,0,,Luvellia.
+Dialogue: 0,0:00:06.35,0:00:10.71,Gen_Main,,0,0,0,,No importa lo que pase,\Njuro que siempre te amaré.
+Dialogue: 0,0:00:11.17,0:00:13.90,Gen_Main,,0,0,0,,¡Yo también, Peter!
+Dialogue: 0,0:00:14.42,0:00:15.48,Gen_Main,,0,0,0,,Ahora...
+Dialogue: 0,0:00:15.54,0:00:16.60,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:00:16.71,0:00:18.19,Gen_Main,,0,0,0,,Oremos juntos.
+Dialogue: 0,0:00:19.17,0:00:23.56,Gen_Main,,0,0,0,,Para que la cigüeña entregue nuestro bebé.
+Dialogue: 0,0:00:23.58,0:00:25.14,Gen_Main,,0,0,0,,O-Oh, sí.
+Dialogue: 0,0:00:29.34,0:00:30.61,Gen_Main,,0,0,0,,Peter...
+Dialogue: 0,0:00:30.64,0:00:32.92,Gen_Main,,0,0,0,,No está nada mal.
+Dialogue: 0,0:00:34.36,0:00:36.69,Gen_Main,,0,0,0,,¿Por qué siempre soy así?
+Dialogue: 0,0:00:36.72,0:00:39.12,Gen_Main,,0,0,0,,Eres tan salvaje, Maestro Peter...
+Dialogue: 0,0:00:39.96,0:00:41.85,Gen_Main,,0,0,0,,Esto es básicamente nuestra historia.
+Dialogue: 0,0:01:05.74,0:01:13.51,Gen_Main,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Súper Extra
+Dialogue: 0,0:02:13.24,0:02:15.53,Gen_Main,,0,0,0,,{\pos(216,317)}Episodio 1: Peter Grill y la Revelación Goblin
+Dialogue: 0,0:02:15.53,0:02:18.40,Gen_Main,,0,0,0,,La amenaza goblin que tememos ahora está frente a nosotros.
+Dialogue: 0,0:02:18.83,0:02:22.47,Gen_Main,,0,0,0,,¡A este ritmo, todos los hombres serán devorados en poco tiempo!
+Dialogue: 0,0:02:22.58,0:02:24.44,Gen_Main,,0,0,0,,¡Mis valientes guerreros!
+Dialogue: 0,0:02:25.22,0:02:29.74,Gen_Main,,0,0,0,,¡Formen filas y diríjanse a los sitios!
+Dialogue: 0,0:02:34.65,0:02:36.41,Gen_Main,,0,0,0,,Son demasiados.
+Dialogue: 0,0:02:37.61,0:02:41.16,Gen_Main,,0,0,0,,Los goblins normalmente no aparecen cerca de\\Nlas asentamientos humanos, pero aquí están.
+Dialogue: 0,0:02:41.26,0:02:43.82,Gen_Main,,0,0,0,,Se los están comiendo a los hombres.
+Dialogue: 0,0:02:44.36,0:02:46.93,Gen_Main,,0,0,0,,Luvellia. Sigamos con lo planeado.
+Dialogue: 0,0:02:47.43,0:02:49.96,Gen_Main,,0,0,0,,Sí. Te deseo suerte.
+Dialogue: 0,0:02:50.60,0:02:52.26,Gen_Main,,0,0,0,,Una vez que esta misión termine...
+Dialogue: 0,0:02:52.29,0:02:54.53,Gen_Main,,0,0,0,,Sí, tengamos una cita juntos.
+Dialogue: 0,0:02:57.12,0:02:58.14,Gen_Main,,0,0,0,,¡Vamos!
+Dialogue: 0,0:02:58.27,0:02:59.56,Gen_Main,,0,0,0,,- Está bien. - Está bien.
+Dialogue: 0,0:02:59.72,0:03:01.61,Gen_Main,,0,0,0,,Nos dirigiremos al lado este del pueblo.
+Dialogue: 0,0:03:01.64,0:03:03.41,Gen_Main,,0,0,0,,- ¡Sí, señora! - ¡Sí, señora!
+Dialogue: 0,0:03:05.78,0:03:08.38,Gen_Main,,0,0,0,,¡Ugh, basta!
+Dialogue: 0,0:03:09.14,0:03:11.14,Gen_Main,,0,0,0,,¡Rescaten a todos los aldeanos!
+Dialogue: 0,0:03:15.04,0:03:16.29,Gen_Main,,0,0,0,,¡Hombre!
+Dialogue: 0,0:03:18.10,0:03:19.90,Gen_Main,,0,0,0,,¡Captúrenlos vivos!
+Dialogue: 0,0:03:20.25,0:03:21.45,Gen_Main,,0,0,0,,La Amenaza Goblin.
+Dialogue: 0,0:03:21.67,0:03:24.50,Gen_Main,,0,0,0,,Es cuando los goblins en celo atacan en hordas
+Dialogue: 0,0:03:24.53,0:03:27.51,Gen_Main,,0,0,0,,y salen a los asentamientos humanos en busca de hombres para violar.
+Dialogue: 0,0:03:29.22,0:03:34.48,Gen_Main,,0,0,0,,Los hombres solo podían acobardarse de terror,\Nrezando para que la amenaza pasara.
+Dialogue: 0,0:03:38.40,0:03:39.92,Gen_Main,,0,0,0,,¡Te salvaré ahora!
+Dialogue: 0,0:03:44.15,0:03:45.15,Gen_Main,,0,0,0,,¡Tomen esto!
+Dialogue: 0,0:03:45.21,0:03:46.47,Gen_Main,,0,0,0,,¡Ahí!
+Dialogue: 0,0:03:49.55,0:03:53.36,Gen_Main,,0,0,0,,¡Esa persona debe ser el hombre más fuerte del planeta!
+Dialogue: 0,0:03:53.43,0:03:58.36,Gen_Main,,0,0,0,,Ahora, Mimi, hagamos un favor\Npara el Gremio de Guerreros, ¿de acuerdo?
+Dialogue: 0,0:03:58.38,0:04:00.23,Gen_Main,,0,0,0,,¡Roger eso, Hermana!
+Dialogue: 0,0:04:01.00,0:04:02.91,Gen_Main,,0,0,0,,¡Quítense de nuestro camino!
+Dialogue: 0,0:04:03.02,0:04:04.86,Gen_Main,,0,0,0,,- ¡Movimiento Especial al estilo Kigahn!\N- ¡Movimiento Especial al estilo Kigahn!
+Dialogue: 0,0:04:05.70,0:04:08.82,Gen_Main,,0,0,0,,- ¡Doble Torbellino de Madera Especial!\N- ¡Doble Torbellino de Madera Especial!
+Dialogue: 0,0:04:11.52,0:04:14.44,Gen_Main,,0,0,0,,¡Ahí, ahí, ahí!
+Dialogue: 0,0:04:14.59,0:04:18.40,Gen_Main,,0,0,0,,¡Prueben la gran magia prohibida de los Elfos!
+Dialogue: 0,0:04:20.02,0:04:22.50,Gen_Main,,0,0,0,,¡Cañón Aura Hiper!
+Dialogue: 0,0:04:22.66,0:04:23.44,Gen_Main,,0,0,0,,¡Cañón!
+Dialogue: 0,0:04:23.51,0:04:24.33,Gen_Main,,0,0,0,,¡Cañón!
+Dialogue: 0,0:04:24.48,0:04:25.70,Gen_Main,,0,0,0,,¡Cañón!
+Dialogue: 0,0:04:26.06,0:04:28.00,Gen_Main,,0,0,0,,¡Yo también lucharé!
+Dialogue: 0,0:04:35.14,0:04:40.92,Gen_Main,,0,0,0,,La piel de los goblins me recuerda a esos\Norcos Elders que solían intimidarme...
+Dialogue: 0,0:04:41.07,0:04:44.25,Gen_Main,,0,0,0,,¡Piglette! ¡Eso es excesivo! ¡No los maten!
+Dialogue: 0,0:04:44.62,0:04:46.99,Gen_Main,,0,0,0,,Estos goblins no dejan de venir.
+Dialogue: 0,0:04:47.02,0:04:48.88,Gen_Main,,0,0,0,,Ya es prácticamente un infierno en este punto.
+Dialogue: 0,0:04:52.75,0:04:56.34,Gen_Main,,0,0,0,,¡Yo, Antonio Spartacos, seré tu oponente!
+Dialogue: 0,0:04:56.40,0:04:58.39,Gen_Main,,0,0,0,,¡Buena suerte, Tacos!
+Dialogue: 0,0:04:58.87,0:05:00.33,Gen_Main,,0,0,0,,¡Es un hombre!
+Dialogue: 0,0:05:00.36,0:05:01.70,Gen_Main,,0,0,0,,¿Desde atrás?
+Dialogue: 0,0:05:04.73,0:05:07.82,Gen_Main,,0,0,0,,¡Miss Mitchy!
+Dialogue: 0,0:05:07.85,0:05:10.14,Gen_Main,,0,0,0,,¡Tacos!
+Dialogue: 0,0:05:12.06,0:05:14.19,Gen_Main,,0,0,0,,Está derribado...
+Dialogue: 0,0:05:18.36,0:05:20.95,Gen_Main,,0,0,0,,¿Qué están haciendo? ¡Rodéenlos!
+Dialogue: 0,0:05:21.80,0:05:24.51,Gen_Main,,0,0,0,,¿Oh, el hombre más fuerte del planeta, dices?
+Dialogue: 0,0:05:26.06,0:05:29.80,Gen_Main,,0,0,0,,Je, entonces mejor asegurémonos de presentarlo a nuestra reina.
+Dialogue: 0,0:05:29.82,0:05:31.69,Gen_Main,,0,0,0,,¡Vamos a pisotearlos, jefe!
+Dialogue: 0,0:05:37.75,0:05:39.90,Gen_Main,,0,0,0,,Exprimirlos de todo lo que sepan sobre él.
+Dialogue: 0,0:05:47.48,0:05:49.99,Gen_Main,,0,0,0,,- Bueno, eso fue bastante fácil, ¿no?\N- Este pueblo debería estar a salvo por ahora.
+Dialogue: 0,0:05:50.02,0:05:52.27,Gen_Main,,0,0,0,,- No son rivales para nosotros.\N- Pero escuché que están
+Dialogue: 0,0:05:52.29,0:05:53.75,Gen_Main,,0,0,0,,reuniendo fuerzas en otras regiones.
+Dialogue: 0,0:05:54.31,0:05:56.30,Gen_Main,,0,0,0,,Y no importa cuántos hombres tomen,
+Dialogue: 0,0:05:56.30,0:05:59.41,Gen_Main,,0,0,0,,- siempre están en celo.\N- Prometo que no le contaré esto a Miss Mitchy.
+Dialogue: 0,0:06:00.04,0:06:04.30,Gen_Main,,0,0,0,,Por eso los altos mandos quieren que\Nlos matemos a todos de una vez.
+Dialogue: 0,0:06:05.49,0:06:06.77,Gen_Main,,0,0,0,,¿Matar a todos ellos?
+Dialogue: 0,0:06:06.80,0:06:08.95,Gen_Main,,0,0,0,,¡Papá! ¿Estás bien?
+Dialogue: 0,0:06:10.04,0:06:11.84,Gen_Main,,0,0,0,,Estoy bien.
+Dialogue: 0,0:06:13.09,0:06:14.15,Gen_Main,,0,0,0,,Gobu...
+Dialogue: 0,0:06:14.51,0:06:17.71,Gen_Main,,0,0,0,,¡No! ¡La tragedia solo se repetirá de esa manera!
+Dialogue: 0,0:06:17.88,0:06:19.54,Gen_Main,,0,0,0,,Tienes razón.
+Dialogue: 0,0:06:20.96,0:06:22.59,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:06:22.98,0:06:25.52,Gen_Main,,0,0,0,,Como pensé, necesitamos encontrar "a ese hombre" rápidamente.
+Dialogue: 0,0:06:25.53,0:06:27.99,Gen_Main,,0,0,0,,¡Estaba en medio de una conversación importante! ¡Oye!
+Dialogue: 0,0:06:27.99,0:06:29.14,Gen_Main,,0,0,0,,¿Peter?
+Dialogue: 0,0:06:29.29,0:06:32.14,Gen_Main,,0,0,0,,Ese tipo... ¿Cómo pudo hacer eso en esta situación?
+Dialogue: 0,0:06:32.22,0:06:34.68,Gen_Main,,0,0,0,,Vamos, Peter Grill.
+Dialogue: 0,0:06:34.84,0:06:38.15,Gen_Main,,0,0,0,,¡Ya nos encargamos de todos los molestos goblins!
+Dialogue: 0,0:06:38.17,0:06:41.05,Gen_Main,,0,0,0,,Te dimos nuestra ayuda. Ahora, entrégamos tus semillas.
+Dialogue: 0,0:06:41.07,0:06:43.51,Gen_Main,,0,0,0,,Muchas, por supuesto.
+Dialogue: 0,0:06:43.54,0:06:45.74,Gen_Main,,0,0,0,,¡Chicas! ¡Deténganse ya!
+Dialogue: 0,0:06:45.93,0:06:49.67,Gen_Main,,0,0,0,,¡Cuiden el tiempo y el lugar!
+Dialogue: 0,0:06:57.61,0:06:59.04,Gen_Main,,0,0,0,,¡Reportando!
+Dialogue: 0,0:06:59.41,0:07:03.37,Gen_Main,,0,0,0,,¡El grupo White Lily Bud liderado por Luvellia ha sido derrotado!
+Dialogue: 0,0:07:04.39,0:07:06.89,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:07:08.79,0:07:11.36,Gen_Main,,0,0,0,,- ¡Luvellia! - ¡Peter!
+Dialogue: 0,0:07:15.07,0:07:17.71,Gen_Main,,0,0,0,,¡Debo ir a salvarla de inmediato!
+Dialogue: 0,0:07:17.74,0:07:19.79,Gen_Main,,0,0,0,,Por el amor de Dios, cada vez.
+Dialogue: 0,0:07:19.81,0:07:21.88,Gen_Main,,0,0,0,,¿Qué tiene de tan bueno...
+Dialogue: 0,0:07:21.90,0:07:24.13,Gen_Main,,0,0,0,,una chica con la que solo puede tomarse de la mano?
+Dialogue: 0,0:07:24.16,0:07:25.84,Gen_Main,,0,0,0,,Ustedes son demasiado pesados...
+Dialogue: 0,0:07:26.00,0:07:28.23,Gen_Main,,0,0,0,,¡P-Peter...!
+Dialogue: 0,0:07:28.49,0:07:31.73,Gen_Main,,0,0,0,,¡Luvellia ha sido capturada por los goblins!
+Dialogue: 0,0:07:32.41,0:07:35.66,Gen_Main,,0,0,0,,¡Pueden hacerle todo tipo de cosas!\N¡Como esto... o aquello!
+Dialogue: 0,0:07:36.02,0:07:37.46,Gen_Main,,0,0,0,,¡D-Detente!
+Dialogue: 0,0:07:37.57,0:07:39.77,Gen_Main,,0,0,0,,¡Indignante!
+Dialogue: 0,0:07:40.92,0:07:42.06,Gen_Main,,0,0,0,,¡Tú...!
+Dialogue: 0,0:07:43.05,0:07:46.41,Gen_Main,,0,0,0,,Perdóname, Sr. Peter.
+Dialogue: 0,0:07:46.72,0:07:48.67,Gen_Main,,0,0,0,,Lady Luvellia, ella...
+Dialogue: 0,0:07:50.00,0:07:51.67,Gen_Main,,0,0,0,,¡Esos goblins...!
+Dialogue: 0,0:07:51.72,0:07:54.73,Gen_Main,,0,0,0,,¡D-Deberían ser los guardaespaldas personales de la reina!
+Dialogue: 0,0:07:54.76,0:07:56.32,Gen_Main,,0,0,0,,Un grupo de goblins de alto nivel...
+Dialogue: 0,0:07:56.42,0:07:59.03,Gen_Main,,0,0,0,,¡La élite de los hobgoblins!
+Dialogue: 0,0:08:03.10,0:08:05.97,Gen_Main,,0,0,0,,¿Entonces eres el hombre más fuerte del planeta?
+Dialogue: 0,0:08:10.87,0:08:12.96,Gen_Main,,0,0,0,,¡Luvellia!
+Dialogue: 0,0:08:13.19,0:08:15.09,Gen_Main,,0,0,0,,¡Libérala ahora!
+Dialogue: 0,0:08:15.28,0:08:18.82,Gen_Main,,0,0,0,,No te muevas. Si haces algo raro...
+Dialogue: 0,0:08:19.04,0:08:22.47,Gen_Main,,0,0,0,,Quién sabe qué le haremos.
+Dialogue: 0,0:08:28.87,0:08:33.03,Gen_Main,,0,0,0,,El hombre más fuerte del planeta no es nada especial, ¿eh?
+Dialogue: 0,0:08:33.85,0:08:38.77,Gen_Main,,0,0,0,,La compasión es el rasgo más noble de los humanos,\Npero también es tu mayor debilidad.
+Dialogue: 0,0:08:41.83,0:08:42.94,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:08:43.83,0:08:45.46,Gen_Main,,0,0,0,,¿Qué estás haciendo?
+Dialogue: 0,0:08:45.55,0:08:48.04,Gen_Main,,0,0,0,,¡No me hagas caso! ¡Lucha!
+Dialogue: 0,0:08:48.11,0:08:49.90,Gen_Main,,0,0,0,,¿Peter?
+Dialogue: 0,0:08:50.60,0:08:52.70,Gen_Main,,0,0,0,,Luvellia...
+Dialogue: 0,0:08:55.15,0:08:59.17,Gen_Main,,0,0,0,,¡Está bien, chicas! ¡Llévenlo con nosotras!
+Dialogue: 0,0:09:08.48,0:09:09.99,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:09:10.63,0:09:13.48,Gen_Main,,0,0,0,,Finalmente despiertas, Luvellia.
+Dialogue: 0,0:09:13.51,0:09:14.79,Gen_Main,,0,0,0,,¿Dónde estamos?
+Dialogue: 0,0:09:16.48,0:09:17.95,Gen_Main,,0,0,0,,No lo puedo creer.
+Dialogue: 0,0:09:17.98,0:09:21.50,Gen_Main,,0,0,0,,¡Los goblins están atacando los puntos débiles de los hombres humanos repetidamente!
+Dialogue: 0,0:09:21.59,0:09:23.83,Gen_Main,,0,0,0,,¡Realmente no deberías ver!
+Dialogue: 0,0:09:24.59,0:09:26.50,Gen_Main,,0,0,0,,Por favor, cálmate y escucha.
+Dialogue: 0,0:09:27.39,0:09:29.63,Gen_Main,,0,0,0,,Este es un hechizo para reunir el coraje.
+Dialogue: 0,0:09:29.88,0:09:31.15,Gen_Main,,0,0,0,,Peter...
+Dialogue: 0,0:09:31.21,0:09:33.60,Gen_Main,,0,0,0,,Estoy segura de que encontraremos una salida.
+Dialogue: 0,0:09:34.61,0:09:36.83,Gen_Main,,0,0,0,,Así que por favor, ten fe en mí.
+Dialogue: 0,0:09:36.91,0:09:39.01,Gen_Main,,0,0,0,,No dejaré que pongan sus manos sobre ti.
+Dialogue: 0,0:09:41.10,0:09:43.29,Gen_Main,,0,0,0,,¿Quién te permite hablar?
+Dialogue: 0,0:09:48.00,0:09:50.69,Gen_Main,,0,0,0,,¡Nuestra reina está exigiendo su ofrenda!
+Dialogue: 0,0:09:50.86,0:09:52.04,Gen_Main,,0,0,0,,¡Detente!
+Dialogue: 0,0:09:52.07,0:09:54.42,Gen_Main,,0,0,0,,¿Qué le vas a hacer a Peter?
+Dialogue: 0,0:09:57.08,0:10:01.93,Gen_Main,,0,0,0,,¡Mi nombre es Peter Grill! ¡Te juro que nunca cederé a los goblins!
+Dialogue: 0,0:10:02.66,0:10:04.28,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:10:04.90,0:10:08.08,Gen_Main,,0,0,0,,¡Camina más rápido! ¡Por aquí!
+Dialogue: 0,0:10:10.54,0:10:14.19,Gen_Main,,0,0,0,,Vamos, la reina te está esperando adentro.
+Dialogue: 0,0:10:14.20,0:10:16.08,Gen_Main,,0,0,0,,¿Reina Goblin...?
+Dialogue: 0,0:10:16.12,0:10:18.09,Gen_Main,,0,0,0,,¿Qué clase de monstruo estaré a punto de conocer?
+Dialogue: 0,0:10:18.38,0:10:23.02,Gen_Main,,0,0,0,,Espera, los goblins de alto nivel parecen humanos.
+Dialogue: 0,0:10:23.68,0:10:26.79,Gen_Main,,0,0,0,,Lo que significa...
+Dialogue: 0,0:10:29.37,0:10:32.77,Gen_Main,,0,0,0,,¿Entonces eres el hombre más fuerte del planeta?
+Dialogue: 0,0:10:32.79,0:10:36.40,Gen_Main,,0,0,0,,Te trataré muy bien, muchacho.
+Dialogue: 0,0:10:37.78,0:10:42.30,Gen_Main,,0,0,0,,¡Noooo! ¡Ya le pertenezco a Luvellia!
+Dialogue: 0,0:12:11.92,0:12:14.93,Gen_Main,,0,0,0,,CARÁCTER: LISA ALPACAS, COSPLAYER: AKIRA ITSUKI\N¡NOS VEMOS LA PRÓXIMA SEMANA!❤

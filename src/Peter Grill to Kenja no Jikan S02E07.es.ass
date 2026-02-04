@@ -1,0 +1,167 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.46,0:00:04.56,Gen_Main,,0,0,0,,Quien termine el "Proyecto Súper Elfa"
+Dialogue: 0,0:00:04.59,0:00:06.60,Gen_Main,,0,0,0,,no será mi hermana,
+Dialogue: 0,0:00:06.62,0:00:08.58,Gen_Main,,0,0,0,,¡sino yo!
+Dialogue: 0,0:00:11.50,0:00:14.03,Gen_Main,,0,0,0,,Tu supuesto semen, el mejor del mundo...
+Dialogue: 0,0:00:14.25,0:00:17.50,Gen_Main,,0,0,0,,¡Drenaré hasta la última gota!
+Dialogue: 0,0:00:18.85,0:00:22.34,Gen_Main,,0,0,0,,¡Ahora, es hora de que\Ncopulemos furiosamente, Peter Grill!
+Dialogue: 0,0:00:22.36,0:00:24.83,Gen_Main,,0,0,0,,¿Por qué ustedes, los elfos, siempre son así?
+Dialogue: 0,0:00:24.85,0:00:29.46,Gen_Main,,0,0,0,,¿No pueden darle un respiro a este pobre tipo\Ny preguntarle su opinión de una vez?
+Dialogue: 0,0:00:30.44,0:00:31.70,Gen_Main,,0,0,0,,¿Opinión?
+Dialogue: 0,0:00:31.72,0:00:33.61,Gen_Main,,0,0,0,,Un humano sucio como tú...
+Dialogue: 0,0:00:33.64,0:00:34.64,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:00:34.66,0:00:40.49,Gen_Main,,0,0,0,,...tiene la oportunidad de tener una\Nrelación física íntima con una elfa superior como yo.
+Dialogue: 0,0:00:41.03,0:00:44.06,Gen_Main,,0,0,0,,¿Cómo podrías no estar saltando de alegría?
+Dialogue: 0,0:00:45.25,0:00:47.33,Gen_Main,,0,0,0,,No hay duda.
+Dialogue: 0,0:00:47.36,0:00:49.02,Gen_Main,,0,0,0,,Esta loca y ese idiota son hermanas.
+Dialogue: 0,0:00:49.88,0:00:50.90,Gen_Main,,0,0,0,,ESE IDIOTA.
+Dialogue: 0,0:02:21.16,0:02:24.40,Gen_Main,,0,0,0,,(Episodio 7: Peter Grill y la Casa Alguna Vez Noble)\N¿Proyecto Súper Elfa, dices?
+Dialogue: 0,0:02:24.52,0:02:28.08,Gen_Main,,0,0,0,,¡No tengo intención de cooperar\Nen ese proyecto tonto tuyo!
+Dialogue: 0,0:02:30.43,0:02:32.13,Gen_Main,,0,0,0,,No me dejas otra opción.
+Dialogue: 0,0:02:32.16,0:02:35.11,Gen_Main,,0,0,0,,¡Ten en cuenta que me obligaste a tomar esta medida!
+Dialogue: 0,0:02:42.53,0:02:44.31,Gen_Main,,0,0,0,,¡D-Detente!
+Dialogue: 0,0:02:44.51,0:02:46.10,Gen_Main,,0,0,0,,¡Por favor, te lo ruego!
+Dialogue: 0,0:02:46.12,0:02:48.94,Gen_Main,,0,0,0,,¡Basta de magia extraña, por favor!
+Dialogue: 0,0:02:57.50,0:03:00.65,Gen_Main,,0,0,0,,¿Qué es este símbolo de aspecto extraño en mi estómago?
+Dialogue: 0,0:03:01.63,0:03:04.01,Gen_Main,,0,0,0,,¡Contempla mi carta de triunfo!
+Dialogue: 0,0:03:04.48,0:03:06.96,Gen_Main,,0,0,0,,Este hechizo convierte todo tu cuerpo en una zona erógena
+Dialogue: 0,0:03:06.99,0:03:10.50,Gen_Main,,0,0,0,,¡y aumenta tu sensibilidad tres mil veces!
+Dialogue: 0,0:03:14.66,0:03:16.56,Gen_Main,,0,0,0,,¡E-Esta sensación...!
+Dialogue: 0,0:03:18.52,0:03:19.26,Gen_Main,,0,0,0,,¡Mi cuerpo--!
+Dialogue: 0,0:03:19.29,0:03:24.25,Gen_Main,,0,0,0,,¡Oh, cielos, mírate revolcándote como un pez en la tierra!
+Dialogue: 0,0:03:25.54,0:03:27.08,Gen_Main,,0,0,0,,A-Así que esto es...
+Dialogue: 0,0:03:27.10,0:03:30.65,Gen_Main,,0,0,0,,¡la sensación de tres mil veces más sensibilidad!
+Dialogue: 0,0:03:30.75,0:03:32.52,Gen_Main,,0,0,0,,Celosa, Glucosa.
+Dialogue: 0,0:03:34.18,0:03:36.25,Gen_Main,,0,0,0,,¡Le di justo!
+Dialogue: 0,0:03:36.47,0:03:38.66,Gen_Main,,0,0,0,,Ahora finalmente es el momento.
+Dialogue: 0,0:03:39.39,0:03:42.98,Gen_Main,,0,0,0,,Lo único que queda es purgarte de esa tela delgada...
+Dialogue: 0,0:03:43.32,0:03:49.91,Gen_Main,,0,0,0,,¡y exponer tu sublime y rígida torre de erección!
+Dialogue: 0,0:03:54.98,0:03:56.16,Gen_Main,,0,0,0,,¿Por qué?
+Dialogue: 0,0:03:56.34,0:03:59.97,Gen_Main,,0,0,0,,¿Por qué no tienes una erección?
+Dialogue: 0,0:04:01.54,0:04:03.24,Gen_Main,,0,0,0,,¡Porque no te amo!
+Dialogue: 0,0:04:04.27,0:04:05.27,Gen_Main,,0,0,0,,¿Amor?
+Dialogue: 0,0:04:05.63,0:04:11.12,Gen_Main,,0,0,0,,Ya tengo una prometida llamada Luvellia a quien amo profundamente.
+Dialogue: 0,0:04:12.87,0:04:14.33,Gen_Main,,0,0,0,,¿Fulltalia?
+Dialogue: 0,0:04:15.79,0:04:17.24,Gen_Main,,0,0,0,,¡Abuela!
+Dialogue: 0,0:04:18.88,0:04:21.92,Gen_Main,,0,0,0,,¡Oh, cielos, ¿eres amiga de Fulltalia?
+Dialogue: 0,0:04:22.41,0:04:24.00,Gen_Main,,0,0,0,,S-Sí...
+Dialogue: 0,0:04:27.64,0:04:29.70,Gen_Main,,0,0,0,,¿Qué te sucede, joven?
+Dialogue: 0,0:04:29.72,0:04:32.33,Gen_Main,,0,0,0,,Es como si hubieras llegado al clímax solo con
+Dialogue: 0,0:04:32.36,0:04:34.97,Gen_Main,,0,0,0,,la sensación del agua pasando por tu garganta.
+Dialogue: 0,0:04:35.42,0:04:36.45,Gen_Main,,0,0,0,,¡Oye!
+Dialogue: 0,0:04:36.48,0:04:39.51,Gen_Main,,0,0,0,,¿Cuánto tiempo más planean mantenerme así...?
+Dialogue: 0,0:04:42.26,0:04:43.51,Gen_Main,,0,0,0,,¡Abuela!
+Dialogue: 0,0:04:43.83,0:04:47.37,Gen_Main,,0,0,0,,Lo siento mucho. Si no fuera por\Nel estado actual de la casa,
+Dialogue: 0,0:04:47.39,0:04:50.21,Gen_Main,,0,0,0,,podría haberte ofrecido más.
+Dialogue: 0,0:04:50.39,0:04:52.23,Gen_Main,,0,0,0,,No, está bien...
+Dialogue: 0,0:04:52.42,0:04:56.30,Gen_Main,,0,0,0,,Nuestra casa ha caído bastante desde aquel incidente...
+Dialogue: 0,0:04:56.54,0:04:57.87,Gen_Main,,0,0,0,,¿Aquel incidente?
+Dialogue: 0,0:04:58.05,0:05:03.71,Gen_Main,,0,0,0,,Me duele darte la bienvenida así,\Npero por favor, disfruta tu estancia.
+Dialogue: 0,0:05:04.30,0:05:07.44,Gen_Main,,0,0,0,,Es bastante incómodo volver a casa ahora...
+Dialogue: 0,0:05:08.19,0:05:09.66,Gen_Main,,0,0,0,,¿Lo has encontrado?
+Dialogue: 0,0:05:09.68,0:05:10.79,Gen_Main,,0,0,0,,No...
+Dialogue: 0,0:05:10.82,0:05:14.51,Gen_Main,,0,0,0,,¡Oye! ¡Encontré a Vegan inconsciente por allá!
+Dialogue: 0,0:05:16.49,0:05:19.14,Gen_Main,,0,0,0,,Realmente la regué esta vez.
+Dialogue: 0,0:05:19.66,0:05:23.45,Gen_Main,,0,0,0,,Peter Grill ha sido secuestrado justo delante de mis narices.
+Dialogue: 0,0:05:23.84,0:05:27.46,Gen_Main,,0,0,0,,¿Qué está pasando, Srta. Vegan?
+Dialogue: 0,0:05:27.50,0:05:31.47,Gen_Main,,0,0,0,,Mi hermana apareció para obtener la semilla de Peter.
+Dialogue: 0,0:05:31.57,0:05:35.07,Gen_Main,,0,0,0,,¿Entonces eso significa que Amo Peter\Nha sido llevado a la aldea elfa?
+Dialogue: 0,0:05:35.13,0:05:37.49,Gen_Main,,0,0,0,,¡Deberíamos ir allí y traerlo de vuelta!
+Dialogue: 0,0:05:37.74,0:05:41.36,Gen_Main,,0,0,0,,¡Es el gran regreso del equipo "Vamos a salvar a Peter"!
+Dialogue: 0,0:05:41.87,0:05:44.79,Gen_Main,,0,0,0,,No, esta vez no.
+Dialogue: 0,0:05:45.58,0:05:48.32,Gen_Main,,0,0,0,,Este es un problema de la aldea elfa.
+Dialogue: 0,0:05:48.62,0:05:53.46,Gen_Main,,0,0,0,,Como elfa, asumiré toda la responsabilidad\Ny traeré a Peter Grill de vuelta a casa sano y salvo.
+Dialogue: 0,0:05:58.54,0:06:00.64,Gen_Main,,0,0,0,,Puede actuar con frialdad como quiera, pero...
+Dialogue: 0,0:06:00.66,0:06:03.09,Gen_Main,,0,0,0,,¡Aprovecharse sigue siendo aprovecharse!
+Dialogue: 0,0:06:03.28,0:06:04.72,Gen_Main,,0,0,0,,¡Eso no es justo!
+Dialogue: 0,0:06:05.04,0:06:07.87,Gen_Main,,0,0,0,,¡Entonces deberíamos ir también!
+Dialogue: 0,0:06:08.82,0:06:11.12,Gen_Main,,0,0,0,,¡Para recuperar nuestra preciada fuente de esperma!
+Dialogue: 0,0:06:12.52,0:06:13.52,Gen_Main,,0,0,0,,Oye.
+Dialogue: 0,0:06:13.64,0:06:15.30,Gen_Main,,0,0,0,,¿Qué es "aquel incidente" del que habló?
+Dialogue: 0,0:06:16.04,0:06:19.70,Gen_Main,,0,0,0,,¿Por qué ambas afirman ser\Nla embajadora designada de buena voluntad?
+Dialogue: 0,0:06:20.58,0:06:21.99,Gen_Main,,0,0,0,,Aquel incidente...
+Dialogue: 0,0:06:22.18,0:06:24.29,Gen_Main,,0,0,0,,Fue el comienzo de la caída de la casa...
+Dialogue: 0,0:06:24.82,0:06:27.29,Gen_Main,,0,0,0,,Madam Vegan fue desterrada de la aldea
+Dialogue: 0,0:06:27.32,0:06:32.13,Gen_Main,,0,0,0,,y la casa de Eldoriel fue\Ncargada con una gran suma de deuda.
+Dialogue: 0,0:06:33.79,0:06:37.23,Gen_Main,,0,0,0,,El incidente del Minestrone en el Pudín...
+Dialogue: 0,0:06:39.23,0:06:41.29,Gen_Main,,0,0,0,,¿Qué es esto? ¿Un almacén?
+Dialogue: 0,0:06:41.92,0:06:44.18,Gen_Main,,0,0,0,,En días pasados, cuando los Eldoriel eran ricos...
+Dialogue: 0,0:06:44.51,0:06:46.72,Gen_Main,,0,0,0,,El gran Vegetalia, el tatarabuelo
+Dialogue: 0,0:06:46.75,0:06:49.16,Gen_Main,,0,0,0,,de las hermanas dejó esto para ellas.
+Dialogue: 0,0:06:50.09,0:06:53.95,Gen_Main,,0,0,0,,Según cuenta la historia, encerrado tras esta puerta hay
+Dialogue: 0,0:06:53.98,0:06:57.72,Gen_Main,,0,0,0,,una gran herencia destinada para las dos.
+Dialogue: 0,0:06:58.13,0:06:59.69,Gen_Main,,0,0,0,,¿Lenguaje élfico?
+Dialogue: 0,0:06:59.81,0:07:01.06,Gen_Main,,0,0,0,,Umm...
+Dialogue: 0,0:07:01.26,0:07:05.76,Gen_Main,,0,0,0,,"Cuando los poderes de dos hermanas se combinen,\Neste sello se abrirá".
+Dialogue: 0,0:07:06.04,0:07:09.69,Gen_Main,,0,0,0,,Sin embargo, la relación de las dos es como ya sabes.
+Dialogue: 0,0:07:09.90,0:07:12.08,Gen_Main,,0,0,0,,Dejando así esta puerta sellada hasta el día de hoy.
+Dialogue: 0,0:07:12.24,0:07:13.75,Gen_Main,,0,0,0,,Ya veo...
+Dialogue: 0,0:07:14.78,0:07:16.03,Gen_Main,,0,0,0,,Oye...
+Dialogue: 0,0:07:16.26,0:07:19.43,Gen_Main,,0,0,0,,¿Hay alguna manera de que puedas\Nacercar a Madam Fulltalia y Madam Vegan
+Dialogue: 0,0:07:19.46,0:07:21.56,Gen_Main,,0,0,0,,como lo eran antes?
+Dialogue: 0,0:07:23.76,0:07:26.97,Gen_Main,,0,0,0,,El título de "Embajadora Designada de Buena Voluntad"\Npuede sonar bien en la superficie,
+Dialogue: 0,0:07:27.58,0:07:32.10,Gen_Main,,0,0,0,,pero en realidad es solo un título que se les da\Ncomo un medio para pagar deudas a través de trabajos sucios.
+Dialogue: 0,0:07:32.39,0:07:36.85,Gen_Main,,0,0,0,,Nunca quisieron que este "honor"\Nles fuera impuesto.
+Dialogue: 0,0:07:37.48,0:07:40.14,Gen_Main,,0,0,0,,Así que estás diciendo que si se levanta el sello\Ny obtienen su herencia
+Dialogue: 0,0:07:40.16,0:07:43.24,Gen_Main,,0,0,0,,¿ambas serán liberadas de su deber?
+Dialogue: 0,0:07:43.68,0:07:44.90,Gen_Main,,0,0,0,,¡Se lo rogamos!
+Dialogue: 0,0:07:44.92,0:07:46.66,Gen_Main,,0,0,0,,¡Por el futuro de nuestras damas!
+Dialogue: 0,0:07:46.69,0:07:48.58,Gen_Main,,0,0,0,,¡Lo siento terriblemente!
+Dialogue: 0,0:07:48.61,0:07:51.61,Gen_Main,,0,0,0,,¡Por favor, solo denme más... un poco más de tiempo!
+Dialogue: 0,0:07:51.63,0:07:55.97,Gen_Main,,0,0,0,,Podrías decir todo eso, pero ¿cuánto tiempo\Nnos vas a hacer esperar?
+Dialogue: 0,0:07:56.00,0:08:00.35,Gen_Main,,0,0,0,,Y-Ya hemos asegurado al guerrero\Npara que sirva como nuestro donante de semen...
+Dialogue: 0,0:08:00.82,0:08:04.88,Gen_Main,,0,0,0,,Permitir que la sangre de un humano sucio\Ncontamine el acervo genético de nuestra ilustre aldea
+Dialogue: 0,0:08:04.91,0:08:10.59,Gen_Main,,0,0,0,,parece ser un trabajo perfecto para\Nuna mendiga sin un centavo como tú.
+Dialogue: 0,0:08:11.00,0:08:16.26,Gen_Main,,0,0,0,,Y aceptaste quedar embarazada a cambio\Nde que te liberaran de tu deuda.
+Dialogue: 0,0:08:16.45,0:08:17.51,Gen_Main,,0,0,0,,Bueno...
+Dialogue: 0,0:08:17.54,0:08:18.83,Gen_Main,,0,0,0,,S-Sí...
+Dialogue: 0,0:08:18.89,0:08:21.34,Gen_Main,,0,0,0,,En cualquier caso, no vamos a esperar más.
+Dialogue: 0,0:08:21.37,0:08:25.52,Gen_Main,,0,0,0,,Espero que muestres algunos resultados la próxima vez que vengamos aquí.
+Dialogue: 0,0:08:36.29,0:08:38.24,Gen_Main,,0,0,0,,¡Odio esto!
+Dialogue: 0,0:08:38.26,0:08:40.61,Gen_Main,,0,0,0,,¡Odio este estúpido trabajo que me están haciendo hacer!
+Dialogue: 0,0:08:40.63,0:08:42.95,Gen_Main,,0,0,0,,¡Incluso el humano rechazó mi acercamiento!
+Dialogue: 0,0:08:42.98,0:08:46.75,Gen_Main,,0,0,0,,¡No solo eso, sino que no tiene una erección en absoluto!
+Dialogue: 0,0:08:46.77,0:08:49.56,Gen_Main,,0,0,0,,¡No puedo soportarlo más!
+Dialogue: 0,0:08:51.89,0:08:54.84,Gen_Main,,0,0,0,,Estoy empezando a sentir lástima por ella...
+Dialogue: 0,0:08:55.73,0:08:57.16,Gen_Main,,0,0,0,,No, contrólate, Peter.
+Dialogue: 0,0:08:57.18,0:09:00.81,Gen_Main,,0,0,0,,¡No dejes que tu simpatía por ella te aleje de Luvellia!
+Dialogue: 0,0:09:04.65,0:09:07.21,Gen_Main,,0,0,0,,Quítate la ropa, Peter Grill.
+Dialogue: 0,0:09:07.26,0:09:07.88,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:09:07.90,0:09:10.02,Gen_Main,,0,0,0,,¡Ya he tenido suficiente de estas tonterías!
+Dialogue: 0,0:09:10.05,0:09:13.93,Gen_Main,,0,0,0,,Para librarme de este aprieto,\N¡usaré todos los medios necesarios!
+Dialogue: 0,0:09:14.89,0:09:15.98,Gen_Main,,0,0,0,,¡Mi señora!
+Dialogue: 0,0:09:16.01,0:09:17.26,Gen_Main,,0,0,0,,No puede ser...
+Dialogue: 0,0:09:17.46,0:09:19.74,Gen_Main,,0,0,0,,¿De verdad va a usar eso?
+Dialogue: 0,0:09:19.98,0:09:24.34,Gen_Main,,0,0,0,,¡Usaré la magia de ilusión prohibida\Nheredada en la casa Eldoriel!
+Dialogue: 0,0:09:31.29,0:09:33.22,Gen_Main,,0,0,0,,¿Q-Qué es esto?
+Dialogue: 0,0:09:49.55,0:09:51.47,Gen_Main,,0,0,0,,¿L-Luvellia?
+Dialogue: 0,0:09:51.50,0:09:52.77,Gen_Main,,0,0,0,,Peter.
+Dialogue: 0,0:09:54.07,0:09:55.77,Gen_Main,,0,0,0,,Creo que
+Dialogue: 0,0:09:56.01,0:09:57.92,Gen_Main,,0,0,0,,finalmente entiendo...
+Dialogue: 0,0:09:58.35,0:10:00.07,Gen_Main,,0,0,0,,...cómo hacer bebés.
+Dialogue: 0,0:10:00.86,0:10:03.32,Gen_Main,,0,0,0,,El hecho de que esto sea solo una\Nilusión barata es claro como el agua.
+Dialogue: 0,0:10:03.35,0:10:04.74,Gen_Main,,0,0,0,,Pero...
+Dialogue: 0,0:10:11.99,0:10:17.05,Gen_Main,,0,0,0,,Mi orgullo como mujer me impedía\Nusar esto hasta ahora,
+Dialogue: 0,0:10:17.48,0:10:19.73,Gen_Main,,0,0,0,,¡pero eso ya no importa!
+Dialogue: 0,0:10:20.23,0:10:21.49,Gen_Main,,0,0,0,,Ahora...
+Dialogue: 0,0:10:21.66,0:10:22.72,Gen_Main,,0,0,0,,Peter.
+Dialogue: 0,0:10:24.16,0:10:25.89,Gen_Main,,0,0,0,,Juntos,
+Dialogue: 0,0:10:25.92,0:10:27.31,Gen_Main,,0,0,0,,hagamos...
+Dialogue: 0,0:10:29.04,0:10:30.84,Gen_Main,,0,0,0,,...¡bebés!
+Dialogue: 0,0:10:32.00,0:10:33.82,Gen_Main,,0,0,0,,¡No puedo! ¡Luvellia!
+Dialogue: 0,0:10:33.85,0:10:35.26,Gen_Main,,0,0,0,,¡No, no debo!

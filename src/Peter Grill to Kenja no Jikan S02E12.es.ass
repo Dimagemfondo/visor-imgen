@@ -1,0 +1,182 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.61,0:00:01.67,Gen_Main,,0,0,0,,¿Qué está pasando?
+Dialogue: 0,0:00:01.70,0:00:03.24,Gen_Main,,0,0,0,,¡La tierra está temblando!
+Dialogue: 0,0:00:04.76,0:00:06.11,Gen_Main,,0,0,0,,Eso es...
+Dialogue: 0,0:00:06.14,0:00:08.35,Gen_Main,,0,0,0,,¡Cicada-mole!
+Dialogue: 0,0:00:10.40,0:00:11.85,Gen_Main,,0,0,0,,¡Imposible!
+Dialogue: 0,0:00:11.88,0:00:13.46,Gen_Main,,0,0,0,,¿Uno aún vivo?
+Dialogue: 0,0:00:14.43,0:00:15.51,Gen_Main,,0,0,0,,¡Es enorme!
+Dialogue: 0,0:00:15.54,0:00:16.84,Gen_Main,,0,0,0,,¡Incluso tiene dos cabezas!
+Dialogue: 0,0:00:16.87,0:00:19.54,Gen_Main,,0,0,0,,¡No! ¡Es el cicada-mole!
+Dialogue: 0,0:00:19.57,0:00:21.53,Gen_Main,,0,0,0,,¡Está de vuelta!
+Dialogue: 0,0:00:22.98,0:00:24.40,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:00:25.02,0:00:26.85,Gen_Main,,0,0,0,,¿Justo dónde...
+Dialogue: 0,0:00:26.87,0:00:28.46,Gen_Main,,0,0,0,,estás ahora?
+Dialogue: 0,0:00:53.74,0:01:01.51,Gen_Main,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Super Extra
+Dialogue: 0,0:02:02.14,0:02:05.18,Gen_Main,,0,0,0,,(Episodio 12: Peter Grill y el Legado para el Futuro)\N¡El cicada-mole se dirige a la estatua de cristal!
+Dialogue: 0,0:02:05.47,0:02:08.21,Gen_Main,,0,0,0,,¡Oh no! ¡El Maestro del Gremio está ahí!
+Dialogue: 0,0:02:08.61,0:02:09.77,Gen_Main,,0,0,0,,¡Padre!
+Dialogue: 0,0:02:10.24,0:02:12.25,Gen_Main,,0,0,0,,¡Quédate detrás de mí! ¡Lo detendré!
+Dialogue: 0,0:02:12.74,0:02:16.77,Gen_Main,,0,0,0,,Luvellia, no tienes que hacer nada.
+Dialogue: 0,0:02:17.08,0:02:18.64,Gen_Main,,0,0,0,,¡Pero es peligroso!
+Dialogue: 0,0:02:18.67,0:02:20.42,Gen_Main,,0,0,0,,Escúchalo, señorita.
+Dialogue: 0,0:02:21.24,0:02:26.26,Gen_Main,,0,0,0,,Todo lo que tienes que hacer es sentarte y escuchar a tu viejo.
+Dialogue: 0,0:02:27.25,0:02:28.79,Gen_Main,,0,0,0,,¡Vamos, Mimi!
+Dialogue: 0,0:02:28.81,0:02:30.39,Gen_Main,,0,0,0,,¡Okie dokie!
+Dialogue: 0,0:02:32.31,0:02:34.46,Gen_Main,,0,0,0,,¡Movimiento especial estilo Kigahn!
+Dialogue: 0,0:02:34.62,0:02:37.31,Gen_Main,,0,0,0,,¡Doble Torbellino Cortante del Cielo!
+Dialogue: 0,0:02:39.99,0:02:40.76,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:02:40.78,0:02:41.84,Gen_Main,,0,0,0,,¡Es difícil!
+Dialogue: 0,0:02:41.94,0:02:44.84,Gen_Main,,0,0,0,,¡Mira y aprende, hermanas de cerebro de músculo!
+Dialogue: 0,0:02:45.33,0:02:47.87,Gen_Main,,0,0,0,,¡Este es el arte secreto élfico transmitido por generaciones!
+Dialogue: 0,0:02:47.90,0:02:49.34,Gen_Main,,0,0,0,,¡Abre los ojos y observa!
+Dialogue: 0,0:02:49.36,0:02:50.89,Gen_Main,,0,0,0,,¿Lo lograron?
+Dialogue: 0,0:02:55.59,0:02:57.15,Gen_Main,,0,0,0,,¡Sigue vivo!
+Dialogue: 0,0:02:58.51,0:03:00.20,Gen_Main,,0,0,0,,Goodman.
+Dialogue: 0,0:03:00.79,0:03:02.42,Gen_Main,,0,0,0,,¡Tráeme mi espada!
+Dialogue: 0,0:03:02.44,0:03:04.41,Gen_Main,,0,0,0,,¡Maestro del gremio!
+Dialogue: 0,0:03:04.55,0:03:06.03,Gen_Main,,0,0,0,,¡Todos, miren!
+Dialogue: 0,0:03:10.73,0:03:12.91,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:03:12.93,0:03:14.33,Gen_Main,,0,0,0,,¡Este molesto mocoso!
+Dialogue: 0,0:03:16.82,0:03:18.41,Gen_Main,,0,0,0,,¿Misslim?
+Dialogue: 0,0:03:19.23,0:03:20.63,Gen_Main,,0,0,0,,Deja el hablar para después.
+Dialogue: 0,0:03:20.66,0:03:21.87,Gen_Main,,0,0,0,,¡Déjame encargarme de este monstruo!
+Dialogue: 0,0:03:21.90,0:03:24.64,Gen_Main,,0,0,0,,Su caparazón es extremadamente duro,
+Dialogue: 0,0:03:30.89,0:03:33.16,Gen_Main,,0,0,0,,¡casi tan duro como el oricalco!
+Dialogue: 0,0:03:33.19,0:03:35.84,Gen_Main,,0,0,0,,Pero...
+Dialogue: 0,0:03:35.86,0:03:37.12,Gen_Main,,0,0,0,,con un arma de oricalco en mis manos,
+Dialogue: 0,0:03:38.57,0:03:40.76,Gen_Main,,0,0,0,,¡nada podrá detenerme!
+Dialogue: 0,0:03:41.15,0:03:43.45,Gen_Main,,0,0,0,,¡Peter Grill! ¡Peter Grill! ¡Peter Grill!
+Dialogue: 0,0:03:48.55,0:04:00.41,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:04:01.64,0:04:02.80,Gen_Main,,0,0,0,,¡Luvellia!
+Dialogue: 0,0:04:03.53,0:04:05.17,Gen_Main,,0,0,0,,Ejhem.
+Dialogue: 0,0:04:05.40,0:04:06.70,Gen_Main,,0,0,0,,Peter Grill.
+Dialogue: 0,0:04:07.60,0:04:09.37,Gen_Main,,0,0,0,,Aunque fue una crisis inesperada,
+Dialogue: 0,0:04:09.39,0:04:11.40,Gen_Main,,0,0,0,,has actuado admirablemente esta vez.
+Dialogue: 0,0:04:11.42,0:04:15.19,Gen_Main,,0,0,0,,¡Es un placer!
+Dialogue: 0,0:04:15.21,0:04:16.12,Gen_Main,,0,0,0,,Sin embargo, ¿podrías explicarnos qué
+Dialogue: 0,0:04:16.14,0:04:24.14,Gen_Main,,0,0,0,,ha sido de nuestra espada preciada?
+Dialogue: 0,0:04:25.51,0:04:29.58,Gen_Main,,0,0,0,,¡No puedo decirles que la convertimos en un hacha para ahorrar tiempo!
+Dialogue: 0,0:04:30.18,0:04:31.67,Gen_Main,,0,0,0,,Entonces...
+Dialogue: 0,0:04:31.70,0:04:33.03,Gen_Main,,0,0,0,,¡Si me permiten!
+Dialogue: 0,0:04:33.05,0:04:36.12,Gen_Main,,0,0,0,,Esta vez visité esta ciudad por adelantado,
+Dialogue: 0,0:04:36.14,0:04:40.72,Gen_Main,,0,0,0,,y llegué a la conclusión de que deberíamos reconsiderar
+Dialogue: 0,0:04:41.97,0:04:44.69,Gen_Main,,0,0,0,,la relación de nuestro gremio con la ciudad enana.
+Dialogue: 0,0:04:45.24,0:04:49.59,Gen_Main,,0,0,0,,¿Peter tiene la misma idea que yo?
+Dialogue: 0,0:04:49.62,0:04:51.11,Gen_Main,,0,0,0,,Por lo tanto, en busca de un pacto más equitativo
+Dialogue: 0,0:04:51.25,0:04:53.05,Gen_Main,,0,0,0,,y justo entre ambas partes,
+Dialogue: 0,0:04:53.84,0:04:57.39,Gen_Main,,0,0,0,,¡hice intencionadamente...!
+Dialogue: 0,0:04:57.39,0:04:59.71,Gen_Main,,0,0,0,,¡Sí, intencionadamente!
+Dialogue: 0,0:05:00.41,0:05:03.65,Gen_Main,,0,0,0,,Hice que la genio herrera enana,
+Dialogue: 0,0:05:04.58,0:05:10.31,Gen_Main,,0,0,0,,¡Misslim, forjara nuevamente la espada preciada!
+Dialogue: 0,0:05:10.55,0:05:13.98,Gen_Main,,0,0,0,,¡La afilada de la hoja es como todos han visto!
+Dialogue: 0,0:05:14.00,0:05:16.85,Gen_Main,,0,0,0,,¡Esta ciudad enana todavía tiene la capacidad
+Dialogue: 0,0:05:17.25,0:05:21.22,Gen_Main,,0,0,0,,de forjar oricalco y mucho más!
+Dialogue: 0,0:05:21.44,0:05:26.70,Gen_Main,,0,0,0,,Así que, en lugar del contrato unilateral de antes,
+Dialogue: 0,0:05:26.73,0:05:27.90,Gen_Main,,0,0,0,,¡propongo que el gremio proporcione
+Dialogue: 0,0:05:27.94,0:05:31.83,Gen_Main,,0,0,0,,su fuerza militar a la ciudad
+Dialogue: 0,0:05:38.28,0:05:40.06,Gen_Main,,0,0,0,,y la ciudad enana proporcione al gremio
+Dialogue: 0,0:05:40.38,0:05:44.47,Gen_Main,,0,0,0,,armas y sus habilidades únicas!
+Dialogue: 0,0:05:44.60,0:05:48.08,Gen_Main,,0,0,0,,¡Por lo tanto, propongo un verdadero pacto de ganar-ganar para ambas partes!
+Dialogue: 0,0:05:49.10,0:05:50.83,Gen_Main,,0,0,0,,¡Lo entiendo!
+Dialogue: 0,0:05:50.85,0:05:53.30,Gen_Main,,0,0,0,,¡Como el hombre más fuerte del mundo,
+Dialogue: 0,0:05:58.68,0:06:01.57,Gen_Main,,0,0,0,,seguramente tiene razón!
+Dialogue: 0,0:06:04.40,0:06:06.40,Gen_Main,,0,0,0,,¡Misslim!
+Dialogue: 0,0:06:06.54,0:06:09.71,Gen_Main,,0,0,0,,¿Trabajaste? ¿Realmente trabajaste...
+Dialogue: 0,0:06:09.73,0:06:10.59,Gen_Main,,0,0,0,,para el bien de nuestra ciudad...!
+Dialogue: 0,0:06:10.62,0:06:13.74,Gen_Main,,0,0,0,,B-Bueno... tal vez...?
+Dialogue: 0,0:06:16.02,0:06:18.68,Gen_Main,,0,0,0,,¡No lo habría pensado!
+Dialogue: 0,0:06:18.75,0:06:20.03,Gen_Main,,0,0,0,,No me hagas decirlo. ¡Es embarazoso!
+Dialogue: 0,0:06:20.31,0:06:23.43,Gen_Main,,0,0,0,,Padre, ¿lo considerarías?
+Dialogue: 0,0:06:24.00,0:06:25.65,Gen_Main,,0,0,0,,Parece que las cosas salieron bien.
+Dialogue: 0,0:06:30.48,0:06:31.84,Gen_Main,,0,0,0,,Todavía necesito tu semen,
+Dialogue: 0,0:06:36.91,0:06:40.55,Gen_Main,,0,0,0,,¡y no olvides tu promesa!
+Dialogue: 0,0:06:41.35,0:06:43.52,Gen_Main,,0,0,0,,¿Promesa?
+Dialogue: 0,0:06:43.52,0:06:45.70,Gen_Main,,0,0,0,,¡Tomar la responsabilidad y apoyarme, está bien?
+Dialogue: 0,0:06:45.88,0:06:48.17,Gen_Main,,0,0,0,,¡Un ingreso estable de por vida!
+Dialogue: 0,0:06:49.33,0:06:53.52,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:06:54.51,0:06:57.80,Gen_Main,,0,0,0,,Mi hija me dijo todo.
+Dialogue: 0,0:06:57.82,0:06:58.69,Gen_Main,,0,0,0,,Sr. Gordo...
+Dialogue: 0,0:06:58.71,0:07:04.24,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:07:05.33,0:07:06.82,Gen_Main,,0,0,0,,¿Qué es lo que quieres hablar, Luvellia?
+Dialogue: 0,0:07:08.76,0:07:09.40,Gen_Main,,0,0,0,,Padre, yo...
+Dialogue: 0,0:07:09.43,0:07:12.22,Gen_Main,,0,0,0,,Maestro del gremio, señora Luvellia.
+Dialogue: 0,0:07:14.05,0:07:16.43,Gen_Main,,0,0,0,,Estamos listos para partir.
+Dialogue: 0,0:07:16.45,0:07:18.96,Gen_Main,,0,0,0,,Luvellia, guardemos esa charla para otra ocasión.
+Dialogue: 0,0:07:19.05,0:07:20.55,Gen_Main,,0,0,0,,¡No! ¡No volveré a casa contigo hoy!
+Dialogue: 0,0:07:21.04,0:07:23.68,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:07:25.63,0:07:27.94,Gen_Main,,0,0,0,,Como te dije antes,
+Dialogue: 0,0:07:28.35,0:07:30.02,Gen_Main,,0,0,0,,¡quiero ir de viaje con Peter!
+Dialogue: 0,0:07:33.17,0:07:36.35,Gen_Main,,0,0,0,,¡También tengo un boleto aquí!
+Dialogue: 0,0:07:36.45,0:07:37.55,Gen_Main,,0,0,0,,¿Qué...?
+Dialogue: 0,0:07:40.14,0:07:42.97,Gen_Main,,0,0,0,,¡No lo permitiré, Luvellia!
+Dialogue: 0,0:07:45.06,0:07:47.65,Gen_Main,,0,0,0,,Vamos, Luvellia.
+Dialogue: 0,0:07:47.88,0:07:52.09,Gen_Main,,0,0,0,,Volvamos a casa juntos.
+Dialogue: 0,0:07:53.51,0:07:56.89,Gen_Main,,0,0,0,,¿Entendido?
+Dialogue: 0,0:07:57.40,0:07:59.00,Gen_Main,,0,0,0,,Peter, yo...
+Dialogue: 0,0:07:59.33,0:08:02.25,Gen_Main,,0,0,0,,Este es un hechizo para reunir valor.
+Dialogue: 0,0:08:02.28,0:08:03.04,Gen_Main,,0,0,0,,¡Peter...!
+Dialogue: 0,0:08:03.07,0:08:06.68,Gen_Main,,0,0,0,,Padre, entonces quiero mudarme de casa.
+Dialogue: 0,0:08:06.71,0:08:09.86,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:08:10.00,0:08:12.64,Gen_Main,,0,0,0,,¿Cuánto planea llevarse?
+Dialogue: 0,0:08:12.77,0:08:15.79,Gen_Main,,0,0,0,,¡Yo no acepté nada de esto!
+Dialogue: 0,0:08:15.81,0:08:17.07,Gen_Main,,0,0,0,,Parece que tendremos que reconsiderar
+Dialogue: 0,0:08:17.83,0:08:22.29,Gen_Main,,0,0,0,,nuestros acuerdos de semen de aquí en adelante.
+Dialogue: 0,0:08:24.92,0:08:28.37,Gen_Main,,0,0,0,,¿Por qué siempre terminan así...?
+Dialogue: 0,0:08:29.06,0:08:32.71,Gen_Main,,0,0,0,,¡Y no solo eso...!
+Dialogue: 0,0:08:32.74,0:08:36.95,Gen_Main,,0,0,0,,Peter, mi hija me dijo todo.
+Dialogue: 0,0:08:39.47,0:08:43.06,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 0,0:08:43.20,0:08:44.50,Gen_Main,,0,0,0,,No sabía que llegarías tan lejos
+Dialogue: 0,0:08:44.60,0:08:45.81,Gen_Main,,0,0,0,,como para romper tu compromiso
+Dialogue: 0,0:08:45.83,0:08:48.23,Gen_Main,,0,0,0,,con Luvellia para cuidar de mi hija
+Dialogue: 0,0:08:48.31,0:08:49.93,Gen_Main,,0,0,0,,¡por el resto de su vida!
+Dialogue: 0,0:08:49.96,0:08:52.22,Gen_Main,,0,0,0,,¿Eh? ¿Romper mi compromiso con Luvellia?
+Dialogue: 0,0:08:52.25,0:08:53.52,Gen_Main,,0,0,0,,No quería decir que la tomaría para casarme...
+Dialogue: 0,0:08:53.92,0:08:57.53,Gen_Main,,0,0,0,,¿Oh?
+Dialogue: 0,0:08:57.55,0:08:59.99,Gen_Main,,0,0,0,,No estarías tocando a
+Dialogue: 0,0:09:01.87,0:09:03.03,Gen_Main,,0,0,0,,mi hija con esa ligera intención, ¿verdad?
+Dialogue: 0,0:09:03.05,0:09:05.03,Gen_Main,,0,0,0,,Por supuesto que no, señor...
+Dialogue: 0,0:09:07.26,0:09:08.68,Gen_Main,,0,0,0,,¡Cuento contigo para tratar a mi hija con cuidado
+Dialogue: 0,0:09:09.19,0:09:11.94,Gen_Main,,0,0,0,,para mantener la buena relación entre el gremio y la ciudad!
+Dialogue: 0,0:09:12.09,0:09:13.79,Gen_Main,,0,0,0,,¡De ninguna manera! ¡No puedo romper con Luvellia!
+Dialogue: 0,0:09:14.24,0:09:15.60,Gen_Main,,0,0,0,,¡Esto es malo!
+Dialogue: 0,0:09:15.83,0:09:18.46,Gen_Main,,0,0,0,,¡De verdad, muy malo!
+Dialogue: 0,0:09:18.55,0:09:19.89,Gen_Main,,0,0,0,,¡Si esas chicas se enteran de esto...!
+Dialogue: 0,0:09:20.97,0:09:22.55,Gen_Main,,0,0,0,,No nos importa mantener silencio, pero...
+Dialogue: 0,0:09:31.41,0:09:32.92,Gen_Main,,0,0,0,,¡danos más semen!
+Dialogue: 0,0:09:32.94,0:09:36.50,Gen_Main,,0,0,0,,Apostaría.
+Dialogue: 0,0:09:36.52,0:09:38.18,Gen_Main,,0,0,0,,Tal vez... Tal vez debería tirar todo
+Dialogue: 0,0:09:38.21,0:09:39.21,Gen_Main,,0,0,0,,y huir con Luvellia a algún lugar lejano.
+Dialogue: 0,0:09:39.78,0:09:42.13,Gen_Main,,0,0,0,,¡No puedo!
+Dialogue: 0,0:09:43.15,0:09:44.27,Gen_Main,,0,0,0,,¡Nunca tendría el valor!
+Dialogue: 0,0:09:44.35,0:09:47.32,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:09:47.46,0:09:49.26,Gen_Main,,0,0,0,,¡Luvellia!
+Dialogue: 0,0:09:49.80,0:09:51.78,Gen_Main,,0,0,0,,¡Por favor regresa!
+Dialogue: 0,0:09:51.81,0:09:53.70,Gen_Main,,0,0,0,,¡Señorita Luvellia!
+Dialogue: 0,0:09:55.51,0:10:00.97,Gen_Main,,0,0,0,,¡No te mudes de casa! ¡Por favor reconsidera!
+Dialogue: 0,0:10:02.00,0:10:04.54,Gen_Main,,0,0,0,,¿Mudarse?
+Dialogue: 0,0:10:04.63,0:10:08.76,Gen_Main,,0,0,0,,¡Vamos!
+Dialogue: 0,0:10:10.49,0:10:11.86,Gen_Main,,0,0,0,,¿Mudarse?
+Dialogue: 0,0:10:11.89,0:10:15.94,Gen_Main,,0,0,0,,Sí. Mi padre no me dará su permiso,
+Dialogue: 0,0:10:16.30,0:10:17.71,Gen_Main,,0,0,0,,¡así que decidí irme por mi cuenta!
+Dialogue: 0,0:10:17.74,0:10:19.16,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:10:19.19,0:10:22.11,Gen_Main,,0,0,0,,¿Vendrás conmigo?
+Dialogue: 0,0:10:28.01,0:10:30.08,Gen_Main,,0,0,0,,¡Sí!
+Dialogue: 0,0:10:31.13,0:10:34.99,Gen_Main,,0,0,0,,¡Ahora vamos! ¡Peter!
+Dialogue: 0,0:10:36.24,0:10:41.12,Gen_Main,,0,0,0,,¡A un viaje solo para los dos de nosotros!
+Dialogue: 0,0:12:11.92,0:12:14.96,Gen_Main,,0,0,0,,- ¡Peter está escapando! - ¡Qué astuto!

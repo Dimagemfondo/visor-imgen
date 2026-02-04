@@ -1,0 +1,165 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:23.08,0:00:30.86,Gen_Main,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Súper Extra
+Dialogue: 0,0:01:30.41,0:01:34.53,Gen_Main,,0,0,0,,Episodio 6: Peter Grill Disfruta del Balneario
+Dialogue: 0,0:01:35.90,0:01:37.17,Gen_Main,,0,0,0,,¡Peter!
+Dialogue: 0,0:01:37.19,0:01:40.00,Gen_Main,,0,0,0,,¿Tu pene ya no se está poniendo duro?
+Dialogue: 0,0:01:40.53,0:01:44.07,Gen_Main,,0,0,0,,Silencio. Despertarás a Lucy y a Gobuko.
+Dialogue: 0,0:01:44.34,0:01:47.27,Gen_Main,,0,0,0,,Parece que estamos en un buen aprieto.
+Dialogue: 0,0:01:47.35,0:01:52.85,Gen_Main,,0,0,0,,¿Cómo se supone que vamos a exprimir\Nsu esperma superior sin una erección?
+Dialogue: 0,0:01:53.13,0:01:55.55,Gen_Main,,0,0,0,,¿Tienes alguna idea de qué lo causó?
+Dialogue: 0,0:01:55.57,0:01:57.46,Gen_Main,,0,0,0,,¿Cómo se supone que lo voy a saber?
+Dialogue: 0,0:01:59.39,0:02:04.41,Gen_Main,,0,0,0,,Después de que lo deje medio muerto,\Nle arranco el pene de un tirón,
+Dialogue: 0,0:02:04.41,0:02:07.09,Gen_Main,,0,0,0,,lo corto en pedazos,\Ny se lo meto en la boca.
+Dialogue: 0,0:02:09.75,0:02:12.08,Gen_Main,,0,0,0,,Ten por seguro, Peter Grill.
+Dialogue: 0,0:02:12.34,0:02:15.44,Gen_Main,,0,0,0,,¡Puedes dejar esto a tu buena y confiable amiga Elfa!
+Dialogue: 0,0:02:25.41,0:02:28.67,Gen_Main,,0,0,0,,¡Basta con esos hechizos de sonido turbio!
+Dialogue: 0,0:02:31.68,0:02:32.70,Gen_Main,,0,0,0,,¡Imposible!
+Dialogue: 0,0:02:33.01,0:02:35.22,Gen_Main,,0,0,0,,¿Repelió mi hechizo de Erección Eterna?
+Dialogue: 0,0:02:36.06,0:02:39.01,Gen_Main,,0,0,0,,¿A tu pene le salió algún tipo de resistencia mágica?
+Dialogue: 0,0:02:48.01,0:02:49.68,Gen_Main,,0,0,0,,Baño...
+Dialogue: 0,0:02:50.86,0:02:54.20,Gen_Main,,0,0,0,,Si me permiten, tengo una propuesta.
+Dialogue: 0,0:02:54.34,0:02:55.23,Gen_Main,,0,0,0,,¿Propuesta?
+Dialogue: 0,0:02:55.26,0:02:58.43,Gen_Main,,0,0,0,,Sir Tim una vez me informó que los hombres a veces pueden sufrir de
+Dialogue: 0,0:02:58.45,0:03:01.82,Gen_Main,,0,0,0,,disfunción eréctil por varias causas.
+Dialogue: 0,0:03:01.95,0:03:04.27,Gen_Main,,0,0,0,,Una de las cuales es el estrés severo.
+Dialogue: 0,0:03:04.48,0:03:09.67,Gen_Main,,0,0,0,,Por lo tanto, propongo que vayamos\Nahí para aliviarlo.
+Dialogue: 0,0:03:09.69,0:03:10.99,Gen_Main,,0,0,0,,¿Ahí?
+Dialogue: 0,0:03:26.06,0:03:29.60,Gen_Main,,0,0,0,,¡Vaya, qué vista tan hermosa!
+Dialogue: 0,0:03:31.65,0:03:33.22,Gen_Main,,0,0,0,,¡Sí, una vista hermosa, de hecho!
+Dialogue: 0,0:03:34.99,0:03:38.15,Gen_Main,,0,0,0,,¡Disfrutemos este viaje al máximo!
+Dialogue: 0,0:03:41.44,0:03:43.24,Gen_Main,,0,0,0,,Bueno, es una oportunidad rara.
+Dialogue: 0,0:03:43.35,0:03:47.71,Gen_Main,,0,0,0,,Mejor uso este día libre para relajarme\Nde toda la lucha diaria...
+Dialogue: 0,0:03:48.75,0:03:52.51,Gen_Main,,0,0,0,,Ojalá Luvellia también hubiera podido venir...
+Dialogue: 0,0:03:52.68,0:03:53.91,Gen_Main,,0,0,0,,Peter.
+Dialogue: 0,0:03:54.10,0:03:56.72,Gen_Main,,0,0,0,,Estoy aquí contigo, ¿no?
+Dialogue: 0,0:03:58.26,0:03:59.56,Gen_Main,,0,0,0,,¿Luvellia?
+Dialogue: 0,0:04:01.84,0:04:03.75,Gen_Main,,0,0,0,,¿Me enseñarías?
+Dialogue: 0,0:04:04.31,0:04:06.49,Gen_Main,,0,0,0,,La forma de hacer bebés...
+Dialogue: 0,0:04:08.50,0:04:09.90,Gen_Main,,0,0,0,,Ven aquí.
+Dialogue: 0,0:04:17.05,0:04:19.71,Gen_Main,,0,0,0,,Siento que alguien me estaba observando...
+Dialogue: 0,0:04:23.36,0:04:24.86,Gen_Main,,0,0,0,,Luvellia...
+Dialogue: 0,0:04:26.03,0:04:27.77,Gen_Main,,0,0,0,,¡Luvellia!
+Dialogue: 0,0:04:27.91,0:04:29.54,Gen_Main,,0,0,0,,¿Dónde estás?
+Dialogue: 0,0:04:29.72,0:04:30.78,Gen_Main,,0,0,0,,¡Luvellia!
+Dialogue: 0,0:04:30.79,0:04:32.88,Gen_Main,,0,0,0,,Perdóname, Peter...
+Dialogue: 0,0:04:33.31,0:04:35.16,Gen_Main,,0,0,0,,Soy débil.
+Dialogue: 0,0:04:36.12,0:04:38.44,Gen_Main,,0,0,0,,Fuiste tan amable de invitarme al balneario...
+Dialogue: 0,0:04:38.80,0:04:41.33,Gen_Main,,0,0,0,,Te dije que no podía ir porque estaba enferma...
+Dialogue: 0,0:04:41.98,0:04:45.33,Gen_Main,,0,0,0,,Pero la verdad es que simplemente no podía\Ntolerar desobedecer a mi padre...
+Dialogue: 0,0:04:45.68,0:04:47.53,Gen_Main,,0,0,0,,¿Un balneario?
+Dialogue: 0,0:04:47.71,0:04:51.42,Gen_Main,,0,0,0,,¿Deseas ir a un balneario con él?
+Dialogue: 0,0:04:51.60,0:04:54.15,Gen_Main,,0,0,0,,Peter está siendo muy amable al invitarme allí.
+Dialogue: 0,0:04:54.22,0:04:56.96,Gen_Main,,0,0,0,,Ya estamos comprometidos oficialmente.
+Dialogue: 0,0:04:57.12,0:05:00.54,Gen_Main,,0,0,0,,No debería haber ningún problema\Nen que nosotros dos salgamos juntos.
+Dialogue: 0,0:05:01.26,0:05:05.66,Gen_Main,,0,0,0,,¡Nunca, nunca, jamás debes ir a un lugar así con él!
+Dialogue: 0,0:05:05.77,0:05:07.68,Gen_Main,,0,0,0,,¡No me abandones!
+Dialogue: 0,0:05:07.70,0:05:11.15,Gen_Main,,0,0,0,,¡Te suplico que no vayas, Luvellia!
+Dialogue: 0,0:05:12.20,0:05:14.52,Gen_Main,,0,0,0,,¿Qué debo hacer para ser como él?
+Dialogue: 0,0:05:15.27,0:05:17.87,Gen_Main,,0,0,0,,Una persona con una fuerte voluntad y determinación.
+Dialogue: 0,0:05:26.06,0:05:28.08,Gen_Main,,0,0,0,,Cada vez que empiezo a pensar en ti...
+Dialogue: 0,0:05:28.62,0:05:30.31,Gen_Main,,0,0,0,,Puedo sentir que mi cuerpo se calienta...
+Dialogue: 0,0:05:31.00,0:05:36.39,Gen_Main,,0,0,0,,Y algo allá abajo se siente extraño...
+Dialogue: 0,0:05:38.47,0:05:42.66,Gen_Main,,0,0,0,,No esperaba que tuvieran tantas instalaciones aquí.
+Dialogue: 0,0:05:43.86,0:05:44.86,Gen_Main,,0,0,0,,¡Oh!
+Dialogue: 0,0:05:44.96,0:05:47.59,Gen_Main,,0,0,0,,Esto debe ser lo que llaman "masaje de pies".
+Dialogue: 0,0:05:47.74,0:05:49.30,Gen_Main,,0,0,0,,Supongo que debería intentarlo.
+Dialogue: 0,0:05:49.50,0:05:50.79,Gen_Main,,0,0,0,,¡Disculpe!
+Dialogue: 0,0:05:50.87,0:05:53.06,Gen_Main,,0,0,0,,¡Oh, bienvenidos!
+Dialogue: 0,0:05:53.09,0:05:55.46,Gen_Main,,0,0,0,,¡¿Qué están haciendo ustedes dos aquí?!
+Dialogue: 0,0:05:55.48,0:05:57.41,Gen_Main,,0,0,0,,Vamos, vamos. ¡No te preocupes por los pequeños detalles!
+Dialogue: 0,0:05:57.50,0:06:01.31,Gen_Main,,0,0,0,,Ahora, Peter Grill. Por favor, dirígete a la cama y acuéstate.
+Dialogue: 0,0:06:03.42,0:06:07.44,Gen_Main,,0,0,0,,A decir verdad, en realidad nos sentimos apenadas\Npor lo que te hemos hecho.
+Dialogue: 0,0:06:07.73,0:06:12.66,Gen_Main,,0,0,0,,Nuestra búsqueda implacable de tu esperma\Npodría haberte causado algo de estrés.
+Dialogue: 0,0:06:12.92,0:06:14.13,Gen_Main,,0,0,0,,¿Solo se dan cuenta de eso ahora?
+Dialogue: 0,0:06:14.35,0:06:20.06,Gen_Main,,0,0,0,,¡Así que vamos a curar tu mente\Ncon un tratamiento secreto de masaje con aceite!
+Dialogue: 0,0:06:20.08,0:06:21.27,Gen_Main,,0,0,0,,¡Alto ahí!
+Dialogue: 0,0:06:21.30,0:06:24.03,Gen_Main,,0,0,0,,¡Más les vale que sea un mensaje perfectamente sano y legal!
+Dialogue: 0,0:06:36.98,0:06:40.51,Gen_Main,,0,0,0,,Aaah, esto no es más que\Nalgún tipo de servicio sexual...
+Dialogue: 0,0:06:40.54,0:06:41.95,Gen_Main,,0,0,0,,¿Qué piensas?
+Dialogue: 0,0:06:42.19,0:06:44.44,Gen_Main,,0,0,0,,¿Ya te sientes un poco duro ahí abajo?
+Dialogue: 0,0:06:44.45,0:06:49.63,Gen_Main,,0,0,0,,Bueno, en una situación normal, probablemente\Nya estaría duro ahí abajo...
+Dialogue: 0,0:06:50.04,0:06:52.94,Gen_Main,,0,0,0,,Bueno, después de todo, solo estábamos preparando tu cuerpo.
+Dialogue: 0,0:06:53.55,0:06:57.68,Gen_Main,,0,0,0,,Masajista y su asistente, ¡pasen por favor!
+Dialogue: 0,0:06:57.71,0:06:59.24,Gen_Main,,0,0,0,,¡Gracias por la espera!
+Dialogue: 0,0:06:59.37,0:07:00.48,Gen_Main,,0,0,0,,¿Gobuko?
+Dialogue: 0,0:07:00.50,0:07:02.56,Gen_Main,,0,0,0,,¿No se suponía que debías estar en casa con Lucy?
+Dialogue: 0,0:07:02.61,0:07:04.52,Gen_Main,,0,0,0,,Lucy está ayudando con algo de trabajo en el gremio,
+Dialogue: 0,0:07:04.54,0:07:08.39,Gen_Main,,0,0,0,,así que voy a ayudar\Ntrayendo a tu pene de vuelta a la forma!
+Dialogue: 0,0:07:08.44,0:07:10.43,Gen_Main,,0,0,0,,¡Y-yo también haré mi mejor esfuerzo!
+Dialogue: 0,0:07:10.79,0:07:15.60,Gen_Main,,0,0,0,,¡Ahora haré el masaje linfático\Nque me enseñó la Reina Goblin!
+Dialogue: 0,0:07:15.63,0:07:17.01,Gen_Main,,0,0,0,,¿Linfa? ¿Qué es eso?
+Dialogue: 0,0:07:17.03,0:07:19.85,Gen_Main,,0,0,0,,Realmente no estoy segura yo misma,
+Dialogue: 0,0:07:20.07,0:07:22.13,Gen_Main,,0,0,0,,pero escuché que si hacemos que la linfa fluya,
+Dialogue: 0,0:07:22.16,0:07:24.71,Gen_Main,,0,0,0,,ayudará a activar tu hormona masculina o algo así.
+Dialogue: 0,0:07:24.80,0:07:26.51,Gen_Main,,0,0,0,,¿Estás segura de eso?
+Dialogue: 0,0:07:28.10,0:07:30.06,Gen_Main,,0,0,0,,¡Gobuko! ¡Para con eso!
+Dialogue: 0,0:07:30.16,0:07:31.68,Gen_Main,,0,0,0,,Solo relájate, Peter.
+Dialogue: 0,0:07:31.71,0:07:34.33,Gen_Main,,0,0,0,,Este es el lugar donde la linfa se acumula más.
+Dialogue: 0,0:07:34.36,0:07:36.40,Gen_Main,,0,0,0,,Como dije, ¿qué demonios es la linfa de todos modos?
+Dialogue: 0,0:07:36.42,0:07:40.71,Gen_Main,,0,0,0,,Este es simplemente un tratamiento médico.\NNo hay nada lascivo en ello.
+Dialogue: 0,0:07:41.33,0:07:42.90,Gen_Main,,0,0,0,,No hay nada que temer.
+Dialogue: 0,0:07:42.92,0:07:46.70,Gen_Main,,0,0,0,,Ahora bien, ¡hagamos que tu linfa fluya\Nestimulando también tu interior!
+Dialogue: 0,0:07:46.74,0:07:47.53,Gen_Main,,0,0,0,,¿Eh?
+Dialogue: 0,0:07:48.00,0:07:50.01,Gen_Main,,0,0,0,,¡Hablo en serio! ¡Para con eso!
+Dialogue: 0,0:07:50.15,0:07:52.70,Gen_Main,,0,0,0,,¡No te preocupes, es solo una herramienta para la desintoxicación!
+Dialogue: 0,0:07:52.73,0:07:53.75,Gen_Main,,0,0,0,,¡Suéltame!
+Dialogue: 0,0:07:53.78,0:07:57.89,Gen_Main,,0,0,0,,¿Nadie te ha dicho que no deberías\Nmeter cosas en tu trasero?
+Dialogue: 0,0:07:58.12,0:08:01.49,Gen_Main,,0,0,0,,¡DÉJENME EN PAZ!
+Dialogue: 0,0:08:07.79,0:08:10.88,Gen_Main,,0,0,0,,Incluso después de todo lo que hicimos, todavía no funciona...
+Dialogue: 0,0:08:10.91,0:08:13.51,Gen_Main,,0,0,0,,Mi orgullo como goblin se ha hecho añicos...
+Dialogue: 0,0:08:13.54,0:08:18.58,Gen_Main,,0,0,0,,¡Y mi orgullo como hombre también se ha hecho añicos!
+Dialogue: 0,0:08:22.30,0:08:25.40,Gen_Main,,0,0,0,,¿A dónde vas, Peter Grill?
+Dialogue: 0,0:08:25.43,0:08:28.64,Gen_Main,,0,0,0,,¡Por favor, espera! ¡Aún no has probado el tratamiento de comida!
+Dialogue: 0,0:08:28.77,0:08:30.50,Gen_Main,,0,0,0,,Solo déjenme en paz.
+Dialogue: 0,0:08:33.43,0:08:37.13,Gen_Main,,0,0,0,,Tal vez debería dejar que mi pene se quede así...
+Dialogue: 0,0:08:39.13,0:08:41.43,Gen_Main,,0,0,0,,Si mi "junior" dejara de funcionar...
+Dialogue: 0,0:08:42.20,0:08:45.42,Gen_Main,,0,0,0,,Todas eventualmente perderán el interés\Nen mí y se irán para siempre...
+Dialogue: 0,0:08:49.12,0:08:52.04,Gen_Main,,0,0,0,,Entonces finalmente podré estar a solas con Luvellia
+Dialogue: 0,0:08:52.54,0:08:55.60,Gen_Main,,0,0,0,,y tener una relación platónica pura y feliz con ella...
+Dialogue: 0,0:08:56.07,0:08:58.09,Gen_Main,,0,0,0,,¿En qué estás pensando?
+Dialogue: 0,0:08:58.11,0:08:59.63,Gen_Main,,0,0,0,,¿Desde cuándo estás ahí?
+Dialogue: 0,0:08:59.66,0:09:02.03,Gen_Main,,0,0,0,,Necio, estaba aquí antes que tú.
+Dialogue: 0,0:09:03.10,0:09:06.38,Gen_Main,,0,0,0,,Hoy es el día de los Elfos según lo estipulado por el tratado.
+Dialogue: 0,0:09:06.76,0:09:10.86,Gen_Main,,0,0,0,,Pensé que debería limpiarme primero\Nantes de exprimir tu néctar de bebé.
+Dialogue: 0,0:09:11.55,0:09:15.27,Gen_Main,,0,0,0,,Dicho esto, no parece que\Npueda conseguir mucho con tu estado actual.
+Dialogue: 0,0:09:15.29,0:09:16.48,Gen_Main,,0,0,0,,Vamos, vamos.
+Dialogue: 0,0:09:16.51,0:09:18.68,Gen_Main,,0,0,0,,¡Deja de jugar con mi entrepierna!
+Dialogue: 0,0:09:21.15,0:09:22.86,Gen_Main,,0,0,0,,Dime, Peter.
+Dialogue: 0,0:09:22.88,0:09:25.66,Gen_Main,,0,0,0,,Hay una cosa que debo decirte.
+Dialogue: 0,0:09:26.77,0:09:29.71,Gen_Main,,0,0,0,,Parece que hay un movimiento\Nen el país de los Elfos en este momento...
+Dialogue: 0,0:09:29.73,0:09:30.58,Gen_Main,,0,0,0,,Actua...
+Dialogue: 0,0:09:35.16,0:09:37.83,Gen_Main,,0,0,0,,¿Qué es esto? ¿Es uno de tus trucos de magia?
+Dialogue: 0,0:09:37.85,0:09:39.51,Gen_Main,,0,0,0,,¡A-absurdo!
+Dialogue: 0,0:09:39.97,0:09:41.75,Gen_Main,,0,0,0,,Conozco este aroma...
+Dialogue: 0,0:09:41.99,0:09:44.81,Gen_Main,,0,0,0,,Es la magia... poción... de esa mujer...
+Dialogue: 0,0:09:46.74,0:09:48.66,Gen_Main,,0,0,0,,¡Oye! ¡Contrólate!
+Dialogue: 0,0:09:50.31,0:09:51.31,Gen_Main,,0,0,0,,¡Maldita sea!
+Dialogue: 0,0:09:52.91,0:09:54.30,Gen_Main,,0,0,0,,Estoy perdiendo la consciencia...
+Dialogue: 0,0:10:02.91,0:10:04.26,Gen_Main,,0,0,0,,¿D-dónde estoy?
+Dialogue: 0,0:10:09.51,0:10:11.90,Gen_Main,,0,0,0,,¿Por qué estoy en un lugar como este?
+Dialogue: 0,0:10:13.42,0:10:15.49,Gen_Main,,0,0,0,,Parece que finalmente has despertado.
+Dialogue: 0,0:10:15.91,0:10:19.37,Gen_Main,,0,0,0,,Bienvenido a la aldea de los Elfos, Minestrone.
+Dialogue: 0,0:10:19.74,0:10:21.11,Gen_Main,,0,0,0,,¿Quién eres tú?
+Dialogue: 0,0:10:21.65,0:10:22.51,Gen_Main,,0,0,0,,¡Qué grosero!
+Dialogue: 0,0:10:22.53,0:10:25.24,Gen_Main,,0,0,0,,¡Aprende algunos modales, bruto Humano!
+Dialogue: 0,0:10:25.26,0:10:27.61,Gen_Main,,0,0,0,,¿Eres consciente de con quién estás hablando?
+Dialogue: 0,0:10:27.64,0:10:30.51,Gen_Main,,0,0,0,,¡Ella es la embajadora designada de buena voluntad\Nde la aldea de los Elfos!
+Dialogue: 0,0:10:31.24,0:10:34.58,Gen_Main,,0,0,0,,¡La gran Dama Fulltalia Eldoriel en persona!
+Dialogue: 0,0:10:36.39,0:10:38.77,Gen_Main,,0,0,0,,La embajadora designada de buena voluntad...
+Dialogue: 0,0:10:39.19,0:10:41.35,Gen_Main,,0,0,0,,...¿Eldoriel?
+Dialogue: 0,0:12:11.92,0:12:14.96,Gen_Main,,0,0,0,,MIMI ALPACAS COSPLAYED BY MOMO TAIGA\N¡LA PRÓXIMA VEZ DEFINITIVAMENTE TAMBIÉN SERÁ DIVERTIDO!

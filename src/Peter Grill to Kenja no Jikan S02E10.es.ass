@@ -1,0 +1,169 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.02,0:00:03.97,Gen_Main,,0,0,0,,¿Quieres que sea yo quien juegue el papel principal en la ceremonia?
+Dialogue: 0,0:00:04.15,0:00:05.41,Gen_Main,,0,0,0,,Sí.
+Dialogue: 0,0:00:05.43,0:00:07.48,Gen_Main,,0,0,0,,Estoy envejeciendo.
+Dialogue: 0,0:00:07.94,0:00:14.39,Gen_Main,,0,0,0,,Esta vez quiero que nos representes\Nen la ceremonia en la ciudad enana.
+Dialogue: 0,0:00:14.66,0:00:16.58,Gen_Main,,0,0,0,,¿Te refieres a la demostración de destreza en combate...?
+Dialogue: 0,0:00:16.67,0:00:18.62,Gen_Main,,0,0,0,,¿La Dinámica Aplastante?
+Dialogue: 0,0:00:19.14,0:00:20.21,Gen_Main,,0,0,0,,Correcto.
+Dialogue: 0,0:00:20.60,0:00:26.83,Gen_Main,,0,0,0,,Es la ceremonia sagrada destinada a renovar\Nnuestro pacto con la Alianza Enana.
+Dialogue: 0,0:00:28.38,0:00:30.18,Gen_Main,,0,0,0,,Hace mucho tiempo...
+Dialogue: 0,0:00:31.05,0:00:34.43,Gen_Main,,0,0,0,,La leyenda dice que un guerrero de\Nla guilda aniquiló a los Cicada-Moles,
+Dialogue: 0,0:00:34.46,0:00:38.71,Gen_Main,,0,0,0,,los depredadores naturales de los enanos\Ncon esta espada preciada.
+Dialogue: 0,0:00:39.01,0:00:41.99,Gen_Main,,0,0,0,,Después de esto, tu papel será cortar\Nuna estatua de cristal de un cicada-mole,
+Dialogue: 0,0:00:44.13,0:00:47.76,Gen_Main,,0,0,0,,con esta espada de oricalco,
+Dialogue: 0,0:00:48.44,0:00:51.35,Gen_Main,,0,0,0,,¡la Shiratakimaru!
+Dialogue: 0,0:00:53.51,0:00:59.88,Gen_Main,,0,0,0,,En el antiguo idioma Meshitero, el nombre significa "puro."
+Dialogue: 0,0:00:59.91,0:01:03.45,Gen_Main,,0,0,0,,Si completas la ceremonia sin problemas,
+Dialogue: 0,0:01:03.47,0:01:08.78,Gen_Main,,0,0,0,,te prometo una posición dentro de la guilda,\Ndigna de quien se casará con mi hija.
+Dialogue: 0,0:01:09.13,0:01:10.99,Gen_Main,,0,0,0,,¿Quiere empujarme a subir de rango en la guilda?
+Dialogue: 0,0:01:11.52,0:01:15.49,Gen_Main,,0,0,0,,La ceremonia tendrá lugar\Nen la ciudad enana dentro de una semana.
+Dialogue: 0,0:01:15.77,0:01:19.31,Gen_Main,,0,0,0,,Acostúmbrate a la sensación de la espada en tus manos.
+Dialogue: 0,0:01:19.62,0:01:23.46,Gen_Main,,0,0,0,,Asegúrate de tratarla bien.
+Dialogue: 0,0:01:23.67,0:01:26.74,Gen_Main,,0,0,0,,Esta espada ha sido pasada por generaciones\Nen la guilda.
+Dialogue: 0,0:01:26.76,0:01:30.05,Gen_Main,,0,0,0,,Si llegas a romperla o perderla...
+Dialogue: 0,0:01:30.08,0:01:36.27,Gen_Main,,0,0,0,,¡No creo que ni yo pueda salvarte de las consecuencias!
+Dialogue: 0,0:02:00.70,0:02:08.47,Gen_Main,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Súper Extra
+Dialogue: 0,0:03:08.02,0:03:12.09,Gen_Main,,0,0,0,,Episodio 10: Peter Grill y el Pacto Enano
+Dialogue: 0,0:03:14.49,0:03:17.60,Gen_Main,,0,0,0,,Te han confiado un papel realmente grande esta vez.
+Dialogue: 0,0:03:18.11,0:03:19.37,Gen_Main,,0,0,0,,Sí.
+Dialogue: 0,0:03:19.75,0:03:22.34,Gen_Main,,0,0,0,,Pero si puedo completar esta ceremonia sin problemas,
+Dialogue: 0,0:03:22.37,0:03:27.11,Gen_Main,,0,0,0,,estoy seguro de que incluso el Maestro de la Guilda dejará de\Ntratar de interponerse entre Luvelia y yo.
+Dialogue: 0,0:03:31.71,0:03:33.02,Gen_Main,,0,0,0,,Oye, Peter.
+Dialogue: 0,0:03:33.49,0:03:36.44,Gen_Main,,0,0,0,,Si la balanceas así, quién sabe si se va a...
+Dialogue: 0,0:03:36.86,0:03:37.71,Gen_Main,,0,0,0,,¡romper...
+Dialogue: 0,0:03:39.43,0:03:41.90,Gen_Main,,0,0,0,,¡Es de oricalco! ¡¿Cómo?!
+Dialogue: 0,0:03:41.93,0:03:44.01,Gen_Main,,0,0,0,,Espera, mirando desde la hoja...
+Dialogue: 0,0:03:44.33,0:03:47.03,Gen_Main,,0,0,0,,Parece que alguien hizo algo para debilitarla.
+Dialogue: 0,0:03:47.71,0:03:50.41,Gen_Main,,0,0,0,,¡Lo sabía! ¡Es otro plan del Maestro de la Guilda!
+Dialogue: 0,0:03:50.92,0:03:54.57,Gen_Main,,0,0,0,,¡Quiere que yo sea el culpable de esto y me eche de la guilda!
+Dialogue: 0,0:03:56.61,0:04:00.48,Gen_Main,,0,0,0,,En estos tiempos, ningún herrero humano\Npuede reforjar una espada de oricalco.
+Dialogue: 0,0:04:00.99,0:04:04.89,Gen_Main,,0,0,0,,Pero el sitio de la ceremonia está lleno de herreros enanos.
+Dialogue: 0,0:04:05.75,0:04:09.78,Gen_Main,,0,0,0,,Es posible que la antigua técnica de forja\Naún se transmita allí.
+Dialogue: 0,0:04:09.81,0:04:15.35,Gen_Main,,0,0,0,,¡Entonces solo tengo que encontrar un herrero enano\Nque repare esta espada antes de la ceremonia!
+Dialogue: 0,0:04:18.62,0:04:21.25,Gen_Main,,0,0,0,,¡No me rendiré ante el plan del Maestro de la Guilda!
+Dialogue: 0,0:04:21.47,0:04:25.34,Gen_Main,,0,0,0,,¡Llegaré a mi meta de felicidad\Ncon Luvelia, cueste lo que cueste!
+Dialogue: 0,0:04:37.84,0:04:40.93,Gen_Main,,0,0,0,,¡No quiero trabajar!
+Dialogue: 0,0:04:41.02,0:04:43.40,Gen_Main,,0,0,0,,¡Misslim, maldita sea! ¡Abre esta puerta!
+Dialogue: 0,0:04:43.42,0:04:45.78,Gen_Main,,0,0,0,,¡Vaya, cállate ya!
+Dialogue: 0,0:04:45.80,0:04:47.16,Gen_Main,,0,0,0,,¡Cierra el pico ahí afuera!
+Dialogue: 0,0:04:47.19,0:04:50.15,Gen_Main,,0,0,0,,¡Hoy te voy a poner a trabajar, ¿me entiendes?!
+Dialogue: 0,0:04:50.24,0:04:51.73,Gen_Main,,0,0,0,,¡No sirve de nada!
+Dialogue: 0,0:04:51.75,0:04:55.32,Gen_Main,,0,0,0,,¡No puedo conseguir ese último material!
+Dialogue: 0,0:04:55.34,0:04:58.72,Gen_Main,,0,0,0,,Si necesitas algo,\N¡ganátelo trabajando!
+Dialogue: 0,0:04:58.92,0:05:00.74,Gen_Main,,0,0,0,,¡No quiero trabajar,
+Dialogue: 0,0:05:00.77,0:05:04.09,Gen_Main,,0,0,0,,y dudo que pueda conseguirlo en esta ciudad de todos modos!
+Dialogue: 0,0:05:04.16,0:05:05.96,Gen_Main,,0,0,0,,¡Tampoco quiero salir!
+Dialogue: 0,0:05:07.18,0:05:11.28,Gen_Main,,0,0,0,,¡Ojalá lo que busco\Nsimplemente apareciera por sí solo!
+Dialogue: 0,0:05:11.60,0:05:14.47,Gen_Main,,0,0,0,,Un hombre con el esperma más fuerte del mundo...
+Dialogue: 0,0:05:14.59,0:05:16.50,Gen_Main,,0,0,0,,¿Reforzar una espada de oricalco?
+Dialogue: 0,0:05:16.69,0:05:18.43,Gen_Main,,0,0,0,,No hay forma de que pueda hacer eso.
+Dialogue: 0,0:05:18.46,0:05:21.40,Gen_Main,,0,0,0,,Oye, ¿eres de la guilda de Guerreros?
+Dialogue: 0,0:05:21.43,0:05:24.14,Gen_Main,,0,0,0,,Tengo algunos problemas con ese pacto, ¿sabes?
+Dialogue: 0,0:05:24.61,0:05:27.63,Gen_Main,,0,0,0,,¡No hay nada más que puedas sacar\Nde esta ciudad!
+Dialogue: 0,0:05:30.17,0:05:33.91,Gen_Main,,0,0,0,,El declive de esta ciudad parece ser peor de lo que imaginaba.
+Dialogue: 0,0:05:34.63,0:05:37.41,Gen_Main,,0,0,0,,Pero debo encontrar uno, ¡cueste lo que cueste!
+Dialogue: 0,0:05:37.55,0:05:39.39,Gen_Main,,0,0,0,,¡Un herrero con la habilidad!
+Dialogue: 0,0:05:40.24,0:05:41.62,Gen_Main,,0,0,0,,¿Oricalco?
+Dialogue: 0,0:05:42.33,0:05:45.80,Gen_Main,,0,0,0,,La hija de Netherlant podría ayudarte.
+Dialogue: 0,0:05:45.83,0:05:46.99,Gen_Main,,0,0,0,,¿En serio?
+Dialogue: 0,0:05:47.07,0:05:48.57,Gen_Main,,0,0,0,,¿Dónde la encuentro?
+Dialogue: 0,0:05:48.83,0:05:50.20,Gen_Main,,0,0,0,,¡No quiero! ¡No quiero!
+Dialogue: 0,0:05:50.20,0:05:53.41,Gen_Main,,0,0,0,,No me importa decirte, pero es un poco extraña.
+Dialogue: 0,0:05:53.75,0:05:56.37,Gen_Main,,0,0,0,,El jefe tiene problemas para lidiar con ella.
+Dialogue: 0,0:05:56.89,0:05:59.31,Gen_Main,,0,0,0,,¡Maldito mocoso!
+Dialogue: 0,0:05:59.59,0:06:00.68,Gen_Main,,0,0,0,,¡Misslim!
+Dialogue: 0,0:06:00.70,0:06:03.77,Gen_Main,,0,0,0,,¡La hija de un herrero debería estar martillando acero!
+Dialogue: 0,0:06:03.96,0:06:06.63,Gen_Main,,0,0,0,,¡Quiero hacer mi investigación!
+Dialogue: 0,0:06:06.65,0:06:08.63,Gen_Main,,0,0,0,,¡No quiero trabajar!
+Dialogue: 0,0:06:08.64,0:06:11.32,Gen_Main,,0,0,0,,¡Está bien! ¡Haz lo que quieras!
+Dialogue: 0,0:06:11.57,0:06:14.95,Gen_Main,,0,0,0,,¡A cambio, no recibirás más mesada\Nde mi parte este mes!
+Dialogue: 0,0:06:16.45,0:06:19.68,Gen_Main,,0,0,0,,¡Espera! ¡No puedes! ¡Necesito
+Dialogue: 0,0:06:19.71,0:06:20.81,Gen_Main,,0,0,0,,la mesada para financiar mi investigación!
+Dialogue: 0,0:06:20.91,0:06:23.85,Gen_Main,,0,0,0,,¡No es mi problema!
+Dialogue: 0,0:06:23.88,0:06:27.18,Gen_Main,,0,0,0,,¡La ceremonia del pacto ya nos dejó en bancarrota este mes!
+Dialogue: 0,0:06:27.21,0:06:28.78,Gen_Main,,0,0,0,,¡Trabaja por tu propio dinero o consigue un maldito patrocinador!
+Dialogue: 0,0:06:29.31,0:06:31.41,Gen_Main,,0,0,0,,¡No!
+Dialogue: 0,0:06:32.40,0:06:33.40,Gen_Main,,0,0,0,,¡Mi mesada!
+Dialogue: 0,0:06:36.12,0:06:39.14,Gen_Main,,0,0,0,,Perdón...
+Dialogue: 0,0:06:39.17,0:06:41.18,Gen_Main,,0,0,0,,¡No me asustes así!\N¿Quién demonios eres?
+Dialogue: 0,0:06:41.36,0:06:44.44,Gen_Main,,0,0,0,,J-Para asegurarme...
+Dialogue: 0,0:06:45.91,0:06:50.18,Gen_Main,,0,0,0,,¿Eres Misslim Netherlant?
+Dialogue: 0,0:06:51.51,0:06:54.31,Gen_Main,,0,0,0,,Eso significa que eres Peter Grill,\N¡el hombre más fuerte del planeta!
+Dialogue: 0,0:06:54.72,0:06:56.67,Gen_Main,,0,0,0,,¡Lo que estoy buscando apareció solo!
+Dialogue: 0,0:06:56.72,0:06:59.56,Gen_Main,,0,0,0,,Entonces, ¿qué opinas?
+Dialogue: 0,0:06:59.82,0:07:01.55,Gen_Main,,0,0,0,,Dicen que puedes arreglar esto.
+Dialogue: 0,0:07:01.57,0:07:04.87,Gen_Main,,0,0,0,,¿Oricalco, eh?
+Dialogue: 0,0:07:04.93,0:07:07.67,Gen_Main,,0,0,0,,Sí, puedo ver cómo ninguno de los viejos\Npudiera manejar esto.
+Dialogue: 0,0:07:09.62,0:07:11.83,Gen_Main,,0,0,0,,Pero yo puedo arreglar tu espada.
+Dialogue: 0,0:07:12.33,0:07:13.58,Gen_Main,,0,0,0,,Soy una genio, después de todo.
+Dialogue: 0,0:07:19.20,0:07:20.75,Gen_Main,,0,0,0,,Sígueme.
+Dialogue: 0,0:07:26.25,0:07:28.72,Gen_Main,,0,0,0,,¿Este es su taller?
+Dialogue: 0,0:07:29.16,0:07:30.91,Gen_Main,,0,0,0,,¡Esta es un arma antigua de magia meshitero!
+Dialogue: 0,0:07:31.07,0:07:32.38,Gen_Main,,0,0,0,,¿La restauraste?
+Dialogue: 0,0:07:32.41,0:07:36.83,Gen_Main,,0,0,0,,Claro.
+Dialogue: 0,0:07:37.33,0:07:39.30,Gen_Main,,0,0,0,,Recogí las partes que encontraron\Nen las minas y las junté.
+Dialogue: 0,0:07:39.41,0:07:41.66,Gen_Main,,0,0,0,,Restauraste tantas...
+Dialogue: 0,0:07:42.78,0:07:46.71,Gen_Main,,0,0,0,,¿Qué planeas hacer con estas?
+Dialogue: 0,0:07:47.54,0:07:49.68,Gen_Main,,0,0,0,,Seguro que nos escuchaste antes, pero no quiero trabajar.
+Dialogue: 0,0:07:49.76,0:07:51.02,Gen_Main,,0,0,0,,¡No quiero trabajar!
+Dialogue: 0,0:07:51.05,0:07:52.89,Gen_Main,,0,0,0,,¡Ni un solo día de mi vida!
+Dialogue: 0,0:07:52.98,0:07:56.12,Gen_Main,,0,0,0,,Ah, cierto...
+Dialogue: 0,0:07:56.14,0:08:01.22,Gen_Main,,0,0,0,,Pero esos viejos siguen diciéndome que trabaje una y otra vez.
+Dialogue: 0,0:08:02.78,0:08:04.60,Gen_Main,,0,0,0,,¡Por eso voy a obtener un poder abrumador\Ny callar a esos viejos de una vez por todas!
+Dialogue: 0,0:08:05.96,0:08:08.34,Gen_Main,,0,0,0,,Hagamos un trato, Peter Grill.
+Dialogue: 0,0:08:08.36,0:08:10.00,Gen_Main,,0,0,0,,Arreglaré tu espada como prometí.
+Dialogue: 0,0:08:10.36,0:08:13.23,Gen_Main,,0,0,0,,Y a cambio...
+Dialogue: 0,0:08:13.33,0:08:14.54,Gen_Main,,0,0,0,,Quiero que me des un "recurso" en particular.
+Dialogue: 0,0:08:14.56,0:08:17.05,Gen_Main,,0,0,0,,¿Recurso?
+Dialogue: 0,0:08:17.39,0:08:21.33,Gen_Main,,0,0,0,,¡No otra vez, no me digas que ella...!
+Dialogue: 0,0:08:21.68,0:08:28.33,Gen_Main,,0,0,0,,Actualmente estoy intentando recuperar el autómata definitivo.
+Dialogue: 0,0:08:29.87,0:08:31.71,Gen_Main,,0,0,0,,La fuerza de un autómata de combate depende\Nen gran medida del material biológico que usa.
+Dialogue: 0,0:08:32.07,0:08:35.60,Gen_Main,,0,0,0,,Por lo tanto...
+Dialogue: 0,0:08:35.66,0:08:37.23,Gen_Main,,0,0,0,,¡Te haré servir una carga humeante de tu guiso de hombre!
+Dialogue: 0,0:08:37.37,0:08:40.25,Gen_Main,,0,0,0,,¡Lo sabía!
+Dialogue: 0,0:08:40.27,0:08:41.86,Gen_Main,,0,0,0,,Otra chica tratando de obtener algo de mi cuerpo.
+Dialogue: 0,0:08:41.88,0:08:44.33,Gen_Main,,0,0,0,,¿Puedes eyacular ahora, verdad?
+Dialogue: 0,0:08:44.64,0:08:47.53,Gen_Main,,0,0,0,,Para empezar, necesito como 20 galones, ¿ok?
+Dialogue: 0,0:08:47.56,0:08:50.04,Gen_Main,,0,0,0,,¡Escucha bien! ¡No me importa lo mucho que lo necesites para tu investigación,\N1 pero primero necesitas ser adulta\Npara manejar este tipo de cosas!
+Dialogue: 0,0:08:51.16,0:08:53.73,Gen_Main,,0,0,0,,¡Tengo 32 años! ¡Soy adulta!
+Dialogue: 0,0:08:54.01,0:08:56.52,Gen_Main,,0,0,0,,¿¡No puede ser!? ¿¡Ella es mayor que yo!?
+Dialogue: 0,0:08:56.54,0:09:01.02,Gen_Main,,0,0,0,,Además, no soy yo quien va a exprimir tu esperma, de todos modos.
+Dialogue: 0,0:09:01.27,0:09:04.96,Gen_Main,,0,0,0,,¡Sexaroide Humano Ocho, ven aquí!
+Dialogue: 0,0:09:09.60,0:09:11.33,Gen_Main,,0,0,0,,¿Qué es eso?
+Dialogue: 0,0:09:11.75,0:09:15.57,Gen_Main,,0,0,0,,¡Este es el autómata definitivo\Nen la tecnología de extracción de jugo masculino!
+Dialogue: 0,0:09:16.80,0:09:18.93,Gen_Main,,0,0,0,,¡Parece espantoso!
+Dialogue: 0,0:09:19.20,0:09:20.81,Gen_Main,,0,0,0,,¡Ve, autómata!
+Dialogue: 0,0:09:20.84,0:09:24.17,Gen_Main,,0,0,0,,¡Exprime a ese tipo hasta que no quede nada!
+Dialogue: 0,0:09:28.29,0:09:30.18,Gen_Main,,0,0,0,,¡Espera! ¡Espera un momento!
+Dialogue: 0,0:09:30.21,0:09:32.23,Gen_Main,,0,0,0,,¡Hablemos una vez más!
+Dialogue: 0,0:09:34.75,0:09:37.31,Gen_Main,,0,0,0,,¡Bien! ¡Arrástralo a la esquina!
+Dialogue: 0,0:09:37.33,0:09:41.38,Gen_Main,,0,0,0,,¡Empújalo a esa habitación que no se abrirá\Nhasta que un hombre y una mujer tengan sexo!
+Dialogue: 0,0:09:42.68,0:09:45.20,Gen_Main,,0,0,0,,¿Por qué haces tantas invenciones estúpidas?
+Dialogue: 0,0:09:47.36,0:09:49.85,Gen_Main,,0,0,0,,¡Maldita sea! ¡No tengo otra opción!
+Dialogue: 0,0:09:50.37,0:09:51.59,Gen_Main,,0,0,0,,¡Tendré que...
+Dialogue: 0,0:09:54.19,0:09:56.76,Gen_Main,,0,0,0,,¡destruirlo para mi seguridad!
+Dialogue: 0,0:10:02.87,0:10:04.66,Gen_Main,,0,0,0,,¡Aléjate de mí!
+Dialogue: 0,0:10:04.68,0:10:06.54,Gen_Main,,0,0,0,,¡Maldita sea! ¡No está funcionando!
+Dialogue: 0,0:10:08.56,0:10:11.52,Gen_Main,,0,0,0,,¡Es inútil! ¡Se volvió loco!
+Dialogue: 0,0:10:11.65,0:10:12.82,Gen_Main,,0,0,0,,Qué horror...
+Dialogue: 0,0:10:12.85,0:10:17.19,Gen_Main,,0,0,0,,Si dejo que esa cosa me saque 20 galones,\N1 estaré completamente seco...
+Dialogue: 0,0:10:19.77,0:10:21.97,Gen_Main,,0,0,0,,¡No te acerques!
+Dialogue: 0,0:10:28.57,0:10:30.71,Gen_Main,,0,0,0,,Entrada de sujeto masculino y femenino confirmada.
+Dialogue: 0,0:10:31.17,0:10:33.61,Gen_Main,,0,0,0,,Bloqueando la puerta. Bloqueando la puerta.
+Dialogue: 0,0:12:11.92,0:12:14.96,Gen_Main,,0,0,0,,MIMI & VEGAN & LISA POR\NMOMO TAIGA & KURURU KURASAKA & AKIRA ITSUKI

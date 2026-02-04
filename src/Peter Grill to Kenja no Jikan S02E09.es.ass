@@ -1,0 +1,138 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:18.46,0:00:22.45,Gen_Main,,0,0,0,,KU-SO-TA-WA... (¡MALDICIÓN!)
+Dialogue: 0,0:00:22.47,0:00:26.25,Gen_Main,,0,0,0,,MA-NU-KE-ZU... (¡MALDITO!)
+Dialogue: 0,0:00:26.28,0:00:27.39,Gen_Main,,0,0,0,,...KEEEEE! (¡IDIOTA!)
+Dialogue: 0,0:00:27.64,0:00:30.09,Gen_Main,,0,0,0,,...RAAAAA! (¡IMBÉCIL!)
+Dialogue: 0,0:00:55.68,0:01:03.46,Gen_Main,,0,0,0,,Peter Grill y el Tiempo del Filósofo: Súper Extra
+Dialogue: 0,0:02:03.14,0:02:08.87,Gen_Main,,0,0,0,,Episodio 9: Peter Grill y el truco para disculparse
+Dialogue: 0,0:02:16.43,0:02:18.77,Gen_Main,,0,0,0,,Vamos, ¿qué pasa?
+Dialogue: 0,0:02:18.80,0:02:20.77,Gen_Main,,0,0,0,,¿Vas a atacarme o no?
+Dialogue: 0,0:02:20.79,0:02:22.51,Gen_Main,,0,0,0,,¡Maldito gremlin!
+Dialogue: 0,0:02:22.54,0:02:24.14,Gen_Main,,0,0,0,,¡Esto se acaba aquí!
+Dialogue: 0,0:02:25.74,0:02:29.73,Gen_Main,,0,0,0,,¡Todos en la aldea, préstame su energía!
+Dialogue: 0,0:02:36.63,0:02:39.08,Gen_Main,,0,0,0,,¿De qué lado estás?
+Dialogue: 0,0:02:39.11,0:02:41.04,Gen_Main,,0,0,0,,¡Estoy de tu lado y del de ella!
+Dialogue: 0,0:02:42.81,0:02:45.54,Gen_Main,,0,0,0,,¿Qué es todo este alboroto?
+Dialogue: 0,0:03:01.09,0:03:02.89,Gen_Main,,0,0,0,,Entonces, sobre la tasa de interés de tu deuda...
+Dialogue: 0,0:03:14.63,0:03:16.68,Gen_Main,,0,0,0,,¿Cómo te atreves a interferir...?
+Dialogue: 0,0:03:20.13,0:03:22.86,Gen_Main,,0,0,0,,¡Debiste dejarme manejar todo!
+Dialogue: 0,0:03:22.89,0:03:24.81,Gen_Main,,0,0,0,,¿Sigues diciendo eso?
+Dialogue: 0,0:03:24.84,0:03:27.26,Gen_Main,,0,0,0,,Has sido desterrada de la aldea, ¡expulsada!
+Dialogue: 0,0:03:27.28,0:03:29.04,Gen_Main,,0,0,0,,¿Y qué?
+Dialogue: 0,0:03:29.06,0:03:31.10,Gen_Main,,0,0,0,,Como hermana mayor, soy mejor que tú,
+Dialogue: 0,0:03:31.12,0:03:33.58,Gen_Main,,0,0,0,,así que es natural que me toque lo peor.
+Dialogue: 0,0:03:33.83,0:03:38.54,Gen_Main,,0,0,0,,De esa manera estoy segura de que el consejo estaría convencido.
+Dialogue: 0,0:03:40.27,0:03:42.02,Gen_Main,,0,0,0,,Hermana...
+Dialogue: 0,0:03:42.66,0:03:45.55,Gen_Main,,0,0,0,,¿Por qué siempre eres así?
+Dialogue: 0,0:03:47.28,0:03:50.48,Gen_Main,,0,0,0,,Eres arrogante, siempre haces lo que quieres,
+Dialogue: 0,0:03:51.38,0:03:54.54,Gen_Main,,0,0,0,,¡y siempre intentas hacerlo todo sola!
+Dialogue: 0,0:03:54.82,0:03:57.05,Gen_Main,,0,0,0,,¡Ya basta, las dos!
+Dialogue: 0,0:03:57.37,0:03:59.76,Gen_Main,,0,0,0,,¿Q-Qué está pasando?
+Dialogue: 0,0:03:59.88,0:04:01.27,Gen_Main,,0,0,0,,¡Abuela!
+Dialogue: 0,0:04:03.43,0:04:06.14,Gen_Main,,0,0,0,,Más daños por pagar...
+Dialogue: 0,0:04:06.41,0:04:10.95,Gen_Main,,0,0,0,,Ustedes dos no quieren hacer sufrir más a su abuela, ¿verdad?
+Dialogue: 0,0:04:10.97,0:04:14.95,Gen_Main,,0,0,0,,P-Pero esto es un problema entre nosotras dos.
+Dialogue: 0,0:04:15.39,0:04:16.99,Gen_Main,,0,0,0,,¿Aún no puedes perdonarla?
+Dialogue: 0,0:04:17.02,0:04:18.70,Gen_Main,,0,0,0,,No, ¡por supuesto que no!
+Dialogue: 0,0:04:18.87,0:04:21.54,Gen_Main,,0,0,0,,Ella siempre carga de frente,
+Dialogue: 0,0:04:21.54,0:04:24.90,Gen_Main,,0,0,0,,comete un error y nunca asume la responsabilidad.
+Dialogue: 0,0:04:24.90,0:04:27.46,Gen_Main,,0,0,0,,¡Nunca se disculpa! ¡Ni una sola vez!
+Dialogue: 0,0:04:28.70,0:04:31.31,Gen_Main,,0,0,0,,Quiero que entiendas cómo se siente Vegan.
+Dialogue: 0,0:04:31.86,0:04:33.84,Gen_Main,,0,0,0,,Ella también lamenta lo que hizo.
+Dialogue: 0,0:04:33.86,0:04:38.10,Gen_Main,,0,0,0,,Es por eso que trató de tener\Na mis hijos en tu lugar.
+Dialogue: 0,0:04:38.27,0:04:40.91,Gen_Main,,0,0,0,,I-Inconcebible.
+Dialogue: 0,0:04:41.35,0:04:46.21,Gen_Main,,0,0,0,,Ella nunca haría algo por alguien más...
+Dialogue: 0,0:04:47.24,0:04:48.74,Gen_Main,,0,0,0,,Vegan.
+Dialogue: 0,0:04:48.77,0:04:50.45,Gen_Main,,0,0,0,,Una sola palabra es suficiente.
+Dialogue: 0,0:04:50.48,0:04:52.73,Gen_Main,,0,0,0,,Sé honesta con tus sentimientos.
+Dialogue: 0,0:04:52.92,0:04:54.19,Gen_Main,,0,0,0,,Eso es todo lo que necesitas.
+Dialogue: 0,0:04:56.18,0:04:59.20,Gen_Main,,0,0,0,,¿Vegan? ¡Vegan, hija mía!
+Dialogue: 0,0:05:07.55,0:05:08.81,Gen_Main,,0,0,0,,Lo siento.
+Dialogue: 0,0:05:10.67,0:05:12.16,Gen_Main,,0,0,0,,Es mi culpa.
+Dialogue: 0,0:05:12.19,0:05:15.67,Gen_Main,,0,0,0,,El incidente del pudín y la caída de nuestra casa...
+Dialogue: 0,0:05:16.34,0:05:19.90,Gen_Main,,0,0,0,,Todo... Todo fue culpa mía.
+Dialogue: 0,0:05:21.84,0:05:25.76,Gen_Main,,0,0,0,,Por favor, perdóname, Fruitalia.
+Dialogue: 0,0:05:29.63,0:05:32.58,Gen_Main,,0,0,0,,¡De verdad lo siento!
+Dialogue: 0,0:05:46.54,0:05:50.11,Gen_Main,,0,0,0,,Por favor, levanta la cabeza, hermana.
+Dialogue: 0,0:05:50.49,0:05:52.11,Gen_Main,,0,0,0,,Fruitalia...
+Dialogue: 0,0:06:05.84,0:06:11.13,Gen_Main,,0,0,0,,¡Le dio un golpe de sacacorchos perfecto en la cara!
+Dialogue: 0,0:06:12.99,0:06:16.24,Gen_Main,,0,0,0,,¡Una disculpa no resolverá nuestro problema a estas alturas!
+Dialogue: 0,0:06:19.17,0:06:23.14,Gen_Main,,0,0,0,,Pero me siento mucho mejor ahora.
+Dialogue: 0,0:06:26.80,0:06:29.96,Gen_Main,,0,0,0,,Ustedes dos son hermanas, y eso no cambia.
+Dialogue: 0,0:06:29.99,0:06:32.88,Gen_Main,,0,0,0,,Tienen que llevarse bien.
+Dialogue: 0,0:06:34.46,0:06:35.75,Gen_Main,,0,0,0,,Sí.
+Dialogue: 0,0:06:36.16,0:06:37.56,Gen_Main,,0,0,0,,Sí.
+Dialogue: 0,0:06:40.51,0:06:44.38,Gen_Main,,0,0,0,,Con esto, todo está resuelto...\NAunque, esto no es el final.
+Dialogue: 0,0:06:45.50,0:06:48.70,Gen_Main,,0,0,0,,Queda una cosa más por hacer, ¿recuerdas?
+Dialogue: 0,0:06:52.24,0:06:55.64,Gen_Main,,0,0,0,,Fruitalia, tenemos que verter\Nnuestra magia al mismo tiempo.
+Dialogue: 0,0:06:55.66,0:06:57.93,Gen_Main,,0,0,0,,¡Sí, hagámoslo perfectamente!
+Dialogue: 0,0:07:00.84,0:07:02.58,Gen_Main,,0,0,0,,Finalmente ha llegado el momento.
+Dialogue: 0,0:07:02.72,0:07:05.13,Gen_Main,,0,0,0,,Una vez que aseguren la herencia en esta bodega,
+Dialogue: 0,0:07:05.16,0:07:08.05,Gen_Main,,0,0,0,,quedarán libres de su deber como\NEmbajadoras de Buena Voluntad Designadas...
+Dialogue: 0,0:07:08.62,0:07:10.85,Gen_Main,,0,0,0,,Esto significa también adiós para Vegan.
+Dialogue: 0,0:07:22.92,0:07:25.91,Gen_Main,,0,0,0,,La herencia, ¿dónde está?
+Dialogue: 0,0:07:25.94,0:07:27.30,Gen_Main,,0,0,0,,¡Allí!
+Dialogue: 0,0:07:36.22,0:07:40.82,Gen_Main,,0,0,0,,Hicieron bien en levantar el sello y llegar hasta este lugar.
+Dialogue: 0,0:07:40.84,0:07:43.21,Gen_Main,,0,0,0,,Es nuestro abuelo, ¡Vegetalia!
+Dialogue: 0,0:07:43.64,0:07:45.44,Gen_Main,,0,0,0,,Esto debe ser magia de grabación.
+Dialogue: 0,0:07:45.47,0:07:48.35,Gen_Main,,0,0,0,,Si han llegado aquí, eso significa
+Dialogue: 0,0:07:48.38,0:07:51.26,Gen_Main,,0,0,0,,que han ganado el derecho a recibir la herencia.
+Dialogue: 0,0:07:51.29,0:07:54.10,Gen_Main,,0,0,0,,Vegan, Fruitalia.
+Dialogue: 0,0:07:54.13,0:07:57.06,Gen_Main,,0,0,0,,Observen estas dos flechas.
+Dialogue: 0,0:08:01.61,0:08:06.28,Gen_Main,,0,0,0,,Así como están, incluso juntas, todavía pueden romperse.
+Dialogue: 0,0:08:06.50,0:08:10.00,Gen_Main,,0,0,0,,Pero también es cierto que\Nse vuelven un poco más difíciles de romper.
+Dialogue: 0,0:08:10.09,0:08:13.12,Gen_Main,,0,0,0,,Si ustedes dos pueden trabajar juntas como familia,
+Dialogue: 0,0:08:13.14,0:08:18.07,Gen_Main,,0,0,0,,deberían ser capaces de superar\Nalgunos obstáculos en su camino.
+Dialogue: 0,0:08:18.34,0:08:22.38,Gen_Main,,0,0,0,,Eso es precisamente lo que quería transmitirles.
+Dialogue: 0,0:08:22.40,0:08:25.97,Gen_Main,,0,0,0,,Trabajar juntas como hermanas y ayudarse mutuamente.
+Dialogue: 0,0:08:26.37,0:08:29.31,Gen_Main,,0,0,0,,La valiosa herencia de la casa Eldoriel...
+Dialogue: 0,0:08:30.18,0:08:32.01,Gen_Main,,0,0,0,,E-Espera un momento...
+Dialogue: 0,0:08:32.51,0:08:34.43,Gen_Main,,0,0,0,,Por lo que parece, es...
+Dialogue: 0,0:08:35.04,0:08:39.04,Gen_Main,,0,0,0,,Sí. Es su lazo de hermandad.
+Dialogue: 0,0:08:39.44,0:08:43.23,Gen_Main,,0,0,0,,El verdadero tesoro está en su propio corazón.
+Dialogue: 0,0:08:43.26,0:08:45.66,Gen_Main,,0,0,0,,No olviden eso.
+Dialogue: 0,0:08:49.00,0:08:51.27,Gen_Main,,0,0,0,,¡Maldito abuelo senil, qué hermandad ni qué nada!
+Dialogue: 0,0:08:51.30,0:08:53.35,Gen_Main,,0,0,0,,¿Cómo puede ser tan estúpido nuestro abuelo?
+Dialogue: 0,0:08:54.13,0:08:57.02,Gen_Main,,0,0,0,,- ¡Dame dinero!\N- ¡Entréganos todos los objetos de valor!
+Dialogue: 0,0:08:58.03,0:09:01.65,Gen_Main,,0,0,0,,¡L-La situación no mejoró ni un poco!
+Dialogue: 0,0:09:01.68,0:09:03.16,Gen_Main,,0,0,0,,¿A dónde vas?
+Dialogue: 0,0:09:03.51,0:09:06.77,Gen_Main,,0,0,0,,Parece que ahora no tenemos otra opción que continuar
+Dialogue: 0,0:09:06.79,0:09:10.05,Gen_Main,,0,0,0,,nuestro deber como Embajadoras de Buena Voluntad Designadas.
+Dialogue: 0,0:09:10.27,0:09:14.35,Gen_Main,,0,0,0,,Estoy segura de que nuestra deuda ha aumentado\Ncon lo que acaba de pasar, de todos modos.
+Dialogue: 0,0:09:16.38,0:09:19.73,Gen_Main,,0,0,0,,Como hermanas, tendremos que trabajar juntas...
+Dialogue: 0,0:09:19.75,0:09:23.48,Gen_Main,,0,0,0,,...y exprimir aún más tu jugo de bebé.
+Dialogue: 0,0:09:28.54,0:09:30.31,Gen_Main,,0,0,0,,¡Debe ser ese lugar!
+Dialogue: 0,0:09:31.66,0:09:35.22,Gen_Main,,0,0,0,,¡Peter! ¡Estamos aquí para salvarte!
+Dialogue: 0,0:09:46.30,0:09:47.53,Gen_Main,,0,0,0,,¿Ustedes?
+Dialogue: 0,0:09:47.55,0:09:50.47,Gen_Main,,0,0,0,,Me lo imaginaba.
+Dialogue: 0,0:09:50.66,0:09:54.13,Gen_Main,,0,0,0,,Entonces, ¿estamos consiguiendo más miembros de la familia? ¡Yupi!
+Dialogue: 0,0:09:54.15,0:09:56.05,Gen_Main,,0,0,0,,E-Estoy feliz de que estés bien...
+Dialogue: 0,0:09:56.08,0:09:58.70,Gen_Main,,0,0,0,,¿Sabes lo que tuvimos que pasar para llegar aquí?
+Dialogue: 0,0:09:58.72,0:09:59.91,Gen_Main,,0,0,0,,Bueno, entonces...
+Dialogue: 0,0:10:00.92,0:10:02.78,Gen_Main,,0,0,0,,Solicitamos...
+Dialogue: 0,0:10:02.80,0:10:04.45,Gen_Main,,0,0,0,,...un trato igualitario.
+Dialogue: 0,0:10:06.28,0:10:09.45,Gen_Main,,0,0,0,,¡Dame un respiro!
+Dialogue: 0,0:10:09.47,0:10:13.15,Gen_Main,,0,0,0,,¿Sigues enojada por eso, Luvellia?
+Dialogue: 0,0:10:13.34,0:10:14.98,Gen_Main,,0,0,0,,No, no lo estoy.
+Dialogue: 0,0:10:15.71,0:10:18.90,Gen_Main,,0,0,0,,Estoy de tu lado, Luvellia.
+Dialogue: 0,0:10:19.03,0:10:22.98,Gen_Main,,0,0,0,,No es que no confíe en ese tipo.
+Dialogue: 0,0:10:23.01,0:10:24.44,Gen_Main,,0,0,0,,¿Entonces por qué?
+Dialogue: 0,0:10:24.47,0:10:28.53,Gen_Main,,0,0,0,,Estoy pensando en confiarle\Nuna misión importante después de esto.
+Dialogue: 0,0:10:28.59,0:10:29.87,Gen_Main,,0,0,0,,¿Una misión?
+Dialogue: 0,0:10:30.39,0:10:37.12,Gen_Main,,0,0,0,,Sí. Una misión importante que\Nseguro sellará su destino esta vez.
+Dialogue: 0,0:12:11.92,0:12:14.96,Gen_Main,,0,0,0,,VEGAN ELDORIEL POR KURURU KURASAKA\N¡LA DIVERSIÓN SIGUE Y SIGUE!\N"""
