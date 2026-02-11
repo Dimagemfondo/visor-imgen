@@ -1,0 +1,91 @@
+﻿[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Typeset,Trebuchet MS,24,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,3,0.5,8,80,80,50,1
+Style: Default2,Trebuchet MS,24,&H00FFFFFF,&H00FFFFFF,&H0058072C,&H96000000,0,0,0,0,100,100,0,0,1,3,0.5,2,80,80,50,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_TitleEp,Trebuchet MS,18,&H001B029D,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,7,30,20,30,1
+Style: Gen_Avance,Arial,28,&H000D00D3,&H000000FF,&H00060503,&H00000000,-1,0,0,0,100,100,0,0,1,3,2,8,20,20,100,1
+Style: Gen_Next,Trebuchet MS,18,&H0022FDF6,&H000000FF,&H00060503,&H00060503,-1,-1,0,0,100,100,0,0,1,3,1,8,20,20,30,1
+Style: Gen_Nota,Trebuchet MS,20,&H00FFFFFF,&H000000FF,&H00262626,&H00505050,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Cart_A_Tre,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00303030,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Tre,Trebuchet MS,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Tre,Trebuchet MS,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_A_Tim,Times New Roman,24,&H00FFFFFF,&H000000FF,&H00303030,&H00303030,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Tim,Times New Roman,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Tim,Times New Roman,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_A_Ari,Arial,24,&H00FFFFFF,&H000000FF,&H00303030,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Ari,Arial,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Ari,Arial,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.92,0:00:04.75,Gen_Main,,0,0,0,,Hoy vamos a tener un\Nnuevo entrenamiento especial.
+Dialogue: 1,0:00:05.30,0:00:08.63,Gen_Main,,0,0,0,,Utilizar agua para mejorar la\Nagilidad de las extremidades.
+Dialogue: 2,0:00:09.34,0:00:11.47,Gen_Main,,0,0,0,,¿Está solo en este el parque central?
+Dialogue: 3,0:00:11.72,0:00:13.39,Gen_Main,,0,0,0,,Esto es muy vergonzoso.
+Dialogue: 4,0:00:13.72,0:00:17.10,Gen_Main,,0,0,0,,No es saludable y parece tan estúpido.
+Dialogue: 5,0:00:17.29,0:00:19.98,Gen_Main,,0,0,0,,¿Todavía tienes que entrenar para\Naguantar ante los ojos de la multitud?
+Dialogue: 6,0:00:20.19,0:00:22.19,Gen_Main,,0,0,0,,No, la gente no puede vernos.
+Dialogue: 7,0:00:22.77,0:00:25.94,Gen_Main,,0,0,0,,Inventé un dispositivo que\Npuede controlar los ojos.
+Dialogue: 8,0:00:26.15,0:00:28.61,Gen_Main,,0,0,0,,No hay nada que no pueda hacer.
+Dialogue: 9,0:00:28.82,0:00:31.15,Gen_Main,,0,0,0,,¿Por qué quieres ayudar a Michael?
+Dialogue: 10,0:00:31.20,0:00:34.99,Gen_Main,,0,0,0,,Lo siento, perdí la cabeza\Ncuando escuché el invento.
+Dialogue: 11,0:00:35.41,0:00:37.33,Gen_Main,,0,0,0,,Esta cosa se puede\Nutilizar para realizar tareas.
+Dialogue: 12,0:00:37.79,0:00:40.29,Gen_Main,,0,0,0,,Admira a tu hermana y el\Nculo queda al descubierto.
+Dialogue: 13,0:00:43.87,0:00:46.33,Gen_Main_Up,,0,0,0,,Episodio 12
+Dialogue: 14,0:00:43.87,0:00:46.33,Gen_Main,,0,0,0,,¡Las siete virtudes celestiales!
+Dialogue: 15,0:00:53.59,0:00:55.30,Gen_Main,,0,0,0,,Mi hermana.
+Dialogue: 16,0:01:10.49,0:01:11.74,Gen_Main,,0,0,0,,¡Vamos!
+Dialogue: 17,0:01:12.65,0:01:14.66,Gen_Main,,0,0,0,,¿Por qué tus ataques son tan vergonzosos?
+Dialogue: 18,0:01:17.08,0:01:19.66,Gen_Main,,0,0,0,,Veamos cuál es el verdadero ataque.
+Dialogue: 19,0:01:19.95,0:01:21.12,Gen_Main,,0,0,0,,Lealtad.
+Dialogue: 20,0:01:22.21,0:01:24.21,Gen_Main,,0,0,0,,Lealtad.
+Dialogue: 21,0:01:24.96,0:01:27.08,Gen_Main,,0,0,0,,¡Eh!  ¿Qué odias hacer?
+Dialogue: 22,0:01:27.29,0:01:29.00,Gen_Main,,0,0,0,,¡Me empapé!
+Dialogue: 23,0:01:29.14,0:01:31.26,Gen_Main,,0,0,0,,¿Es este un entrenamiento especial?
+Dialogue: 24,0:01:31.34,0:01:33.01,Gen_Main,,0,0,0,,Mira tu traje de baño.
+Dialogue: 25,0:01:34.55,0:01:35.80,Gen_Main,,0,0,0,,¿Qué?
+Dialogue: 26,0:01:35.86,0:01:38.56,Gen_Main,,0,0,0,,El traje de baño se está derritiendo.
+Dialogue: 27,0:01:38.60,0:01:41.64,Gen_Main,,0,0,0,,De verdad, ¿por qué?  ¿Por qué?
+Dialogue: 28,0:01:42.39,0:01:44.02,Gen_Main,,0,0,0,,Para crear una atmósfera tensa.
+Dialogue: 29,0:01:44.35,0:01:45.89,Gen_Main,,0,0,0,,Solía ​​mostrar el daño recibido.
+Dialogue: 30,0:01:45.98,0:01:47.86,Gen_Main,,0,0,0,,Todos los trajes de baño\Nse derriten en el agua.
+Dialogue: 31,0:01:48.36,0:01:51.69,Gen_Main,,0,0,0,,¿Por qué no lo dices temprano?
+Dialogue: 32,0:01:51.82,0:01:54.95,Gen_Main,,0,0,0,,Oh, eso es tan emocionante.
+Dialogue: 33,0:01:56.07,0:01:59.32,Gen_Main,,0,0,0,,Si no puedes evitarlo, quedarás desnudo.
+Dialogue: 34,0:02:00.95,0:02:04.54,Gen_Main,,0,0,0,,Ya está expuesto al principio.
+Dialogue: 35,0:02:04.66,0:02:05.91,Gen_Main,,0,0,0,,Sin hablar de.
+Dialogue: 36,0:02:06.54,0:02:08.21,Gen_Main,,0,0,0,,Ahora, bueno para continuar.
+Dialogue: 37,0:02:08.59,0:02:09.92,Gen_Main,,0,0,0,,Ella habla en serio.
+Dialogue: 38,0:02:19.64,0:02:22.56,Gen_Main,,0,0,0,,Arcángel, hay muchos defectos detrás de ti.
+Dialogue: 39,0:02:22.81,0:02:25.77,Gen_Main,,0,0,0,,¿Quieres vencerme con sólo usar una cuerda?
+Dialogue: 40,0:02:27.31,0:02:28.89,Gen_Main,,0,0,0,,Ingenuo.
+Dialogue: 41,0:02:29.11,0:02:30.44,Gen_Main,,0,0,0,,¡Uy, ups!
+Dialogue: 42,0:02:32.07,0:02:33.07,Gen_Main,,0,0,0,,Odioso.
+Dialogue: 43,0:02:34.69,0:02:37.95,Gen_Main,,0,0,0,,En este caso, tengo que robarme la mano.
+Dialogue: 44,0:02:39.57,0:02:42.58,Gen_Main,,0,0,0,,Meta-chan no puede tomar una jeringa.
+Dialogue: 45,0:02:42.66,0:02:43.94,Gen_Main,,0,0,0,,¡Mírame!
+Dialogue: 46,0:02:43.94,0:02:46.75,Gen_Main,,0,0,0,,Llámame una pequeña ola.
+Dialogue: 47,0:02:47.29,0:02:48.96,Gen_Main,,0,0,0,,Lealtad.
+Dialogue: 48,0:03:00.68,0:03:01.97,Gen_Main,,0,0,0,,Eso es bueno.
+Dialogue: 49,0:03:03.31,0:03:04.77,Gen_Main,,0,0,0,,Hay mucho ruido por aquí.
+Dialogue: 50,0:03:05.39,0:03:08.89,Gen_Main,,0,0,0,,¿Por qué nos miran?
+Dialogue: 51,0:03:09.10,0:03:11.69,Gen_Main,,0,0,0,,¿Ha fallado el dispositivo?
+Dialogue: 52,0:03:11.98,0:03:14.53,Gen_Main,,0,0,0,,No, no mires.
+Dialogue: 53,0:03:14.61,0:03:17.15,Gen_Main,,0,0,0,,¿Esto es realmente un dolor de cabeza?
+Dialogue: 54,0:03:17.95,0:03:19.53,Gen_Main,,0,0,0,,¿Cómo llegó a esto?
+Dialogue: 55,0:03:19.70,0:03:20.99,Gen_Main,,0,0,0,,Dios...
+Dialogue: 56,0:03:21.16,0:03:23.70,Gen_Main,,0,0,0,,No es fácil buscar al Mesías.

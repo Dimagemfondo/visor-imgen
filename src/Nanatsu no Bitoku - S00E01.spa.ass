@@ -1,0 +1,89 @@
+[Script Info]
+; This is an Advanced Sub Station Alpha v4+ script.
+Title: untitled
+ScriptType: v4.00+
+PlayDepth: 0
+ScaledBorderAndShadow: Yes
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Gen_Main,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Gen_Italics,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,2,10,10,18,1
+Style: Gen_Main_Up,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00090909,0,0,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_Italics_top,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Gen_TitleEp,Trebuchet MS,18,&H001B029D,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,7,30,20,30,1
+Style: Gen_Avance,Arial,28,&H000D00D3,&H000000FF,&H00060503,&H00000000,-1,0,0,0,100,100,0,0,1,3,2,8,20,20,100,1
+Style: Gen_Next,Trebuchet MS,18,&H0022FDF6,&H000000FF,&H00060503,&H00060503,-1,-1,0,0,100,100,0,0,1,3,1,8,20,20,30,1
+Style: Gen_Nota,Trebuchet MS,20,&H00FFFFFF,&H000000FF,&H00262626,&H00505050,0,-1,0,0,100,100,0,0,1,2,1,8,10,10,18,1
+Style: Cart_A_Tre,Trebuchet MS,24,&H00FFFFFF,&H000000FF,&H00303030,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Tre,Trebuchet MS,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Tre,Trebuchet MS,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_A_Tim,Times New Roman,24,&H00FFFFFF,&H000000FF,&H00303030,&H00303030,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Tim,Times New Roman,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Tim,Times New Roman,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_A_Ari,Arial,24,&H00FFFFFF,&H000000FF,&H00303030,&H00000000,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_B_Ari,Arial,24,&H00323232,&H000000FF,&H00D9D9D9,&H00D9D9D9,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Cart_C_Ari,Arial,24,&H00323232,&H000000FF,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,2,1,8,20,20,20,1
+Style: Typeset,Trebuchet MS,24,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,3,0.5,8,80,80,50,1
+Style: Default2,Trebuchet MS,24,&H00FFFFFF,&H00FFFFFF,&H0058072C,&H96000000,0,0,0,0,100,100,0,0,1,3,0.5,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.26,0:00:03.22,Gen_Main,,0,0,0,,¡Diligencia!
+Dialogue: 1,0:00:03.93,0:00:07.81,Gen_Main,,0,0,0,,¿Puede realmente este juez\Ncalificar a un candidato del Mesías?
+Dialogue: 2,0:00:08.69,0:00:12.65,Gen_Main,,0,0,0,,Hermana mía, Los inventos\Nnunca serán un problema.
+Dialogue: 3,0:00:13.06,0:00:15.23,Gen_Main,,0,0,0,,Por favor relájate.
+Dialogue: 4,0:00:15.48,0:00:17.86,Gen_Main,,0,0,0,,Estaremos atentos a la\Nreacción del Candidato a Mesías.
+Dialogue: 5,0:00:17.86,0:00:20.57,Gen_Main,,0,0,0,,No haremos cosas raras con Uriel-san.
+Dialogue: 6,0:00:20.72,0:00:23.66,Gen_Main,,0,0,0,,Entonces, ¿por qué tienes que vendarme?
+Dialogue: 7,0:00:24.12,0:00:26.29,Gen_Main,,0,0,0,,Esperando que la mirada del\Ncandidato se fije en un lugar.
+Dialogue: 8,0:00:26.41,0:00:28.20,Gen_Main,,0,0,0,,De lo contrario, no es buena\Nla recopilación de datos.
+Dialogue: 9,0:00:28.54,0:00:31.42,Gen_Main,,0,0,0,,El trabajo estará terminado.\NPor favor, tenga paciencia.
+Dialogue: 10,0:00:33.21,0:00:37.50,Gen_Main,,0,0,0,,Muy bien, que entre el candidato\Npara el Mesías, por favor.
+Dialogue: 11,0:00:42.22,0:00:45.80,Gen_Main,,0,0,0,,Por favor use este\Ninstrumento cuando se siente.
+Dialogue: 12,0:00:51.10,0:00:54.15,Gen_Main,,0,0,0,,Está bien, te lo pondré.
+Dialogue: 13,0:00:56.94,0:00:58.69,Gen_Main_Up,,0,0,0,,Episodio 11
+Dialogue: 14,0:00:56.94,0:00:58.69,Gen_Main,,0,0,0,,¡Las siete virtudes celestiales!
+Dialogue: 15,0:00:59.27,0:01:02.07,Gen_Main,,0,0,0,,Mi hermana estaba lista.
+Dialogue: 16,0:01:02.32,0:01:04.07,Gen_Main,,0,0,0,,Bueno, entonces enciende.
+Dialogue: 17,0:01:11.21,0:01:13.71,Gen_Main,,0,0,0,,Bien, ¿puedes ver algo?
+Dialogue: 18,0:01:18.06,0:01:23.30,Gen_Main,,0,0,0,,Mmm. Te estoy mirando entero\Npara que se muestre en la pantalla.
+Dialogue: 19,0:01:25.05,0:01:27.43,Gen_Main,,0,0,0,,Me temo que este experimento\Nestá absolutamente fuera de discusión.
+Dialogue: 20,0:01:27.59,0:01:29.14,Gen_Main,,0,0,0,,Lo apago primero.
+Dialogue: 21,0:01:31.10,0:01:34.69,Gen_Main,,0,0,0,,Entonces, primero verifiquemos la lealtad.
+Dialogue: 22,0:01:39.07,0:01:40.86,Gen_Main,,0,0,0,,¿Qu-qué estás haciendo?
+Dialogue: 23,0:01:41.08,0:01:42.70,Gen_Main,,0,0,0,,La lealtad significa el corazón sincero,
+Dialogue: 24,0:01:42.99,0:01:45.49,Gen_Main,,0,0,0,,y los ojos son la ventana del alma.
+Dialogue: 25,0:01:45.68,0:01:48.62,Gen_Main,,0,0,0,,Mira los ojos de la persona opuesta\Npara comprender su sinceridad.
+Dialogue: 26,0:01:48.74,0:01:52.58,Gen_Main,,0,0,0,,Por favor mírense a los ojos, no aparten la mirada.
+Dialogue: 27,0:02:00.00,0:02:02.42,Gen_Main,,0,0,0,,Bueno.  Muchas gracias...
+Dialogue: 28,0:02:02.72,0:02:04.59,Gen_Main,,0,0,0,,El siguiente elemento es comprobar la resistencia.
+Dialogue: 29,0:02:05.28,0:02:08.93,Gen_Main,,0,0,0,,No pasa nada. Espere a que el\Ncandidato a salvador deje de moverse.
+Dialogue: 30,0:02:09.30,0:02:12.73,Gen_Main,,0,0,0,,Esta prueba examinará cuánto tiempo puedes aguantar.
+Dialogue: 31,0:02:21.44,0:02:24.49,Gen_Main,,0,0,0,,Oye, no respires.  está sobre mí.
+Dialogue: 32,0:02:25.86,0:02:28.03,Gen_Main,,0,0,0,,Ten paciencia... Ten paciencia...
+Dialogue: 33,0:02:28.37,0:02:29.32,Gen_Main,,0,0,0,,Sin embargo.
+Dialogue: 34,0:02:29.53,0:02:31.70,Gen_Main,,0,0,0,,Así como así.
+Dialogue: 35,0:02:32.91,0:02:33.91,Gen_Main,,0,0,0,,¿Ya estás satisfecho?
+Dialogue: 36,0:02:34.17,0:02:36.12,Gen_Main,,0,0,0,,Bien, buena suerte en el trabajo duro.
+Dialogue: 37,0:02:36.42,0:02:38.63,Gen_Main,,0,0,0,,El siguiente elemento es la verificación de compasión.
+Dialogue: 38,0:02:38.84,0:02:42.55,Gen_Main,,0,0,0,,¡Eh!  ¿Cuántas veces tengo que hacer esto?
+Dialogue: 39,0:02:43.20,0:02:44.63,Gen_Main,,0,0,0,,Ser paciente.  ¡Bien!
+Dialogue: 40,0:02:48.10,0:02:50.51,Gen_Main,,0,0,0,,Bien, buena suerte en el trabajo hoy.
+Dialogue: 41,0:02:50.86,0:02:55.14,Gen_Main,,0,0,0,,Mmm.  La próxima vez comprobar el acabado.  El último cheque.
+Dialogue: 42,0:02:55.52,0:02:57.69,Gen_Main,,0,0,0,,Finalmente insistí de nuevo en un poquito más.
+Dialogue: 43,0:03:05.83,0:03:07.11,Gen_Main,,0,0,0,,El último punto es muy simple.
+Dialogue: 44,0:03:07.84,0:03:11.74,Gen_Main,,0,0,0,,Observé el movimiento de templanza\Nde Uriel-san y mi mente se calificó.
+Dialogue: 45,0:03:14.32,0:03:16.08,Gen_Main,,0,0,0,,Oye, vamos.
+Dialogue: 46,0:03:24.71,0:03:27.22,Gen_Main,,0,0,0,,Ella parece no estar satisfecha todavía.
+Dialogue: 47,0:03:27.59,0:03:29.38,Gen_Main,,0,0,0,,Luego aumenta la potencia.
+Dialogue: 48,0:03:38.39,0:03:39.90,Gen_Main,,0,0,0,,{\i1}"¡Eres un pervertido!"{\i0}
+Dialogue: 49,0:03:43.76,0:03:45.19,Gen_Main,,0,0,0,,¿No calificado?
+Dialogue: 50,0:03:45.24,0:03:47.19,Gen_Main,,0,0,0,,¡¿Estás bien?!
+Dialogue: 51,0:03:47.28,0:03:50.32,Gen_Main,,0,0,0,,Te ayudaremos a subir, por favor regresa.
+Dialogue: 52,0:03:51.49,0:03:54.62,Gen_Main,,0,0,0,,Es una pena, es casi un poco.
+Dialogue: 53,0:03:54.70,0:03:59.58,Gen_Main,,0,0,0,,¿Existe realmente el candidato a\Nsalvador que pase siete pruebas?
+Dialogue: 54,0:04:03.38,0:04:05.34,Gen_Main,,0,0,0,,No puedo soportar más esto.
