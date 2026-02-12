@@ -12,8 +12,8 @@ PlayResY: 480
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Alternate,Lato,36,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,84.4,100,0,0,1,1.5,1,2,17,17,25,1
-Style: Default,Lato,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,84.408,100,0,0,1,1.5,1,2,17,17,25,1
+Style: Alternate,Arial,36,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,84.4,100,0,0,1,1.5,1,2,17,17,25,1
+Style: Default,Arial,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,84.408,100,0,0,1,1.5,1,2,17,17,25,1
 Style: Signs,Arial,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,84.4079,100,0,0,1,0,0,7,0,0,0,1
 Style: Title,Franco,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,84.4,100,0,0,1,0,0,5,0,0,0,1
 
@@ -395,3 +395,4 @@ Dialogue: 0,0:26:51.53,0:26:56.40,Default,,0,0,0,,Muchas enfermeras aquí, tiene
 Dialogue: 0,0:26:59.93,0:27:02.37,Default,,0,0,0,,Yo soy de las mejores que pueden encontrar.
 Dialogue: 0,0:27:08.21,0:27:12.17,Default,,0,0,0,,Soy Kurokawa, la enfermera a cargo\Nde tu extracción de semen esta semana.
 Dialogue: 0,0:27:18.42,0:27:22.78,Default,,0,0,0,,{\fad(0,473)}Así que tú eres el Yamada-kun del que he\Nestado escuchando. Un placer conocerte.
+
