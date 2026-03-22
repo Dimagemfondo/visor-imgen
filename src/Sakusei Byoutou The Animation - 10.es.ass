@@ -21,8 +21,8 @@ Video Position: 827
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default2,Lato,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,84.408,100,0,0,1,1.5,1,2,17,17,25,1
-Style: Alternate,Lato,36,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,84.4,100,0,0,1,1.5,1,2,17,17,25,1
+Style: Default2,Arial,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,84.408,100,0,0,1,1.5,1,2,17,17,25,1
+Style: Alternate,Arial,36,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,84.4,100,0,0,1,1.5,1,2,17,17,25,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
